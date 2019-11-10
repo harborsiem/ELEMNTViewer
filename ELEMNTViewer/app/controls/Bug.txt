@@ -1,0 +1,41 @@
+When using the .NET Chart Control of the
+
+namespace System.Web.UI.DataVisualization.Charting
+or
+namespace System.Windows.Forms.DataVisualization.Charting
+
+one had to use the class DataPointCollection for showing the points at the chart.
+When one want to clear all the points in this collection, then one have to use the Clear() method of this class.
+
+But the Clear method is very slow. One can see it with a DataPointCollection with 10000 points for example. It takes some seconds for clearing.
+
+I had a look at the code and I think I find the problem in the class ChartElementCollection<T> in method ClearItems().
+ChartElementCollection<DataPoint> is the base class of DataPointCollection.
+
+class ChartElementCollection<T>
+original method:
+        protected override void ClearItems()
+        {
+            SuspendUpdates();
+            while (this.Count > 0)
+            {
+                this.RemoveItem(0);
+            }
+            ResumeUpdates();
+        }
+
+this method is much faster, because the underlying Array of the items don't have to be copied by each call of RemoveItem:
+        protected override void ClearItems()
+        {
+            SuspendUpdates();
+            while (this.Count > 0)
+            {
+                this.RemoveItem(this.Count - 1);
+            }
+            ResumeUpdates();
+        }
+
+Please have a check for the faster version.
+
+Regards
+Hartmut Borkenhagen
