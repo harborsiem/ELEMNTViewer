@@ -1,0 +1,1626 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Ribbon</name>
+    </assembly>
+    <members>
+        <member name="T:RibbonLib.Controls.Events.ExecuteEventArgs">
+            <summary>
+            Execute event args
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.Events.BaseEventsProvider._supportedEvents">
+            <summary>
+            list of supported events
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Events.BaseEventsProvider.SupportedEvents">
+            <summary>
+            Get supported "execution verbs", or events
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Events.BaseEventsProvider.Execute(RibbonLib.Interop.ExecutionVerb,RibbonLib.Interop.PropertyKeyRef,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.IUISimplePropertySet)">
+            <summary>
+            Handles IUICommandHandler.Execute function for supported events
+            </summary>
+            <param name="verb">the mode of execution</param>
+            <param name="key">the property that has changed</param>
+            <param name="currentValue">the new value of the property that has changed</param>
+            <param name="commandExecutionProperties">additional data for this execution</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="T:RibbonLib.Controls.Events.IPreviewEventsProvider">
+            <summary>
+            Definition for Execute events provider
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Events.IPreviewEventsProvider.PreviewEvent">
+            <summary>
+            Preview event
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Events.IPreviewEventsProvider.CancelPreviewEvent">
+            <summary>
+            Cancel Preview event
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Events.PreviewEventsProvider">
+            <summary>
+            Implementation of IPreviewEventsProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Events.PreviewEventsProvider.Execute(RibbonLib.Interop.ExecutionVerb,RibbonLib.Interop.PropertyKeyRef,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.IUISimplePropertySet)">
+            <summary>
+            Handles IUICommandHandler.Execute function for supported events
+            </summary>
+            <param name="verb">the mode of execution</param>
+            <param name="key">the property that has changed</param>
+            <param name="currentValue">the new value of the property that has changed</param>
+            <param name="commandExecutionProperties">additional data for this execution</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="E:RibbonLib.Controls.Events.PreviewEventsProvider.PreviewEvent">
+            <summary>
+            Preview event
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Events.PreviewEventsProvider.CancelPreviewEvent">
+            <summary>
+            Cancel Preview event
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Events.IExecuteEventsProvider">
+            <summary>
+            Definition for Execute events provider
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Events.IExecuteEventsProvider.ExecuteEvent">
+            <summary>
+            Execute event
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Events.ExecuteEventsProvider">
+            <summary>
+            Implementation of IExecuteEventsProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Events.ExecuteEventsProvider.Execute(RibbonLib.Interop.ExecutionVerb,RibbonLib.Interop.PropertyKeyRef,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.IUISimplePropertySet)">
+            <summary>
+            Handles IUICommandHandler.Execute function for supported events
+            </summary>
+            <param name="verb">the mode of execution</param>
+            <param name="key">the property that has changed</param>
+            <param name="currentValue">the new value of the property that has changed</param>
+            <param name="commandExecutionProperties">additional data for this execution</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="E:RibbonLib.Controls.Events.ExecuteEventsProvider.ExecuteEvent">
+            <summary>
+            Execute event
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Events.IEventsProvider.SupportedEvents">
+            <summary>
+            Get supported "execution verbs", or events
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Events.IEventsProvider.Execute(RibbonLib.Interop.ExecutionVerb,RibbonLib.Interop.PropertyKeyRef,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.IUISimplePropertySet)">
+            <summary>
+            Handles IUICommandHandler.Execute function for supported events
+            </summary>
+            <param name="verb">the mode of execution</param>
+            <param name="key">the property that has changed</param>
+            <param name="currentValue">the new value of the property that has changed</param>
+            <param name="commandExecutionProperties">additional data for this execution</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IRecentItemsPropertiesProvider">
+            <summary>
+            Definition for recent items properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IRecentItemsPropertiesProvider.RecentItems">
+            <summary>
+            Recent items property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.RecentItemsPropertiesProvider">
+            <summary>
+            Implementation of IRecentItemsPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.RecentItemsPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            RecentItemsPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.RecentItemsPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.RecentItemsPropertiesProvider.RecentItems">
+            <summary>
+            Recent items property
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.Properties.BasePropertiesProvider._ribbon">
+            <summary>
+            reference for parent ribbon class
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.Properties.BasePropertiesProvider._commandID">
+            <summary>
+            ribbon control command id
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.Properties.BasePropertiesProvider._supportedProperties">
+            <summary>
+            list of supported properties
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.BasePropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            BasePropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandID">command id attached to this control</param>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.BasePropertiesProvider.SupportedProperties">
+            <summary>
+            Get supported properties
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.BasePropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IBooleanValuePropertyProvider">
+            <summary>
+            Definition for boolean value properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IBooleanValuePropertyProvider.BooleanValue">
+            <summary>
+            Boolean value property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.BooleanValuePropertyProvider">
+            <summary>
+            Implementation of IBooleanValuePropertyProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.BooleanValuePropertyProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            BooleanValuePropertyProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.BooleanValuePropertyProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.BooleanValuePropertyProvider.BooleanValue">
+            <summary>
+            Boolean value property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider">
+            <summary>
+            Definition for color picker properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.AutomaticColorLabel">
+            <summary>
+            Automatic color label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.Color">
+            <summary>
+            Color property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.ColorType">
+            <summary>
+            Color type property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.MoreColorsLabel">
+            <summary>
+            More colors label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.NoColorLabel">
+            <summary>
+            No color label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.RecentColorsCategoryLabel">
+            <summary>
+            Recent colors category label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.StandardColors">
+            <summary>
+            Standard colors property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.StandardColorsCategoryLabel">
+            <summary>
+            Standard colors category label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.StandardColorsTooltips">
+            <summary>
+            Standard colors tooltips property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.ThemeColors">
+            <summary>
+            Theme colors property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.ThemeColorsCategoryLabel">
+            <summary>
+            Theme colors category label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IColorPickerPropertiesProvider.ThemeColorsTooltips">
+            <summary>
+            Theme colors tooltips property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider">
+            <summary>
+            Implementation of IColorPickerPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            ColorPickerPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.AutomaticColorLabel">
+            <summary>
+            Automatic color label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.Color">
+            <summary>
+            Color property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.ColorType">
+            <summary>
+            Color type property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.MoreColorsLabel">
+            <summary>
+            More colors label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.NoColorLabel">
+            <summary>
+            No color label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.RecentColorsCategoryLabel">
+            <summary>
+            Recent colors category label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.StandardColors">
+            <summary>
+            Standard colors property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.StandardColorsCategoryLabel">
+            <summary>
+            Standard colors category label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.StandardColorsTooltips">
+            <summary>
+            Standard colors tooltips property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.ThemeColors">
+            <summary>
+            Theme colors property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.ThemeColorsCategoryLabel">
+            <summary>
+            Theme colors category label property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ColorPickerPropertiesProvider.ThemeColorsTooltips">
+            <summary>
+            Theme colors tooltips property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IContextAvailablePropertiesProvider">
+            <summary>
+            Definition for context available properties interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IContextAvailablePropertiesProvider.ContextAvailable">
+            <summary>
+            Context available property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.ContextAvailablePropertiesProvider">
+            <summary>
+            Implementation of IContextAvailablePropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.ContextAvailablePropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            ContextAvailablePropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.ContextAvailablePropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ContextAvailablePropertiesProvider.ContextAvailable">
+            <summary>
+            Context available property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IEnabledPropertiesProvider">
+            <summary>
+            Definition for enabled properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IEnabledPropertiesProvider.Enabled">
+            <summary>
+            Enabled property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.EnabledPropertiesProvider">
+            <summary>
+            Implementation of IEnabledPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.EnabledPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            EnabledPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.EnabledPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.EnabledPropertiesProvider.Enabled">
+            <summary>
+            Enabled property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IFontControlPropertiesProvider">
+            <summary>
+            Definition for font control properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.Family">
+            <summary>
+            Family property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.Size">
+            <summary>
+            Size property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.Bold">
+            <summary>
+            Bold property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.Italic">
+            <summary>
+            Italic property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.Underline">
+            <summary>
+            Underline property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.Strikethrough">
+            <summary>
+            Strikethrough property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.ForegroundColor">
+            <summary>
+            Foreground color property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.BackgroundColor">
+            <summary>
+            Background color property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IFontControlPropertiesProvider.VerticalPositioning">
+            <summary>
+            Vertical positioning property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.FontControlPropertiesProvider">
+            <summary>
+            Implementation of IFontControlPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.FontControlPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            FontControlPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.FontControlPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.FontProperties">
+            <summary>
+            Font properties property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.Family">
+            <summary>
+            Family property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.Size">
+            <summary>
+            Size property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.Bold">
+            <summary>
+            Bold property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.Italic">
+            <summary>
+            Italic property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.Underline">
+            <summary>
+            Underline property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.Strikethrough">
+            <summary>
+            Strikethrough property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.ForegroundColor">
+            <summary>
+            Foreground color property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.BackgroundColor">
+            <summary>
+            Background color property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.FontControlPropertiesProvider.VerticalPositioning">
+            <summary>
+            Vertical positioning property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IGalleryPropertiesProvider">
+            <summary>
+            Definition for gallery properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IGalleryPropertiesProvider.Categories">
+            <summary>
+            Categories property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IGalleryPropertiesProvider.ItemsSource">
+            <summary>
+            Items source property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IGalleryPropertiesProvider.SelectedItem">
+            <summary>
+            Selected item property
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Properties.IGalleryPropertiesProvider.CategoriesReady">
+            <summary>
+            Called when the Categories property is ready to be initialized
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Properties.IGalleryPropertiesProvider.ItemsSourceReady">
+            <summary>
+            Called when the ItemsSource property is ready to be initialized
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.GalleryPropertiesProvider">
+            <summary>
+            Implementation of IGalleryPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.GalleryPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32,System.Object)">
+            <summary>
+            GalleryPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+            <param name="sender">ribbon control that instantiate the provider</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.GalleryPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.GalleryPropertiesProvider.Categories">
+            <summary>
+            Categories property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.GalleryPropertiesProvider.ItemsSource">
+            <summary>
+            Items source property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.GalleryPropertiesProvider.SelectedItem">
+            <summary>
+            Selected item property
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Properties.GalleryPropertiesProvider.CategoriesReady">
+            <summary>
+            Called when the Categories property is ready to be initialized
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Controls.Properties.GalleryPropertiesProvider.ItemsSourceReady">
+            <summary>
+            Called when the ItemsSource property is ready to be initialized
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IImagePropertiesProvider">
+            <summary>
+            Definition for image properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IImagePropertiesProvider.LargeImage">
+            <summary>
+            Large image property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IImagePropertiesProvider.SmallImage">
+            <summary>
+            Small image property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IImagePropertiesProvider.LargeHighContrastImage">
+            <summary>
+            Large high contrast image property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IImagePropertiesProvider.SmallHighContrastImage">
+            <summary>
+            Small high contrast image property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.ImagePropertiesProvider">
+            <summary>
+            Implementation of IImagePropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.ImagePropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            ImagePropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.ImagePropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ImagePropertiesProvider.LargeImage">
+            <summary>
+            Large image property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ImagePropertiesProvider.SmallImage">
+            <summary>
+            Small image property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ImagePropertiesProvider.LargeHighContrastImage">
+            <summary>
+            Large high contrast image property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ImagePropertiesProvider.SmallHighContrastImage">
+            <summary>
+            Small high contrast image property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IKeytipPropertiesProvider">
+            <summary>
+            Definition for keytip properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IKeytipPropertiesProvider.Keytip">
+            <summary>
+            Keytip property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.KeytipPropertiesProvider">
+            <summary>
+            Implementation of IKeytipPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.KeytipPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            KeytipPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.KeytipPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.KeytipPropertiesProvider.Keytip">
+            <summary>
+            Keytip property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.ILabelDescriptionPropertiesProvider">
+            <summary>
+            Definition for label description properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ILabelDescriptionPropertiesProvider.LabelDescription">
+            <summary>
+            LabelDescription property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.LabelDescriptionPropertiesProvider">
+            <summary>
+            Implementation of ILabelDescriptionPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.LabelDescriptionPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            LabelDescriptionPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.LabelDescriptionPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.LabelDescriptionPropertiesProvider.LabelDescription">
+            <summary>
+            Label description property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.ILabelPropertiesProvider">
+            <summary>
+            Definition for label properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ILabelPropertiesProvider.Label">
+            <summary>
+            Label property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.LabelPropertiesProvider">
+            <summary>
+            Implementation of ILabelPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.LabelPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            LabelPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.LabelPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.LabelPropertiesProvider.Label">
+            <summary>
+            Label property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IRepresentativeStringPropertiesProvider">
+            <summary>
+            Definition for representative string properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IRepresentativeStringPropertiesProvider.RepresentativeString">
+            <summary>
+            Representative string property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.RepresentativeStringPropertiesProvider">
+            <summary>
+            Implementation of IRepresentativeStringPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.RepresentativeStringPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            RepresentativeStringPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.RepresentativeStringPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.RepresentativeStringPropertiesProvider.RepresentativeString">
+            <summary>
+            Representative string property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.ISpinnerPropertiesProvider">
+            <summary>
+            Definition for spinner properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ISpinnerPropertiesProvider.DecimalValue">
+            <summary>
+            Decimal value property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ISpinnerPropertiesProvider.Increment">
+            <summary>
+            Increment property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ISpinnerPropertiesProvider.MaxValue">
+            <summary>
+            Max value property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ISpinnerPropertiesProvider.MinValue">
+            <summary>
+            Min value property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ISpinnerPropertiesProvider.DecimalPlaces">
+            <summary>
+            Decimal places property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ISpinnerPropertiesProvider.FormatString">
+            <summary>
+            Format string property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.SpinnerPropertiesProvider">
+            <summary>
+            Implementation of ISpinnerPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            SpinnerPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.DecimalValue">
+            <summary>
+            Decimal value property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.Increment">
+            <summary>
+            Increment property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.MaxValue">
+            <summary>
+            Max value property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.MinValue">
+            <summary>
+            Min value property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.DecimalPlaces">
+            <summary>
+            Decimal places property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.SpinnerPropertiesProvider.FormatString">
+            <summary>
+            Format string property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.IStringValuePropertiesProvider">
+            <summary>
+            Definition for string value properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IStringValuePropertiesProvider.StringValue">
+            <summary>
+            String value property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.StringValuePropertiesProvider">
+            <summary>
+            Implementation of IStringValuePropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.StringValuePropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            StringValuePropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.StringValuePropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.StringValuePropertiesProvider.StringValue">
+            <summary>
+            String value property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.ITooltipPropertiesProvider">
+            <summary>
+            Definition for tooltip properties provider interface
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ITooltipPropertiesProvider.TooltipTitle">
+            <summary>
+            Tooltip title property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.ITooltipPropertiesProvider.TooltipDescription">
+            <summary>
+            Tooltip description property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Controls.Properties.TooltipPropertiesProvider">
+            <summary>
+            Implementation of ITooltipPropertiesProvider
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.TooltipPropertiesProvider.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            TooltipPropertiesProvider ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandId">ribbon control command id</param>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.TooltipPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.TooltipPropertiesProvider.TooltipTitle">
+            <summary>
+            Tooltip title property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.TooltipPropertiesProvider.TooltipDescription">
+            <summary>
+            Tooltip description property
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.Properties.IPropertiesProvider.SupportedProperties">
+            <summary>
+            Get supported properties
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.Properties.IPropertiesProvider.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for the supported properties
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="F:RibbonLib.Controls.BaseRibbonControl._ribbon">
+            <summary>
+            reference for parent ribbon class
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.BaseRibbonControl._commandID">
+            <summary>
+            ribbon control command id
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.BaseRibbonControl._mapProperties">
+            <summary>
+            map of registered properties for this ribbon control
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.BaseRibbonControl._mapEvents">
+            <summary>
+            map of registered events for this ribbon control
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Controls.BaseRibbonControl.#ctor(RibbonLib.Ribbon,System.UInt32)">
+            <summary>
+            BaseRibbonControl ctor
+            </summary>
+            <param name="ribbon">parent ribbon</param>
+            <param name="commandID">command id attached to this control</param>
+        </member>
+        <member name="M:RibbonLib.Controls.BaseRibbonControl.AddPropertiesProvider(RibbonLib.Controls.Properties.IPropertiesProvider)">
+            <summary>
+            Register a properties provider with this ribbon control
+            </summary>
+            <param name="propertiesProvider">properties provider</param>
+        </member>
+        <member name="M:RibbonLib.Controls.BaseRibbonControl.AddEventsProvider(RibbonLib.Controls.Events.IEventsProvider)">
+            <summary>
+            Register an events provider with this ribbon control
+            </summary>
+            <param name="eventsProvider">events provider</param>
+        </member>
+        <member name="M:RibbonLib.Controls.BaseRibbonControl.Execute(RibbonLib.Interop.ExecutionVerb,RibbonLib.Interop.PropertyKeyRef,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.IUISimplePropertySet)">
+            <summary>
+            Handles IUICommandHandler.Execute function for this ribbon control
+            </summary>
+            <param name="verb">the mode of execution</param>
+            <param name="key">the property that has changed</param>
+            <param name="currentValue">the new value of the property that has changed</param>
+            <param name="commandExecutionProperties">additional data for this execution</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="M:RibbonLib.Controls.BaseRibbonControl.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for this ribbon control
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="F:RibbonLib.Controls.RibbonQuickAccessToolbar._ribbon">
+            <summary>
+            reference for parent ribbon class
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.RibbonQuickAccessToolbar._commandID">
+            <summary>
+            QAT command id
+            </summary>
+        </member>
+        <member name="F:RibbonLib.Controls.RibbonQuickAccessToolbar._customizeButton">
+            <summary>
+            handler for the customize button
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Controls.RibbonQuickAccessToolbar.ItemsSource">
+            <summary>
+            Items source property
+            </summary>
+        </member>
+        <member name="T:RibbonLib.ColorHelper">
+            <summary>
+            Class for color conversions
+            </summary>
+        </member>
+        <member name="M:RibbonLib.ColorHelper.RGBToUInt32(System.Drawing.Color)">
+            <summary>
+            Convert RGB Color to Ribbon Color format
+            </summary>
+            <param name="color">RGB Color</param>
+            <returns>Ribbon Color format</returns>
+        </member>
+        <member name="M:RibbonLib.ColorHelper.UInt32ToRGB(System.UInt32)">
+            <summary>
+            Convert Ribbon Color format to RGB Color
+            </summary>
+            <param name="value">Ribbon Color format</param>
+            <returns>RGB Color</returns>
+        </member>
+        <member name="T:RibbonLib.Interop.PropVariant">
+            <summary>
+            Represents the OLE struct PROPVARIANT.
+            </summary>
+            <remarks>
+            Must call Clear when finished to avoid memory leaks. If you get the value of
+            a VT_UNKNOWN prop, an implicit AddRef is called, thus your reference will
+            be active even after the PropVariant struct is cleared.
+            Correct usage:
+            
+                PropVariant propVar;
+                GetProp(out propVar);
+                try
+                {
+                    object value = propVar.Value;
+                }
+                finally { propVar.Clear(); }
+                
+            Originally sourced from http://blogs.msdn.com/adamroot/pages/interop-with-propvariants-in-net.aspx
+            and modified to support R/W, and SafeArray vectors, decimal values, and other fixes.
+            </remarks>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.FromObject(System.Object)">
+            <summary>
+            Creates a PropVariant from an object
+            </summary>
+            <param name="value">The object containing the data.</param>
+            <returns>An initialized PropVariant</returns>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.Clear">
+            <summary>
+            Called to clear the PropVariant's referenced and local memory.
+            </summary>
+            <remarks>
+            You must call Clear to avoid memory leaks.
+            </remarks>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetUInt(System.UInt32)">
+            <summary>
+            Set an unsigned int value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetBool(System.Boolean)">
+            <summary>
+            Set a bool value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetDateTime(System.DateTime)">
+            <summary>
+            Set a DateTime value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetString(System.String)">
+            <summary>
+            Set a string value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetIUnknown(System.Object)">
+            <summary>
+            Set an IUnknown value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetSafeArray(System.Array)">
+            <summary>
+            Set a safe array value
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetByte(System.Byte)">
+            <summary>
+            Set a byte value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetSByte(System.SByte)">
+            <summary>
+            Set a sbyte value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetShort(System.Int16)">
+            <summary>
+            Set a short value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetUShort(System.UInt16)">
+            <summary>
+            Set an unsigned short value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetInt(System.Int32)">
+            <summary>
+            Set an int value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetUIntVector(System.UInt32[])">
+            <summary>
+            Set an uint vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetStringVector(System.String[])">
+            <summary>
+            Set a string vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetBoolVector(System.Boolean[])">
+            <summary>
+            Set a bool vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetShortVector(System.Int16[])">
+            <summary>
+            Set a short vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetUShortVector(System.UInt16[])">
+            <summary>
+            Set a short vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetIntVector(System.Int32[])">
+            <summary>
+            Set an int vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetLongVector(System.Int64[])">
+            <summary>
+            Set a long vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetULongVector(System.UInt64[])">
+            <summary>
+            Set a ulong vector
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetDoubleVector(System.Double[])">
+            <summary>
+            Set a double vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetDateTimeVector(System.DateTime[])">
+            <summary>
+            Set a DateTime vector
+            </summary>
+            <param name="array">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetDecimal(System.Decimal)">
+            <summary>
+            Set a decimal  value
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetLong(System.Int64)">
+            <summary>
+            Set a long
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetULong(System.UInt64)">
+            <summary>
+            Set a ulong
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.SetDouble(System.Double)">
+            <summary>
+            Set a double
+            </summary>
+            <param name="value">The new value to set.</param>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.GetDataBytes">
+            <summary>
+            Gets a byte array containing the data bits of the struct.
+            </summary>
+            <returns>A byte array that is the combined size of the data bits.</returns>
+        </member>
+        <member name="M:RibbonLib.Interop.PropVariant.CrackSingleDimSafeArray(System.IntPtr)">
+            <summary>
+            Marshals an unmanaged SafeArray to a managed Array object.
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Interop.ExitCode">
+            <summary>
+            System error codes
+            </summary>
+        </member>
+        <member name="T:RibbonLib.Interop.HRESULT">
+            <summary>
+            HRESULT Wrapper
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Interop.RibbonProperties.GetPropertyKeyName(RibbonLib.Interop.PropertyKey@)">
+            <summary>
+            Get the name of a given PropertyKey
+            </summary>
+            <param name="propertyKey">PropertyKey</param>
+            <returns>Name of the PropertyKey</returns>
+            <remarks>This function is used for debugging.</remarks>
+        </member>
+        <member name="M:RibbonLib.RibbonShortcutTable.HitTest(System.Windows.Forms.Keys)">
+            <summary>
+            Tests if the shortcut has an underlying command id
+            </summary>
+            <param name="shortcutKeys">the shortcut keys</param>
+            <returns>the command name</returns>
+        </member>
+        <member name="M:RibbonLib.UICollectionChangedEvent.Attach(RibbonLib.Interop.IUICollection)">
+            <summary>
+            Attach to an IUICollection object events
+            </summary>
+            <param name="collection">IUICollection object</param>
+        </member>
+        <member name="M:RibbonLib.UICollectionChangedEvent.Detach">
+            <summary>
+            Detach from the previous IUICollection object events
+            </summary>
+        </member>
+        <member name="P:RibbonLib.IRibbonControl.CommandID">
+            <summary>
+            Ribbon control command id
+            </summary>
+        </member>
+        <member name="M:RibbonLib.IRibbonControl.Execute(RibbonLib.Interop.ExecutionVerb,RibbonLib.Interop.PropertyKeyRef,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.IUISimplePropertySet)">
+            <summary>
+            Handles IUICommandHandler.Execute function for this ribbon control
+            </summary>
+            <param name="verb">the mode of execution</param>
+            <param name="key">the property that has changed</param>
+            <param name="currentValue">the new value of the property that has changed</param>
+            <param name="commandExecutionProperties">additional data for this execution</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="M:RibbonLib.IRibbonControl.UpdateProperty(RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Handles IUICommandHandler.UpdateProperty function for this ribbon control
+            </summary>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+        </member>
+        <member name="T:RibbonLib.Ribbon">
+            <summary>
+            Main class for using the windows ribbon in a .NET application
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Ribbon.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Draws only in Design mode
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:RibbonLib.Ribbon.Initalized">
+            <summary>
+            Check if ribbon framework has been initialized
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Ribbon.Initialized">
+            <summary>
+            Check if ribbon framework has been initialized
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Ribbon.Framework">
+            <summary>
+            Get ribbon framework object
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Ribbon.GetLocalizedRibbon(System.String,System.Reflection.Assembly)">
+            <summary>
+            Embedded resource based Ribbon Dll
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Ribbon.GetLocalizedRibbonFileData(System.String)">
+            <summary>
+            File based Ribbon Dll method
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Ribbon.InitFramework(System.String,System.Reflection.Assembly)">
+            <summary>
+            Initalize ribbon framework
+            </summary>
+            <param name="ribbonResource">Name of ribbon dll</param>
+            <param name="ribbonAssembly">Assembly where ribbon should reside</param>
+        </member>
+        <member name="M:RibbonLib.Ribbon.InitFramework(System.String,System.String)">
+            <summary>
+            Initalize ribbon framework
+            </summary>
+            <param name="resourceName">Identifier of the ribbon resource</param>
+            <param name="ribbonDllName">Dll name where to find ribbon resource</param>
+        </member>
+        <member name="M:RibbonLib.Ribbon.InitFramework(System.String,System.IntPtr)">
+            <summary>
+            Initialize ribbon framework
+            </summary>
+            <param name="resourceName">Identifier of the ribbon resource</param>
+            <param name="hInstance">Pointer to HINSTANCE of module where we can find ribbon resource</param>
+        </member>
+        <member name="M:RibbonLib.Ribbon.DestroyFramework">
+            <summary>
+            Destroy ribbon framework
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Ribbon.SetColors(System.Drawing.Color,System.Drawing.Color,System.Drawing.Color)">
+            <summary>
+            Change ribbon background, highlight and text colors
+            </summary>
+            <param name="background">new background color</param>
+            <param name="highlight">new highlight color</param>
+            <param name="text">new text color</param>
+        </member>
+        <member name="M:RibbonLib.Ribbon.ConvertToUIImage(System.Drawing.Bitmap)">
+            <summary>
+            Wraps a bitmap object with IUIImage interface
+            </summary>
+            <param name="bitmap">bitmap object to wrap</param>
+            <returns>IUIImage wrapper</returns>
+        </member>
+        <member name="M:RibbonLib.Ribbon.SetModes(System.Byte[])">
+            <summary>
+            Set current application modes
+            </summary>
+            <param name="modesArray">array of modes to set</param>
+            <remarks>Unlisted modes will be unset</remarks>
+        </member>
+        <member name="M:RibbonLib.Ribbon.ShowContextPopup(System.UInt32,System.Int32,System.Int32)">
+            <summary>
+            Shows a predefined context popup in a specific location
+            </summary>
+            <param name="contextPopupID">commandId for the context popup</param>
+            <param name="x">X in screen coordinates</param>
+            <param name="y">Y in screen coordinates</param>
+        </member>
+        <member name="P:RibbonLib.Ribbon.Minimized">
+            <summary>
+            Specifies whether the ribbon is in a collapsed or expanded state
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Ribbon.Viewable">
+            <summary>
+            Specifies whether the ribbon user interface (UI) is in a visible or hidden state
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Ribbon.QuickAccessToolbarDock">
+            <summary>
+            Specifies whether the quick access toolbar is docked at the top or at the bottom
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Ribbon.SaveSettingsToStream(System.IO.Stream)">
+            <summary>
+            The SaveSettingsToStream method is useful for persisting ribbon state, such as Quick Access Toolbar (QAT) items, across application instances.
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:RibbonLib.Ribbon.LoadSettingsFromStream(System.IO.Stream)">
+            <summary>
+            The LoadSettingsFromStream method is useful for persisting ribbon state, such as Quick Access Toolbar (QAT) items, across application instances.
+            </summary>
+            <param name="stream"></param>
+        </member>
+        <member name="M:RibbonLib.Ribbon.CreateRibbonFramework">
+            <summary>
+            Create ribbon framework object
+            </summary>
+            <returns>ribbon framework object</returns>
+        </member>
+        <member name="M:RibbonLib.Ribbon.CreateImageFromBitmapFactory">
+            <summary>
+            Create image-from-bitmap factory object
+            </summary>
+            <returns>image-from-bitmap factory object</returns>
+        </member>
+        <member name="M:RibbonLib.Ribbon.GenerateDefaultRibbonDllName">
+            <summary>
+            Generates a default ribbon dll name
+            </summary>
+            <returns>name of the dll</returns>
+        </member>
+        <member name="M:RibbonLib.Ribbon.AddRibbonControl(RibbonLib.IRibbonControl)">
+            <summary>
+            Adds a ribbon control to the internal map
+            </summary>
+            <param name="ribbonControl">ribbon control to add</param>
+        </member>
+        <member name="E:RibbonLib.Ribbon.RibbonEventException">
+            <summary>
+            User can handle untrapped Exceptions in the other events of the Ribbon
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Ribbon.Execute(System.UInt32,RibbonLib.Interop.ExecutionVerb,RibbonLib.Interop.PropertyKeyRef,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.IUISimplePropertySet)">
+            <summary>
+            Implementation of IUICommandHandler.Execute
+            Responds to execute events on Commands bound to the Command handler
+            </summary>
+            <param name="commandID">the command that has been executed</param>
+            <param name="verb">the mode of execution</param>
+            <param name="key">the property that has changed</param>
+            <param name="currentValue">the new value of the property that has changed</param>
+            <param name="commandExecutionProperties">additional data for this execution</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+            <remarks>This method is used internally by the Ribbon class and should not be called by the user.</remarks>
+        </member>
+        <member name="M:RibbonLib.Ribbon.UpdateProperty(System.UInt32,RibbonLib.Interop.PropertyKey@,RibbonLib.Interop.PropVariantRef,RibbonLib.Interop.PropVariant@)">
+            <summary>
+            Implementation of IUICommandHandler.UpdateProperty
+            Responds to property update requests from the Windows Ribbon (Ribbon) framework. 
+            </summary>
+            <param name="commandID">The ID for the Command, which is specified in the Markup resource file</param>
+            <param name="key">The Property Key to update</param>
+            <param name="currentValue">A pointer to the current value for key. This parameter can be NULL</param>
+            <param name="newValue">When this method returns, contains a pointer to the new value for key</param>
+            <returns>Returns S_OK if successful, or an error value otherwise</returns>
+            <remarks>This method is used internally by the Ribbon class and should not be called by the user.</remarks>
+        </member>
+        <member name="M:RibbonLib.RibbonUIApplication.#ctor(RibbonLib.Ribbon,RibbonLib.Ribbon)">
+            <summary>
+            RibbonUIApplication ctor
+            </summary>
+            <param name="ribbon">Ribbon</param>
+            <param name="ribbonControl">Ribbon</param>
+        </member>
+        <member name="P:RibbonLib.RibbonUIApplication.UIRibbon">
+            <summary>
+            Reference to IUIRibbon object
+            </summary>
+        </member>
+        <member name="M:RibbonLib.RibbonUIApplication.OnViewChanged(System.UInt32,RibbonLib.Interop.ViewType,System.Object,RibbonLib.Interop.ViewVerb,System.Int32)">
+            <summary>
+            Called when the state of a View changes
+            </summary>
+            <param name="viewId">The ID for the View. Only a value of 0 is valid.</param>
+            <param name="typeID">The UI_VIEWTYPE hosted by the application.</param>
+            <param name="view">A pointer to the View interface.</param>
+            <param name="verb">The UI_VIEWVERB (or action) performed by the View.</param>
+            <param name="uReasonCode">Not defined.</param>
+            <returns>Returns S_OK if successful, or an error value otherwise.</returns>
+        </member>
+        <member name="M:RibbonLib.RibbonUIApplication.OnCreateUICommand(System.UInt32,RibbonLib.Interop.CommandType,RibbonLib.Interop.IUICommandHandler@)">
+            <summary>
+            Called for each Command specified in the Windows Ribbon (Ribbon) framework markup to bind 
+            the Command to an IUICommandHandler. 
+            </summary>
+            <param name="commandId">The ID for the Command, which is specified in the markup resource file.</param>
+            <param name="typeID">The Command type that is associated with a specific control.</param>
+            <param name="commandHandler">When this method returns, contains the address of a pointer to an
+            IUICommandHandler object. This object is a host application Command handler that is bound to one or 
+            more Commands.</param>
+            <returns>Returns S_OK if successful, or an error value otherwise.</returns>
+        </member>
+        <member name="M:RibbonLib.RibbonUIApplication.OnDestroyUICommand(System.UInt32,RibbonLib.Interop.CommandType,RibbonLib.Interop.IUICommandHandler)">
+            <summary>
+            Called for each Command specified in the Windows Ribbon (Ribbon) framework markup when the 
+            application window is destroyed. 
+            </summary>
+            <param name="commandId">The ID for the Command, which is specified in the markup resource file.</param>
+            <param name="typeID">The Command type that is associated with a specific control.</param>
+            <param name="commandHandler">A pointer to an IUICommandHandler object. This value can be NULL.</param>
+            <returns>Returns S_OK if successful, or an error value otherwise.</returns>
+        </member>
+        <member name="F:RibbonLib.Util._designMode">
+            <summary>
+            Contains true, if we are in design mode of Visual Studio
+            </summary>
+        </member>
+        <member name="M:RibbonLib.Util.#cctor">
+            <summary>
+            Initializes an instance of Util class
+            </summary>
+        </member>
+        <member name="P:RibbonLib.Util.DesignMode">
+            <summary>
+            Gets true, if we are in design mode of Visual Studio
+            </summary>
+            <remarks>
+            In Visual Studio 2008 SP1 the designer is crashing sometimes on windows forms. 
+            The DesignMode property of Control class is buggy and cannot be used, so use our own implementation instead.
+            </remarks>
+        </member>
+    </members>
+</doc>
