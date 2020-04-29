@@ -13,17 +13,22 @@ using System.Reflection;
 using RibbonLib;
 using RibbonLib.Controls;
 
-namespace ELEMNTViewer {
-    public partial class MainForm : Form {
+namespace ELEMNTViewer
+{
+    public partial class MainForm : Form
+    {
 
         public const string MainFormText = "ELEMNT-Viewer";
         private RibbonItems ribbonItems;
 
-        public MainForm() {
-            if (!DesignMode) {
+        public MainForm()
+        {
+            if (!DesignMode)
+            {
                 this.Font = SystemFonts.MessageBoxFont;
             }
             InitializeComponent();
+            ribbon.RibbonEventException += Ribbon_RibbonEventException;
             ribbonItems = new RibbonItems(ribbon);
             ribbonItems.Init(this);
 
@@ -33,6 +38,12 @@ namespace ELEMNTViewer {
             Load += MainForm_Load;
 
             //new Test();
+        }
+
+        private void Ribbon_RibbonEventException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            if (MessageBox.Show("Unhandled Exception " + e.Exception.StackTrace, "ELEMNTViewer shall Close", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+                Environment.Exit(1);
         }
 
         private void MainForm_Load(object sender, EventArgs e)

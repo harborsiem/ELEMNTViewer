@@ -45,9 +45,9 @@ Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studi
   Entzippe das Setup von der Releases Seite. Danach erfolgt die Installation des Programms mit der Datei ELEMNTViewer.msi (Doppelklick im Datei-Explorer). Das Programm ist jetzt im Programmverzeichnis ELEMNTViewer installiert. Über den Eintrag ELEMNTViewer im Startmenu kann das Programm aufgerufen werden.
 
 ## aktuelles Setup
-#### (in Zipdatei gepacktes MSI Setup)
+#### (in Zipdatei gepacktes Setup)
 
-siehe Releases Seite.
+siehe [Releases](https://github.com/harborsiem/ELEMNTViewer/releases) Seite.
 
 
 ## Bilder vom ELEMNTViewer

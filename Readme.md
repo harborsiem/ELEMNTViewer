@@ -47,9 +47,9 @@ ELEMNTViewer is developed using Visual Studio Community and uses .NET-framework 
  Via Startmenu you can select and call ELEMNTViewer.
 
 ## Latest Setup
-#### (zipped MSI Setup)
+#### (zipped Setup)
 
-see Releases page on this Site
+see [Releases page](https://github.com/harborsiem/ELEMNTViewer/releases) on this Site
 
 
 ## Pictures of ELEMNTViewer App

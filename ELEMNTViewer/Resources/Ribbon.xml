@@ -1325,11 +1325,6 @@
             Marshals an unmanaged SafeArray to a managed Array object.
             </summary>
         </member>
-        <member name="T:RibbonLib.Interop.ExitCode">
-            <summary>
-            System error codes
-            </summary>
-        </member>
         <member name="T:RibbonLib.Interop.HRESULT">
             <summary>
             HRESULT Wrapper
