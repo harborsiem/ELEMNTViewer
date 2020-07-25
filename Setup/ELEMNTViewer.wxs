@@ -7,7 +7,7 @@
     lightArgs: "<projectname>.wixobj" -out "<projectname>.msi" -ext WixUtilExtension -ext WixUIExtension -ext WixNetFxExtension
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="E0A96EE1-71AA-4EA2-9F60-3CB4F2E43BCC" Name="ELEMNTViewer" Language="1033" Version="1.0.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
+  <Product Id="{12FCA5C1-81DD-493F-8A75-7E5730F64366}" Name="ELEMNTViewer" Language="1033" Version="1.1.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
     <Package InstallerVersion="301" Compressed="yes" Platform="x86" InstallScope="perMachine" Description="ELEMNTViewer" Comments="ELEMNTViewer Install" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -19,8 +19,8 @@
     </Feature>
     <UI />
     <UIRef Id="WixUI_Minimal" />
-    <PropertyRef Id="WIX_IS_NETFRAMEWORK_461_OR_LATER_INSTALLED" />
-    <Condition Message="This application requires .NET Framework 4.6.1. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR WIX_IS_NETFRAMEWORK_461_OR_LATER_INSTALLED]]></Condition>
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
+    <Condition Message="This application requires .NET Framework 4.6.2. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED]]></Condition>
     <Icon Id="MainIcon.ico" SourceFile="..\ELEMNTViewer\Resources\AppIcon.ico" />
     <Property Id="ARPPRODUCTICON" Value="MainIcon.ico" />
     <WixVariable Id="WixUILicenseRtf" Value="MIT_License.rtf" />
@@ -43,7 +43,6 @@
         <File Id="Fi.ELEMNTViewerExe" Name="ELEMNTViewer.exe" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe" KeyPath="yes" Checksum="yes" />
         <File Id="Fi.ELEMNTViewerConfig" Name="ELEMNTViewer.exe.config" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe.config" Checksum="yes" />
         <File Id="Fi.FitDll" Name="Fit.dll" Source="..\ELEMNTViewer\Resources\Fit.dll" Checksum="yes" />
-        <File Id="Fi.Ribbon" Name="Ribbon.dll" Source="..\ELEMNTViewer\Resources\Ribbon.dll" Checksum="yes" />
       </Component>
     </ComponentGroup>
   </Fragment>

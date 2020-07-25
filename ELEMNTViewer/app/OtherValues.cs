@@ -10,10 +10,10 @@ namespace ELEMNTViewer {
 
     class OtherValues {
 
-        private double maxNegGrade;
-        private double avgGrade;
-        private double maxPosGrade;
-        private double leftRightBalance;
+        private double _maxNegGrade;
+        private double _avgGrade;
+        private double _maxPosGrade;
+        private double _leftRightBalance;
 
         public OtherValues() {
             CalculateSessionMaxValues();
@@ -27,7 +27,7 @@ namespace ELEMNTViewer {
             if (list.Count > 0) {
                 lastTime = list[0].Timestamp;
             } else {
-                leftRightBalance = 0;
+                _leftRightBalance = 0;
                 return;
             }
             for (int i = 0; i < list.Count; i++) {
@@ -41,7 +41,7 @@ namespace ELEMNTViewer {
 
                 }
             }
-            leftRightBalance = value / list.Count;
+            _leftRightBalance = value / list.Count;
         }
 
         void CalculateSessionMaxValues() {
@@ -60,25 +60,25 @@ namespace ELEMNTViewer {
                 }
             }
             if (list.Count > 0) {
-                this.avgGrade = avgGrade / list.Count;
+                this._avgGrade = avgGrade / list.Count;
             } else {
-                this.avgGrade = 0;
+                this._avgGrade = 0;
             }
-            this.maxNegGrade = maxNegGrade;
-            this.maxPosGrade = maxPosGrade;
+            this._maxNegGrade = maxNegGrade;
+            this._maxPosGrade = maxPosGrade;
         }
 
         [Category("Distance etc")]
         [DisplayName("Maximum Negative Grade")]
-        public float MaxNegGrade { get { return (float)maxNegGrade; } }
+        public float MaxNegGrade { get { return (float)_maxNegGrade; } }
         [Category("Distance etc")]
         [DisplayName("Average Grade")]
-        public float AvgGrade { get { return (float)avgGrade; } }
+        public float AvgGrade { get { return (float)_avgGrade; } }
         [Category("Distance etc")]
         [DisplayName("Maximum Positive Grade")]
-        public float MaxPosGrade { get { return (float)maxPosGrade; } }
+        public float MaxPosGrade { get { return (float)_maxPosGrade; } }
         [Category("Power")]
         [DisplayName("Left Right Balance")]
-        public float LeftRightBalance { get { return (float)leftRightBalance; } }
+        public float LeftRightBalance { get { return (float)_leftRightBalance; } }
     }
 }

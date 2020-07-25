@@ -11,33 +11,33 @@ using System.Globalization;
 namespace ELEMNTViewer {
     class DataManager {
 
-        private SessionValues session;
-        private OtherValues others;
-        private PowerZonesManager powerManager = new PowerZonesManager();
-        private HRZonesManager hrManager = new HRZonesManager();
-        private LapManager lapManager = new LapManager();
-        private RecordManager recordManager = new RecordManager();
-        private List<CheckBoxTag> checkBoxTags = new List<CheckBoxTag>();
+        private SessionValues _session;
+        private OtherValues _others;
+        private PowerZonesManager _powerManager = new PowerZonesManager();
+        private HRZonesManager _hrManager = new HRZonesManager();
+        private LapManager _lapManager = new LapManager();
+        private RecordManager _recordManager = new RecordManager();
+        private List<CheckBoxTag> _checkBoxTags = new List<CheckBoxTag>();
 
-        public PowerZonesManager PowerManager { get { return powerManager; } }
+        public PowerZonesManager PowerManager { get { return _powerManager; } }
 
-        public HRZonesManager HRManager { get { return hrManager; } }
+        public HRZonesManager HRManager { get { return _hrManager; } }
 
-        public LapManager LapManager { get { return lapManager; } }
+        public LapManager LapManager { get { return _lapManager; } }
 
-        public RecordManager RecordManager { get { return recordManager; } }
+        public RecordManager RecordManager { get { return _recordManager; } }
 
         public List<RecordValues> RecordList { get { return RecordManager.RecordValuesList; } }
 
         public SessionValues Session {
-            get { return session; }
-            set { session = value; } }
+            get { return _session; }
+            set { _session = value; } }
 
         public OtherValues Others {
-            get { return others; }
-            set { others = value; } }
+            get { return _others; }
+            set { _others = value; } }
 
-        public List<CheckBoxTag> CheckBoxTags { get { return checkBoxTags; } }
+        public List<CheckBoxTag> CheckBoxTags { get { return _checkBoxTags; } }
 
         public static DataManager Instance = new DataManager();
 
@@ -45,18 +45,18 @@ namespace ELEMNTViewer {
         }
 
         public void Clear() {
-            recordManager.Clear();
-            lapManager.Clear();
-            hrManager.Clear();
-            powerManager.Clear();
-            session = null;
+            _recordManager.Clear();
+            _lapManager.Clear();
+            _hrManager.Clear();
+            _powerManager.Clear();
+            _session = null;
             ClearPlus();
             ClearChart();
         }
 
         public void FillChart() {
-            for (int i = 0; i < checkBoxTags.Count; i++) {
-                CheckBoxTag tag = checkBoxTags[i];
+            for (int i = 0; i < _checkBoxTags.Count; i++) {
+                CheckBoxTag tag = _checkBoxTags[i];
                 if (tag.CheckBox.BooleanValue) {
                     tag.CheckBoxCheckedChanged();
                 }
@@ -64,8 +64,8 @@ namespace ELEMNTViewer {
         }
 
         public void ClearChart() {
-            for (int i = 0; i < checkBoxTags.Count; i++) {
-                CheckBoxTag tag = checkBoxTags[i];
+            for (int i = 0; i < _checkBoxTags.Count; i++) {
+                CheckBoxTag tag = _checkBoxTags[i];
                 if (tag.CheckBox.BooleanValue) {
                     tag.ClearAndRemoveSeries();
                 }

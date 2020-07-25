@@ -8,7 +8,7 @@ namespace ELEMNTViewer {
     using System.Threading.Tasks;
 
     class HRZonesManager {
-        private List<byte> hrZones = new List<byte>();
+        private List<byte> _hrZones = new List<byte>();
 
         //internal List<byte> HrZones { get { return hrZones; } }
 
@@ -27,23 +27,23 @@ namespace ELEMNTViewer {
         //}
 
         public void Add(byte zone) {
-            hrZones.Add(zone);
+            _hrZones.Add(zone);
         }
 
         public void Clear() {
-            hrZones.Clear();
+            _hrZones.Clear();
         }
 
         public HeartRateZones GetHeartRateZones() {
-            if (hrZones.Count < 5) {
+            if (_hrZones.Count < 5) {
                 return null;
             }
             HeartRateZones result = new HeartRateZones();
-            result.Easy = 0.ToString() + " - " + hrZones[0].ToString();
-            result.FatBurning = hrZones[0].ToString() + " - " + hrZones[1].ToString();
-            result.Cardio = hrZones[1].ToString() + " - " + hrZones[2].ToString();
-            result.Hard = hrZones[2].ToString() + " - " + hrZones[3].ToString();
-            result.Peak = hrZones[3].ToString() + " +";
+            result.Easy = 0.ToString() + " - " + _hrZones[0].ToString();
+            result.FatBurning = _hrZones[0].ToString() + " - " + _hrZones[1].ToString();
+            result.Cardio = _hrZones[1].ToString() + " - " + _hrZones[2].ToString();
+            result.Hard = _hrZones[2].ToString() + " - " + _hrZones[3].ToString();
+            result.Peak = _hrZones[3].ToString() + " +";
             return result;
         }
     }

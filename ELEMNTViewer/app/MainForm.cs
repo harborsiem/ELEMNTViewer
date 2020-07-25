@@ -18,26 +18,33 @@ namespace ELEMNTViewer
     public partial class MainForm : Form
     {
 
-        public const string MainFormText = "ELEMNT-Viewer";
-        private RibbonItems ribbonItems;
+        public const string MainFormText = "ELEMNTViewer";
+        private RibbonItems _ribbonItems;
 
         public MainForm()
         {
-            if (!DesignMode)
-            {
-                this.Font = SystemFonts.MessageBoxFont;
-            }
             InitializeComponent();
+            if (!DesignMode)
+                this.Font = SystemFonts.MessageBoxFont;
+            Settings.Instance.Read();
             ribbon.RibbonEventException += Ribbon_RibbonEventException;
-            ribbonItems = new RibbonItems(ribbon);
-            ribbonItems.Init(this);
+            _ribbonItems = new RibbonItems(ribbon);
+            _ribbonItems.Init(this);
+            //_ribbonItems.GetSettings();
 
             Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ELEMNTViewer.Resources.AppIcon.ico");
             this.Icon = new Icon(stream);
             this.Text = MainFormText;
             Load += MainForm_Load;
+            FormClosed += MainForm_FormClosed;
 
             //new Test();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Settings.Instance.Write();
+            Application.Exit();
         }
 
         private void Ribbon_RibbonEventException(object sender, System.Threading.ThreadExceptionEventArgs e)
@@ -53,6 +60,7 @@ namespace ELEMNTViewer
             b.Height -= (height + 3 - b.Y);
             b.Y = height + 3;
             chartControl.Bounds = b;
+            _ribbonItems.Load();
         }
     }
 }

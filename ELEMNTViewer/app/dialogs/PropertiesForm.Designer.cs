@@ -38,7 +38,7 @@ namespace ELEMNTViewer {
             this.numberLabel.AutoSize = true;
             this.numberLabel.Location = new System.Drawing.Point(3, 0);
             this.numberLabel.Name = "numberLabel";
-            this.numberLabel.Size = new System.Drawing.Size(63, 26);
+            this.numberLabel.Size = new System.Drawing.Size(44, 26);
             this.numberLabel.TabIndex = 1;
             this.numberLabel.Text = "Number";
             this.numberLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -99,7 +99,8 @@ namespace ELEMNTViewer {
             // 
             // PropertiesForm
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(426, 578);
             this.Controls.Add(this.dialogLayout);

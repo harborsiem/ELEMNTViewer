@@ -6,48 +6,48 @@ using System.Threading.Tasks;
 
 namespace ELEMNTViewer {
     class LapManager {
-        private List<LapValues> lapList = new List<LapValues>();
-        private List<int> endLapRecordIndex = new List<int>();
+        private List<LapValues> _lapList = new List<LapValues>();
+        private List<int> _endLapRecordIndex = new List<int>();
 
-        //public List<LapValues> LapList { get { return lapList; } }
+        //public List<LapValues> LapList { get { return _lapList; } }
 
         public void Add(LapValues item, int endIndex) {
-            lapList.Add(item);
-            endLapRecordIndex.Add(endIndex);
+            _lapList.Add(item);
+            _endLapRecordIndex.Add(endIndex);
         }
 
         public void Clear() {
-            lapList.Clear();
-            endLapRecordIndex.Clear();
+            _lapList.Clear();
+            _endLapRecordIndex.Clear();
         }
 
         public int Count {
-            get { return lapList.Count; }
+            get { return _lapList.Count; }
         }
 
         public LapValues[] LapArray() {
-            return lapList.ToArray();
+            return _lapList.ToArray();
         }
 
         public int GetStartIndex(int lap) {
-            if (lap <= 0 || lap > lapList.Count) {
+            if (lap <= 0 || lap > _lapList.Count) {
                 throw new ArgumentException("Lap is not possible", nameof(lap));
             }
             int result = 0;
             if (lap - 2 >= 0) {
-                result = endLapRecordIndex[lap - 2];
+                result = _endLapRecordIndex[lap - 2];
             }
             return result;
         }
 
         public int GetEndIndex(int lap) {
-            if (lap <= 0 || lap > lapList.Count) {
+            if (lap <= 0 || lap > _lapList.Count) {
                 throw new ArgumentException("Lap is not possible", nameof(lap));
             }
             if (lap == 0) {
-                return endLapRecordIndex[endLapRecordIndex.Count - 1];
+                return _endLapRecordIndex[_endLapRecordIndex.Count - 1];
             }
-            return endLapRecordIndex[lap - 1];
+            return _endLapRecordIndex[lap - 1];
         }
     }
 }

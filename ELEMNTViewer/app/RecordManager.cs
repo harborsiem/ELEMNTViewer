@@ -10,16 +10,16 @@
 
     class RecordManager {
         const string CrLf = "";
-        private List<RecordValues> recordValuesList = new List<RecordValues>();
+        private List<RecordValues> _recordValuesList = new List<RecordValues>();
 
-        public List<RecordValues> RecordValuesList { get { return recordValuesList; } }
+        public List<RecordValues> RecordValuesList { get { return _recordValuesList; } }
 
         public void Clear() {
-            recordValuesList.Clear();
+            _recordValuesList.Clear();
         }
 
         public int Count {
-            get { return recordValuesList.Count; }
+            get { return _recordValuesList.Count; }
         }
 
         private void WithXmlDocument(string fileName, string trackName, int recordIncrement) {
@@ -60,8 +60,8 @@
             double lon;
             double lat;
             double ele;
-            for (int i = 0; i < recordValuesList.Count; i += recordIncrement) {
-                RecordValues values = recordValuesList[i];
+            for (int i = 0; i < _recordValuesList.Count; i += recordIncrement) {
+                RecordValues values = _recordValuesList[i];
                 lon = values.PositionLong;
                 lat = values.PositionLat;
                 ele = values.Altitude;
@@ -115,8 +115,8 @@
             double lon;
             double lat;
             double ele;
-            for (int i = 0; i < recordValuesList.Count; i += recordIncrement) {
-                RecordValues values = recordValuesList[i];
+            for (int i = 0; i < _recordValuesList.Count; i += recordIncrement) {
+                RecordValues values = _recordValuesList[i];
                 lon = values.PositionLong;
                 lat = values.PositionLat;
                 ele = values.Altitude;

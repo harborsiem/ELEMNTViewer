@@ -11,10 +11,10 @@ namespace ELEMNTViewer {
         private AboutModelView modelView;
 
         public AboutDialog() {
+            InitializeComponent();
             if (!DesignMode) {
                 this.Font = SystemFonts.MessageBoxFont;
             }
-            InitializeComponent();
             modelView = new AboutModelView();
             this.dialogLayout.Paint += DialogLayout_Paint;
             this.titleLabel.Font = new System.Drawing.Font(this.Font.FontFamily, this.Font.SizeInPoints + 2);

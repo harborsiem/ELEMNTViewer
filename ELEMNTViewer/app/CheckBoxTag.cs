@@ -15,44 +15,44 @@ namespace ELEMNTViewer {
         public static Chart Chart { get; set; }
         public static ChartControl ChartControl { get; set; }
 
-        private static DateTime fromDateTime = new DateTime(2016, 1, 1); //DateTime.Now - TimeSpan.FromDays(400);
-        private static DateTime toDateTime = DateTime.Now;
-        private static int lap;
-        private static int lapStartIndex;
-        private static int lapEndIndex;
+        private static DateTime s_fromDateTime = new DateTime(2016, 1, 1); //DateTime.Now - TimeSpan.FromDays(400);
+        private static DateTime s_toDateTime = DateTime.Now;
+        private static int s_lap;
+        private static int s_lapStartIndex;
+        private static int s_lapEndIndex;
 
-        private Series series;
+        private Series _series;
         public RibbonCheckBox CheckBox { get; private set; }
         private RibbonComboBox _comboBox;
-        private ToolTip toolTip;
+        private ToolTip _toolTip;
         public string ConfigKey { get; private set; }
-        private string propertyName;
-        private string displayName;
-        private Int32ArrayAttribute smoothAvgAttribute;
-        private int index;
-        private Func<RecordValues, double> propertyFunc;
-        private Smoothing smoothing;
+        private string _propertyName;
+        private string _displayName;
+        private Int32ArrayAttribute _smoothAvgAttribute;
+        private int _index;
+        private Func<RecordValues, double> _propertyFunc;
+        private Smoothing _smoothing;
 
         public CheckBoxTag(RibbonCheckBox checkBox, int index, string configKey, string propertyName, RibbonComboBox comboBox) {
-            series = new Series(propertyName);
-            series.ChartType = SeriesChartType.FastLine;
-            series.Color = ConfigDefaults.GetColor(index);
+            _series = new Series(propertyName);
+            _series.ChartType = SeriesChartType.FastLine;
+            _series.Color = ConfigDefaults.GetColor(index);
             CheckBox = checkBox;
             _comboBox = comboBox;
             checkBox.ExecuteEvent += CheckBoxCheckedChanged;
-            this.index = index;
+            this._index = index;
             this.ConfigKey = configKey;
-            this.propertyName = propertyName;
-            toolTip = new ToolTip();
-            propertyFunc = PropertyNameToDelegate(propertyName);
-            if (smoothAvgAttribute != null)
+            this._propertyName = propertyName;
+            _toolTip = new ToolTip();
+            _propertyFunc = PropertyNameToDelegate(propertyName);
+            if (_smoothAvgAttribute != null)
             {
                 if (_comboBox != null)
                 {
                     _comboBox.ExecuteEvent += ComboBox_SelectedItemChanged;
                 }
 
-                smoothing = new Smoothing(0);
+                _smoothing = new Smoothing(0);
             }
         }
 
@@ -61,18 +61,18 @@ namespace ELEMNTViewer {
             if (chartViewComboBox == null) {
                 return;
             }
-            lap = (int)chartViewComboBox.SelectedItem;
-            if (lap > 0) {
-                lapStartIndex = DataManager.Instance.LapManager.GetStartIndex(lap);
-                lapEndIndex = DataManager.Instance.LapManager.GetEndIndex(lap);
+            s_lap = (int)chartViewComboBox.SelectedItem;
+            if (s_lap > 0) {
+                s_lapStartIndex = DataManager.Instance.LapManager.GetStartIndex(s_lap);
+                s_lapEndIndex = DataManager.Instance.LapManager.GetEndIndex(s_lap);
             } else {
-                lapStartIndex = 0;
-                lapEndIndex = DataManager.Instance.RecordList.Count - 1;
+                s_lapStartIndex = 0;
+                s_lapEndIndex = DataManager.Instance.RecordList.Count - 1;
             }
-            if (lap >= 0) {
+            if (s_lap >= 0) {
                 List<RecordValues> list = DataManager.Instance.RecordList;
-                DateTime from = list[lapStartIndex].Timestamp;
-                DateTime to = list[lapEndIndex].Timestamp;
+                DateTime from = list[s_lapStartIndex].Timestamp;
+                DateTime to = list[s_lapEndIndex].Timestamp;
                 TimeSpan span = new TimeSpan(to.Ticks - from.Ticks);
                 ChartControl.SetIntervals(span);
             }
@@ -82,8 +82,8 @@ namespace ELEMNTViewer {
         }
 
         public static void SetDateTime(DateTime from, DateTime to) {
-            fromDateTime = from;
-            toDateTime = to;
+            s_fromDateTime = from;
+            s_toDateTime = to;
             TimeSpan span = new TimeSpan(to.Ticks - from.Ticks);
             ChartControl.SetIntervals(span);
         }
@@ -93,7 +93,7 @@ namespace ELEMNTViewer {
             RibbonComboBox comboBox = sender as RibbonComboBox;
             string str = comboBox.StringValue;
             int avgTime = int.Parse(str); // = (int)comboBox.SelectedItem;
-            smoothing.AvgTime = avgTime;
+            _smoothing.AvgTime = avgTime;
             if (CheckBox.BooleanValue)
             {
                 ClearAndRemoveSeries();
@@ -112,13 +112,13 @@ namespace ELEMNTViewer {
         private void SetAttributeValues(PropertyInfo element) {
             Attribute attr = Attribute.GetCustomAttribute(element, typeof(DisplayNameAttribute), false);
             if (attr != null) {
-                displayName = ((DisplayNameAttribute)attr).DisplayName;
+                _displayName = ((DisplayNameAttribute)attr).DisplayName;
             } else {
-                displayName = element.Name;
+                _displayName = element.Name;
             }
             attr = Attribute.GetCustomAttribute(element, typeof(Int32ArrayAttribute), false);
             if (attr != null) {
-                smoothAvgAttribute = (Int32ArrayAttribute)attr;
+                _smoothAvgAttribute = (Int32ArrayAttribute)attr;
             }
         }
 
@@ -131,10 +131,10 @@ namespace ELEMNTViewer {
 
         public void CheckBoxCheckedChanged() {
             if (CheckBox.BooleanValue) {
-                if (lap > 0) {
-                    FillSeriesWithNewData(lapStartIndex, lapEndIndex);
+                if (s_lap > 0) {
+                    FillSeriesWithNewData(s_lapStartIndex, s_lapEndIndex);
                 } else {
-                    FillSeriesWithNewData(fromDateTime, toDateTime);
+                    FillSeriesWithNewData(s_fromDateTime, s_toDateTime);
                 }
             } else {
                 ClearAndRemoveSeries();
@@ -144,14 +144,14 @@ namespace ELEMNTViewer {
         public void ClearAndRemoveSeries() {
             Chart chartMain = Chart;
             chartMain.BeginInit();
-            DataPointCollection points = series.Points;
+            DataPointCollection points = _series.Points;
             points.ClearFast(); //MsChartExtension
-            if (chartMain.Series.Contains(series)) {
-                chartMain.Series.Remove(series);
+            if (chartMain.Series.Contains(_series)) {
+                chartMain.Series.Remove(_series);
             }
             chartMain.EndInit();
-            if (smoothing != null) {
-                smoothing.Clear();
+            if (_smoothing != null) {
+                _smoothing.Clear();
             }
         }
 
@@ -163,11 +163,11 @@ namespace ELEMNTViewer {
 
         public void FillSeriesWithNewData(int fromIndex, int toIndex) {
             Chart chartMain = Chart;
-            if (smoothing != null) {
-                smoothing.StartIndex = fromIndex;
+            if (_smoothing != null) {
+                _smoothing.StartIndex = fromIndex;
             }
             chartMain.BeginInit();
-            DataPointCollection points = series.Points;
+            DataPointCollection points = _series.Points;
             points.ClearFast(); //MsChartExtension
             if (fromIndex < 0 || fromIndex >= toIndex) {
                 return;
@@ -175,18 +175,18 @@ namespace ELEMNTViewer {
             points.SuspendUpdates();
             for (int i = fromIndex; i <= toIndex; i++) {
                 RecordValues values = DataManager.Instance.RecordList[i];
-                if (smoothing == null) {
+                if (_smoothing == null) {
                     //points.AddXY(values.Distance, propertyFunc(values));
-                    points.AddXY(values.Timestamp, propertyFunc(values));
+                    points.AddXY(values.Timestamp, _propertyFunc(values));
                 } else {
-                    smoothing.SetSmoothValue(values, propertyFunc, i);
+                    _smoothing.SetSmoothValue(values, _propertyFunc, i);
                     //points.AddXY(values.Distance, smoothing.SmoothValue);
-                    points.AddXY(values.Timestamp, smoothing.SmoothValue);
+                    points.AddXY(values.Timestamp, _smoothing.SmoothValue);
                 }
             }
             points.ResumeUpdates();
-            if (!chartMain.Series.Contains(series)) {
-                chartMain.Series.Add(series);
+            if (!chartMain.Series.Contains(_series)) {
+                chartMain.Series.Add(_series);
             }
             chartMain.EndInit();
         }

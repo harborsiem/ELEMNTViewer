@@ -9,12 +9,12 @@ using Dynastream.Fit;
 
 namespace ELEMNTViewer {
     class DecodeFile {
-        private Stream fitSource;
+        private Stream _fitSource;
 
         public void Decode(string fileName) {
             try {
                 // Attempt to open .FIT file
-                fitSource = new FileStream(fileName, FileMode.Open);
+                _fitSource = new FileStream(fileName, FileMode.Open);
 
                 Decode decodeDemo = new Decode();
                 MesgBroadcaster mesgBroadcaster = new MesgBroadcaster();
@@ -34,23 +34,23 @@ namespace ELEMNTViewer {
                 mesgBroadcaster.WorkoutMesgEvent += WorkoutValues.OnWorkoutMesg;
                 //mesgBroadcaster.HrZoneMesgEvent += HRZonesManager.OnMesg;
 
-                bool status = decodeDemo.IsFIT(fitSource);
-                status &= decodeDemo.CheckIntegrity(fitSource);
+                bool status = decodeDemo.IsFIT(_fitSource);
+                status &= decodeDemo.CheckIntegrity(_fitSource);
 
                 // Process the file
                 if (status) {
                     //Console.WriteLine("Decoding...");
-                    decodeDemo.Read(fitSource);
+                    decodeDemo.Read(_fitSource);
                     //Console.WriteLine("Decoded FIT file {0}", args[0]);
                 } else {
                     try {
                         //Console.WriteLine("Integrity Check Failed {0}", args[0]);
                         if (decodeDemo.InvalidDataSize) {
                             //Console.WriteLine("Invalid Size Detected, Attempting to decode...");
-                            decodeDemo.Read(fitSource);
+                            decodeDemo.Read(_fitSource);
                         } else {
                             //Console.WriteLine("Attempting to decode by skipping the header...");
-                            decodeDemo.Read(fitSource, DecodeMode.InvalidHeader);
+                            decodeDemo.Read(_fitSource, DecodeMode.InvalidHeader);
                         }
                     }
                     catch (FitException ex) {
@@ -58,7 +58,7 @@ namespace ELEMNTViewer {
                         //Console.WriteLine("DecodeDemo caught FitException: " + ex.Message);
                     }
                 }
-                fitSource.Close();
+                _fitSource.Close();
 
             }
             catch (FitException ex) {

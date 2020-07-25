@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
   <Application.Commands>
-    <Command Name="cmdQAT" Id="2"/>
-    <Command Name="cmdApplication" Id="3"/>
-    <Command Name="CmdTabChart" Id="4" LabelTitle="Chart"/>
-    <Command Name="cmdTabView" Id="5" LabelTitle="View"/>
-    <Command Name="cmdGroupChartPower1" Id="6" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate"/>
-    <Command Name="cmdGroupChartSpeed" Id="7" LabelTitle="Speed" TooltipTitle="Monitoring Speed" TooltipDescription="Speed and Cadence"/>
-    <Command Name="cmdGroupChartClimbing" Id="8" LabelTitle="Climbing" TooltipTitle="Monitoring Climbing" TooltipDescription="Monitoring Altitude and Grade"/>
-    <Command Name="cmdButtonPower" Id="9" LabelTitle="Power" TooltipTitle="Power" TooltipDescription="Powermeter: Overall Power"/>
-    <Command Name="cmdButtonLRBalance" Id="10" LabelTitle="LR Balance" TooltipTitle="Left Right Balance" TooltipDescription="Powermeter: Balance between left and right pedal"/>
-    <Command Name="cmdButtonLSmoothness" Id="11" LabelTitle="Left" TooltipTitle="Left Smoothness" TooltipDescription="Powermeter: Left Smoothness"/>
-    <Command Name="cmdButtonRSmoothness" Id="12" LabelTitle="Right" TooltipTitle="Right Smoothness" TooltipDescription="Powermeter: Right Smoothness"/>
-    <Command Name="cmdButtonLTorqueEff" Id="13" LabelTitle="Left" TooltipTitle="Left Torque Effectiveness" TooltipDescription="Powermeter: Left Torque Effectiveness"/>
-    <Command Name="cmdButtonRTorqueEff" Id="14" LabelTitle="Right" TooltipTitle="Right Torque Effectiveness" TooltipDescription="Powermeter: Right Torque Effectiveness"/>
+    <Command Name="cmdQAT" Id="2" />
+    <Command Name="cmdApplication" Id="3" />
+    <Command Name="CmdTabChart" Id="4" LabelTitle="Chart" />
+    <Command Name="cmdTabView" Id="5" LabelTitle="View" />
+    <Command Name="cmdGroupChartPower1" Id="6" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate with smoothing values" />
+    <Command Name="cmdGroupChartSpeed" Id="7" LabelTitle="Speed" TooltipTitle="Monitoring Speed" TooltipDescription="Speed and Cadence" />
+    <Command Name="cmdGroupChartClimbing" Id="8" LabelTitle="Climbing" TooltipTitle="Monitoring Climbing" TooltipDescription="Monitoring Altitude and Grade" />
+    <Command Name="cmdButtonPower" Id="9" LabelTitle="Power" TooltipTitle="Power" TooltipDescription="Powermeter: Overall Power" />
+    <Command Name="cmdButtonLRBalance" Id="10" LabelTitle="LR Balance" TooltipTitle="Left Right Balance" TooltipDescription="Powermeter: Balance between left and right pedal" />
+    <Command Name="cmdButtonLSmoothness" Id="11" LabelTitle="Left" TooltipTitle="Left Smoothness" TooltipDescription="Powermeter: Left Smoothness" />
+    <Command Name="cmdButtonRSmoothness" Id="12" LabelTitle="Right" TooltipTitle="Right Smoothness" TooltipDescription="Powermeter: Right Smoothness" />
+    <Command Name="cmdButtonLTorqueEff" Id="13" LabelTitle="Left" TooltipTitle="Left Torque Effectiveness" TooltipDescription="Powermeter: Left Torque Effectiveness" />
+    <Command Name="cmdButtonRTorqueEff" Id="14" LabelTitle="Right" TooltipTitle="Right Torque Effectiveness" TooltipDescription="Powermeter: Right Torque Effectiveness" />
     <Command Name="cmdButtonOpen" Id="15" LabelTitle="&amp;Open" TooltipTitle="Fit file" TooltipDescription="Open the Fit file">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/60009.bmp</Image>
@@ -28,7 +28,7 @@
         <Image MinDPI="192">Resources/60016.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonSaveGpx" Id="16" LabelTitle="Save as Gpx" TooltipTitle="GPX File" TooltipDescription="Save the session to a *.gpx file"/>
+    <Command Name="cmdButtonSaveGpx" Id="16" LabelTitle="Save as Gpx" TooltipTitle="GPX File" TooltipDescription="Save the session to a *.gpx file" />
     <Command Name="cmdButtonExit" Id="17" LabelTitle="Exit">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/60373.bmp</Image>
@@ -40,7 +40,7 @@
         <Image>Resources/60376.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonHelp" Id="18"/>
+    <Command Name="cmdButtonHelp" Id="18" />
     <Command Name="cmdButtonHeartRate" Id="19" LabelTitle="HeartRate" TooltipTitle="HeartRate" TooltipDescription="Monitoring Heart rate">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/40871.bmp</Image>
@@ -49,15 +49,15 @@
         <Image MinDPI="192">Resources/40874.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdButtonAltitude" Id="20" LabelTitle="Altitude"/>
-    <Command Name="cmdButtonGrade" Id="21" LabelTitle="Grade"/>
-    <Command Name="cmdButtonSpeed" Id="22" LabelTitle="Speed"/>
-    <Command Name="cmdButtonCadence" Id="23" LabelTitle="Cadence" TooltipTitle="Cadence" TooltipDescription="Monitoring pedaling cadence"/>
-    <Command Name="cmdButtonTemperature" Id="24" LabelTitle="Temperature" TooltipTitle="Temperature" TooltipDescription="Temperature"/>
-    <Command Name="cmdGroupChartEffectiveness1" Id="25" LabelTitle="Torque Effectiveness" TooltipDescription="Powermeter: Torque Effectiveness"/>
-    <Command Name="cmdGroupChartSmoothness1" Id="26" LabelTitle="Smoothness" TooltipDescription="Powermeter: Smoothness"/>
-    <Command Name="cmdGroupChartExtras" Id="27" LabelTitle="Extras"/>
-    <Command Name="cmdGroupChartSelect" Id="28" LabelTitle="Select" TooltipDescription="Selection of Session or Laps"/>
+    <Command Name="cmdButtonAltitude" Id="20" LabelTitle="Altitude" />
+    <Command Name="cmdButtonGrade" Id="21" LabelTitle="Grade" />
+    <Command Name="cmdButtonSpeed" Id="22" LabelTitle="Speed" TooltipTitle="Speed" TooltipDescription="Monitoring the speed in km/h" />
+    <Command Name="cmdButtonCadence" Id="23" LabelTitle="Cadence" TooltipTitle="Cadence" TooltipDescription="Monitoring pedaling cadence (rpm)" />
+    <Command Name="cmdButtonTemperature" Id="24" LabelTitle="Temperature" TooltipTitle="Temperature" TooltipDescription="Temperature in Celsius" />
+    <Command Name="cmdGroupChartEffectiveness1" Id="25" LabelTitle="Torque Effectiveness" TooltipDescription="Powermeter: Torque Effectiveness with smoothing values" />
+    <Command Name="cmdGroupChartSmoothness1" Id="26" LabelTitle="Smoothness" TooltipDescription="Powermeter: Smoothness with smoothing values" />
+    <Command Name="cmdGroupChartExtras" Id="27" LabelTitle="Extras" />
+    <Command Name="cmdGroupChartSelect" Id="28" LabelTitle="Select" TooltipDescription="Selection of Session or Laps" />
     <Command Name="cmdComboSelect" Id="29" LabelTitle="Chart" TooltipTitle="Select for Chart" TooltipDescription="Selection of Session or Laps">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/60301.bmp</Image>
@@ -66,18 +66,18 @@
         <Image MinDPI="192">Resources/60304.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdComboPower" Id="30" TooltipTitle="Smooth" TooltipDescription="Smoothing of Power"/>
-    <Command Name="cmdComboLRBalance" Id="31" TooltipTitle="Smooth" TooltipDescription="Smoothing of Left Right Balance"/>
-    <Command Name="cmdComboLSmoothness" Id="32" TooltipTitle="Smooth"/>
-    <Command Name="cmdComboRSmoothness" Id="33" TooltipTitle="Smooth"/>
-    <Command Name="cmdComboLTorque" Id="34" TooltipTitle="Smooth"/>
-    <Command Name="cmdComboRTorque" Id="35" TooltipTitle="Smooth"/>
-    <Command Name="cmdGroupTotals" Id="37" LabelTitle="Totals"/>
-    <Command Name="cmdGroupZones" Id="38" LabelTitle="Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined HeartRate and Power Zones"/>
-    <Command Name="cmdGroupExtras" Id="39" LabelTitle="Extras"/>
-    <Command Name="cmdGroupChartPower" Id="40" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate"/>
-    <Command Name="cmdGroupChartEffectiveness" Id="41" LabelTitle="Torque Effectiveness"/>
-    <Command Name="cmdGroupChartSmoothness" Id="42" LabelTitle="Smoothness"/>
+    <Command Name="cmdComboPower" Id="30" TooltipTitle="Smooth" TooltipDescription="Smoothing of Power" />
+    <Command Name="cmdComboLRBalance" Id="31" TooltipTitle="Smooth" TooltipDescription="Smoothing of Left Right Balance" />
+    <Command Name="cmdComboLSmoothness" Id="32" TooltipTitle="Smooth" TooltipDescription="Smoothing the smoothness of left pedal" />
+    <Command Name="cmdComboRSmoothness" Id="33" TooltipTitle="Smooth" TooltipDescription="Smoothing the smoothness of right pedal" />
+    <Command Name="cmdComboLTorque" Id="34" TooltipTitle="Smooth" TooltipDescription="Smoothing the torque of left pedal" />
+    <Command Name="cmdComboRTorque" Id="35" TooltipTitle="Smooth" TooltipDescription="Smoothing the torque of right pedal" />
+    <Command Name="cmdGroupTotals" Id="37" LabelTitle="Totals" />
+    <Command Name="cmdGroupZones" Id="38" LabelTitle="Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined HeartRate and Power Zones" />
+    <Command Name="cmdGroupExtras" Id="39" LabelTitle="Extras" />
+    <Command Name="cmdGroupChartPower" Id="40" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate" />
+    <Command Name="cmdGroupChartEffectiveness" Id="41" LabelTitle="Torque Effectiveness" TooltipDescription="Powermeter: Torque Effectiveness" />
+    <Command Name="cmdGroupChartSmoothness" Id="42" LabelTitle="Smoothness" TooltipDescription="Powermeter: Smoothness" />
     <Command Name="cmdButtonSession" Id="43" LabelTitle="Session" TooltipTitle="Summary Laps" TooltipDescription="Display all Values of Session">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/60313.bmp</Image>
@@ -100,9 +100,17 @@
         <Image MinDPI="192">Resources/60340.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdButtonHeartRateZones" Id="45" LabelTitle="HeartRate Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined HeartRate Zones"/>
-    <Command Name="cmdButtonPowerZones" Id="46" LabelTitle="Power Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined Power Zones"/>
-    <Command Name="cmdToggleSmooth" Id="47" LabelTitle="Settings" TooltipTitle="Settings" TooltipDescription="Configure Smoothness">
+    <Command Name="cmdButtonHeartRateZones" Id="45" LabelTitle="HeartRate Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined HeartRate Zones">
+      <Command.SmallImages>
+        <Image>Resources/Heartrate-40.bmp</Image>
+      </Command.SmallImages>
+    </Command>
+    <Command Name="cmdButtonPowerZones" Id="46" LabelTitle="Power Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined Power Zones">
+      <Command.SmallImages>
+        <Image>Resources/Power-48.bmp</Image>
+      </Command.SmallImages>
+    </Command>
+    <Command Name="cmdToggleSmooth" Id="47" LabelTitle="Settings" TooltipTitle="Show or hide Settings" TooltipDescription="Configure Smoothness">
       <Command.SmallImages>
         <Image>Resources/Settings_16x.bmp</Image>
       </Command.SmallImages>
@@ -121,56 +129,126 @@
         <Image MinDPI="192">Resources/60208.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Extras"/>
+    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Extras" TooltipTitle="Self calculated" TooltipDescription="Some self calculated values from the session records, because Wahoo values are wrong" />
+    <Command Name="cmdGroupIntern" Id="50" LabelTitle="Intern" />
+    <Command Name="cmdButtonActivity" Id="52" LabelTitle="Activity" TooltipTitle="Activity" />
+    <Command Name="cmdButtonDeveloperDataId" Id="53" LabelTitle="DeveloperDataId" TooltipTitle="DeveloperDataId" />
+    <Command Name="cmdButtonDeviceInfo" Id="54" LabelTitle="DeviceInfo" TooltipTitle="DeviceInfo" />
+    <Command Name="cmdButtonEvent" Id="55" LabelTitle="Event" TooltipTitle="Event" />
+    <Command Name="cmdButtonFieldDescription" Id="56" LabelTitle="FieldDescription" TooltipTitle="FieldDescription" />
+    <Command Name="cmdButtonFileId" Id="57" LabelTitle="FileId" TooltipTitle="FileId" />
+    <Command Name="cmdButtonSport" Id="58" LabelTitle="Sport" TooltipTitle="Sport" />
+    <Command Name="cmdButtonWorkout" Id="59" LabelTitle="Workout" TooltipTitle="Workout" />
+    <Command Name="cmdButtonWahooFF00" Id="60" LabelTitle="WahooFF00" TooltipTitle="WahooFF00" />
+    <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="WahooFF01" TooltipTitle="WahooFF01" />
+    <Command Name="cmdButtonSetSettings" Id="64" LabelTitle="Set Settings" TooltipTitle="Set Settings" TooltipDescription="Set the smooth values to a settings file" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
       <Ribbon.SizeDefinitions>
         <SizeDefinition Name="PowerSize">
           <ControlNameMap>
-            <ControlNameDefinition Name="b1"/>
-            <ControlNameDefinition Name="b2"/>
-            <ControlNameDefinition Name="b3"/>
-            <ControlNameDefinition Name="c1"/>
-            <ControlNameDefinition Name="c2"/>
+            <ControlNameDefinition Name="b1" />
+            <ControlNameDefinition Name="b2" />
+            <ControlNameDefinition Name="b3" />
+            <ControlNameDefinition Name="c1" />
+            <ControlNameDefinition Name="c2" />
           </ControlNameMap>
           <GroupSizeDefinition Size="Large">
             <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c1" />
               <ControlGroup>
-                <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c1"/>
-              </ControlGroup>
-              <ControlGroup>
-                <ControlSizeDefinition ControlName="b1"/>
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
               </ControlGroup>
             </Row>
             <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c2" />
               <ControlGroup>
-                <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c2"/>
-              </ControlGroup>
-              <ControlGroup>
-                <ControlSizeDefinition ControlName="b2"/>
+                <ControlSizeDefinition ControlName="b2" />
               </ControlGroup>
             </Row>
             <Row>
-              <ControlSizeDefinition ControlName="b3"/>
+              <ControlSizeDefinition ControlName="b3" />
             </Row>
           </GroupSizeDefinition>
         </SizeDefinition>
-        <SizeDefinition Name="PowerAdditionalSize">
+        <SizeDefinition Name="LeftRight">
           <ControlNameMap>
-            <ControlNameDefinition Name="c1"/>
-            <ControlNameDefinition Name="c2"/>
-            <ControlNameDefinition Name="b1"/>
-            <ControlNameDefinition Name="b2"/>
+            <ControlNameDefinition Name="b1" />
+            <ControlNameDefinition Name="b2" />
           </ControlNameMap>
           <GroupSizeDefinition Size="Large">
             <Row>
-              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c1"/>
-              <ControlSizeDefinition ControlName="b1"/>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
             </Row>
             <Row>
-              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c2"/>
-              <ControlSizeDefinition ControlName="b2"/>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+            </Row>
+          </GroupSizeDefinition>
+          <GroupSizeDefinition Size="Medium">
+            <Row>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+            </Row>
+          </GroupSizeDefinition>
+          <GroupSizeDefinition Size="Small">
+            <Row>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+            </Row>
+          </GroupSizeDefinition>
+        </SizeDefinition>
+        <SizeDefinition Name="ComboLeftRight">
+          <ControlNameMap>
+            <ControlNameDefinition Name="c1" />
+            <ControlNameDefinition Name="b1" />
+            <ControlNameDefinition Name="c2" />
+            <ControlNameDefinition Name="b2" />
+          </ControlNameMap>
+          <GroupSizeDefinition Size="Large">
+            <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c1" />
+              <ControlGroup>
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
+              </ControlGroup>
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c2" />
+              <ControlGroup>
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+              </ControlGroup>
+            </Row>
+          </GroupSizeDefinition>
+        </SizeDefinition>
+        <SizeDefinition Name="TwoSmallButtons">
+          <ControlNameMap>
+            <ControlNameDefinition Name="b1" />
+            <ControlNameDefinition Name="b2" />
+          </ControlNameMap>
+          <GroupSizeDefinition Size="Large">
+            <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
+            <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+          </GroupSizeDefinition>
+        </SizeDefinition>
+        <SizeDefinition Name="ThreeSmallButtons">
+          <ControlNameMap>
+            <ControlNameDefinition Name="b1" />
+            <ControlNameDefinition Name="b2" />
+            <ControlNameDefinition Name="b3" />
+          </ControlNameMap>
+          <GroupSizeDefinition Size="Large">
+            <Row>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b3" />
             </Row>
           </GroupSizeDefinition>
         </SizeDefinition>
@@ -178,106 +256,126 @@
       <Ribbon.ApplicationMenu>
         <ApplicationMenu CommandName="cmdApplication">
           <MenuGroup>
-            <Button CommandName="cmdButtonOpen" ApplicationModes="0,1"/>
-            <Button CommandName="cmdButtonSaveGpx" ApplicationModes="0,1"/>
+            <Button CommandName="cmdButtonOpen" />
+            <Button CommandName="cmdButtonSaveGpx" />
           </MenuGroup>
           <MenuGroup>
-            <Button CommandName="cmdButtonAbout" ApplicationModes="0,1"/>
+            <Button CommandName="cmdButtonAbout" />
           </MenuGroup>
-          <MenuGroup>
-            <Button CommandName="cmdButtonExit" ApplicationModes="0,1"/>
+          <MenuGroup Class="StandardItems">
+            <Button CommandName="cmdButtonExit" />
           </MenuGroup>
         </ApplicationMenu>
       </Ribbon.ApplicationMenu>
       <Ribbon.HelpButton>
-        <HelpButton CommandName="cmdButtonHelp"/>
+        <HelpButton CommandName="cmdButtonHelp" />
       </Ribbon.HelpButton>
       <Ribbon.QuickAccessToolbar>
         <QuickAccessToolbar CommandName="cmdQAT">
           <QuickAccessToolbar.ApplicationDefaults>
-            <Button CommandName="cmdButtonOpen" ApplicationDefaults.IsChecked="true"/>
+            <Button CommandName="cmdButtonOpen" ApplicationDefaults.IsChecked="true" />
           </QuickAccessToolbar.ApplicationDefaults>
         </QuickAccessToolbar>
       </Ribbon.QuickAccessToolbar>
       <Ribbon.Tabs>
-        <Tab CommandName="CmdTabChart" ApplicationModes="0,1">
+        <Tab CommandName="CmdTabChart">
           <Tab.ScalingPolicy>
             <ScalingPolicy>
               <ScalingPolicy.IdealSizes>
-                <Scale Group="cmdGroupChartSpeed" Size="Large"/>
-                <Scale Group="cmdGroupChartPower" Size="Large"/>
-                <Scale Group="cmdGroupChartPower1" Size="Medium"/>
-                <Scale Group="cmdGroupChartSmoothness" Size="Large"/>
-                <Scale Group="cmdGroupChartSmoothness1" Size="Large"/>
-                <Scale Group="cmdGroupChartEffectiveness" Size="Large"/>
-                <Scale Group="cmdGroupChartEffectiveness1" Size="Large"/>
+                <Scale Group="cmdGroupChartSpeed" Size="Large" />
+                <Scale Group="cmdGroupChartPower" Size="Large" />
+                <Scale Group="cmdGroupChartPower1" Size="Large" />
+                <Scale Group="cmdGroupChartSmoothness" Size="Large" />
+                <Scale Group="cmdGroupChartSmoothness1" Size="Large" />
+                <Scale Group="cmdGroupChartEffectiveness" Size="Large" />
+                <Scale Group="cmdGroupChartEffectiveness1" Size="Large" />
               </ScalingPolicy.IdealSizes>
             </ScalingPolicy>
           </Tab.ScalingPolicy>
-          <Group CommandName="cmdGroupChartSelect" ApplicationModes="0,1">
-            <ComboBox CommandName="cmdComboSelect" IsEditable="false"/>
-            <ToggleButton CommandName="cmdToggleSmooth"/>
+          <Group CommandName="cmdGroupChartSelect">
+            <ComboBox CommandName="cmdComboSelect" IsEditable="false" />
+            <ToggleButton CommandName="cmdToggleSmooth" />
+            <Button CommandName="cmdButtonSetSettings" />
           </Group>
-          <Group CommandName="cmdGroupChartSpeed" ApplicationModes="0,1">
-            <CheckBox CommandName="cmdButtonSpeed"/>
-            <CheckBox CommandName="cmdButtonCadence"/>
+          <Group CommandName="cmdGroupChartSpeed">
+            <CheckBox CommandName="cmdButtonSpeed" />
+            <CheckBox CommandName="cmdButtonCadence" />
           </Group>
-          <Group CommandName="cmdGroupChartPower" ApplicationModes="0">
-            <CheckBox CommandName="cmdButtonPower"/>
-            <CheckBox CommandName="cmdButtonLRBalance"/>
-            <CheckBox CommandName="cmdButtonHeartRate"/>
+          <Group CommandName="cmdGroupChartPower" ApplicationModes="1">
+            <CheckBox CommandName="cmdButtonPower" />
+            <CheckBox CommandName="cmdButtonLRBalance" />
+            <CheckBox CommandName="cmdButtonHeartRate" />
           </Group>
-          <Group CommandName="cmdGroupChartPower1" ApplicationModes="1" SizeDefinition="PowerSize">
-            <CheckBox CommandName="cmdButtonPower"/>
-            <CheckBox CommandName="cmdButtonLRBalance"/>
-            <CheckBox CommandName="cmdButtonHeartRate"/>
-            <ComboBox CommandName="cmdComboPower" IsEditable="false"/>
-            <ComboBox CommandName="cmdComboLRBalance" IsEditable="false"/>
+          <Group CommandName="cmdGroupChartPower1" ApplicationModes="2" SizeDefinition="PowerSize">
+            <CheckBox CommandName="cmdButtonPower" />
+            <CheckBox CommandName="cmdButtonLRBalance" />
+            <CheckBox CommandName="cmdButtonHeartRate" />
+            <ComboBox CommandName="cmdComboPower" IsEditable="false" />
+            <ComboBox CommandName="cmdComboLRBalance" IsEditable="false" />
           </Group>
-          <Group CommandName="cmdGroupChartEffectiveness" ApplicationModes="0">
-            <CheckBox CommandName="cmdButtonLTorqueEff"/>
-            <CheckBox CommandName="cmdButtonRTorqueEff"/>
+          <Group CommandName="cmdGroupChartEffectiveness" ApplicationModes="1" SizeDefinition="LeftRight">
+            <CheckBox CommandName="cmdButtonLTorqueEff" />
+            <CheckBox CommandName="cmdButtonRTorqueEff" />
           </Group>
-          <Group CommandName="cmdGroupChartEffectiveness1" ApplicationModes="1" SizeDefinition="PowerAdditionalSize">
-            <ComboBox CommandName="cmdComboLTorque" IsEditable="false"/>
-            <ComboBox CommandName="cmdComboRTorque" IsEditable="false"/>
-            <CheckBox CommandName="cmdButtonLTorqueEff"/>
-            <CheckBox CommandName="cmdButtonRTorqueEff"/>
+          <Group CommandName="cmdGroupChartEffectiveness1" ApplicationModes="2" SizeDefinition="ComboLeftRight">
+            <ComboBox CommandName="cmdComboLTorque" IsEditable="false" />
+            <CheckBox CommandName="cmdButtonLTorqueEff" />
+            <ComboBox CommandName="cmdComboRTorque" IsEditable="false" />
+            <CheckBox CommandName="cmdButtonRTorqueEff" />
           </Group>
-          <Group CommandName="cmdGroupChartSmoothness" ApplicationModes="0">
-            <CheckBox CommandName="cmdButtonLSmoothness"/>
-            <CheckBox CommandName="cmdButtonRSmoothness"/>
+          <Group CommandName="cmdGroupChartSmoothness" ApplicationModes="1" SizeDefinition="LeftRight">
+            <CheckBox CommandName="cmdButtonLSmoothness" />
+            <CheckBox CommandName="cmdButtonRSmoothness" />
           </Group>
-          <Group CommandName="cmdGroupChartSmoothness1" ApplicationModes="1" SizeDefinition="PowerAdditionalSize">
-            <ComboBox CommandName="cmdComboLSmoothness" IsEditable="false"/>
-            <ComboBox CommandName="cmdComboRSmoothness" IsEditable="false"/>
-            <CheckBox CommandName="cmdButtonLSmoothness"/>
-            <CheckBox CommandName="cmdButtonRSmoothness"/>
+          <Group CommandName="cmdGroupChartSmoothness1" ApplicationModes="2" SizeDefinition="ComboLeftRight">
+            <ComboBox CommandName="cmdComboLSmoothness" IsEditable="false" />
+            <CheckBox CommandName="cmdButtonLSmoothness" />
+            <ComboBox CommandName="cmdComboRSmoothness" IsEditable="false" />
+            <CheckBox CommandName="cmdButtonRSmoothness" />
           </Group>
-          <Group CommandName="cmdGroupChartClimbing" ApplicationModes="0,1">
-            <CheckBox CommandName="cmdButtonAltitude"/>
-            <CheckBox CommandName="cmdButtonGrade"/>
+          <Group CommandName="cmdGroupChartClimbing">
+            <CheckBox CommandName="cmdButtonAltitude" />
+            <CheckBox CommandName="cmdButtonGrade" />
           </Group>
-          <Group CommandName="cmdGroupChartExtras" ApplicationModes="0,1">
-            <CheckBox CommandName="cmdButtonTemperature"/>
+          <Group CommandName="cmdGroupChartExtras">
+            <CheckBox CommandName="cmdButtonTemperature" />
           </Group>
         </Tab>
-        <Tab CommandName="cmdTabView" ApplicationModes="0,1">
-          <Group CommandName="cmdGroupTotals" ApplicationModes="0,1">
-            <Button CommandName="cmdButtonSession"/>
-            <Button CommandName="cmdButtonLaps"/>
+        <Tab CommandName="cmdTabView">
+          <Tab.ScalingPolicy>
+            <ScalingPolicy>
+              <ScalingPolicy.IdealSizes>
+                <Scale Group="cmdGroupIntern" Size="Medium" />
+              </ScalingPolicy.IdealSizes>
+            </ScalingPolicy>
+          </Tab.ScalingPolicy>
+          <Group CommandName="cmdGroupTotals">
+            <Button CommandName="cmdButtonSession" />
+            <Button CommandName="cmdButtonLaps" />
           </Group>
-          <Group CommandName="cmdGroupZones" ApplicationModes="0,1">
-            <Button CommandName="cmdButtonHeartRateZones"/>
-            <Button CommandName="cmdButtonPowerZones"/>
+          <Group CommandName="cmdGroupZones">
+            <Button CommandName="cmdButtonHeartRateZones" />
+            <Button CommandName="cmdButtonPowerZones" />
           </Group>
-          <Group CommandName="cmdGroupExtras" ApplicationModes="0,1">
-            <Button CommandName="cmdButtonMyExtras"/>
+          <Group CommandName="cmdGroupExtras">
+            <Button CommandName="cmdButtonMyExtras" />
+          </Group>
+          <Group CommandName="cmdGroupIntern" ApplicationModes="3" SizeDefinition="TenButtons">
+            <Button CommandName="cmdButtonActivity" />
+            <Button CommandName="cmdButtonDeveloperDataId" />
+            <Button CommandName="cmdButtonDeviceInfo" />
+            <Button CommandName="cmdButtonEvent" />
+            <Button CommandName="cmdButtonFieldDescription" />
+            <Button CommandName="cmdButtonFileId" />
+            <Button CommandName="cmdButtonSport" />
+            <Button CommandName="cmdButtonWorkout" />
+            <Button CommandName="cmdButtonWahooFF00" />
+            <Button CommandName="cmdButtonWahooFF01" />
           </Group>
         </Tab>
       </Ribbon.Tabs>
     </Ribbon>
-    <ContextPopup/>
+    <ContextPopup />
   </Application.Views>
 </Application>
-<!--ResourceName Value="APPLICATION_RIBBON"-->
+<!--ResourceName Value="APPLICATION"-->

@@ -5,9 +5,9 @@
 
 **Willkommen Renn- und andere Radfahrer mit einem Wahoo ELEMNT (oder Bolt, Roam) Bike Computer**
 
-Du kannst Dein Workout analysieren und du kannst detaillierte Informationen von deinem Workout mit dieser App auf einem Windows Computer anzeigen (Windows 7 und höhere Versionen).
+Du kannst Dein Workout analysieren und du kannst detaillierte Informationen über dein Workout mit dieser App auf einem Windows Computer anzeigen (Windows 7 und höhere Versionen).
 
-Dieses Programm kann die *.fit Dateien des Wahoo ELEMNT und ELEMNT Bolt auslesen und grafisch darstellen. Die Session- und Lap-Werte werden tabellarisch angezeigt.
+Dieses Programm kann die *.fit Dateien des Wahoo ELEMNT und ELEMNT Bolt auslesen und grafisch darstellen. Die Session- und Lap-Werte werden tabellarisch angezeigt. Eine Beispiel FIT Datei befindet sich im Example Verzeichnis.
 
 Der einfachste Weg die *.fit Dateien auf den Windows Computer zu bekommen: Richte einen freien DropBox Account ein und verbinde diesen zu der Wahoo App auf deinem Phone. Nun werden die *.fit Dateien zur DropBox kopiert nach jedem Workout. Im Windows Computer muss auch die DropBox installiert werden mit deinem Account. Nun kann man die *.fit Dateien im DropBox Ordner Apps\WahooFitness sehen. Diese Dateien müssen über die App ELEMNTViewer ausgewählt werden.
 

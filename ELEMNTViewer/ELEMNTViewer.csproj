@@ -8,9 +8,10 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>ELEMNTViewer</RootNamespace>
     <AssemblyName>ELEMNTViewer</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -30,6 +31,9 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fit, Version=20.74.1.0, Culture=neutral, processorArchitecture=MSIL">
@@ -54,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="app\Settings.cs" />
     <Compile Include="app\values\ActivityValues.cs" />
     <Compile Include="app\ChartHelper.cs" />
     <Compile Include="app\CheckBoxTag.cs" />
@@ -136,6 +141,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -148,7 +154,9 @@
     <EmbeddedResource Include="RibbonMarkup.ribbon" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app\App.config" />
+    <None Include="app\App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Web_Image.png" />
@@ -162,9 +170,7 @@
   <ItemGroup>
     <None Include="Resources\Open_6529.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="app\config\xml\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="RibbonMarkup.h" />
     <Content Include="RibbonMarkup.xml">

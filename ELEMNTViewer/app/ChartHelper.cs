@@ -11,7 +11,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ELEMNTViewer {
     class ChartHelper {
-        bool useGDI32 = true;
+        bool _useGDI32 = true;
         bool useNiceRoundNumbers = true;
         //double piDiv180 = Math.PI / 180d;
         //Variables to implement a dashed zoom rectangle when the 
@@ -72,7 +72,7 @@ namespace ELEMNTViewer {
         private void DrawZoomRect() {
             Pen pen = new Pen(Color.Black, 1.0f);
             pen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
-            if (useGDI32) {
+            if (_useGDI32) {
                 //This is so much smoother than ControlPaint.DrawReversibleFrame
                 GDI32.DrawXORRectangle(chart1.CreateGraphics(), pen, zoomRect);
             } else {

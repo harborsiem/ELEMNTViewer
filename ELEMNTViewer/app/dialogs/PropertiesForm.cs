@@ -55,10 +55,10 @@ namespace ELEMNTViewer {
         public string Header { get { return this.Text; } set { this.Text = value; } }
 
         public PropertiesForm() {
+            InitializeComponent();
             if (!DesignMode) {
                 this.Font = SystemFonts.MessageBoxFont;
             }
-            InitializeComponent();
             numericToolTip = new ToolTip();
             numericToolTip.SetToolTip(numberUpDown, "Number");
             numberUpDown.ValueChanged += NumberUpDown_ValueChanged;
