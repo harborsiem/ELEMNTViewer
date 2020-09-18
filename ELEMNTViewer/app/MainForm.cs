@@ -37,6 +37,7 @@ namespace ELEMNTViewer
             this.Text = MainFormText;
             Load += MainForm_Load;
             FormClosed += MainForm_FormClosed;
+            ribbon.RibbonHeightChanged += Ribbon_RibbonHeightChanged;
 
             //new Test();
         }
@@ -47,6 +48,15 @@ namespace ELEMNTViewer
             Application.Exit();
         }
 
+        private void Ribbon_RibbonHeightChanged(object sender, EventArgs e)
+        {
+            int height = ribbon.Height;
+            Rectangle bounds = chartControl.Bounds;
+            bounds.Height -= (height + chartControl.Margin.Top - bounds.Y);
+            bounds.Y = height + chartControl.Margin.Top;
+            chartControl.Bounds = bounds;
+        }
+
         private void Ribbon_RibbonEventException(object sender, System.Threading.ThreadExceptionEventArgs e)
         {
             if (MessageBox.Show("Unhandled Exception " + e.Exception.StackTrace, "ELEMNTViewer shall Close", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
@@ -55,11 +65,11 @@ namespace ELEMNTViewer
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            int height = ribbon.Height;
-            Rectangle b = chartControl.Bounds;
-            b.Height -= (height + 3 - b.Y);
-            b.Y = height + 3;
-            chartControl.Bounds = b;
+            //int height = ribbon.Height;
+            //Rectangle b = chartControl.Bounds;
+            //b.Height -= (height + 3 - b.Y);
+            //b.Y = height + 3;
+            //chartControl.Bounds = b;
             _ribbonItems.Load();
         }
     }

@@ -2015,15 +2015,15 @@
         <member name="E:RibbonLib.Controls.RibbonDropDownGallery.CategoriesReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the Categories
             Now one can work with the Categories.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="E:RibbonLib.Controls.RibbonDropDownGallery.ItemsSourceReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the ItemsSource
             Now one can work with the ItemsSource.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="P:RibbonLib.Controls.RibbonDropDownGallery.Enabled">
@@ -2193,15 +2193,15 @@
         <member name="E:RibbonLib.Controls.RibbonInRibbonGallery.CategoriesReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the Categories
             Now one can work with the Categories.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="E:RibbonLib.Controls.RibbonInRibbonGallery.ItemsSourceReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the ItemsSource
             Now one can work with the ItemsSource.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="P:RibbonLib.Controls.RibbonInRibbonGallery.Enabled">
@@ -2315,15 +2315,15 @@
         <member name="E:RibbonLib.Controls.RibbonSplitButtonGallery.CategoriesReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the Categories
             Now one can work with the Categories.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="E:RibbonLib.Controls.RibbonSplitButtonGallery.ItemsSourceReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the ItemsSource
             Now one can work with the ItemsSource.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="P:RibbonLib.Controls.RibbonSplitButtonGallery.Enabled">
@@ -2469,15 +2469,15 @@
         <member name="E:RibbonLib.Controls.RibbonComboBox.CategoriesReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the Categories
             Now one can work with the Categories.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="E:RibbonLib.Controls.RibbonComboBox.ItemsSourceReady">
             <summary>
             Event provider which only fired once.
+            In this event you can initialize the ItemsSource
             Now one can work with the ItemsSource.
-            After Ribbon.Initialize one can do this too.
             </summary>
         </member>
         <member name="P:RibbonLib.Controls.RibbonComboBox.StringValue">
@@ -4463,6 +4463,12 @@
             Don't use
             </summary>
         </member>
+        <member name="P:RibbonLib.Ribbon.ResourceIdentifier">
+            <summary>
+            This is the Name parameter used for the UICC Compiler
+            Default value is APPLICATION or leave it empty.
+            </summary>
+        </member>
         <member name="P:RibbonLib.Ribbon.ResourceName">
             <summary>
             is a reference to an embedded resource file
@@ -4669,6 +4675,11 @@
         <member name="E:RibbonLib.Ribbon.ViewCreated">
             <summary>
             Event fires when the View is created
+            </summary>
+        </member>
+        <member name="E:RibbonLib.Ribbon.RibbonHeightChanged">
+            <summary>
+            Event fires when the Ribbon height changed
             </summary>
         </member>
         <member name="M:RibbonLib.RibbonUIApplication.#ctor(RibbonLib.Ribbon,RibbonLib.Ribbon)">
