@@ -5,7 +5,7 @@
 
 **Welcome Race- and other bikers with a Wahoo ELEMNT (or Bolt, Roam) Bike Computer**
 
-You can analyze your workout and you can see detailed information about your workout with this App on a Windows Computer (Windows 7 and higher versions).
+You can analyze your workout and you can see detailed information about your workout with this App on a Windows Computer (Windows 7 and newer versions).
 
 This App can read the *.fit files of the Bike-Computer Wahoo ELEMNT, ELEMNT Bolt and ELEMNT Roam. In the *.fit file are all informations about your workout. It shows the contents in a graphical chart view. The Session-, Laps-values and some other values are shown in tabular manner. See an example fit file in the Example folder.
 
@@ -17,7 +17,7 @@ ELEMNTViewer uses the Fit Dll from "ThisIsAnt FitSDK" for decoding of *.fit file
 
 Minimum Display resolution is 1024 x 768.
 
-ELEMNTViewer is developed using Visual Studio Community and uses .NET-framework 4.6.1
+ELEMNTViewer is developed using Visual Studio Community and uses .NET-framework 4.6.2
 
 
 
@@ -39,12 +39,14 @@ ELEMNTViewer is developed using Visual Studio Community and uses .NET-framework 
 - graphical view from the workout values with zoom function. You can choose to show the whole session or a single lap. Some values (Power, other Power specific values, ...) can be smoothed from 3 sec to 30 sec.
 
 ## Installation
- Requirement for installation is the Microsoft .NET Framework 4.6.1 or any higher version. If it is not installed on your computer then you can download it from a Microsoft page. Install this first.
+Requirement for installation is the Microsoft .NET Framework 4.6.2 or any higher version. If it is not installed on your computer then you can download it from a Microsoft page. Install this first.
+
+You also need Microsoft .NET Framework 3.5. In Windows 10 you have to go to the Control Panel > Programs > Programs and Features. On the left side click to "Turn Windows features on or off". You get a new dialog. Here you have to select ".NET Framework 3.5 (includes ...)".
 
 [Microsoft .NET Framework](http://www.microsoft.com/netframework)
 
- Unzip the setup from the Releases page. You get a ELEMNTViewer.msi file. With a double click to this file you install the program.
- Via Startmenu you can select and call ELEMNTViewer.
+Unzip the setup from the Releases page. You get a ELEMNTSetup.exe (in former versions: ELEMNTViewer.msi) file. With a double click to this file you install the program.
+Via Startmenu you can select and call ELEMNTViewer.
 
 ## Latest Setup
 #### (zipped Setup)

@@ -17,7 +17,7 @@ ELEMNTViewer benutzt die Fit Dll von ThisIsAnt FitSDK zum Dekodieren der *.fit F
 
 Eine Bildschirmauflösung von mindestens 1024 x 768 muss vorhanden sein.
 
-Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studio Community in der Programmiersprache C# geschrieben und lauffähig unter dem .NET 4.6.1 Framework oder einer höheren Version.
+Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studio Community in der Programmiersprache C# geschrieben und lauffähig unter dem .NET 4.6.2 Framework oder einer höheren Version.
 
 ## Contributions
 
@@ -38,11 +38,13 @@ Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studi
 - grafische Anzeige der aufgezeichneten Werte mit Zoom Funktion. Hierbei kann gewählt werden, ob die gesamte Session oder nur einzelne Laps dargestellt werden. Bei einigen Werten (Power, andere Power spezifische Werte, ...) kann eine Glättung aktiviert werden von 3s bis 30s.
 
 ## Installation
- Voraussetzung für die Installation des Programms auf einem Windows-System ist das .NET Framework 4.6.1 oder eine höhere Version. Falls es noch nicht auf dem Rechner installiert ist, kann das .NET Framework 4.6.1 oder eine höhere Version von der Microsoft-Seite kostenfrei heruntergeladen und installiert werden.
+Voraussetzung für die Installation des Programms auf einem Windows-System ist das .NET Framework 4.6.2 oder eine höhere Version. Falls es noch nicht auf dem Rechner installiert ist, kann das .NET Framework 4.6.2 oder eine höhere Version von der Microsoft-Seite kostenfrei heruntergeladen und installiert werden.
+
+Man benötigt auch das Microsoft .NET Framework 3.5. In Windows 10 muss man die Systemsteuerung  > Programme  > Programme und Features aufrufen. Auf der linken Seite "Windows-Features aktivieren oder deaktivieren". Es erscheint ein neuer Dialog. Hier ist  ".NET Framework 3.5 (enthält ...)" auszuwählen.
 
 [Microsoft .NET Framework](http://www.microsoft.com/netframework)
 
-  Entzippe das Setup von der Releases Seite. Danach erfolgt die Installation des Programms mit der Datei ELEMNTViewer.msi (Doppelklick im Datei-Explorer). Das Programm ist jetzt im Programmverzeichnis ELEMNTViewer installiert. Über den Eintrag ELEMNTViewer im Startmenu kann das Programm aufgerufen werden.
+Entzippe das Setup von der Releases Seite. Danach erfolgt die Installation des Programms mit der Datei ELEMNTSetup.exe (in früheren Versionen ELEMNTViewer.msi) (Doppelklick im Datei-Explorer). Das Programm ist jetzt im Programmverzeichnis ELEMNTViewer installiert. Über den Eintrag ELEMNTViewer im Startmenu kann das Programm aufgerufen werden.
 
 ## aktuelles Setup
 #### (in Zipdatei gepacktes Setup)
