@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+  xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
+  <Bundle Name="ElemntViewer" Version="1.1.1.0" Manufacturer="Harbor" IconSourceFile="..\ELEMNTViewer\Resources\AppIcon.ico" DisableModify="yes" UpgradeCode="fba12fbc-8660-4108-948b-3b90a1a473f1">
+    <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+      <bal:WixStandardBootstrapperApplication LicenseFile=".\MIT_License.rtf" SuppressOptionsUI="yes" />
+    </BootstrapperApplicationRef>
+    <Chain>
+      <MsiPackage Visible="yes" Id="Prerequisite" SourceFile="..\ELEMNTViewer\Resources\Ribbon.msi" ForcePerMachine="yes" Permanent="yes" />
+      <MsiPackage Id="Application" SourceFile=".\msi\ElemntViewer.msi" ForcePerMachine="yes" />
+      <!-- RollbackBoundary Vital="yes" /> -->
+      <!-- TODO: Define the list of chained packages. -->
+      <!-- <MsiPackage SourceFile="path\to\your.msi" /> -->
+    </Chain>
+  </Bundle>
+</Wix>
