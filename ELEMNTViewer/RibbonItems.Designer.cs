@@ -82,8 +82,6 @@ namespace RibbonLib.Controls
 
         // ContextPopup CommandName
 
-        private static bool initialized;
-
         public Ribbon Ribbon { get; private set; }
         public RibbonApplicationMenu Application { get; private set; }
         public RibbonButton ButtonOpen { get; private set; }
@@ -149,8 +147,6 @@ namespace RibbonLib.Controls
         {
             if (ribbon == null)
                 throw new ArgumentNullException(nameof(ribbon), "Parameter is null");
-            if (initialized)
-                return;
             this.Ribbon = ribbon;
             Application = new RibbonApplicationMenu(ribbon, Cmd.cmdApplication);
             ButtonOpen = new RibbonButton(ribbon, Cmd.cmdButtonOpen);
@@ -211,7 +207,6 @@ namespace RibbonLib.Controls
             ButtonWorkout = new RibbonButton(ribbon, Cmd.cmdButtonWorkout);
             ButtonWahooFF00 = new RibbonButton(ribbon, Cmd.cmdButtonWahooFF00);
             ButtonWahooFF01 = new RibbonButton(ribbon, Cmd.cmdButtonWahooFF01);
-            initialized = true;
         }
 
     }

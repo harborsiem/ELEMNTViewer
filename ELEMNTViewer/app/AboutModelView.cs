@@ -104,7 +104,8 @@ namespace ELEMNTViewer {
         }
 
         public void ShowProjectPage(Action viewAction) {
-            Process.Start("https://github.com/harborsiem/ELEMNTViewer");
+            ProcessStartInfo psi = new ProcessStartInfo() { UseShellExecute = true, FileName = "https://github.com/harborsiem/ELEMNTViewer" };
+            Process.Start(psi);
         }
 
         public void Close(Action callback) {

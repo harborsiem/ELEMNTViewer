@@ -157,15 +157,11 @@
           <GroupSizeDefinition Size="Large">
             <Row>
               <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c1" />
-              <ControlGroup>
-                <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
-              </ControlGroup>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
             </Row>
             <Row>
               <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c2" />
-              <ControlGroup>
-                <ControlSizeDefinition ControlName="b2" />
-              </ControlGroup>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
             </Row>
             <Row>
               <ControlSizeDefinition ControlName="b3" />
@@ -212,15 +208,11 @@
           <GroupSizeDefinition Size="Large">
             <Row>
               <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c1" />
-              <ControlGroup>
-                <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
-              </ControlGroup>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
             </Row>
             <Row>
               <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c2" />
-              <ControlGroup>
-                <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
-              </ControlGroup>
+              <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
             </Row>
           </GroupSizeDefinition>
         </SizeDefinition>
@@ -345,7 +337,7 @@
           <Tab.ScalingPolicy>
             <ScalingPolicy>
               <ScalingPolicy.IdealSizes>
-                <Scale Group="cmdGroupIntern" Size="Medium" />
+                <Scale Group="cmdGroupIntern" Size="Large" />
               </ScalingPolicy.IdealSizes>
             </ScalingPolicy>
           </Tab.ScalingPolicy>
@@ -360,7 +352,36 @@
           <Group CommandName="cmdGroupExtras">
             <Button CommandName="cmdButtonMyExtras" />
           </Group>
-          <Group CommandName="cmdGroupIntern" ApplicationModes="3" SizeDefinition="TenButtons">
+          <Group CommandName="cmdGroupIntern" ApplicationModes="3">
+            <SizeDefinition>
+              <ControlNameMap>
+                <ControlNameDefinition Name="b1" />
+                <ControlNameDefinition Name="b2" />
+                <ControlNameDefinition Name="b3" />
+                <ControlNameDefinition Name="b4" />
+                <ControlNameDefinition Name="b5" />
+                <ControlNameDefinition Name="b6" />
+                <ControlNameDefinition Name="b7" />
+                <ControlNameDefinition Name="b8" />
+                <ControlNameDefinition Name="b9" />
+                <ControlNameDefinition Name="b10" />
+              </ControlNameMap>
+              <GroupSizeDefinition Size="Large">
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b3" />
+                <ColumnBreak ShowSeparator="false" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b4" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b5" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b6" />
+                <ColumnBreak ShowSeparator="false" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b7" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b8" />
+                <ColumnBreak ShowSeparator="false" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b9" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="b10" />
+              </GroupSizeDefinition>
+            </SizeDefinition>
             <Button CommandName="cmdButtonActivity" />
             <Button CommandName="cmdButtonDeveloperDataId" />
             <Button CommandName="cmdButtonDeviceInfo" />
