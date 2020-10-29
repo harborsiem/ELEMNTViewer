@@ -10,28 +10,45 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace ELEMNTViewer {
-    public partial class ChartControl : UserControl {
+    class ChartHelp {
 
         private double resetZoomLabelInterval = 15D;
         private DateTimeIntervalType resetZoomLabelIntervalType;
         private double resetZoomAxisInterval = 15D;
         private DateTimeIntervalType resetZoomAxisIntervalType;
+		private Chart chart;
 
-        public ChartControl() {
-            InitializeComponent();
-            chart.AxisViewChanged += new EventHandler<ViewEventArgs>(Chart_AxisViewChanged);
-            this.Load += ChartControl_Load;
+        public ChartHelp(Chart chart) {
+            this.chart = chart;
+			chart.AxisViewChanged += new EventHandler<ViewEventArgs>(Chart_AxisViewChanged);
+            CheckBoxTag.Chart = chart;
+            CheckBoxTag.ChartHelp = this;
             ChartArea chartArea1 = chart.ChartAreas["ChartArea1"];
             resetZoomAxisInterval = chartArea1.AxisX.Interval;
             resetZoomAxisIntervalType = chartArea1.AxisX.IntervalType;
             resetZoomLabelInterval = chartArea1.AxisX.LabelStyle.Interval;
             resetZoomLabelIntervalType = chartArea1.AxisX.LabelStyle.IntervalType;
+            chart.PrePaint += new EventHandler<ChartPaintEventArgs>(chartMain_PrePaint);
         }
 
-        private void ChartControl_Load(object sender, EventArgs e) {
-            this.Size = chartControlPanel.Size;
-            CheckBoxTag.Chart = chart;
-            CheckBoxTag.ChartControl = this;
+        void chartMain_PrePaint(object sender, ChartPaintEventArgs e)
+        {
+            ChartArea area1 = chart.ChartAreas["ChartArea1"];
+            if (double.IsNaN(area1.AxisY.Maximum))
+            {
+                return;
+            }
+            if (area1.AxisY.Maximum <= 100.0)
+            {
+                area1.AxisY.MajorGrid.Interval = 5;
+            }
+            else
+            {
+                if (area1.AxisY.Maximum <= 500.0)
+                    area1.AxisY.MajorGrid.Interval = 20;
+                else
+                    area1.AxisY.MajorGrid.Interval = 50;
+            }
         }
 
         private static void CalculateLabelInterval(Axis axisX1) {

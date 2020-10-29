@@ -58,17 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="app\controls\ChartHelp.cs" />
     <Compile Include="app\Settings.cs" />
     <Compile Include="app\values\ActivityValues.cs" />
     <Compile Include="app\ChartHelper.cs" />
     <Compile Include="app\CheckBoxTag.cs" />
     <Compile Include="app\ConfigDefaults.cs" />
-    <Compile Include="app\controls\ChartControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="app\controls\ChartControl.Designer.cs">
-      <DependentUpon>ChartControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="app\controls\MsChartExtension.cs" />
     <Compile Include="app\DataManager.cs" />
     <Compile Include="app\values\DeveloperDataIdValues.cs" />
@@ -121,9 +116,6 @@
     <Compile Include="RibbonItems.Designer.cs" />
     <EmbeddedResource Include="app\dialogs\AboutDialog.resx">
       <DependentUpon>AboutDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="app\controls\ChartControl.resx">
-      <DependentUpon>ChartControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="app\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

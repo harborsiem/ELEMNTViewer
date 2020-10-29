@@ -23,7 +23,7 @@ namespace ELEMNTViewer
             _settingsPath = ThisLocalAppData;
         }
 
-        private static string ThisLocalAppData
+        public static string ThisLocalAppData
         {
             get
             {

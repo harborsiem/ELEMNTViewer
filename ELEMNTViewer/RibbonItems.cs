@@ -23,7 +23,8 @@ namespace RibbonLib.Controls
         private bool _toggleSmooth;
         private string _fileName;
         private DecodeFile _decodeFile;
-        private bool _modifiedSettings;
+        //private bool _modifiedSettings;
+        private byte[] _loadedQatSettings;
 
         private UICollectionChangedEvent _uiCollectionChangedEvent;
 
@@ -82,9 +83,57 @@ namespace RibbonLib.Controls
             ComboLTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
             ComboRTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
             ButtonSetSettings.ExecuteEvent += ButtonSetSettings_ExecuteEvent;
+            Ribbon.ViewCreated += Ribbon_ViewCreated;
+            Ribbon.ViewDestroy += Ribbon_ViewDestroy;
             //ComboSelect.ItemsSourceReady += ComboSelect_ItemsSourceReady;
             MakeCheckControls();
             GetCheckedSettings();
+        }
+
+        private string GetQatSettingsFileName()
+        {
+            string path = Settings.ThisLocalAppData;
+            return Path.Combine(path, "Qat.xml");
+        }
+
+        private void Ribbon_ViewCreated(object sender, EventArgs e)
+        {
+            string fileName = GetQatSettingsFileName();
+            if (File.Exists(fileName))
+            {
+                Stream stream = File.OpenRead(fileName);
+                _loadedQatSettings = new byte[stream.Length];
+                stream.Read(_loadedQatSettings, 0, _loadedQatSettings.Length);
+                stream.Position = 0;
+                Ribbon.LoadSettingsFromStream(stream);
+                stream.Close();
+            }
+        }
+
+        private bool EqualSettings(MemoryStream stream)
+        {
+            if (_loadedQatSettings == null || stream.Length != _loadedQatSettings.Length)
+                return false;
+            byte[] buffer = stream.GetBuffer();
+            for (int i = 0; i < buffer.Length; i++)
+                if (_loadedQatSettings[i] != buffer[i])
+                    return false;
+            return true;
+        }
+
+        private void Ribbon_ViewDestroy(object sender, EventArgs e)
+        {
+            MemoryStream stream = new MemoryStream();
+            Ribbon.SaveSettingsToStream(stream);
+            stream.Position = 0;
+            if (!EqualSettings(stream))
+            {
+                string fileName = GetQatSettingsFileName();
+                FileStream fStream = File.Create(fileName);
+                stream.CopyTo(fStream);
+                fStream.Close();
+            }
+            stream.Close();
         }
 
         private void GetCheckedSettings()
@@ -131,27 +180,27 @@ namespace RibbonLib.Controls
             {
                 case Cmd.cmdComboPower:
                     settings.PowerSmooth = int.Parse(combo.StringValue);
-                    _modifiedSettings = true;
+                    //_modifiedSettings = true;
                     break;
                 case Cmd.cmdComboLRBalance:
                     settings.LRBalanceSmooth = int.Parse(combo.StringValue);
-                    _modifiedSettings = true;
+                    //_modifiedSettings = true;
                     break;
                 case Cmd.cmdComboLTorque:
                     settings.TorqueLeftSmooth = int.Parse(combo.StringValue);
-                    _modifiedSettings = true;
+                    //_modifiedSettings = true;
                     break;
                 case Cmd.cmdComboRTorque:
                     settings.TorqueRightSmooth = int.Parse(combo.StringValue);
-                    _modifiedSettings = true;
+                    //_modifiedSettings = true;
                     break;
                 case Cmd.cmdComboLSmoothness:
                     settings.SmoothnessLeftSmooth = int.Parse(combo.StringValue);
-                    _modifiedSettings = true;
+                    //_modifiedSettings = true;
                     break;
                 case Cmd.cmdComboRSmoothness:
                     settings.SmoothnessRightSmooth = int.Parse(combo.StringValue);
-                    _modifiedSettings = true;
+                    //_modifiedSettings = true;
                     break;
                 default:
                     break;
@@ -191,6 +240,7 @@ namespace RibbonLib.Controls
             if (dialog.ShowDialog(_form) == DialogResult.OK)
             {
                 _form.Cursor = Cursors.WaitCursor;
+                _form._chartHelp.ResetZoom();
                 _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
                 _fileName = dialog.FileName;
                 _decodeFile = new DecodeFile();
@@ -349,7 +399,7 @@ namespace RibbonLib.Controls
             dialog.SelectedObjects = null;
             dialog.SelectedObject = DataManager.Instance.Session;
             dialog.Header = "Session";
-            dialog.PropertySort = PropertySort.Categorized;
+            dialog.Grid.PropertySort = PropertySort.Categorized;
             if (dialog.ShowDialog(_form) == DialogResult.OK)
             {
             }
@@ -361,7 +411,7 @@ namespace RibbonLib.Controls
             dialog.SelectedObject = null;
             dialog.SelectedObjects = DataManager.Instance.LapManager.LapArray();
             dialog.Header = "Laps";
-            dialog.PropertySort = PropertySort.Categorized;
+            dialog.Grid.PropertySort = PropertySort.Categorized;
             if (dialog.ShowDialog(_form) == DialogResult.OK)
             {
 

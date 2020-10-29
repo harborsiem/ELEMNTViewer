@@ -9,42 +9,53 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection;
 
-namespace ELEMNTViewer {
-    public partial class PropertiesForm : Form {
+namespace ELEMNTViewer
+{
+    public partial class PropertiesForm : Form
+    {
 
         private object[] selectedObjects;
         private ToolTip numericToolTip;
+        private VScrollBar _gridViewScrollBar;
 
         public PropertyGrid Grid { get { return propertyGrid; } }
 
-        public PropertySort PropertySort { get { return propertyGrid.PropertySort; } set { propertyGrid.PropertySort = value; } }
-
-        public object SelectedObject {
+        public object SelectedObject
+        {
             get { return propertyGrid.SelectedObject; }
-            set {
+            set
+            {
                 propertyGrid.SelectedObject = value;
             }
         }
-        public object[] SelectedObjects {
+        public object[] SelectedObjects
+        {
             get { return selectedObjects; }
-            set {
+            set
+            {
                 dialogLayout.SuspendLayout();
                 selectedObjects = value;
                 int min = 1;
                 int max = 1;
-                if (value != null) {
+                if (value != null)
+                {
                     max = selectedObjects.Length;
-                    if (min == max) {
+                    if (min == max)
+                    {
                         numberLabel.Visible = false;
                         numberUpDown.Visible = false;
-                    } else {
+                    }
+                    else
+                    {
                         numberLabel.Visible = true;
                         numberUpDown.Visible = true;
                     }
                     numberUpDown.Enabled = true;
                     numberUpDown.Value = 1;
                     NumberUpDown_ValueChanged(numberUpDown, EventArgs.Empty);
-                } else {
+                }
+                else
+                {
                     numberLabel.Visible = false;
                     numberUpDown.Visible = false;
                     numberUpDown.Enabled = false;
@@ -57,9 +68,11 @@ namespace ELEMNTViewer {
 
         public string Header { get { return this.Text; } set { this.Text = value; } }
 
-        public PropertiesForm() {
+        public PropertiesForm()
+        {
             InitializeComponent();
-            if (!DesignMode) {
+            if (!DesignMode)
+            {
                 this.Font = SystemFonts.MessageBoxFont;
             }
             numericToolTip = new ToolTip();
@@ -68,9 +81,13 @@ namespace ELEMNTViewer {
             this.Shown += Dialog_Shown;
         }
 
-        private void NumberUpDown_ValueChanged(object sender, EventArgs e) {
-            if (selectedObjects != null && selectedObjects.Length > 0) {
+        private void NumberUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (selectedObjects != null && selectedObjects.Length > 0)
+            {
                 propertyGrid.SelectedObject = selectedObjects[(int)numberUpDown.Value - 1];
+                if (_gridViewScrollBar != null)
+                    _gridViewScrollBar.Value = 0;
             }
         }
 
@@ -79,9 +96,9 @@ namespace ELEMNTViewer {
             Control pgv = FindControl(propertyGrid.Controls, "PropertyGridView");
             if (pgv != null)
             {
-                ScrollBar sb = FindControl(pgv.Controls, typeof(VScrollBar)) as ScrollBar;
-                if (sb != null)
-                    sb.Value = 0;
+                _gridViewScrollBar = FindControl(pgv.Controls, typeof(VScrollBar)) as VScrollBar;
+                if (_gridViewScrollBar != null)
+                    _gridViewScrollBar.Value = 0;
                 //// Reflection trickery to get a private/internal field
                 //// and method, scrollBar in this case
                 //Type type = pgv.GetType();

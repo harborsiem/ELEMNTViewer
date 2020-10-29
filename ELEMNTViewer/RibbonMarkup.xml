@@ -60,7 +60,7 @@
     <Command Name="cmdGroupChartSelect" Id="28" LabelTitle="Select" TooltipDescription="Selection of Session or Laps" />
     <Command Name="cmdComboSelect" Id="29" LabelTitle="Chart" TooltipTitle="Select for Chart" TooltipDescription="Selection of Session or Laps">
       <Command.SmallImages>
-        <Image MinDPI="96">Resources/60301.bmp</Image>
+        <Image>Resources/60301.bmp</Image>
         <Image MinDPI="120">Resources/60302.bmp</Image>
         <Image MinDPI="144">Resources/60303.bmp</Image>
         <Image MinDPI="192">Resources/60304.bmp</Image>
@@ -78,7 +78,7 @@
     <Command Name="cmdGroupChartPower" Id="40" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate" />
     <Command Name="cmdGroupChartEffectiveness" Id="41" LabelTitle="Torque Effectiveness" TooltipDescription="Powermeter: Torque Effectiveness" />
     <Command Name="cmdGroupChartSmoothness" Id="42" LabelTitle="Smoothness" TooltipDescription="Powermeter: Smoothness" />
-    <Command Name="cmdButtonSession" Id="43" LabelTitle="Session" TooltipTitle="Summary Laps" TooltipDescription="Display all Values of Session">
+    <Command Name="cmdButtonSession" Id="43" LabelTitle="Session" TooltipTitle="Summary Session" TooltipDescription="Display all Values of the Session">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/60313.bmp</Image>
         <Image MinDPI="120">Resources/60314.bmp</Image>
@@ -112,7 +112,10 @@
     </Command>
     <Command Name="cmdToggleSmooth" Id="47" LabelTitle="Settings" TooltipTitle="Show or hide Settings" TooltipDescription="Configure Smoothness">
       <Command.SmallImages>
-        <Image>Resources/Settings_16x.bmp</Image>
+        <Image>Resources/677.bmp</Image>
+        <Image MinDPI="120">Resources/678.bmp</Image>
+        <Image MinDPI="144">Resources/679.bmp</Image>
+        <Image MinDPI="192">Resources/680.bmp</Image>
       </Command.SmallImages>
     </Command>
     <Command Name="cmdButtonAbout" Id="48" LabelTitle="About">
@@ -130,7 +133,7 @@
       </Command.LargeImages>
     </Command>
     <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Extras" TooltipTitle="Self calculated" TooltipDescription="Some self calculated values from the session records, because Wahoo values are wrong" />
-    <Command Name="cmdGroupIntern" Id="50" LabelTitle="Intern" />
+    <Command Name="cmdGroupIntern" Id="50" LabelTitle="Internals" />
     <Command Name="cmdButtonActivity" Id="52" LabelTitle="Activity" TooltipTitle="Activity" />
     <Command Name="cmdButtonDeveloperDataId" Id="53" LabelTitle="DeveloperDataId" TooltipTitle="DeveloperDataId" />
     <Command Name="cmdButtonDeviceInfo" Id="54" LabelTitle="DeviceInfo" TooltipTitle="DeviceInfo" />
@@ -142,6 +145,8 @@
     <Command Name="cmdButtonWahooFF00" Id="60" LabelTitle="WahooFF00" TooltipTitle="WahooFF00" />
     <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="WahooFF01" TooltipTitle="WahooFF01" />
     <Command Name="cmdButtonSetSettings" Id="64" LabelTitle="Set Settings" TooltipTitle="Set Settings" TooltipDescription="Set the smooth values to a settings file" />
+    <Command Name="cmdButtonMap" Id="62" LabelTitle="Map with Route" TooltipTitle="Map with Route" TooltipDescription="Show the route in a map" />
+    <Command Name="cmdGroupMaps" Id="63" LabelTitle="Maps" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -266,6 +271,8 @@
         <QuickAccessToolbar CommandName="cmdQAT">
           <QuickAccessToolbar.ApplicationDefaults>
             <Button CommandName="cmdButtonOpen" ApplicationDefaults.IsChecked="true" />
+            <Button CommandName="cmdButtonSession" ApplicationDefaults.IsChecked="true" />
+            <Button CommandName="cmdButtonLaps" ApplicationDefaults.IsChecked="false" />
           </QuickAccessToolbar.ApplicationDefaults>
         </QuickAccessToolbar>
       </Ribbon.QuickAccessToolbar>
@@ -345,12 +352,15 @@
             <Button CommandName="cmdButtonSession" />
             <Button CommandName="cmdButtonLaps" />
           </Group>
+          <Group CommandName="cmdGroupExtras">
+            <Button CommandName="cmdButtonMyExtras" />
+          </Group>
+          <Group CommandName="cmdGroupMaps" ApplicationModes="4" SizeDefinition="OneButton">
+            <Button CommandName="cmdButtonMap" />
+          </Group>
           <Group CommandName="cmdGroupZones">
             <Button CommandName="cmdButtonHeartRateZones" />
             <Button CommandName="cmdButtonPowerZones" />
-          </Group>
-          <Group CommandName="cmdGroupExtras">
-            <Button CommandName="cmdButtonMyExtras" />
           </Group>
           <Group CommandName="cmdGroupIntern" ApplicationModes="3">
             <SizeDefinition>

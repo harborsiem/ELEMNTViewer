@@ -23,26 +23,60 @@ namespace ELEMNTViewer {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.chartControl = new ELEMNTViewer.ChartControl();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.ribbon = new RibbonLib.Ribbon();
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
-            // chartControl
+            // chart
             // 
-            this.chartControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.chartControl.Location = new System.Drawing.Point(3, 80);
-            this.chartControl.Name = "chartControl";
-            this.chartControl.Size = new System.Drawing.Size(1002, 679);
-            this.chartControl.TabIndex = 1;
-            this.chartControl.TabStop = false;
+            chartArea1.AxisX.Interval = 15D;
+            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
+            chartArea1.AxisX.IsLabelAutoFit = false;
+            chartArea1.AxisX.LabelStyle.Angle = -90;
+            chartArea1.AxisX.LabelStyle.Format = "HH:mm";
+            chartArea1.AxisX.LabelStyle.Interval = 15D;
+            chartArea1.AxisX.LabelStyle.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
+            chartArea1.AxisX.MajorGrid.Interval = 15D;
+            chartArea1.AxisX.MajorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
+            chartArea1.AxisX.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.AxisX.MinorGrid.Interval = 3D;
+            chartArea1.AxisX.MinorGrid.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
+            chartArea1.AxisX.MinorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisX.MinorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dot;
+            chartArea1.AxisX.ScaleView.SmallScrollSize = 1D;
+            chartArea1.AxisX.ScaleView.SmallScrollSizeType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Hours;
+            chartArea1.AxisX.ScrollBar.IsPositionedInside = false;
+            chartArea1.AxisY.MajorGrid.Interval = 5D;
+            chartArea1.AxisY.MajorGrid.LineColor = System.Drawing.Color.LightGray;
+            chartArea1.AxisY.MajorGrid.LineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Dash;
+            chartArea1.CursorX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
+            chartArea1.CursorX.IsUserEnabled = true;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
+            chartArea1.CursorX.SelectionColor = System.Drawing.Color.LightBlue;
+            chartArea1.CursorY.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
+            chartArea1.Name = "ChartArea1";
+            this.chart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart.Legends.Add(legend1);
+            this.chart.Location = new System.Drawing.Point(0, 147);
+            this.chart.Margin = new System.Windows.Forms.Padding(0);
+            this.chart.Name = "chart";
+            this.chart.Size = new System.Drawing.Size(1008, 615);
+            this.chart.TabIndex = 0;
+            this.chart.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
             // 
             // ribbon
             // 
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.Minimized = false;
             this.ribbon.Name = "ribbon";
+            this.ribbon.ResourceIdentifier = null;
             this.ribbon.ResourceName = "ELEMNTViewer.RibbonMarkup.ribbon";
             this.ribbon.ShortcutTableResourceName = null;
             this.ribbon.Size = new System.Drawing.Size(1008, 23);
@@ -54,17 +88,18 @@ namespace ELEMNTViewer {
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1008, 762);
             this.Controls.Add(this.ribbon);
-            this.Controls.Add(this.chartControl);
+            this.Controls.Add(this.chart);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.MinimumSize = new System.Drawing.Size(1024, 800);
             this.Name = "MainForm";
+            ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        internal ChartControl chartControl;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart;
         private RibbonLib.Ribbon ribbon;
     }
 }

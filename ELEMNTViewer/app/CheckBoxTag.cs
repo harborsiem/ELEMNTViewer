@@ -13,7 +13,7 @@ namespace ELEMNTViewer {
     internal class CheckBoxTag {
 
         public static Chart Chart { get; set; }
-        public static ChartControl ChartControl { get; set; }
+        public static ChartHelp ChartHelp { get; set; }
 
         private static DateTime s_fromDateTime = new DateTime(2016, 1, 1); //DateTime.Now - TimeSpan.FromDays(400);
         private static DateTime s_toDateTime = DateTime.Now;
@@ -74,7 +74,7 @@ namespace ELEMNTViewer {
                 DateTime from = list[s_lapStartIndex].Timestamp;
                 DateTime to = list[s_lapEndIndex].Timestamp;
                 TimeSpan span = new TimeSpan(to.Ticks - from.Ticks);
-                ChartControl.SetIntervals(span);
+                ChartHelp.SetIntervals(span);
             }
 
             DataManager.Instance.ClearChart();
@@ -85,7 +85,7 @@ namespace ELEMNTViewer {
             s_fromDateTime = from;
             s_toDateTime = to;
             TimeSpan span = new TimeSpan(to.Ticks - from.Ticks);
-            ChartControl.SetIntervals(span);
+            ChartHelp.SetIntervals(span);
         }
 
         private void ComboBox_SelectedItemChanged(object sender, ExecuteEventArgs e)

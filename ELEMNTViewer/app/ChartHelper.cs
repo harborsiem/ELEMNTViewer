@@ -21,6 +21,10 @@ namespace ELEMNTViewer {
                                     //to define the zoom rectangle
         Chart chart1;
 
+        public ChartHelper(Chart chart)
+        {
+            chart1 = chart;
+        }
 
         //MouseDown, MouseMove and MouseUp handle creation and drawing of the Zoom Rectangle
         private void Chart_MouseDown(object sender, MouseEventArgs e) {

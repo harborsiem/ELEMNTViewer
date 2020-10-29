@@ -20,6 +20,7 @@ namespace ELEMNTViewer
 
         public const string MainFormText = "ELEMNTViewer";
         private RibbonItems _ribbonItems;
+        internal ChartHelp _chartHelp;
 
         public MainForm()
         {
@@ -51,10 +52,10 @@ namespace ELEMNTViewer
         private void Ribbon_RibbonHeightChanged(object sender, EventArgs e)
         {
             int height = ribbon.Height;
-            Rectangle bounds = chartControl.Bounds;
-            bounds.Height -= (height + chartControl.Margin.Top - bounds.Y);
-            bounds.Y = height + chartControl.Margin.Top;
-            chartControl.Bounds = bounds;
+            Rectangle bounds = chart.Bounds;
+            bounds.Height -= (height + chart.Margin.Top - bounds.Y);
+            bounds.Y = height + chart.Margin.Top;
+            chart.Bounds = bounds;
         }
 
         private void Ribbon_RibbonEventException(object sender, System.Threading.ThreadExceptionEventArgs e)
@@ -65,11 +66,7 @@ namespace ELEMNTViewer
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //int height = ribbon.Height;
-            //Rectangle b = chartControl.Bounds;
-            //b.Height -= (height + 3 - b.Y);
-            //b.Y = height + 3;
-            //chartControl.Bounds = b;
+            _chartHelp = new ChartHelp(chart);
             _ribbonItems.Load();
         }
     }
