@@ -9,6 +9,7 @@
     <RootNamespace>ELEMNTViewer</RootNamespace>
     <AssemblyName>ELEMNTViewer</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <ApplicationIcon>Resources\AppIcon.ico</ApplicationIcon>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />

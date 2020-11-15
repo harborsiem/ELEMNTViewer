@@ -24,7 +24,7 @@ namespace ELEMNTViewer {
         private Series _series;
         public RibbonCheckBox CheckBox { get; private set; }
         private RibbonComboBox _comboBox;
-        private ToolTip _toolTip;
+        //private ToolTip _toolTip;
         public string ConfigKey { get; private set; }
         private string _propertyName;
         private string _displayName;
@@ -43,7 +43,7 @@ namespace ELEMNTViewer {
             this._index = index;
             this.ConfigKey = configKey;
             this._propertyName = propertyName;
-            _toolTip = new ToolTip();
+            //_toolTip = new ToolTip();
             _propertyFunc = PropertyNameToDelegate(propertyName);
             if (_smoothAvgAttribute != null)
             {
@@ -184,6 +184,11 @@ namespace ELEMNTViewer {
                     points.AddXY(values.Timestamp, _smoothing.SmoothValue);
                 }
             }
+            if (_smoothing == null || _smoothing.AvgTime == 0)
+                _series.Name = _propertyName;
+            else
+                _series.Name = _propertyName + " (" + _smoothing.AvgTime.ToString() + ")";
+
             points.ResumeUpdates();
             if (!chartMain.Series.Contains(_series)) {
                 chartMain.Series.Add(_series);
