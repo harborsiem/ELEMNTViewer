@@ -8,11 +8,12 @@ using System.Xml.Schema;
 using System.Globalization;
 //using Dynastream.Fit;
 
-namespace ELEMNTViewer {
-    class DataManager {
-
+namespace ELEMNTViewer
+{
+    class DataManager
+    {
         private SessionValues _session;
-        private OtherValues _others;
+        private OtherValues _sessionExtras;
         private PowerZonesManager _powerManager = new PowerZonesManager();
         private HRZonesManager _hrManager = new HRZonesManager();
         private LapManager _lapManager = new LapManager();
@@ -29,50 +30,63 @@ namespace ELEMNTViewer {
 
         public List<RecordValues> RecordList { get { return RecordManager.RecordValuesList; } }
 
-        public SessionValues Session {
+        public SessionValues Session
+        {
             get { return _session; }
-            set { _session = value; } }
+            set { _session = value; }
+        }
 
-        public OtherValues Others {
-            get { return _others; }
-            set { _others = value; } }
+        public OtherValues SessionExtras
+        {
+            get { return _sessionExtras; }
+            set { _sessionExtras = value; }
+        }
 
         public List<CheckBoxTag> CheckBoxTags { get { return _checkBoxTags; } }
 
         public static DataManager Instance = new DataManager();
 
-        private DataManager() {
+        private DataManager()
+        {
         }
 
-        public void Clear() {
+        public void Clear()
+        {
             _recordManager.Clear();
             _lapManager.Clear();
             _hrManager.Clear();
             _powerManager.Clear();
             _session = null;
-            ClearPlus();
+            ClearAdditionalValues();
             ClearChart();
         }
 
-        public void FillChart() {
-            for (int i = 0; i < _checkBoxTags.Count; i++) {
+        public void FillChart()
+        {
+            for (int i = 0; i < _checkBoxTags.Count; i++)
+            {
                 CheckBoxTag tag = _checkBoxTags[i];
-                if (tag.CheckBox.BooleanValue) {
-                    tag.CheckBoxCheckedChanged();
+                if (tag.ChartCheckBox.BooleanValue)
+                {
+                    tag.ChartCheckBoxCheckedChanged();
                 }
             }
         }
 
-        public void ClearChart() {
-            for (int i = 0; i < _checkBoxTags.Count; i++) {
+        public void ClearChart()
+        {
+            for (int i = 0; i < _checkBoxTags.Count; i++)
+            {
                 CheckBoxTag tag = _checkBoxTags[i];
-                if (tag.CheckBox.BooleanValue) {
+                if (tag.ChartCheckBox.BooleanValue)
+                {
                     tag.ClearAndRemoveSeries();
                 }
             }
         }
 
-        private void ClearPlus() {
+        private void ClearAdditionalValues()
+        {
             WahooFF00Values.Clear();
             WahooFF01Values.Clear();
             ActivityValues.Clear();
@@ -85,15 +99,15 @@ namespace ELEMNTViewer {
             SportValues.Clear();
         }
 
-        public List<WahooFF00Values> WahooFF00Values = new List<WahooFF00Values>();
-        public List<WahooFF01Values> WahooFF01Values = new List<WahooFF01Values>();
-        public List<ActivityValues> ActivityValues = new List<ActivityValues>();
-        public List<FileIdValues> FileIdValues = new List<FileIdValues>();
-        public List<DeviceInfoValues> DeviceInfoValues = new List<DeviceInfoValues>();
-        public List<WorkoutValues> WorkoutValues = new List<WorkoutValues>();
-        public List<FieldDescriptionValues> FieldDescriptionValues = new List<FieldDescriptionValues>();
-        public List<DeveloperDataIdValues> DeveloperDataIdValues = new List<DeveloperDataIdValues>();
-        public List<EventValues> EventValues = new List<EventValues>();
-        public List<SportValues> SportValues = new List<SportValues>();
+        public List<WahooFF00Values> WahooFF00Values { get; private set; } = new List<WahooFF00Values>();
+        public List<WahooFF01Values> WahooFF01Values { get; private set; } = new List<WahooFF01Values>();
+        public List<ActivityValues> ActivityValues { get; private set; } = new List<ActivityValues>();
+        public List<FileIdValues> FileIdValues { get; private set; } = new List<FileIdValues>();
+        public List<DeviceInfoValues> DeviceInfoValues { get; private set; } = new List<DeviceInfoValues>();
+        public List<WorkoutValues> WorkoutValues { get; private set; } = new List<WorkoutValues>();
+        public List<FieldDescriptionValues> FieldDescriptionValues { get; private set; } = new List<FieldDescriptionValues>();
+        public List<DeveloperDataIdValues> DeveloperDataIdValues { get; private set; } = new List<DeveloperDataIdValues>();
+        public List<EventValues> EventValues { get; private set; } = new List<EventValues>();
+        public List<SportValues> SportValues { get; private set; } = new List<SportValues>();
     }
 }

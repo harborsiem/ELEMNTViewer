@@ -1,12 +1,14 @@
 using Dynastream.Fit;
 
-namespace ELEMNTViewer {
+namespace ELEMNTViewer
+{
     using System;
     using System.Collections.Generic;
     using System.Text;
     using System.ComponentModel;
 
-    class RecordValues {
+    class RecordValues
+    {
 
         private DateTime timestamp;
         private double positionLat;
@@ -25,12 +27,15 @@ namespace ELEMNTViewer {
         private float rightTorqueEffectiveness;
         private sbyte temperature;
 
-        public RecordValues() {
+        public RecordValues()
+        {
         }
 
-        public void SetValue(byte fieldNum, object value) {
+        public void SetValue(byte fieldNum, object value)
+        {
             //Type objType = value.GetType();
-            switch (fieldNum) {
+            switch (fieldNum)
+            {
                 case RecordMesg.FieldDefNum.PositionLat:
                     positionLat = FitConvert.ToDegrees((int)value); //Int32
                     break;

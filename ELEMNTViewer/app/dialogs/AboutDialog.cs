@@ -8,14 +8,14 @@ using System.Diagnostics;
 namespace ELEMNTViewer {
     partial class AboutDialog : Form {
 
-        private AboutModelView modelView;
+        private AboutModelView _modelView;
 
         public AboutDialog() {
             InitializeComponent();
             if (!DesignMode) {
                 this.Font = SystemFonts.MessageBoxFont;
             }
-            modelView = new AboutModelView();
+            _modelView = new AboutModelView();
             this.dialogLayout.Paint += DialogLayout_Paint;
             this.titleLabel.Font = new System.Drawing.Font(this.Font.FontFamily, this.Font.SizeInPoints + 2);
             this.bottomLayout.Paint += new System.Windows.Forms.PaintEventHandler(this.BottomLayout_Paint);
@@ -35,7 +35,7 @@ namespace ELEMNTViewer {
         }
 
         private void OkButton_Click(object sender, EventArgs e) {
-            modelView.Close(CloseForm);
+            _modelView.Close(CloseForm);
         }
 
         private void CloseForm() {
@@ -48,16 +48,16 @@ namespace ELEMNTViewer {
         }
 
         private void LinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            modelView.ShowProjectPage(ProjectPage);
+            _modelView.ShowProjectPage(ProjectPage);
         }
 
         private void InitControls() {
-            this.Text = modelView.DisplayAssemblyTitle;
-            this.titleLabel.Text = modelView.AssemblyProduct;
-            this.versionLabel.Text = modelView.DisplayAssemblyFileVersion;
-            this.authorLabel.Text = modelView.DisplayAuthor;
-            this.modifiedLabel.Text = modelView.DisplayModified;
-            this.copyrightLabel.Text = modelView.AssemblyCopyright;
+            this.Text = _modelView.DisplayAssemblyTitle;
+            this.titleLabel.Text = _modelView.AssemblyProduct;
+            this.versionLabel.Text = _modelView.DisplayAssemblyFileVersion;
+            this.authorLabel.Text = _modelView.DisplayAuthor;
+            this.modifiedLabel.Text = _modelView.DisplayModified;
+            this.copyrightLabel.Text = _modelView.AssemblyCopyright;
             //this.licenseTextBox.Text = modelView.AssemblyDescription;
         }
     }

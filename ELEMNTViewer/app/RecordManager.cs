@@ -1,4 +1,5 @@
-﻿namespace ELEMNTViewer {
+﻿namespace ELEMNTViewer
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -8,21 +9,25 @@
     using System.Xml;
     using System.Globalization;
 
-    class RecordManager {
+    class RecordManager
+    {
         const string CrLf = "";
         private List<RecordValues> _recordValuesList = new List<RecordValues>();
 
         public List<RecordValues> RecordValuesList { get { return _recordValuesList; } }
 
-        public void Clear() {
+        public void Clear()
+        {
             _recordValuesList.Clear();
         }
 
-        public int Count {
+        public int Count
+        {
             get { return _recordValuesList.Count; }
         }
 
-        private void WithXmlDocument(string fileName, string trackName, int recordIncrement) {
+        private void WithXmlDocument(string fileName, string trackName, int recordIncrement)
+        {
             XmlDocument document = new XmlDocument();
             document.PreserveWhitespace = false;
             //Create an XML declaration. 
@@ -60,7 +65,8 @@
             double lon;
             double lat;
             double ele;
-            for (int i = 0; i < _recordValuesList.Count; i += recordIncrement) {
+            for (int i = 0; i < _recordValuesList.Count; i += recordIncrement)
+            {
                 RecordValues values = _recordValuesList[i];
                 lon = values.PositionLong;
                 lat = values.PositionLat;
@@ -83,7 +89,8 @@
 
         }
 
-        private void WithXmlWriter(string fileName, string trackName, int recordIncrement) {
+        private void WithXmlWriter(string fileName, string trackName, int recordIncrement)
+        {
             Stream stream = File.Create(fileName);
             //StringBuilder builder = new StringBuilder();
             XmlWriterSettings settings = new XmlWriterSettings();
@@ -115,7 +122,8 @@
             double lon;
             double lat;
             double ele;
-            for (int i = 0; i < _recordValuesList.Count; i += recordIncrement) {
+            for (int i = 0; i < _recordValuesList.Count; i += recordIncrement)
+            {
                 RecordValues values = _recordValuesList[i];
                 lon = values.PositionLong;
                 lat = values.PositionLat;
@@ -136,12 +144,15 @@
 
         }
 
-        public void WriteGpx(FileInfo file, string trackName) {
+        public void WriteGpx(FileInfo file, string trackName)
+        {
             string fileName;
-            if (file == null) {
+            if (file == null)
+            {
                 throw new ArgumentNullException(nameof(file));
             }
-            if (string.IsNullOrWhiteSpace(trackName)) {
+            if (string.IsNullOrWhiteSpace(trackName))
+            {
                 trackName = "unknown";
             }
             fileName = file.FullName;

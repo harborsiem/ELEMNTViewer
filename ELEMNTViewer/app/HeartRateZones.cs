@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace ELEMNTViewer {
-    class HeartRateZones {
+namespace ELEMNTViewer
+{
+    class HeartRateZones
+    {
         //[DisplayName("Einfach")]
         [DisplayName("Easy")]
         [ReadOnly(true)]

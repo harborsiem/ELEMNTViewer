@@ -132,7 +132,14 @@
         <Image MinDPI="192">Resources/60208.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Extras" TooltipTitle="Self calculated" TooltipDescription="Some self calculated values from the session records, because Wahoo values are wrong" />
+    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Session Extras" TooltipTitle="Session Extras" TooltipDescription="Some self calculated values from the session records, because Wahoo values are wrong">
+      <Command.LargeImages>
+        <Image>Resources/60317.bmp</Image>
+        <Image MinDPI="120">Resources/60318.bmp</Image>
+        <Image MinDPI="144">Resources/60319.bmp</Image>
+        <Image MinDPI="192">Resources/60320.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="cmdGroupIntern" Id="50" LabelTitle="Internals" />
     <Command Name="cmdButtonActivity" Id="52" LabelTitle="Activity" TooltipTitle="Activity" />
     <Command Name="cmdButtonDeveloperDataId" Id="53" LabelTitle="DeveloperDataId" TooltipTitle="DeveloperDataId" />
@@ -145,7 +152,14 @@
     <Command Name="cmdButtonWahooFF00" Id="60" LabelTitle="WahooFF00" TooltipTitle="WahooFF00" />
     <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="WahooFF01" TooltipTitle="WahooFF01" />
     <Command Name="cmdButtonSetSettings" Id="64" LabelTitle="Set Settings" TooltipTitle="Set Settings" TooltipDescription="Set the smooth values to a settings file" />
-    <Command Name="cmdButtonMap" Id="62" LabelTitle="Map with Route" TooltipTitle="Map with Route" TooltipDescription="Show the route in a map" />
+    <Command Name="cmdButtonMap" Id="62" LabelTitle="Route" TooltipTitle="Route on Map" TooltipDescription="Show the route in a map">
+      <Command.LargeImages>
+        <Image>Resources/map_32.bmp</Image>
+        <Image MinDPI="120">Resources/map_40.bmp</Image>
+        <Image MinDPI="144">Resources/map_48.bmp</Image>
+        <Image MinDPI="192">Resources/map_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="cmdGroupMaps" Id="63" LabelTitle="Maps" />
   </Application.Commands>
   <Application.Views>
@@ -352,10 +366,10 @@
             <Button CommandName="cmdButtonSession" />
             <Button CommandName="cmdButtonLaps" />
           </Group>
-          <Group CommandName="cmdGroupExtras">
+          <Group CommandName="cmdGroupExtras" SizeDefinition="OneButton">
             <Button CommandName="cmdButtonMyExtras" />
           </Group>
-          <Group CommandName="cmdGroupMaps" ApplicationModes="4" SizeDefinition="OneButton">
+          <Group CommandName="cmdGroupMaps" SizeDefinition="OneButton">
             <Button CommandName="cmdButtonMap" />
           </Group>
           <Group CommandName="cmdGroupZones">

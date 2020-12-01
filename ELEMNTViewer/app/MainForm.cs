@@ -51,11 +51,12 @@ namespace ELEMNTViewer
 
         private void Ribbon_RibbonHeightChanged(object sender, EventArgs e)
         {
+            Control control = chart;
             int height = ribbon.Height;
-            Rectangle bounds = chart.Bounds;
-            bounds.Height -= (height + chart.Margin.Top - bounds.Y);
-            bounds.Y = height + chart.Margin.Top;
-            chart.Bounds = bounds;
+            Rectangle bounds = control.Bounds;
+            bounds.Height -= (height + control.Margin.Top - bounds.Y);
+            bounds.Y = height + control.Margin.Top;
+            control.Bounds = bounds;
         }
 
         private void Ribbon_RibbonEventException(object sender, System.Threading.ThreadExceptionEventArgs e)

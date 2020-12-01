@@ -1,42 +1,48 @@
 ﻿using Dynastream.Fit;
 
-namespace ELEMNTViewer {
+namespace ELEMNTViewer
+{
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    //using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
-    class EventValues {
-        private Event? event0;
-        private EventType? eventType;
-        private uint? data;
-        private DateTime timestamp;
+    class EventValues
+    {
+        private Event? _event0;
+        private EventType? _eventType;
+        private uint? _data;
+        private DateTime _timestamp;
 
-        public static void OnEventMesg(object sender, MesgEventArgs e) {
+        public static void OnEventMesg(object sender, MesgEventArgs e)
+        {
             EventValues values = new EventValues();
             EventMesg mesg = (EventMesg)e.mesg;
-            try {
-                values.event0 = mesg.GetEvent();
-                values.eventType = mesg.GetEventType();
-                values.data = mesg.GetData();
+            try
+            {
+                values._event0 = mesg.GetEvent();
+                values._eventType = mesg.GetEventType();
+                values._data = mesg.GetData();
 
                 ////Make sure properties with sub properties arent null before trying to create objects based on them
-                if (mesg.GetTimestamp() != null) {
+                if (mesg.GetTimestamp() != null)
+                {
                     uint tc = (uint)mesg.GetTimestamp().GetTimeStamp();
-                    values.timestamp = FitConvert.ToLocalDateTime(tc);
+                    values._timestamp = FitConvert.ToLocalDateTime(tc);
                 }
             }
-            catch (FitException exception) {
+            catch (FitException exception)
+            {
                 Console.WriteLine("\tOnFileIDMesg Error {0}", exception.Message);
                 Console.WriteLine("\t{0}", exception.InnerException);
             }
             DataManager.Instance.EventValues.Add(values);
         }
 
-        public Event? Event0 { get { return event0; } }
-        public EventType? EventType { get { return eventType; } }
-        public uint? Data { get { return data; } }
-        public DateTime Timestamp { get { return timestamp; } }
+        public Event? Event0 { get { return _event0; } }
+        public EventType? EventType { get { return _eventType; } }
+        public uint? Data { get { return _data; } }
+        public DateTime Timestamp { get { return _timestamp; } }
     }
 }

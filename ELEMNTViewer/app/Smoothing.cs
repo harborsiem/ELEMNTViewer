@@ -4,24 +4,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ELEMNTViewer {
-    class Smoothing {
-
+namespace ELEMNTViewer
+{
+    class Smoothing
+    {
         private double _sum;
         private int _startIndex;
         private int _firstIndex;
         private int _avgTime; //seconds
 
-        public Smoothing() {
+        public Smoothing()
+        {
         }
 
-        public Smoothing(int avgTime) {
+        public Smoothing(int avgTime)
+        {
             this._avgTime = avgTime;
         }
 
-        public int StartIndex {
+        public int StartIndex
+        {
             get { return _startIndex; }
-            set {
+            set
+            {
                 _startIndex = value;
                 _firstIndex = _startIndex;
             }
@@ -31,7 +36,8 @@ namespace ELEMNTViewer {
 
         public int AvgTime { get { return _avgTime; } set { _avgTime = value; } }
 
-        public void Clear() {
+        public void Clear()
+        {
             SmoothValue = 0;
             _sum = 0;
             _firstIndex = 0;
@@ -43,12 +49,17 @@ namespace ELEMNTViewer {
         //    SmoothValue = result;
         //}
 
-        public void SetSmoothValue(RecordValues values, Func<RecordValues, double> propertyFunc, int recordIndex) {
-            if (_avgTime == 0) {
+        public void SetSmoothValue(RecordValues values, Func<RecordValues, double> propertyFunc, int recordIndex)
+        {
+            if (_avgTime == 0)
+            {
                 SmoothValue = propertyFunc(values);
-            } else {
+            }
+            else
+            {
                 _sum += propertyFunc(values);
-                if ((recordIndex - _startIndex) >= _avgTime) {
+                if ((recordIndex - _startIndex) >= _avgTime)
+                {
                     _sum -= propertyFunc(DataManager.Instance.RecordList[_firstIndex]);
                     _firstIndex++;
                 }

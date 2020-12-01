@@ -1,7 +1,8 @@
 
 using Dynastream.Fit;
 
-namespace ELEMNTViewer {
+namespace ELEMNTViewer
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -9,8 +10,8 @@ namespace ELEMNTViewer {
     using System.Threading.Tasks;
     using System.ComponentModel;
 
-    class SessionValues {
-
+    class SessionValues
+    {
         private DateTime timestamp;
         private DateTime startTime;
         private float totalElapsedTime;
@@ -56,9 +57,11 @@ namespace ELEMNTViewer {
 
         private Sport sport;
 
-        public void SetValue(byte fieldNum, int index, object value) {
+        public void SetValue(byte fieldNum, int index, object value)
+        {
             Type objType = value.GetType();
-            switch (fieldNum) {
+            switch (fieldNum)
+            {
                 case SessionMesg.FieldDefNum.Event:
                     break;
                 case SessionMesg.FieldDefNum.EventType:
@@ -163,7 +166,8 @@ namespace ELEMNTViewer {
                     break;
                 case SessionMesg.FieldDefNum.TimeInHrZone:
                     float val = Convert.ToSingle(value); //Single
-                    switch (index) {
+                    switch (index)
+                    {
                         case 0:
                             timeInHrZone0 = val;
                             break;
@@ -185,7 +189,8 @@ namespace ELEMNTViewer {
                     break;
                 case SessionMesg.FieldDefNum.TimeInPowerZone:
                     val = Convert.ToSingle(value); //Single
-                    switch (index) {
+                    switch (index)
+                    {
                         case 0:
                             timeInPowerZone0 = val;
                             break;
@@ -225,7 +230,7 @@ namespace ELEMNTViewer {
                     break;
             }
         }
-        
+
         [Category("Time")]
         public DateTime Timestamp { get { return timestamp; } }
         [Category("Time")]

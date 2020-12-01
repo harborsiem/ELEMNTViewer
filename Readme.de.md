@@ -7,7 +7,7 @@
 
 Du kannst Dein Workout analysieren und du kannst detaillierte Informationen über dein Workout mit dieser App auf einem Windows Computer anzeigen (Windows 7 und höhere Versionen).
 
-Dieses Programm kann die *.fit Dateien des Wahoo ELEMNT und ELEMNT Bolt auslesen und grafisch darstellen. Die Session- und Lap-Werte werden tabellarisch angezeigt. Eine Beispiel FIT Datei befindet sich im Example Verzeichnis.
+Dieses Programm kann die *.fit Dateien des Wahoo ELEMNT und ELEMNT Bolt auslesen und grafisch darstellen. Die Session- und Lap-Werte werden tabellarisch angezeigt. In einem OpenStreetMap Fenster kann man die Route des Workout betrachten. Eine Beispiel FIT Datei befindet sich im Example Verzeichnis.
 
 Der einfachste Weg die *.fit Dateien auf den Windows Computer zu bekommen: Richte einen freien DropBox Account ein und verbinde diesen zu der Wahoo App auf deinem Phone. Nun werden die *.fit Dateien zur DropBox kopiert nach jedem Workout. Im Windows Computer muss auch die DropBox installiert werden mit deinem Account. Nun kann man die *.fit Dateien im DropBox Ordner Apps\WahooFitness sehen. Diese Dateien müssen über die App ELEMNTViewer ausgewählt werden.
 
@@ -28,7 +28,7 @@ Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studi
 | ------------------------------------------------------------ | ---------------------------------------------------- | ----------- |
 | [FitSDK](https://www.thisisant.com/developer/resources/downloads/) | [ThisIsAnt](https://www.thisisant.com/)              | MIT License |
 | [Windows Ribbon](https://github.com/harborsiem/WindowsRibbon) | [harborsiem](https://github.com/harborsiem) & andere | MIT License |
-
+| [XAML Map Control](https://github.com/ClemensFischer/XAML-Map-Control) | [ClemensFischer](https://github.com/ClemensFischer) | MS-PL License |
 ## Themen des ELEMNTViewer Programms
 
 - Session Anzeige 
@@ -36,6 +36,7 @@ Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studi
 - HeartRate Zonen 
 - Power Zonen 
 - grafische Anzeige der aufgezeichneten Werte mit Zoom Funktion. Hierbei kann gewählt werden, ob die gesamte Session oder nur einzelne Laps dargestellt werden. Bei einigen Werten (Power, andere Power spezifische Werte, ...) kann eine Glättung aktiviert werden von 3s bis 30s.
+- Die Route des Workout in einer Landkarte anzeigen, speichern der Route als gpx - Datei.
 
 ## Installation
 Voraussetzung für die Installation des Programms auf einem Windows-System ist das .NET Framework 4.6.2 oder eine höhere Version. Falls es noch nicht auf dem Rechner installiert ist, kann das .NET Framework 4.6.2 oder eine höhere Version von der Microsoft-Seite kostenfrei heruntergeladen und installiert werden.

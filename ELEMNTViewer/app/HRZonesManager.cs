@@ -1,13 +1,15 @@
 ﻿using Dynastream.Fit;
 
-namespace ELEMNTViewer {
+namespace ELEMNTViewer
+{
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
-    class HRZonesManager {
+    class HRZonesManager
+    {
         private List<byte> _hrZones = new List<byte>();
 
         //internal List<byte> HrZones { get { return hrZones; } }
@@ -26,16 +28,20 @@ namespace ELEMNTViewer {
         //    DataManager.Instance.DeviceInfoValues.Add(values);
         //}
 
-        public void Add(byte zone) {
+        public void Add(byte zone)
+        {
             _hrZones.Add(zone);
         }
 
-        public void Clear() {
+        public void Clear()
+        {
             _hrZones.Clear();
         }
 
-        public HeartRateZones GetHeartRateZones() {
-            if (_hrZones.Count < 5) {
+        public HeartRateZones GetHeartRateZones()
+        {
+            if (_hrZones.Count < 5)
+            {
                 return null;
             }
             HeartRateZones result = new HeartRateZones();

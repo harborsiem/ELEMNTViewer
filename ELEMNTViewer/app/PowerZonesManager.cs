@@ -4,22 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ELEMNTViewer {
-    class PowerZonesManager {
+namespace ELEMNTViewer
+{
+    class PowerZonesManager
+    {
         private List<ushort> _powerZones = new List<ushort>();
 
         //public List<ushort> PowerZones { get { return _powerZones; } }
 
-        public void Add(ushort zone) {
+        public void Add(ushort zone)
+        {
             _powerZones.Add(zone);
         }
 
-        public void Clear() {
+        public void Clear()
+        {
             _powerZones.Clear();
         }
 
-        public PowerZones GetPowerZones() {
-            if (_powerZones.Count < 6) {
+        public PowerZones GetPowerZones()
+        {
+            if (_powerZones.Count < 6)
+            {
                 return null;
             }
             PowerZones result = new PowerZones();

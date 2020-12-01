@@ -83,11 +83,46 @@ namespace RibbonLib.Controls
             ComboLTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
             ComboRTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
             ButtonSetSettings.ExecuteEvent += ButtonSetSettings_ExecuteEvent;
+            ButtonMap.ExecuteEvent += ButtonMap_ExecuteEvent;
             Ribbon.ViewCreated += Ribbon_ViewCreated;
             Ribbon.ViewDestroy += Ribbon_ViewDestroy;
             //ComboSelect.ItemsSourceReady += ComboSelect_ItemsSourceReady;
             MakeCheckControls();
             GetCheckedSettings();
+        }
+
+        private void ButtonMap_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            MapControl.LocationCollection locations = new MapControl.LocationCollection();
+            List<ViewModel.PointItem> pointItems = new List<ViewModel.PointItem>();
+            MapControl.Location mapCenter = null;
+            double distanceStart = 0;
+            List<RecordValues> list = DataManager.Instance.RecordList;
+            for (int i = 0; i < list.Count; i++)
+            {
+                double latitude = list[i].PositionLat;
+                double longitude = list[i].PositionLong;
+                double distance = list[i].Distance;
+                MapControl.Location location = new MapControl.Location(latitude, longitude);
+                if (mapCenter == null && latitude != 0)
+                {
+                    mapCenter = location;
+                    pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                    distanceStart += 5;
+                }
+                if (mapCenter != null && latitude != 0)
+                {
+                    locations.Add(location);
+                    if (distance >= distanceStart)
+                    {
+                        pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                        distanceStart += 5;
+                    }
+                }
+            }
+            WpfMaps.MapHandler handler = new WpfMaps.MapHandler();
+            handler.SetLocations(mapCenter, locations, pointItems);
+            handler.ShowDialog();
         }
 
         private string GetQatSettingsFileName()
@@ -256,6 +291,7 @@ namespace RibbonLib.Controls
                 ToolStripMenuItems(true);
                 CheckBoxTag.SetDateTime(DataManager.Instance.RecordList[0].Timestamp, DataManager.Instance.RecordList[DataManager.Instance.RecordList.Count - 1].Timestamp);
                 MakeComboItems();
+                CheckBoxTag.SetToSession(); //@ Todo: Refactoring
                 _form.Cursor = Cursors.Default;
                 DataManager.Instance.FillChart();
             }
@@ -282,6 +318,7 @@ namespace RibbonLib.Controls
             ButtonWahooFF00.Enabled = enabled;
             ButtonWahooFF01.Enabled = enabled;
             ButtonWorkout.Enabled = enabled;
+            ButtonMap.Enabled = enabled;
         }
 
         private void MakeComboItems()
@@ -446,8 +483,9 @@ namespace RibbonLib.Controls
         {
             PropertiesForm dialog = new PropertiesForm();
             dialog.SelectedObjects = null;
-            dialog.SelectedObject = DataManager.Instance.Others;
-            dialog.Header = "Others";
+            dialog.SelectedObject = DataManager.Instance.SessionExtras;
+            dialog.Grid.PropertySort = PropertySort.Categorized;
+            dialog.Header = "Session Extras";
             if (dialog.ShowDialog(_form) == DialogResult.OK)
             {
 
@@ -511,7 +549,7 @@ namespace RibbonLib.Controls
                 if (i < checkBoxList.Count)
                 {
                     //checkBoxList[i].Label = propertyName;
-                    CheckBoxTag tag = new CheckBoxTag(checkBoxList[i], i, "", propertyName, comboBoxList[i]);
+                    CheckBoxTag tag = new CheckBoxTag(checkBoxList[i], i, propertyName, comboBoxList[i]);
                     DataManager.Instance.CheckBoxTags.Add(tag);
                     i++;
                 }
@@ -543,7 +581,7 @@ namespace RibbonLib.Controls
             return result;
         }
 
-        //following methods are only for intern use
+        //following methods are only for internal use
 
         private void ButtonActivity_ExecuteEvent(object sender, ExecuteEventArgs e)
         {

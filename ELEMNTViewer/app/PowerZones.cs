@@ -5,8 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-namespace ELEMNTViewer {
-    class PowerZones {
+namespace ELEMNTViewer
+{
+    class PowerZones
+    {
         //[DisplayName("FTP Wert")]
         [DisplayName("FTP value")]
         [ReadOnly(true)]

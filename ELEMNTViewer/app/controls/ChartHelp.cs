@@ -9,18 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
-namespace ELEMNTViewer {
-    class ChartHelp {
-
+namespace ELEMNTViewer
+{
+    class ChartHelp
+    {
         private double resetZoomLabelInterval = 15D;
         private DateTimeIntervalType resetZoomLabelIntervalType;
         private double resetZoomAxisInterval = 15D;
         private DateTimeIntervalType resetZoomAxisIntervalType;
-		private Chart chart;
+        private Chart chart;
 
-        public ChartHelp(Chart chart) {
+        public ChartHelp(Chart chart)
+        {
             this.chart = chart;
-			chart.AxisViewChanged += new EventHandler<ViewEventArgs>(Chart_AxisViewChanged);
+            chart.AxisViewChanged += new EventHandler<ViewEventArgs>(Chart_AxisViewChanged);
             CheckBoxTag.Chart = chart;
             CheckBoxTag.ChartHelp = this;
             ChartArea chartArea1 = chart.ChartAreas["ChartArea1"];
@@ -51,37 +53,47 @@ namespace ELEMNTViewer {
             }
         }
 
-        private static void CalculateLabelInterval(Axis axisX1) {
+        private static void CalculateLabelInterval(Axis axisX1)
+        {
             double diff = axisX1.ScaleView.ViewMaximum - axisX1.ScaleView.ViewMinimum;
-            if (diff > 1.03) { // > 1 day
+            if (diff > 1.03)
+            { // > 1 day
                 axisX1.MinorGrid.Interval = 3D;
                 axisX1.MinorGrid.IntervalType = DateTimeIntervalType.Hours;
                 axisX1.Interval = 3;
                 axisX1.IntervalType = DateTimeIntervalType.Hours;
                 axisX1.LabelStyle.Interval = 3;
                 axisX1.LabelStyle.IntervalType = DateTimeIntervalType.Hours;
-            } else if (diff > 0.25) { // 24 hours > diff > 6 hours 
+            }
+            else if (diff > 0.25)
+            { // 24 hours > diff > 6 hours 
                 axisX1.MinorGrid.Interval = 1D;
                 axisX1.MinorGrid.IntervalType = DateTimeIntervalType.Hours;
                 axisX1.Interval = 1;
                 axisX1.IntervalType = DateTimeIntervalType.Hours;
                 axisX1.LabelStyle.Interval = 1;
                 axisX1.LabelStyle.IntervalType = DateTimeIntervalType.Hours;
-            } else if (diff > 0.085) { // 6 hours > diff > 2 hours 
+            }
+            else if (diff > 0.085)
+            { // 6 hours > diff > 2 hours 
                 axisX1.MinorGrid.Interval = 15D;
                 axisX1.MinorGrid.IntervalType = DateTimeIntervalType.Minutes;
                 axisX1.Interval = 15;
                 axisX1.IntervalType = DateTimeIntervalType.Minutes;
                 axisX1.LabelStyle.Interval = 15;
                 axisX1.LabelStyle.IntervalType = DateTimeIntervalType.Minutes;
-            } else if (diff > 0.0283) { // diff <= 2 hours 
+            }
+            else if (diff > 0.0283)
+            { // diff <= 2 hours 
                 axisX1.MinorGrid.Interval = 5D;
                 axisX1.MinorGrid.IntervalType = DateTimeIntervalType.Minutes;
                 axisX1.Interval = 5;
                 axisX1.IntervalType = DateTimeIntervalType.Minutes;
                 axisX1.LabelStyle.Interval = 5;
                 axisX1.LabelStyle.IntervalType = DateTimeIntervalType.Minutes;
-            } else {
+            }
+            else
+            {
                 axisX1.MinorGrid.Interval = 1D;
                 axisX1.MinorGrid.IntervalType = DateTimeIntervalType.Minutes;
                 axisX1.Interval = 1;
@@ -91,18 +103,21 @@ namespace ELEMNTViewer {
             }
         }
 
-        public void ResetZoom() {
+        public void ResetZoom()
+        {
             chart.SuspendLayout();
             Axis axisX1 = chart.ChartAreas["ChartArea1"].AxisX;
             axisX1.LabelStyle.Angle = -90;
-            if (axisX1.ScaleView.IsZoomed) {
+            if (axisX1.ScaleView.IsZoomed)
+            {
                 ResetZoom(axisX1);
                 axisX1.ScaleView.ZoomReset(100);
             }
             chart.ResumeLayout();
         }
 
-        private void ResetZoom(Axis axisX1) {
+        private void ResetZoom(Axis axisX1)
+        {
             axisX1.MinorGrid.Enabled = false;
             axisX1.LabelStyle.Angle = -90;
             axisX1.Interval = resetZoomAxisInterval;
@@ -113,11 +128,14 @@ namespace ELEMNTViewer {
             axisX1.LabelStyle.IntervalType = resetZoomLabelIntervalType;
         }
 
-        public void SetIntervals(TimeSpan delta) {
+        public void SetIntervals(TimeSpan delta)
+        {
             chart.SuspendLayout();
             Axis axisX1 = chart.ChartAreas["ChartArea1"].AxisX;
-            if (delta <= new TimeSpan(0, 5, 0, 0)) {
-                if (delta <= new TimeSpan(0, 0, 30, 0)) {
+            if (delta <= new TimeSpan(0, 5, 0, 0))
+            {
+                if (delta <= new TimeSpan(0, 0, 30, 0))
+                {
                     axisX1.MajorGrid.Interval = 1D;
                     axisX1.MajorGrid.IntervalType = DateTimeIntervalType.Minutes;
                     axisX1.LabelStyle.Interval = 1D;
@@ -128,7 +146,9 @@ namespace ELEMNTViewer {
                     resetZoomLabelIntervalType = DateTimeIntervalType.Minutes;
                     resetZoomAxisInterval = 1D;
                     resetZoomAxisIntervalType = DateTimeIntervalType.Minutes;
-                } else {
+                }
+                else
+                {
                     axisX1.MajorGrid.Interval = 15D;
                     axisX1.MajorGrid.IntervalType = DateTimeIntervalType.Minutes;
                     axisX1.LabelStyle.Interval = 15D;
@@ -140,7 +160,9 @@ namespace ELEMNTViewer {
                     resetZoomAxisInterval = 15D;
                     resetZoomAxisIntervalType = DateTimeIntervalType.Minutes;
                 }
-            } else {
+            }
+            else
+            {
                 axisX1.MajorGrid.Interval = 1D;
                 axisX1.MajorGrid.IntervalType = DateTimeIntervalType.Hours;
                 axisX1.LabelStyle.Interval = 1D;
@@ -155,15 +177,20 @@ namespace ELEMNTViewer {
             chart.ResumeLayout();
         }
 
-        private void Chart_AxisViewChanged(object sender, ViewEventArgs e) {
-            if (e.Axis.AxisName == AxisName.X) {
+        private void Chart_AxisViewChanged(object sender, ViewEventArgs e)
+        {
+            if (e.Axis.AxisName == AxisName.X)
+            {
                 chart.SuspendLayout();
                 Axis axisX1 = chart.ChartAreas["ChartArea1"].AxisX;
-                if (axisX1.ScrollBar.IsVisible) {
+                if (axisX1.ScrollBar.IsVisible)
+                {
                     axisX1.MinorGrid.Enabled = true;
                     axisX1.LabelStyle.Angle = -90;
                     CalculateLabelInterval(axisX1);
-                } else {
+                }
+                else
+                {
                     ResetZoom(axisX1);
                 }
                 chart.ResumeLayout();

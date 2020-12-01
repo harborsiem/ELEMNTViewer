@@ -13,9 +13,8 @@ namespace ELEMNTViewer
 {
     public partial class PropertiesForm : Form
     {
-
-        private object[] selectedObjects;
-        private ToolTip numericToolTip;
+        private object[] _selectedObjects;
+        private ToolTip _numericToolTip;
         private VScrollBar _gridViewScrollBar;
 
         public PropertyGrid Grid { get { return propertyGrid; } }
@@ -28,18 +27,19 @@ namespace ELEMNTViewer
                 propertyGrid.SelectedObject = value;
             }
         }
+
         public object[] SelectedObjects
         {
-            get { return selectedObjects; }
+            get { return _selectedObjects; }
             set
             {
                 dialogLayout.SuspendLayout();
-                selectedObjects = value;
+                _selectedObjects = value;
                 int min = 1;
                 int max = 1;
                 if (value != null)
                 {
-                    max = selectedObjects.Length;
+                    max = _selectedObjects.Length;
                     if (min == max)
                     {
                         numberLabel.Visible = false;
@@ -75,17 +75,17 @@ namespace ELEMNTViewer
             {
                 this.Font = SystemFonts.MessageBoxFont;
             }
-            numericToolTip = new ToolTip();
-            numericToolTip.SetToolTip(numberUpDown, "Number");
+            _numericToolTip = new ToolTip();
+            _numericToolTip.SetToolTip(numberUpDown, "Number");
             numberUpDown.ValueChanged += NumberUpDown_ValueChanged;
             this.Shown += Dialog_Shown;
         }
 
         private void NumberUpDown_ValueChanged(object sender, EventArgs e)
         {
-            if (selectedObjects != null && selectedObjects.Length > 0)
+            if (_selectedObjects != null && _selectedObjects.Length > 0)
             {
-                propertyGrid.SelectedObject = selectedObjects[(int)numberUpDown.Value - 1];
+                propertyGrid.SelectedObject = _selectedObjects[(int)numberUpDown.Value - 1];
                 if (_gridViewScrollBar != null)
                     _gridViewScrollBar.Value = 0;
             }
@@ -110,11 +110,11 @@ namespace ELEMNTViewer
         private static Control FindControl(
             Control.ControlCollection controls, Type name)
         {
-            foreach (Control c in controls)
+            foreach (Control control in controls)
             {
-                Type t = c.GetType();
+                Type t = control.GetType();
                 if (t == name)
-                    return c;
+                    return control;
             }
             return null;
         }
@@ -122,10 +122,10 @@ namespace ELEMNTViewer
         private static Control FindControl(
             Control.ControlCollection controls, string name)
         {
-            foreach (Control c in controls)
+            foreach (Control control in controls)
             {
-                if (c.Text == name)
-                    return c;
+                if (control.Text == name)
+                    return control;
             }
             return null;
         }

@@ -7,12 +7,16 @@ using System.IO;
 using System.Windows.Forms;
 using Dynastream.Fit;
 
-namespace ELEMNTViewer {
-    class DecodeFile {
+namespace ELEMNTViewer
+{
+    class DecodeFile
+    {
         private Stream _fitSource;
 
-        public void Decode(string fileName) {
-            try {
+        public void Decode(string fileName)
+        {
+            try
+            {
                 // Attempt to open .FIT file
                 _fitSource = new FileStream(fileName, FileMode.Open);
 
@@ -38,22 +42,30 @@ namespace ELEMNTViewer {
                 status &= decodeDemo.CheckIntegrity(_fitSource);
 
                 // Process the file
-                if (status) {
+                if (status)
+                {
                     //Console.WriteLine("Decoding...");
                     decodeDemo.Read(_fitSource);
                     //Console.WriteLine("Decoded FIT file {0}", args[0]);
-                } else {
-                    try {
+                }
+                else
+                {
+                    try
+                    {
                         //Console.WriteLine("Integrity Check Failed {0}", args[0]);
-                        if (decodeDemo.InvalidDataSize) {
+                        if (decodeDemo.InvalidDataSize)
+                        {
                             //Console.WriteLine("Invalid Size Detected, Attempting to decode...");
                             decodeDemo.Read(_fitSource);
-                        } else {
+                        }
+                        else
+                        {
                             //Console.WriteLine("Attempting to decode by skipping the header...");
                             decodeDemo.Read(_fitSource, DecodeMode.InvalidHeader);
                         }
                     }
-                    catch (FitException ex) {
+                    catch (FitException ex)
+                    {
                         MessageBox.Show("Decode caught FitException: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         //Console.WriteLine("DecodeDemo caught FitException: " + ex.Message);
                     }
@@ -61,22 +73,27 @@ namespace ELEMNTViewer {
                 _fitSource.Close();
 
             }
-            catch (FitException ex) {
+            catch (FitException ex)
+            {
                 MessageBox.Show("A FitException occurred when trying to decode the FIT file. Message: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //Console.WriteLine("A FitException occurred when trying to decode the FIT file. Message: " + ex.Message);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show("Exception occurred when trying to decode the FIT file. Message: " + ex.Message, "", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //Console.WriteLine("Exception occurred when trying to decode the FIT file. Message: " + ex.Message);
             }
-            finally {
+            finally
+            {
 
             }
         }
 
-        static void OnMesg(object sender, MesgEventArgs e) {
+        static void OnMesg(object sender, MesgEventArgs e)
+        {
             //Console.WriteLine("OnMesg: Received Mesg with global ID#{0}, its name is {1}", e.mesg.Num, e.mesg.Name);
-            switch (e.mesg.Num) {
+            switch (e.mesg.Num)
+            {
                 case MesgNum.HrZone:
                     HandleHrZones(e);
                     break;
@@ -85,7 +102,7 @@ namespace ELEMNTViewer {
                     break;
                 case MesgNum.Session:
                     HandleSession(e);
-                    HandleOthers();
+                    HandleSessionExtras();
                     break;
                 case MesgNum.Lap:
                     HandleLap(e);
@@ -101,18 +118,19 @@ namespace ELEMNTViewer {
                     break;
                 default:
                     break;
-
             }
         }
 
-
-        static void HandleWahooFF00(MesgEventArgs e) {
+        static void HandleWahooFF00(MesgEventArgs e)
+        {
             WahooFF00Values values = new WahooFF00Values();
             object value;
 
             int i = 0;
-            foreach (Field field in e.mesg.Fields) {
-                for (int j = 0; j < field.GetNumValues(); j++) {
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
@@ -122,13 +140,16 @@ namespace ELEMNTViewer {
             DataManager.Instance.WahooFF00Values.Add(values);
         }
 
-        static void HandleWahooFF01(MesgEventArgs e) {
+        static void HandleWahooFF01(MesgEventArgs e)
+        {
             WahooFF01Values values = new WahooFF01Values();
             object value;
 
             int i = 0;
-            foreach (Field field in e.mesg.Fields) {
-                for (int j = 0; j < field.GetNumValues(); j++) {
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
@@ -138,18 +159,22 @@ namespace ELEMNTViewer {
             DataManager.Instance.WahooFF01Values.Add(values);
         }
 
-        static async void HandleOthers() {
+        static async void HandleSessionExtras()
+        {
             OtherValues others = new OtherValues();
-            DataManager.Instance.Others = others;
+            DataManager.Instance.SessionExtras = others;
             await Task.CompletedTask;
         }
 
-        static async void HandleHrZones(MesgEventArgs e) {
+        static async void HandleHrZones(MesgEventArgs e)
+        {
             object value = 0;
 
             int i = 0;
-            foreach (Field field in e.mesg.Fields) {
-                for (int j = 0; j < field.GetNumValues(); j++) {
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
                     value = field.GetValue(j);
                 }
 
@@ -159,12 +184,15 @@ namespace ELEMNTViewer {
             await Task.CompletedTask;
         }
 
-        static async void HandlePowerZones(MesgEventArgs e) {
+        static async void HandlePowerZones(MesgEventArgs e)
+        {
             object value = 0;
 
             int i = 0;
-            foreach (Field field in e.mesg.Fields) {
-                for (int j = 0; j < field.GetNumValues(); j++) {
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
                     value = field.GetValue(j);
                 }
 
@@ -174,13 +202,16 @@ namespace ELEMNTViewer {
             await Task.CompletedTask;
         }
 
-        static async void HandleSession(MesgEventArgs e) {
+        static async void HandleSession(MesgEventArgs e)
+        {
             SessionValues values = new SessionValues();
             object value;
 
             int i = 0;
-            foreach (Field field in e.mesg.Fields) {
-                for (int j = 0; j < field.GetNumValues(); j++) {
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
@@ -191,13 +222,16 @@ namespace ELEMNTViewer {
             await Task.CompletedTask;
         }
 
-        static async void HandleLap(MesgEventArgs e) {
+        static async void HandleLap(MesgEventArgs e)
+        {
             LapValues values = new LapValues();
             object value;
 
             int i = 0;
-            foreach (Field field in e.mesg.Fields) {
-                for (int j = 0; j < field.GetNumValues(); j++) {
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
@@ -208,13 +242,16 @@ namespace ELEMNTViewer {
             await Task.CompletedTask;
         }
 
-        static async void HandleRecord(MesgEventArgs e) {
+        static async void HandleRecord(MesgEventArgs e)
+        {
             RecordValues values = new RecordValues();
             object value;
 
             int i = 0;
-            foreach (Field field in e.mesg.Fields) {
-                for (int j = 0; j < field.GetNumValues(); j++) {
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
                     value = field.GetValue(j);
                     values.SetValue(field.Num, value);
                 }

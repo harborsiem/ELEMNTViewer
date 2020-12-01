@@ -7,7 +7,7 @@
     lightArgs: "<projectname>.wixobj" -out "<projectname>.msi" -ext WixUtilExtension -ext WixUIExtension -ext WixNetFxExtension
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="{6CD63426-64F7-4F77-BCBB-A4E6AC16176C}" Name="ELEMNTViewer" Language="1033" Version="1.1.2.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
+  <Product Id="{9AD5E249-9CEE-4B02-B569-2ED8AE0ADD08}" Name="ELEMNTViewer" Language="1033" Version="2.0.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
     <Package InstallerVersion="301" Compressed="yes" Platform="x86" InstallScope="perMachine" Description="ELEMNTViewer" Comments="ELEMNTViewer Install" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -23,6 +23,10 @@
     <Condition Message="This application requires .NET Framework 4.6.2. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED]]></Condition>
     <Icon Id="MainIcon.ico" SourceFile="..\ELEMNTViewer\Resources\AppIcon.ico" />
     <Property Id="ARPPRODUCTICON" Value="MainIcon.ico" />
+    <Property Id="ARPHELPLINK" Value="https://github.com/harborsiem/ELEMNTViewer" />
+    <Property Id="ARPCOMMENTS" Value="Analyze Wahoo ELEMNT workout" />
+    <Property Id="ARPURLUPDATEINFO" Value="https://github.com/harborsiem/ELEMNTViewer/releases" />
+    <Property Id="ARPNOREPAIR" Value="yes" />
     <WixVariable Id="WixUILicenseRtf" Value="MIT_License.rtf" />
   </Product>
 
@@ -43,6 +47,8 @@
         <File Id="Fi.ELEMNTViewerExe" Name="ELEMNTViewer.exe" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe" KeyPath="yes" Checksum="yes" />
         <File Id="Fi.ELEMNTViewerConfig" Name="ELEMNTViewer.exe.config" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe.config" Checksum="yes" />
         <File Id="Fi.FitDll" Name="Fit.dll" Source="..\ELEMNTViewer\Resources\Fit.dll" Checksum="yes" />
+        <File Id="Fi.MapControlDll" Name="MapControl.WPF.dll" Source="..\WpfMaps\bin\Release\MapControl.WPF.dll" Checksum="yes" />
+        <File Id="Fi.WpfMapsDll" Name="WpfMaps.dll" Source="..\WpfMaps\bin\Release\WpfMaps.dll" Checksum="yes" />
       </Component>
     </ComponentGroup>
   </Fragment>

@@ -1,57 +1,62 @@
 ﻿using Dynastream.Fit;
 
-namespace ELEMNTViewer {
+namespace ELEMNTViewer
+{
     using System;
     using System.Collections.Generic;
-    using System.Linq;
+    //using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
 
-    class FieldDescriptionValues {
-        private byte? developerDataIndex;
-        private byte? fieldDefinitionNumber;
-        private byte? fitBaseTypeId;
-        private string[] fieldName;
-        private string[] units;
+    class FieldDescriptionValues
+    {
+        private byte? _developerDataIndex;
+        private byte? _fieldDefinitionNumber;
+        private byte? _fitBaseTypeId;
+        private string[] _fieldName;
+        private string[] _units;
 
-        public static void OnFieldDescriptionMesg(object sender, MesgEventArgs e) {
+        public static void OnFieldDescriptionMesg(object sender, MesgEventArgs e)
+        {
             FieldDescriptionValues values = new FieldDescriptionValues();
             FieldDescriptionMesg mesg = (FieldDescriptionMesg)e.mesg;
-            try {
-                values.developerDataIndex = mesg.GetDeveloperDataIndex();
-                values.fieldDefinitionNumber = mesg.GetFieldDefinitionNumber();
-                values.fitBaseTypeId = mesg.GetFitBaseTypeId();
+            try
+            {
+                values._developerDataIndex = mesg.GetDeveloperDataIndex();
+                values._fieldDefinitionNumber = mesg.GetFieldDefinitionNumber();
+                values._fitBaseTypeId = mesg.GetFitBaseTypeId();
                 int num3 = mesg.GetNumFieldValues(3);
-                values.fieldName = new string[num3];
-                values.units = new string[num3];
-                for (int i = 0; i < num3; i++) {
-                    values.fieldName[i] = (mesg.GetFieldNameAsString(i));
-                    values.units[i] = (mesg.GetUnitsAsString(i));
+                values._fieldName = new string[num3];
+                values._units = new string[num3];
+                for (int i = 0; i < num3; i++)
+                {
+                    values._fieldName[i] = (mesg.GetFieldNameAsString(i));
+                    values._units[i] = (mesg.GetUnitsAsString(i));
                 }
             }
-            catch (FitException exception) {
+            catch (FitException exception)
+            {
                 Console.WriteLine("\tOnFileIDMesg Error {0}", exception.Message);
                 Console.WriteLine("\t{0}", exception.InnerException);
             }
             DataManager.Instance.FieldDescriptionValues.Add(values);
         }
 
-        public byte? DeveloperDataIndex { get { return developerDataIndex; } }
-        public byte? FieldDefinitionNumber { get { return fieldDefinitionNumber; } }
-        public byte? FitBaseTypeId { get { return fitBaseTypeId; } }
-        public string FitBaseType {
-            get {
-                if (fitBaseTypeId != null) {
-                    return FitConvert.GetConstName(typeof(FitBaseType), (byte)fitBaseTypeId);
+        public byte? DeveloperDataIndex { get { return _developerDataIndex; } }
+        public byte? FieldDefinitionNumber { get { return _fieldDefinitionNumber; } }
+        public byte? FitBaseTypeId { get { return _fitBaseTypeId; } }
+        public string FitBaseType
+        {
+            get
+            {
+                if (_fitBaseTypeId != null)
+                {
+                    return FitConvert.GetConstName(typeof(FitBaseType), (byte)_fitBaseTypeId);
                 }
                 return null;
             }
         }
-        public string[] FieldName { get { return fieldName; } }
-        public string[] Units {
-            get {
-                return units;
-            }
-        }
+        public string[] FieldName { get { return _fieldName; } }
+        public string[] Units { get { return _units; } }
     }
 }
