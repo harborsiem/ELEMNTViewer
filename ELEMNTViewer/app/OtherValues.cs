@@ -133,7 +133,7 @@ namespace ELEMNTViewer
         [Category("Distance etc")]
         [DisplayName("Maximum Negative Grade")]
         public float MaxNegGrade { get { return (float)_maxNegGrade; } }
-        [Category("Power")]
+        [Category("Distance etc")]
         [DisplayName("Vam")]
         public float Vam { get { return (float)Math.Round(_vam); } }
         [Category("Power")]
