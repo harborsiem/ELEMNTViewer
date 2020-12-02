@@ -28,6 +28,7 @@ namespace RibbonLib.Controls
             public const uint cmdQAT = 2;
             public const uint cmdButtonSession = 43;
             public const uint cmdButtonLaps = 44;
+            public const uint cmdButtonMap = 62;
             public const uint CmdTabChart = 4;
             public const uint cmdGroupChartSelect = 28;
             public const uint cmdComboSelect = 29;
@@ -65,7 +66,6 @@ namespace RibbonLib.Controls
             public const uint cmdGroupExtras = 39;
             public const uint cmdButtonMyExtras = 49;
             public const uint cmdGroupMaps = 63;
-            public const uint cmdButtonMap = 62;
             public const uint cmdGroupZones = 38;
             public const uint cmdButtonHeartRateZones = 45;
             public const uint cmdButtonPowerZones = 46;
@@ -94,6 +94,7 @@ namespace RibbonLib.Controls
         public RibbonQuickAccessToolbar QAT { get; private set; }
         public RibbonButton ButtonSession { get; private set; }
         public RibbonButton ButtonLaps { get; private set; }
+        public RibbonButton ButtonMap { get; private set; }
         public RibbonTab TabChart { get; private set; }
         public RibbonGroup GroupChartSelect { get; private set; }
         public RibbonComboBox ComboSelect { get; private set; }
@@ -131,7 +132,6 @@ namespace RibbonLib.Controls
         public RibbonGroup GroupExtras { get; private set; }
         public RibbonButton ButtonMyExtras { get; private set; }
         public RibbonGroup GroupMaps { get; private set; }
-        public RibbonButton ButtonMap { get; private set; }
         public RibbonGroup GroupZones { get; private set; }
         public RibbonButton ButtonHeartRateZones { get; private set; }
         public RibbonButton ButtonPowerZones { get; private set; }
@@ -161,6 +161,7 @@ namespace RibbonLib.Controls
             QAT = new RibbonQuickAccessToolbar(ribbon, Cmd.cmdQAT);
             ButtonSession = new RibbonButton(ribbon, Cmd.cmdButtonSession);
             ButtonLaps = new RibbonButton(ribbon, Cmd.cmdButtonLaps);
+            ButtonMap = new RibbonButton(ribbon, Cmd.cmdButtonMap);
             TabChart = new RibbonTab(ribbon, Cmd.CmdTabChart);
             GroupChartSelect = new RibbonGroup(ribbon, Cmd.cmdGroupChartSelect);
             ComboSelect = new RibbonComboBox(ribbon, Cmd.cmdComboSelect);
@@ -198,7 +199,6 @@ namespace RibbonLib.Controls
             GroupExtras = new RibbonGroup(ribbon, Cmd.cmdGroupExtras);
             ButtonMyExtras = new RibbonButton(ribbon, Cmd.cmdButtonMyExtras);
             GroupMaps = new RibbonGroup(ribbon, Cmd.cmdGroupMaps);
-            ButtonMap = new RibbonButton(ribbon, Cmd.cmdButtonMap);
             GroupZones = new RibbonGroup(ribbon, Cmd.cmdGroupZones);
             ButtonHeartRateZones = new RibbonButton(ribbon, Cmd.cmdButtonHeartRateZones);
             ButtonPowerZones = new RibbonButton(ribbon, Cmd.cmdButtonPowerZones);

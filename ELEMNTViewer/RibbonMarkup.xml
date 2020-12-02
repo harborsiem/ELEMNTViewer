@@ -153,6 +153,12 @@
     <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="WahooFF01" TooltipTitle="WahooFF01" />
     <Command Name="cmdButtonSetSettings" Id="64" LabelTitle="Set Settings" TooltipTitle="Set Settings" TooltipDescription="Set the smooth values to a settings file" />
     <Command Name="cmdButtonMap" Id="62" LabelTitle="Route" TooltipTitle="Route on Map" TooltipDescription="Show the route in a map">
+      <Command.SmallImages>
+        <Image>Resources/map_16.bmp</Image>
+        <Image MinDPI="120">Resources/map_20.bmp</Image>
+        <Image MinDPI="144">Resources/map_24.bmp</Image>
+        <Image MinDPI="192">Resources/map_32.bmp</Image>
+      </Command.SmallImages>
       <Command.LargeImages>
         <Image>Resources/map_32.bmp</Image>
         <Image MinDPI="120">Resources/map_40.bmp</Image>
@@ -287,6 +293,7 @@
             <Button CommandName="cmdButtonOpen" ApplicationDefaults.IsChecked="true" />
             <Button CommandName="cmdButtonSession" ApplicationDefaults.IsChecked="true" />
             <Button CommandName="cmdButtonLaps" ApplicationDefaults.IsChecked="false" />
+            <Button CommandName="cmdButtonMap" ApplicationDefaults.IsChecked="true" />
           </QuickAccessToolbar.ApplicationDefaults>
         </QuickAccessToolbar>
       </Ribbon.QuickAccessToolbar>
