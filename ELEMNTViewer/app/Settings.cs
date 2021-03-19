@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Xml;
 using System.Xml.Linq;
+using System.Windows.Forms;
 
 namespace ELEMNTViewer
 {
@@ -21,6 +22,7 @@ namespace ELEMNTViewer
         private Settings()
         {
             _settingsPath = ThisLocalAppData;
+            _appVersion = Application.ProductVersion;
         }
 
         public static string ThisLocalAppData
@@ -55,8 +57,25 @@ namespace ELEMNTViewer
         public bool AltitudeChecked { get; set; }
         public bool GradeChecked { get; set; }
         public bool TemperatureChecked { get; set; }
+        public bool VersionChanged { get; private set; }
+        public int AppWidth { get; set; } = 0;
+        public int AppHeight { get; set; } = 0;
+        public int MapWidth { get; set; } = 0;
+        public int MapHeight { get; set; } = 0;
+        public bool AppSizeWrite { get; set; } = false;
 
         public bool Modified { get => _modified; set => _modified = value; }
+
+        private string _appVersion;
+        private string _settingsVersion;
+
+        private bool HasVersionChanged()
+        {
+            bool result = true;
+            if (_settingsVersion != null)
+                result = _appVersion != _settingsVersion;
+            return result;
+        }
 
         public void Read()
         {
@@ -72,6 +91,9 @@ namespace ELEMNTViewer
                     {
                         switch (ele.Name.LocalName)
                         {
+                            case Attributes.Version:
+                                _settingsVersion = (ele.Value);
+                                break;
                             case Attributes.PowerSmooth:
                                 PowerSmooth = XmlConvert.ToInt32(ele.Value);
                                 break;
@@ -93,12 +115,18 @@ namespace ELEMNTViewer
                             case Attributes.Intern:
                                 Intern = XmlConvert.ToBoolean(ele.Value);
                                 break;
-                            //case Attributes.Width:
-                            //    Width = XmlConvert.ToInt32(ele.Value);
-                            //    break;
-                            //case Attributes.Height:
-                            //    Height = XmlConvert.ToInt32(ele.Value);
-                            //    break;
+                            case Attributes.AppWidth:
+                                AppWidth = XmlConvert.ToInt32(ele.Value);
+                                break;
+                            case Attributes.AppHeight:
+                                AppHeight = XmlConvert.ToInt32(ele.Value);
+                                break;
+                            case Attributes.MapWidth:
+                                MapWidth = XmlConvert.ToInt32(ele.Value);
+                                break;
+                            case Attributes.MapHeight:
+                                MapHeight = XmlConvert.ToInt32(ele.Value);
+                                break;
                             case Attributes.SpeedChecked:
                                 SpeedChecked = XmlConvert.ToBoolean(ele.Value);
                                 break;
@@ -140,6 +168,10 @@ namespace ELEMNTViewer
                     modified = false;
                 }
             }
+            VersionChanged = HasVersionChanged();
+            if (VersionChanged)
+                modified = true;
+
             _modified = modified;
             //MinimumSize(minimumSize);
         }
@@ -229,13 +261,29 @@ namespace ELEMNTViewer
                     writer.WriteString(XmlConvert.ToString(TemperatureChecked));
                     writer.WriteEndElement();
 
-                    //writer.WriteStartElement(Attributes.Width);
-                    //writer.WriteString(XmlConvert.ToString(Width));
-                    //writer.WriteEndElement();
+                    writer.WriteStartElement(Attributes.Version);
+                    writer.WriteString(_appVersion);
+                    writer.WriteEndElement();
 
-                    //writer.WriteStartElement(Attributes.Height);
-                    //writer.WriteString(XmlConvert.ToString(Height));
-                    //writer.WriteEndElement();
+                    if (AppSizeWrite) {
+                        writer.WriteStartElement(Attributes.AppWidth);
+                        writer.WriteString(XmlConvert.ToString(AppWidth));
+                        writer.WriteEndElement();
+
+                        writer.WriteStartElement(Attributes.AppHeight);
+                        writer.WriteString(XmlConvert.ToString(AppHeight));
+                        writer.WriteEndElement();
+
+                        AppSizeWrite = false;
+                    }
+
+                    writer.WriteStartElement(Attributes.MapWidth);
+                    writer.WriteString(XmlConvert.ToString(MapWidth));
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement(Attributes.MapHeight);
+                    writer.WriteString(XmlConvert.ToString(MapHeight));
+                    writer.WriteEndElement();
 
                     if (Intern)
                     {
@@ -276,10 +324,13 @@ namespace ELEMNTViewer
             public const string AltitudeChecked = nameof(AltitudeChecked);
             public const string GradeChecked = nameof(GradeChecked);
             public const string TemperatureChecked = nameof(TemperatureChecked);
+            public const string Version = nameof(Version);
 
             public const string Intern = nameof(Intern);
-            public const string Width = nameof(Width);
-            public const string Height = nameof(Height);
+            public const string AppWidth = nameof(AppWidth);
+            public const string AppHeight = nameof(AppHeight);
+            public const string MapWidth = nameof(MapWidth);
+            public const string MapHeight = nameof(MapHeight);
         }
     }
 }

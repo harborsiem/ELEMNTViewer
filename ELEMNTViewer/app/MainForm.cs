@@ -27,7 +27,12 @@ namespace ELEMNTViewer
             InitializeComponent();
             if (!DesignMode)
                 this.Font = SystemFonts.MessageBoxFont;
-            Settings.Instance.Read();
+            Settings settings = Settings.Instance;
+            settings.Read();
+            if (settings.AppWidth > 0 && settings.AppHeight > 0)
+            {
+                this.Size = new Size(settings.AppWidth, settings.AppHeight);
+            }
             ribbon.RibbonEventException += Ribbon_RibbonEventException;
             _ribbonItems = new RibbonItems(ribbon);
             _ribbonItems.Init(this);

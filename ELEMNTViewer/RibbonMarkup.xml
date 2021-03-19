@@ -16,39 +16,42 @@
     <Command Name="cmdButtonRTorqueEff" Id="14" LabelTitle="Right" TooltipTitle="Right Torque Effectiveness" TooltipDescription="Powermeter: Right Torque Effectiveness" />
     <Command Name="cmdButtonOpen" Id="15" LabelTitle="&amp;Open" TooltipTitle="Fit file" TooltipDescription="Open the Fit file">
       <Command.SmallImages>
-        <Image MinDPI="96">Resources/60009.bmp</Image>
-        <Image MinDPI="120">Resources/60010.bmp</Image>
-        <Image MinDPI="144">Resources/60011.bmp</Image>
-        <Image MinDPI="192">Resources/60012.bmp</Image>
+        <Image MinDPI="96">Resources/OpenFile_16.bmp</Image>
+        <Image MinDPI="120">Resources/OpenFile_20.bmp</Image>
+        <Image MinDPI="144">Resources/OpenFile_24.bmp</Image>
+        <Image MinDPI="192">Resources/OpenFile_32.bmp</Image>
       </Command.SmallImages>
       <Command.LargeImages>
-        <Image MinDPI="96">Resources/60013.bmp</Image>
-        <Image MinDPI="120">Resources/60014.bmp</Image>
-        <Image MinDPI="144">Resources/60015.bmp</Image>
-        <Image MinDPI="192">Resources/60016.bmp</Image>
+        <Image MinDPI="96">Resources/OpenFile_32.bmp</Image>
+        <Image MinDPI="120">Resources/OpenFile_40.bmp</Image>
+        <Image MinDPI="144">Resources/OpenFile_48.bmp</Image>
+        <Image MinDPI="192">Resources/OpenFile_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonSaveGpx" Id="16" LabelTitle="Save as Gpx" TooltipTitle="GPX File" TooltipDescription="Save the session to a *.gpx file" />
-    <Command Name="cmdButtonExit" Id="17" LabelTitle="Exit">
+    <Command Name="cmdButtonSaveGpx" Id="16" LabelTitle="Save as Gpx" TooltipTitle="GPX File" TooltipDescription="Save the session to a *.gpx file">
       <Command.SmallImages>
-        <Image MinDPI="96">Resources/60373.bmp</Image>
-        <Image MinDPI="120">Resources/60374.bmp</Image>
-        <Image MinDPI="144">Resources/60375.bmp</Image>
-        <Image MinDPI="192">Resources/60376.bmp</Image>
+        <Image>Resources/SaveAs_16.bmp</Image>
+        <Image MinDPI="120">Resources/SaveAs_20.bmp</Image>
+        <Image MinDPI="144">Resources/SaveAs_24.bmp</Image>
+        <Image MinDPI="192">Resources/SaveAs_32.bmp</Image>
       </Command.SmallImages>
       <Command.LargeImages>
-        <Image>Resources/60376.bmp</Image>
+        <Image>Resources/SaveAs_32.bmp</Image>
+        <Image MinDPI="120">Resources/SaveAs_40.bmp</Image>
+        <Image MinDPI="144">Resources/SaveAs_48.bmp</Image>
+        <Image MinDPI="192">Resources/SaveAs_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdButtonExit" Id="17" LabelTitle="Exit">
+      <Command.LargeImages>
+        <Image>Resources/Close_32.bmp</Image>
+        <Image MinDPI="120">Resources/Close_40.bmp</Image>
+        <Image MinDPI="144">Resources/Close_48.bmp</Image>
+        <Image MinDPI="192">Resources/Close_64.bmp</Image>
       </Command.LargeImages>
     </Command>
     <Command Name="cmdButtonHelp" Id="18" />
-    <Command Name="cmdButtonHeartRate" Id="19" LabelTitle="HeartRate" TooltipTitle="HeartRate" TooltipDescription="Monitoring Heart rate">
-      <Command.SmallImages>
-        <Image MinDPI="96">Resources/40871.bmp</Image>
-        <Image MinDPI="120">Resources/40872.bmp</Image>
-        <Image MinDPI="144">Resources/40873.bmp</Image>
-        <Image MinDPI="192">Resources/40874.bmp</Image>
-      </Command.SmallImages>
-    </Command>
+    <Command Name="cmdButtonHeartRate" Id="19" LabelTitle="HeartRate" TooltipTitle="HeartRate" TooltipDescription="Monitoring Heart rate" />
     <Command Name="cmdButtonAltitude" Id="20" LabelTitle="Altitude" />
     <Command Name="cmdButtonGrade" Id="21" LabelTitle="Grade" />
     <Command Name="cmdButtonSpeed" Id="22" LabelTitle="Speed" TooltipTitle="Speed" TooltipDescription="Monitoring the speed in km/h" />
@@ -60,10 +63,10 @@
     <Command Name="cmdGroupChartSelect" Id="28" LabelTitle="Select" TooltipDescription="Selection of Session or Laps" />
     <Command Name="cmdComboSelect" Id="29" LabelTitle="Chart" TooltipTitle="Select for Chart" TooltipDescription="Selection of Session or Laps">
       <Command.SmallImages>
-        <Image>Resources/60301.bmp</Image>
-        <Image MinDPI="120">Resources/60302.bmp</Image>
-        <Image MinDPI="144">Resources/60303.bmp</Image>
-        <Image MinDPI="192">Resources/60304.bmp</Image>
+        <Image>Resources/Select_16.bmp</Image>
+        <Image MinDPI="120">Resources/Select_20.bmp</Image>
+        <Image MinDPI="144">Resources/Select_24.bmp</Image>
+        <Image MinDPI="192">Resources/Select_32.bmp</Image>
       </Command.SmallImages>
     </Command>
     <Command Name="cmdComboPower" Id="30" TooltipTitle="Smooth" TooltipDescription="Smoothing of Power" />
@@ -80,24 +83,24 @@
     <Command Name="cmdGroupChartSmoothness" Id="42" LabelTitle="Smoothness" TooltipDescription="Powermeter: Smoothness" />
     <Command Name="cmdButtonSession" Id="43" LabelTitle="Session" TooltipTitle="Summary Session" TooltipDescription="Display all Values of the Session">
       <Command.SmallImages>
-        <Image MinDPI="96">Resources/60313.bmp</Image>
-        <Image MinDPI="120">Resources/60314.bmp</Image>
-        <Image MinDPI="144">Resources/60315.bmp</Image>
-        <Image MinDPI="192">Resources/60316.bmp</Image>
+        <Image MinDPI="96">Resources/Document_16.bmp</Image>
+        <Image MinDPI="120">Resources/Document_20.bmp</Image>
+        <Image MinDPI="144">Resources/Document_24.bmp</Image>
+        <Image MinDPI="192">Resources/Document_32.bmp</Image>
       </Command.SmallImages>
       <Command.LargeImages>
-        <Image MinDPI="96">Resources/60317.bmp</Image>
-        <Image MinDPI="120">Resources/60318.bmp</Image>
-        <Image MinDPI="144">Resources/60319.bmp</Image>
-        <Image MinDPI="192">Resources/60320.bmp</Image>
+        <Image MinDPI="96">Resources/Document_32.bmp</Image>
+        <Image MinDPI="120">Resources/Document_40.bmp</Image>
+        <Image MinDPI="144">Resources/Document_48.bmp</Image>
+        <Image MinDPI="192">Resources/Document_64.bmp</Image>
       </Command.LargeImages>
     </Command>
     <Command Name="cmdButtonLaps" Id="44" LabelTitle="Laps" TooltipTitle="Summary Laps" TooltipDescription="Display all Values of Laps">
       <Command.SmallImages>
-        <Image MinDPI="96">Resources/60337.bmp</Image>
-        <Image MinDPI="120">Resources/60338.bmp</Image>
-        <Image MinDPI="144">Resources/60339.bmp</Image>
-        <Image MinDPI="192">Resources/60340.bmp</Image>
+        <Image MinDPI="96">Resources/Copy_16.bmp</Image>
+        <Image MinDPI="120">Resources/Copy_20.bmp</Image>
+        <Image MinDPI="144">Resources/Copy_24.bmp</Image>
+        <Image MinDPI="192">Resources/Copy_32.bmp</Image>
       </Command.SmallImages>
     </Command>
     <Command Name="cmdButtonHeartRateZones" Id="45" LabelTitle="HeartRate Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined HeartRate Zones">
@@ -110,34 +113,34 @@
         <Image>Resources/Power-48.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdToggleSmooth" Id="47" LabelTitle="Settings" TooltipTitle="Show or hide Settings" TooltipDescription="Configure Smoothness">
+    <Command Name="cmdToggleSmooth" Id="47" LabelTitle="Smooth Settings" TooltipTitle="Show or hide Smoothness" TooltipDescription="Show and configure Smoothness values">
       <Command.SmallImages>
-        <Image>Resources/677.bmp</Image>
-        <Image MinDPI="120">Resources/678.bmp</Image>
-        <Image MinDPI="144">Resources/679.bmp</Image>
-        <Image MinDPI="192">Resources/680.bmp</Image>
+        <Image>Resources/Smooth_16.bmp</Image>
+        <Image MinDPI="120">Resources/Smooth_20.bmp</Image>
+        <Image MinDPI="144">Resources/Smooth_24.bmp</Image>
+        <Image MinDPI="192">Resources/Smooth_32.bmp</Image>
       </Command.SmallImages>
     </Command>
     <Command Name="cmdButtonAbout" Id="48" LabelTitle="About">
       <Command.SmallImages>
-        <Image MinDPI="96">Resources/60201.bmp</Image>
-        <Image MinDPI="120">Resources/60202.bmp</Image>
-        <Image MinDPI="144">Resources/60203.bmp</Image>
-        <Image MinDPI="192">Resources/60204.bmp</Image>
+        <Image MinDPI="96">Resources/Info_16.bmp</Image>
+        <Image MinDPI="120">Resources/Info_20.bmp</Image>
+        <Image MinDPI="144">Resources/Info_24.bmp</Image>
+        <Image MinDPI="192">Resources/Info_32.bmp</Image>
       </Command.SmallImages>
       <Command.LargeImages>
-        <Image MinDPI="96">Resources/60205.bmp</Image>
-        <Image MinDPI="120">Resources/60206.bmp</Image>
-        <Image MinDPI="144">Resources/60207.bmp</Image>
-        <Image MinDPI="192">Resources/60208.bmp</Image>
+        <Image MinDPI="96">Resources/Info_32.bmp</Image>
+        <Image MinDPI="120">Resources/Info_40.bmp</Image>
+        <Image MinDPI="144">Resources/Info_48.bmp</Image>
+        <Image MinDPI="192">Resources/Info_64.bmp</Image>
       </Command.LargeImages>
     </Command>
     <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Session Extras" TooltipTitle="Session Extras" TooltipDescription="Some self calculated values from the session records, because Wahoo values are wrong">
       <Command.LargeImages>
-        <Image>Resources/60317.bmp</Image>
-        <Image MinDPI="120">Resources/60318.bmp</Image>
-        <Image MinDPI="144">Resources/60319.bmp</Image>
-        <Image MinDPI="192">Resources/60320.bmp</Image>
+        <Image>Resources/Document_32.bmp</Image>
+        <Image MinDPI="120">Resources/Document_40.bmp</Image>
+        <Image MinDPI="144">Resources/Document_48.bmp</Image>
+        <Image MinDPI="192">Resources/Document_64.bmp</Image>
       </Command.LargeImages>
     </Command>
     <Command Name="cmdGroupIntern" Id="50" LabelTitle="Internals" />
@@ -151,7 +154,14 @@
     <Command Name="cmdButtonWorkout" Id="59" LabelTitle="Workout" TooltipTitle="Workout" />
     <Command Name="cmdButtonWahooFF00" Id="60" LabelTitle="WahooFF00" TooltipTitle="WahooFF00" />
     <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="WahooFF01" TooltipTitle="WahooFF01" />
-    <Command Name="cmdButtonSetSettings" Id="64" LabelTitle="Set Settings" TooltipTitle="Set Settings" TooltipDescription="Set the smooth values to a settings file" />
+    <Command Name="cmdButtonSaveSettings" Id="64" LabelTitle="Save Settings" TooltipTitle="Save Settings" TooltipDescription="Save the state of the CheckBoxes and Smooth values in the Chart Tab, current App size and Map size to a settings file">
+      <Command.LargeImages>
+        <Image>Resources/SaveFile_32.bmp</Image>
+        <Image MinDPI="120">Resources/SaveFile_40.bmp</Image>
+        <Image MinDPI="144">Resources/SaveFile_48.bmp</Image>
+        <Image MinDPI="192">Resources/SaveFile_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
     <Command Name="cmdButtonMap" Id="62" LabelTitle="Route" TooltipTitle="Route on Map" TooltipDescription="Show the route in a map">
       <Command.SmallImages>
         <Image>Resources/map_16.bmp</Image>
@@ -167,6 +177,31 @@
       </Command.LargeImages>
     </Command>
     <Command Name="cmdGroupMaps" Id="63" LabelTitle="Maps" />
+    <Command Name="cmdHidden1" Id="65" />
+    <Command Name="cmdHidden2" Id="66" />
+    <Command Name="cmdTabSettings" Id="67" LabelTitle="Settings" />
+    <Command Name="cmdGroupSettings" Id="68" LabelTitle="Save">
+      <Command.LargeImages>
+        <Image>Resources/Settings_32.bmp</Image>
+        <Image MinDPI="120">Resources/Settings_40.bmp</Image>
+        <Image MinDPI="144">Resources/Settings_48.bmp</Image>
+        <Image MinDPI="192">Resources/Settings_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdTabGroupSettings" Id="69" LabelTitle="Settings" />
+    <Command Name="cmdToggleSettings" Id="70" LabelTitle="Settings" TooltipTitle="Show or hide Settings">
+      <Command.SmallImages>
+        <Image>Resources/Settings_16.bmp</Image>
+        <Image MinDPI="120">Resources/Settings_20.bmp</Image>
+        <Image MinDPI="144">Resources/Settings_24.bmp</Image>
+        <Image MinDPI="192">Resources/Settings_32.bmp</Image>
+      </Command.SmallImages>
+    </Command>
+    <Command Name="cmdSpinnerMapWidth" Id="71" LabelTitle="Width" TooltipTitle="Map Width" TooltipDescription="The value is the default Width for the Map" />
+    <Command Name="cmdSpinnerMapHeight" Id="72" LabelTitle="Height" TooltipTitle="Map Height" TooltipDescription="The value is the default Height for the Map" />
+    <Command Name="cmdGroupMapControl" Id="73" LabelTitle="Map Control" />
+    <Command Name="cmdGroupApp" Id="74" LabelTitle="App" />
+    <Command Name="cmdCheckCurrentAppSize" Id="75" LabelTitle="App Size" TooltipTitle="Current App Size" TooltipDescription="Saves the current Application size as default if checked" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -197,6 +232,7 @@
           <ControlNameMap>
             <ControlNameDefinition Name="b1" />
             <ControlNameDefinition Name="b2" />
+            <ControlNameDefinition Name="h2" />
           </ControlNameMap>
           <GroupSizeDefinition Size="Large">
             <Row>
@@ -204,6 +240,9 @@
             </Row>
             <Row>
               <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h2" />
             </Row>
           </GroupSizeDefinition>
           <GroupSizeDefinition Size="Medium">
@@ -213,6 +252,9 @@
             <Row>
               <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
             </Row>
+            <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h2" />
+            </Row>
           </GroupSizeDefinition>
           <GroupSizeDefinition Size="Small">
             <Row>
@@ -220,6 +262,9 @@
             </Row>
             <Row>
               <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h2" />
             </Row>
           </GroupSizeDefinition>
         </SizeDefinition>
@@ -229,6 +274,7 @@
             <ControlNameDefinition Name="b1" />
             <ControlNameDefinition Name="c2" />
             <ControlNameDefinition Name="b2" />
+            <ControlNameDefinition Name="h1" />
           </ControlNameMap>
           <GroupSizeDefinition Size="Large">
             <Row>
@@ -238,6 +284,9 @@
             <Row>
               <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="c2" />
               <ControlSizeDefinition IsImageVisible="false" ControlName="b2" />
+            </Row>
+            <Row>
+              <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h1" />
             </Row>
           </GroupSizeDefinition>
         </SizeDefinition>
@@ -279,7 +328,7 @@
           <MenuGroup>
             <Button CommandName="cmdButtonAbout" />
           </MenuGroup>
-          <MenuGroup Class="StandardItems">
+          <MenuGroup>
             <Button CommandName="cmdButtonExit" />
           </MenuGroup>
         </ApplicationMenu>
@@ -294,9 +343,39 @@
             <Button CommandName="cmdButtonSession" ApplicationDefaults.IsChecked="true" />
             <Button CommandName="cmdButtonLaps" ApplicationDefaults.IsChecked="false" />
             <Button CommandName="cmdButtonMap" ApplicationDefaults.IsChecked="true" />
+            <ToggleButton CommandName="cmdToggleSettings" ApplicationDefaults.IsChecked="true" />
           </QuickAccessToolbar.ApplicationDefaults>
         </QuickAccessToolbar>
       </Ribbon.QuickAccessToolbar>
+      <Ribbon.ContextualTabs>
+        <TabGroup CommandName="cmdTabGroupSettings">
+          <Tab CommandName="cmdTabSettings">
+            <Group CommandName="cmdGroupApp">
+              <CheckBox CommandName="cmdCheckCurrentAppSize" />
+            </Group>
+            <Group CommandName="cmdGroupMapControl">
+              <SizeDefinition>
+                <ControlNameMap>
+                  <ControlNameDefinition Name="s1" />
+                  <ControlNameDefinition Name="s2" />
+                  <ControlNameDefinition Name="h1" />
+                </ControlNameMap>
+                <GroupSizeDefinition Size="Large">
+                  <ControlSizeDefinition IsImageVisible="false" ControlName="s1" />
+                  <ControlSizeDefinition IsImageVisible="false" ControlName="s2" />
+                  <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h1" />
+                </GroupSizeDefinition>
+              </SizeDefinition>
+              <Spinner CommandName="cmdSpinnerMapWidth" />
+              <Spinner CommandName="cmdSpinnerMapHeight" />
+              <Button CommandName="cmdHidden1" />
+            </Group>
+            <Group CommandName="cmdGroupSettings" SizeDefinition="OneButton">
+              <Button CommandName="cmdButtonSaveSettings" />
+            </Group>
+          </Tab>
+        </TabGroup>
+      </Ribbon.ContextualTabs>
       <Ribbon.Tabs>
         <Tab CommandName="CmdTabChart">
           <Tab.ScalingPolicy>
@@ -315,7 +394,6 @@
           <Group CommandName="cmdGroupChartSelect">
             <ComboBox CommandName="cmdComboSelect" IsEditable="false" />
             <ToggleButton CommandName="cmdToggleSmooth" />
-            <Button CommandName="cmdButtonSetSettings" />
           </Group>
           <Group CommandName="cmdGroupChartSpeed">
             <CheckBox CommandName="cmdButtonSpeed" />
@@ -336,22 +414,26 @@
           <Group CommandName="cmdGroupChartEffectiveness" ApplicationModes="1" SizeDefinition="LeftRight">
             <CheckBox CommandName="cmdButtonLTorqueEff" />
             <CheckBox CommandName="cmdButtonRTorqueEff" />
+            <Button CommandName="cmdHidden1" />
           </Group>
           <Group CommandName="cmdGroupChartEffectiveness1" ApplicationModes="2" SizeDefinition="ComboLeftRight">
             <ComboBox CommandName="cmdComboLTorque" IsEditable="false" />
             <CheckBox CommandName="cmdButtonLTorqueEff" />
             <ComboBox CommandName="cmdComboRTorque" IsEditable="false" />
             <CheckBox CommandName="cmdButtonRTorqueEff" />
+            <Button CommandName="cmdHidden1" />
           </Group>
           <Group CommandName="cmdGroupChartSmoothness" ApplicationModes="1" SizeDefinition="LeftRight">
             <CheckBox CommandName="cmdButtonLSmoothness" />
             <CheckBox CommandName="cmdButtonRSmoothness" />
+            <Button CommandName="cmdHidden1" />
           </Group>
           <Group CommandName="cmdGroupChartSmoothness1" ApplicationModes="2" SizeDefinition="ComboLeftRight">
             <ComboBox CommandName="cmdComboLSmoothness" IsEditable="false" />
             <CheckBox CommandName="cmdButtonLSmoothness" />
             <ComboBox CommandName="cmdComboRSmoothness" IsEditable="false" />
             <CheckBox CommandName="cmdButtonRSmoothness" />
+            <Button CommandName="cmdHidden1" />
           </Group>
           <Group CommandName="cmdGroupChartClimbing">
             <CheckBox CommandName="cmdButtonAltitude" />
@@ -394,8 +476,10 @@
                 <ControlNameDefinition Name="b6" />
                 <ControlNameDefinition Name="b7" />
                 <ControlNameDefinition Name="b8" />
+                <ControlNameDefinition Name="h1" />
                 <ControlNameDefinition Name="b9" />
                 <ControlNameDefinition Name="b10" />
+                <ControlNameDefinition Name="h2" />
               </ControlNameMap>
               <GroupSizeDefinition Size="Large">
                 <ControlSizeDefinition IsImageVisible="false" ControlName="b1" />
@@ -408,9 +492,11 @@
                 <ColumnBreak ShowSeparator="false" />
                 <ControlSizeDefinition IsImageVisible="false" ControlName="b7" />
                 <ControlSizeDefinition IsImageVisible="false" ControlName="b8" />
+                <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h1" />
                 <ColumnBreak ShowSeparator="false" />
                 <ControlSizeDefinition IsImageVisible="false" ControlName="b9" />
                 <ControlSizeDefinition IsImageVisible="false" ControlName="b10" />
+                <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h2" />
               </GroupSizeDefinition>
             </SizeDefinition>
             <Button CommandName="cmdButtonActivity" />
@@ -421,8 +507,10 @@
             <Button CommandName="cmdButtonFileId" />
             <Button CommandName="cmdButtonSport" />
             <Button CommandName="cmdButtonWorkout" />
+            <Button CommandName="cmdHidden1" />
             <Button CommandName="cmdButtonWahooFF00" />
             <Button CommandName="cmdButtonWahooFF01" />
+            <Button CommandName="cmdHidden2" />
           </Group>
         </Tab>
       </Ribbon.Tabs>

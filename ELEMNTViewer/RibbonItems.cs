@@ -18,7 +18,17 @@ namespace RibbonLib.Controls
 {
     partial class RibbonItems
     {
+        public enum SmoothValues
+        {
+            None,
+            Three = 3,
+            Ten = 10,
+            Fifteen = 15,
+            Thirty = 30,
+        }
+
         const string ComboSize = "XXXX";
+        private static readonly string[] s_smooth = { "0", "3", "10", "15", "30" };
         private MainForm _form;
         private bool _toggleSmooth;
         private string _fileName;
@@ -35,211 +45,20 @@ namespace RibbonLib.Controls
         public void Init(MainForm form)
         {
             this._form = form;
-            ButtonSession.Enabled = false;
-            ButtonLaps.Enabled = false;
-            ToolStripMenuItems(false);
-            ComboSelect.RepresentativeString = "Select" + ComboSize;
-            ComboPower.RepresentativeString = ComboSize;
-            ComboLRBalance.RepresentativeString = ComboSize;
-            ComboLSmoothness.RepresentativeString = ComboSize;
-            ComboRSmoothness.RepresentativeString = ComboSize;
-            ComboLTorque.RepresentativeString = ComboSize;
-            ComboRTorque.RepresentativeString = ComboSize;
-            ButtonAbout.ExecuteEvent += ButtonAbout_ExecuteEvent;
-            ButtonHelp.ExecuteEvent += ButtonAbout_ExecuteEvent;
-            ToggleSmooth.ExecuteEvent += ToggleSmooth_ExecuteEvent;
-            ButtonOpen.ExecuteEvent += ButtonOpen_ExecuteEvent;
-            ButtonSaveGpx.ExecuteEvent += ButtonSaveGpx_ExecuteEvent;
-            ButtonExit.ExecuteEvent += ButtonExit_ExecuteEvent;
-            ButtonSession.ExecuteEvent += ButtonSession_ExecuteEvent;
-            ButtonLaps.ExecuteEvent += ButtonLaps_ExecuteEvent;
-            ButtonMyExtras.ExecuteEvent += ButtonMyExtras_ExecuteEvent;
-            ButtonHeartRateZones.ExecuteEvent += ButtonHeartRateZones_ExecuteEvent;
-            ButtonPowerZones.ExecuteEvent += ButtonPowerZones_ExecuteEvent;
+            Hidden1.Enabled = false;
+            Hidden2.Enabled = false;
+            SetMapItems(false);
+            InitChart();
+            InitApplication();
+            InitViewEvents();
+            InitInternalsEvents();
+            InitChartSmooth();
 
-            ButtonActivity.ExecuteEvent += ButtonActivity_ExecuteEvent;
-            ButtonDeveloperDataId.ExecuteEvent += ButtonDeveloperDataId_ExecuteEvent;
-            ButtonDeviceInfo.ExecuteEvent += ButtonDeviceInfo_ExecuteEvent;
-            ButtonEvent.ExecuteEvent += ButtonEvent_ExecuteEvent;
-            ButtonFieldDescription.ExecuteEvent += ButtonFieldDescription_ExecuteEvent;
-            ButtonFileId.ExecuteEvent += ButtonFileId_ExecuteEvent;
-            ButtonSport.ExecuteEvent += ButtonSport_ExecuteEvent;
-            ButtonWahooFF00.ExecuteEvent += ButtonWahooFF00_ExecuteEvent;
-            ButtonWahooFF01.ExecuteEvent += ButtonWahooFF01_ExecuteEvent;
-            ButtonWorkout.ExecuteEvent += ButtonWorkout_ExecuteEvent;
+            InitSettings();
 
-            ComboPower.ItemsSourceReady += Combo_ItemsSourceReady;
-            ComboLRBalance.ItemsSourceReady += Combo_ItemsSourceReady;
-            ComboLSmoothness.ItemsSourceReady += Combo_ItemsSourceReady;
-            ComboRSmoothness.ItemsSourceReady += Combo_ItemsSourceReady;
-            ComboLTorque.ItemsSourceReady += Combo_ItemsSourceReady;
-            ComboRTorque.ItemsSourceReady += Combo_ItemsSourceReady;
-            _uiCollectionChangedEvent = new UICollectionChangedEvent();
-            ComboSelect.ExecuteEvent += CheckBoxTag.LapChanged;
-            ComboPower.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboLRBalance.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboLSmoothness.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboRSmoothness.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboLTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboRTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ButtonSetSettings.ExecuteEvent += ButtonSetSettings_ExecuteEvent;
-            ButtonMap.ExecuteEvent += ButtonMap_ExecuteEvent;
-            Ribbon.ViewCreated += Ribbon_ViewCreated;
-            Ribbon.ViewDestroy += Ribbon_ViewDestroy;
-            //ComboSelect.ItemsSourceReady += ComboSelect_ItemsSourceReady;
+            SetQatEvents();
             MakeCheckControls();
             GetCheckedSettings();
-        }
-
-        private void ButtonMap_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            MapControl.LocationCollection locations = new MapControl.LocationCollection();
-            List<ViewModel.PointItem> pointItems = new List<ViewModel.PointItem>();
-            MapControl.Location mapCenter = null;
-            double distanceStart = 0;
-            List<RecordValues> list = DataManager.Instance.RecordList;
-            for (int i = 0; i < list.Count; i++)
-            {
-                double latitude = list[i].PositionLat;
-                double longitude = list[i].PositionLong;
-                double distance = list[i].Distance;
-                MapControl.Location location = new MapControl.Location(latitude, longitude);
-                if (mapCenter == null && latitude != 0)
-                {
-                    mapCenter = location;
-                    pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
-                    distanceStart += 5;
-                }
-                if (mapCenter != null && latitude != 0)
-                {
-                    locations.Add(location);
-                    if (distance >= distanceStart)
-                    {
-                        pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
-                        distanceStart += 5;
-                    }
-                }
-            }
-            WpfMaps.MapHandler handler = new WpfMaps.MapHandler();
-            handler.SetLocations(mapCenter, locations, pointItems);
-            handler.ShowDialog();
-        }
-
-        private string GetQatSettingsFileName()
-        {
-            string path = Settings.ThisLocalAppData;
-            return Path.Combine(path, "Qat.xml");
-        }
-
-        private void Ribbon_ViewCreated(object sender, EventArgs e)
-        {
-            string fileName = GetQatSettingsFileName();
-            if (File.Exists(fileName))
-            {
-                Stream stream = File.OpenRead(fileName);
-                _loadedQatSettings = new byte[stream.Length];
-                stream.Read(_loadedQatSettings, 0, _loadedQatSettings.Length);
-                stream.Position = 0;
-                Ribbon.LoadSettingsFromStream(stream);
-                stream.Close();
-            }
-        }
-
-        private bool EqualSettings(MemoryStream stream)
-        {
-            if (_loadedQatSettings == null || stream.Length != _loadedQatSettings.Length)
-                return false;
-            byte[] buffer = stream.GetBuffer();
-            for (int i = 0; i < buffer.Length; i++)
-                if (_loadedQatSettings[i] != buffer[i])
-                    return false;
-            return true;
-        }
-
-        private void Ribbon_ViewDestroy(object sender, EventArgs e)
-        {
-            MemoryStream stream = new MemoryStream();
-            Ribbon.SaveSettingsToStream(stream);
-            stream.Position = 0;
-            if (!EqualSettings(stream))
-            {
-                string fileName = GetQatSettingsFileName();
-                FileStream fStream = File.Create(fileName);
-                stream.CopyTo(fStream);
-                fStream.Close();
-            }
-            stream.Close();
-        }
-
-        private void GetCheckedSettings()
-        {
-            Settings settings = Settings.Instance;
-            ButtonSpeed.BooleanValue = settings.SpeedChecked;
-            ButtonCadence.BooleanValue = settings.CadenceChecked;
-            ButtonPower.BooleanValue = settings.PowerChecked;
-            ButtonLRBalance.BooleanValue = settings.LRBalanceChecked;
-            ButtonHeartRate.BooleanValue = settings.HeartRateChecked;
-            ButtonLTorqueEff.BooleanValue = settings.LTorqueChecked;
-            ButtonRTorqueEff.BooleanValue = settings.RTorqueChecked;
-            ButtonLSmoothness.BooleanValue = settings.LSmoothChecked;
-            ButtonRSmoothness.BooleanValue = settings.RSmoothChecked;
-            ButtonAltitude.BooleanValue = settings.AltitudeChecked;
-            ButtonGrade.BooleanValue = settings.GradeChecked;
-            ButtonTemperature.BooleanValue = settings.TemperatureChecked;
-        }
-
-        private void ButtonSetSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            Settings settings = Settings.Instance;
-            settings.SpeedChecked = ButtonSpeed.BooleanValue;
-            settings.CadenceChecked = ButtonCadence.BooleanValue;
-            settings.PowerChecked = ButtonPower.BooleanValue;
-            settings.LRBalanceChecked = ButtonLRBalance.BooleanValue;
-            settings.HeartRateChecked = ButtonHeartRate.BooleanValue;
-            settings.LTorqueChecked = ButtonLTorqueEff.BooleanValue;
-            settings.RTorqueChecked = ButtonRTorqueEff.BooleanValue;
-            settings.LSmoothChecked = ButtonLSmoothness.BooleanValue;
-            settings.RSmoothChecked = ButtonRSmoothness.BooleanValue;
-            settings.AltitudeChecked = ButtonAltitude.BooleanValue;
-            settings.GradeChecked = ButtonGrade.BooleanValue;
-            settings.TemperatureChecked = ButtonTemperature.BooleanValue;
-
-            Settings.Instance.Modified = true;
-        }
-
-        private void ComboSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            Settings settings = Settings.Instance;
-            RibbonComboBox combo = sender as RibbonComboBox;
-            switch (combo.CommandID)
-            {
-                case Cmd.cmdComboPower:
-                    settings.PowerSmooth = int.Parse(combo.StringValue);
-                    //_modifiedSettings = true;
-                    break;
-                case Cmd.cmdComboLRBalance:
-                    settings.LRBalanceSmooth = int.Parse(combo.StringValue);
-                    //_modifiedSettings = true;
-                    break;
-                case Cmd.cmdComboLTorque:
-                    settings.TorqueLeftSmooth = int.Parse(combo.StringValue);
-                    //_modifiedSettings = true;
-                    break;
-                case Cmd.cmdComboRTorque:
-                    settings.TorqueRightSmooth = int.Parse(combo.StringValue);
-                    //_modifiedSettings = true;
-                    break;
-                case Cmd.cmdComboLSmoothness:
-                    settings.SmoothnessLeftSmooth = int.Parse(combo.StringValue);
-                    //_modifiedSettings = true;
-                    break;
-                case Cmd.cmdComboRSmoothness:
-                    settings.SmoothnessRightSmooth = int.Parse(combo.StringValue);
-                    //_modifiedSettings = true;
-                    break;
-                default:
-                    break;
-            }
         }
 
         /// <summary>
@@ -247,127 +66,63 @@ namespace RibbonLib.Controls
         /// </summary>
         public void Load()
         {
-            byte[] modes;
-            if (Settings.Instance.Intern)
-                modes = new byte[] { 0, 1, 3 };
-            else
-                modes = new byte[] { 0, 1 };
-            Ribbon.SetModes(modes);
+            SetMapItems(true);
+            InitModes();
+            GetMapSettings();
         }
 
-        private void ButtonOpen_ExecuteEvent(object sender, ExecuteEventArgs e)
+        #region Chart Smooth
+
+        private void InitChartSmooth()
         {
-            OpenFitFile();
+            ComboPower.RepresentativeString = ComboSize;
+            ComboLRBalance.RepresentativeString = ComboSize;
+            ComboLSmoothness.RepresentativeString = ComboSize;
+            ComboRSmoothness.RepresentativeString = ComboSize;
+            ComboLTorque.RepresentativeString = ComboSize;
+            ComboRTorque.RepresentativeString = ComboSize;
+
+            ToggleSmooth.ExecuteEvent += ToggleSmooth_ExecuteEvent;
+            ComboPower.ItemsSourceReady += Combo_ItemsSourceReady;
+            ComboLRBalance.ItemsSourceReady += Combo_ItemsSourceReady;
+            ComboLSmoothness.ItemsSourceReady += Combo_ItemsSourceReady;
+            ComboRSmoothness.ItemsSourceReady += Combo_ItemsSourceReady;
+            ComboLTorque.ItemsSourceReady += Combo_ItemsSourceReady;
+            ComboRTorque.ItemsSourceReady += Combo_ItemsSourceReady;
+            _uiCollectionChangedEvent = new UICollectionChangedEvent();
+            ComboPower.ExecuteEvent += ComboSettings_ExecuteEvent;
+            ComboLRBalance.ExecuteEvent += ComboSettings_ExecuteEvent;
+            ComboLSmoothness.ExecuteEvent += ComboSettings_ExecuteEvent;
+            ComboRSmoothness.ExecuteEvent += ComboSettings_ExecuteEvent;
+            ComboLTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
+            ComboRTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
         }
 
-        private void OpenFitFile()
+        private void ToggleSmooth_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            ButtonSession.Enabled = false;
-            ButtonLaps.Enabled = false;
-            ToolStripMenuItems(false);
-            DataManager.Instance.Clear();
-            MakeComboItems();
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.CheckFileExists = true;
-            dialog.CheckPathExists = true;
-            dialog.DefaultExt = "fit";
-            dialog.Filter = "ELEMNT Fit-File" + " (*.fit)|*.fit";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-                _form.Cursor = Cursors.WaitCursor;
-                _form._chartHelp.ResetZoom();
-                _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
-                _fileName = dialog.FileName;
-                _decodeFile = new DecodeFile();
-                _decodeFile.Decode(_fileName);
-                if (DataManager.Instance.Session != null)
+                byte[] modes;
+                if (_toggleSmooth)
                 {
-                    ButtonSession.Enabled = true;
+                    if (Settings.Instance.Intern)
+                        modes = new byte[] { 0, 1, 3 };
+                    else
+                        modes = new byte[] { 0, 1 };
                 }
-                if (DataManager.Instance.LapManager.Count > 0)
+                else
                 {
-                    ButtonLaps.Enabled = true;
+                    if (Settings.Instance.Intern)
+                        modes = new byte[] { 0, 2, 3 };
+                    else
+                        modes = new byte[] { 0, 2 };
                 }
-                ToolStripMenuItems(true);
-                CheckBoxTag.SetDateTime(DataManager.Instance.RecordList[0].Timestamp, DataManager.Instance.RecordList[DataManager.Instance.RecordList.Count - 1].Timestamp);
-                MakeComboItems();
-                CheckBoxTag.SetToSession(); //@ Todo: Refactoring
-                _form.Cursor = Cursors.Default;
-                DataManager.Instance.FillChart();
+                _toggleSmooth = !_toggleSmooth;
+                Ribbon.SetModes(modes);
             }
-            else
+            catch
             {
-                _form.Text = MainForm.MainFormText;
             }
-        }
-
-        private void ToolStripMenuItems(bool enabled)
-        {
-            ButtonSaveGpx.Enabled = enabled;
-            ButtonHeartRateZones.Enabled = enabled;
-            ButtonPowerZones.Enabled = enabled;
-            ButtonMyExtras.Enabled = enabled;
-
-            ButtonActivity.Enabled = enabled;
-            ButtonDeveloperDataId.Enabled = enabled;
-            ButtonDeviceInfo.Enabled = enabled;
-            ButtonEvent.Enabled = enabled;
-            ButtonFieldDescription.Enabled = enabled;
-            ButtonFileId.Enabled = enabled;
-            ButtonSport.Enabled = enabled;
-            ButtonWahooFF00.Enabled = enabled;
-            ButtonWahooFF01.Enabled = enabled;
-            ButtonWorkout.Enabled = enabled;
-            ButtonMap.Enabled = enabled;
-        }
-
-        private void MakeComboItems()
-        {
-            IUICollection itemsSource = ComboSelect.ItemsSource;
-            if (DataManager.Instance.Session == null)
-            {
-                ComboSelect.SelectedItem = Constants.UI_Collection_InvalidIndex;
-                itemsSource.Clear();
-                return;
-            }
-            itemsSource.Add(new GalleryItemPropertySet() { Label = "Session", CategoryID = Constants.UI_Collection_InvalidIndex });
-            if (DataManager.Instance.LapManager.Count > 1)
-            {
-                for (int i = 0; i < DataManager.Instance.LapManager.Count; i++)
-                {
-                    itemsSource.Add(new GalleryItemPropertySet() { Label = "Lap " + (i + 1).ToString(), CategoryID = Constants.UI_Collection_InvalidIndex });
-                }
-            }
-            ComboSelect.SelectedItem = 0;
-        }
-
-        private void ButtonSaveGpx_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            SaveFileDialog dialog = new SaveFileDialog();
-            dialog.CheckPathExists = true;
-            dialog.DefaultExt = "gpx";
-            dialog.Filter = "GPS-File" + " (*.gpx)|*.gpx";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
-            {
-                DataManager.Instance.RecordManager.WriteGpx(new FileInfo(dialog.FileName), Path.GetFileNameWithoutExtension(_fileName));
-            }
-        }
-
-        private void ButtonAbout_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            AboutDialog dialog = new AboutDialog();
-            dialog.ShowDialog(_form);
-        }
-
-        private void ButtonExit_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            System.Windows.Forms.Application.Exit();
-        }
-
-        private void ComboSelect_ItemsSourceReady(object sender, EventArgs e)
-        {
-            IUICollection itemsSource1 = ComboSelect.ItemsSource;
-            itemsSource1.Clear();
         }
 
         private void Combo_ItemsSourceReady(object sender, EventArgs e)
@@ -430,89 +185,45 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonSession_ExecuteEvent(object sender, ExecuteEventArgs e)
+        #endregion
+
+        #region Chart
+
+        private void InitChart()
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObjects = null;
-            dialog.SelectedObject = DataManager.Instance.Session;
-            dialog.Header = "Session";
-            dialog.Grid.PropertySort = PropertySort.Categorized;
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
-            {
-            }
+            ButtonSession.Enabled = false;
+            ButtonLaps.Enabled = false;
+            ToolStripMenuItems(false);
+            ComboSelect.RepresentativeString = "Select" + ComboSize;
+            //ComboSelect.ItemsSourceReady += ComboSelect_ItemsSourceReady;
+            ComboSelect.ExecuteEvent += CheckBoxTag.LapChanged;
         }
 
-        private void ButtonLaps_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ComboSelect_ItemsSourceReady(object sender, EventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.LapManager.LapArray();
-            dialog.Header = "Laps";
-            dialog.Grid.PropertySort = PropertySort.Categorized;
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
-            {
-
-            }
+            IUICollection itemsSource1 = ComboSelect.ItemsSource;
+            itemsSource1.Clear();
         }
 
-        private void ButtonHeartRateZones_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void MakeComboItems()
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObjects = null;
-            dialog.SelectedObject = DataManager.Instance.HRManager.GetHeartRateZones();
-            dialog.Header = "HeartRate Zones";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            IUICollection itemsSource = ComboSelect.ItemsSource;
+            if (DataManager.Instance.Session == null)
             {
-
+                ComboSelect.SelectedItem = Constants.UI_Collection_InvalidIndex;
+                itemsSource.Clear();
+                return;
             }
+            itemsSource.Add(new GalleryItemPropertySet() { Label = "Session", CategoryID = Constants.UI_Collection_InvalidIndex });
+            if (DataManager.Instance.LapManager.Count > 1)
+            {
+                for (int i = 0; i < DataManager.Instance.LapManager.Count; i++)
+                {
+                    itemsSource.Add(new GalleryItemPropertySet() { Label = "Lap " + (i + 1).ToString(), CategoryID = Constants.UI_Collection_InvalidIndex });
+                }
+            }
+            ComboSelect.SelectedItem = 0;
         }
-
-        private void ButtonPowerZones_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObjects = null;
-            dialog.SelectedObject = DataManager.Instance.PowerManager.GetPowerZones();
-            dialog.Header = "Power Zones";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
-            {
-
-            }
-        }
-
-        private void ButtonMyExtras_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObjects = null;
-            dialog.SelectedObject = DataManager.Instance.SessionExtras;
-            dialog.Grid.PropertySort = PropertySort.Categorized;
-            dialog.Header = "Session Extras";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
-            {
-
-            }
-        }
-
-        private void ToggleSmooth_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            byte[] modes;
-            if (_toggleSmooth)
-            {
-                if (Settings.Instance.Intern)
-                    modes = new byte[] { 0, 1, 3 };
-                else
-                    modes = new byte[] { 0, 1 };
-            }
-            else
-            {
-                if (Settings.Instance.Intern)
-                    modes = new byte[] { 0, 2, 3 };
-                else
-                    modes = new byte[] { 0, 2 };
-            }
-            _toggleSmooth = !_toggleSmooth;
-            Ribbon.SetModes(modes);
-        }
-
 
         private void MakeCheckControls()
         {
@@ -581,126 +292,686 @@ namespace RibbonLib.Controls
             return result;
         }
 
+        #endregion
+
+        #region Map
+
+        private void SetMapItems(bool isInLoad)
+        {
+            if (isInLoad)
+            {
+                SpinnerMapWidth.DecimalPlaces = 0;
+                SpinnerMapWidth.MinValue = 1000;
+                SpinnerMapWidth.MaxValue = Screen.PrimaryScreen.WorkingArea.Width;
+                SpinnerMapHeight.DecimalPlaces = 0;
+                SpinnerMapHeight.MinValue = 750;
+                SpinnerMapHeight.MaxValue = Screen.PrimaryScreen.WorkingArea.Height;
+            }
+            else
+            {
+                SpinnerMapWidth.RepresentativeString = "xxxxxxx";
+                SpinnerMapHeight.RepresentativeString = "xxxxxxx";
+                ButtonMap.ExecuteEvent += ButtonMap_ExecuteEvent;
+            }
+        }
+
+        private void ButtonMap_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                MapControl.LocationCollection locations = new MapControl.LocationCollection();
+                List<ViewModel.PointItem> pointItems = new List<ViewModel.PointItem>();
+                MapControl.Location mapCenter = null;
+                double distanceStart = 0;
+                List<RecordValues> list = DataManager.Instance.RecordList;
+                for (int i = 0; i < list.Count; i++)
+                {
+                    double latitude = list[i].PositionLat;
+                    double longitude = list[i].PositionLong;
+                    double distance = list[i].Distance;
+                    MapControl.Location location = new MapControl.Location(latitude, longitude);
+                    if (mapCenter == null && latitude != 0)
+                    {
+                        mapCenter = location;
+                        pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                        distanceStart += 5;
+                    }
+                    if (mapCenter != null && latitude != 0)
+                    {
+                        locations.Add(location);
+                        if (distance >= distanceStart)
+                        {
+                            pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                            distanceStart += 5;
+                        }
+                    }
+                }
+                WpfMaps.MapHandler handler = new WpfMaps.MapHandler((int)SpinnerMapWidth.DecimalValue, (int)SpinnerMapHeight.DecimalValue);
+                handler.SetLocations(mapCenter, locations, pointItems);
+                handler.ShowDialog();
+            }
+            catch
+            {
+            }
+        }
+
+        #endregion
+
+        #region QAT Settings
+
+        private void SetQatEvents()
+        {
+            Ribbon.ViewCreated += Ribbon_ViewCreated;
+            Ribbon.ViewDestroy += Ribbon_ViewDestroy;
+        }
+
+        private string GetQatSettingsFileName()
+        {
+            string path = Settings.ThisLocalAppData;
+            return Path.Combine(path, "Qat.xml");
+        }
+
+        private void Ribbon_ViewCreated(object sender, EventArgs e)
+        {
+            try
+            {
+                string fileName = GetQatSettingsFileName();
+                if (File.Exists(fileName))
+                {
+                    Stream stream = File.OpenRead(fileName);
+                    _loadedQatSettings = new byte[stream.Length];
+                    stream.Read(_loadedQatSettings, 0, _loadedQatSettings.Length);
+                    stream.Position = 0;
+                    if (!Settings.Instance.VersionChanged)
+                        Ribbon.LoadSettingsFromStream(stream);
+                    stream.Close();
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private bool EqualSettings(MemoryStream stream)
+        {
+            if (_loadedQatSettings == null || stream.Length != _loadedQatSettings.Length)
+                return false;
+            byte[] buffer = stream.GetBuffer();
+            for (int i = 0; i < buffer.Length; i++)
+                if (_loadedQatSettings[i] != buffer[i])
+                    return false;
+            return true;
+        }
+
+        private void Ribbon_ViewDestroy(object sender, EventArgs e)
+        {
+            try
+            {
+                MemoryStream stream = new MemoryStream();
+                Ribbon.SaveSettingsToStream(stream);
+                stream.Position = 0;
+                if (!EqualSettings(stream))
+                {
+                    string fileName = GetQatSettingsFileName();
+                    FileStream fStream = File.Create(fileName);
+                    stream.CopyTo(fStream);
+                    fStream.Close();
+                }
+                stream.Close();
+            }
+            catch
+            {
+            }
+        }
+
+        #endregion
+
+        #region Settings
+
+        private void InitSettings()
+        {
+            ToggleSettings.ExecuteEvent += ToggleSettings_ExecuteEvent;
+            ButtonSaveSettings.ExecuteEvent += ButtonSaveSettings_ExecuteEvent;
+        }
+
+        private void ToggleSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                if (ToggleSettings.BooleanValue)
+                    TabGroupSettings.ContextAvailable = ContextAvailability.Available;
+                else
+                    TabGroupSettings.ContextAvailable = ContextAvailability.NotAvailable;
+            }
+            catch
+            {
+            }
+        }
+
+        private void GetCheckedSettings()
+        {
+            Settings settings = Settings.Instance;
+            ButtonSpeed.BooleanValue = settings.SpeedChecked;
+            ButtonCadence.BooleanValue = settings.CadenceChecked;
+            ButtonPower.BooleanValue = settings.PowerChecked;
+            ButtonLRBalance.BooleanValue = settings.LRBalanceChecked;
+            ButtonHeartRate.BooleanValue = settings.HeartRateChecked;
+            ButtonLTorqueEff.BooleanValue = settings.LTorqueChecked;
+            ButtonRTorqueEff.BooleanValue = settings.RTorqueChecked;
+            ButtonLSmoothness.BooleanValue = settings.LSmoothChecked;
+            ButtonRSmoothness.BooleanValue = settings.RSmoothChecked;
+            ButtonAltitude.BooleanValue = settings.AltitudeChecked;
+            ButtonGrade.BooleanValue = settings.GradeChecked;
+            ButtonTemperature.BooleanValue = settings.TemperatureChecked;
+        }
+
+        private void ButtonSaveSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                Settings settings = Settings.Instance;
+                settings.SpeedChecked = ButtonSpeed.BooleanValue;
+                settings.CadenceChecked = ButtonCadence.BooleanValue;
+                settings.PowerChecked = ButtonPower.BooleanValue;
+                settings.LRBalanceChecked = ButtonLRBalance.BooleanValue;
+                settings.HeartRateChecked = ButtonHeartRate.BooleanValue;
+                settings.LTorqueChecked = ButtonLTorqueEff.BooleanValue;
+                settings.RTorqueChecked = ButtonRTorqueEff.BooleanValue;
+                settings.LSmoothChecked = ButtonLSmoothness.BooleanValue;
+                settings.RSmoothChecked = ButtonRSmoothness.BooleanValue;
+                settings.AltitudeChecked = ButtonAltitude.BooleanValue;
+                settings.GradeChecked = ButtonGrade.BooleanValue;
+                settings.TemperatureChecked = ButtonTemperature.BooleanValue;
+
+                settings.MapWidth = (int)SpinnerMapWidth.DecimalValue;
+                settings.MapHeight = (int)SpinnerMapHeight.DecimalValue;
+
+                if (CheckCurrentAppSize.BooleanValue)
+                {
+                    settings.AppWidth = _form.Width;
+                    settings.AppHeight = _form.Height;
+                    settings.AppSizeWrite = true;
+                }
+
+                Settings.Instance.Modified = true;
+            }
+            catch
+            {
+            }
+        }
+
+        private void ComboSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                Settings settings = Settings.Instance;
+                RibbonComboBox combo = sender as RibbonComboBox;
+                switch (combo.CommandID)
+                {
+                    case Cmd.cmdComboPower:
+                        settings.PowerSmooth = int.Parse(combo.StringValue);
+                        //_modifiedSettings = true;
+                        break;
+                    case Cmd.cmdComboLRBalance:
+                        settings.LRBalanceSmooth = int.Parse(combo.StringValue);
+                        //_modifiedSettings = true;
+                        break;
+                    case Cmd.cmdComboLTorque:
+                        settings.TorqueLeftSmooth = int.Parse(combo.StringValue);
+                        //_modifiedSettings = true;
+                        break;
+                    case Cmd.cmdComboRTorque:
+                        settings.TorqueRightSmooth = int.Parse(combo.StringValue);
+                        //_modifiedSettings = true;
+                        break;
+                    case Cmd.cmdComboLSmoothness:
+                        settings.SmoothnessLeftSmooth = int.Parse(combo.StringValue);
+                        //_modifiedSettings = true;
+                        break;
+                    case Cmd.cmdComboRSmoothness:
+                        settings.SmoothnessRightSmooth = int.Parse(combo.StringValue);
+                        //_modifiedSettings = true;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void GetMapSettings()
+        {
+            SpinnerMapWidth.DecimalValue = Settings.Instance.MapWidth;
+            SpinnerMapHeight.DecimalValue = Settings.Instance.MapHeight;
+        }
+
+        #endregion
+
+        #region Application
+
+        private void InitApplication()
+        {
+            ButtonOpen.ExecuteEvent += ButtonOpen_ExecuteEvent;
+            ButtonSaveGpx.ExecuteEvent += ButtonSaveGpx_ExecuteEvent;
+            ButtonHelp.ExecuteEvent += ButtonAbout_ExecuteEvent;
+            ButtonAbout.ExecuteEvent += ButtonAbout_ExecuteEvent;
+            ButtonExit.ExecuteEvent += ButtonExit_ExecuteEvent;
+        }
+
+        private void InitModes()
+        {
+            byte[] modes;
+            if (Settings.Instance.Intern)
+                modes = new byte[] { 0, 1, 3 };
+            else
+                modes = new byte[] { 0, 1 };
+            Ribbon.SetModes(modes);
+        }
+
+        private void ButtonOpen_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                OpenFitFile();
+            }
+            catch
+            {
+            }
+        }
+
+        private void OpenFitFile()
+        {
+            ButtonSession.Enabled = false;
+            ButtonLaps.Enabled = false;
+            ToolStripMenuItems(false);
+            DataManager.Instance.Clear();
+            MakeComboItems();
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.CheckFileExists = true;
+            dialog.CheckPathExists = true;
+            dialog.DefaultExt = "fit";
+            dialog.Filter = "ELEMNT Fit-File" + " (*.fit)|*.fit";
+            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            {
+                _form.Cursor = Cursors.WaitCursor;
+                _form._chartHelp.ResetZoom();
+                _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
+                _fileName = dialog.FileName;
+                _decodeFile = new DecodeFile();
+                _decodeFile.Decode(_fileName);
+                if (DataManager.Instance.Session != null)
+                {
+                    ButtonSession.Enabled = true;
+                }
+                if (DataManager.Instance.LapManager.Count > 0)
+                {
+                    ButtonLaps.Enabled = true;
+                }
+                ToolStripMenuItems(true);
+                CheckBoxTag.SetDateTime(DataManager.Instance.RecordList[0].Timestamp, DataManager.Instance.RecordList[DataManager.Instance.RecordList.Count - 1].Timestamp);
+                MakeComboItems();
+                CheckBoxTag.SetToSession(); //@ Todo: Refactoring
+                _form.Cursor = Cursors.Default;
+                DataManager.Instance.FillChart();
+            }
+            else
+            {
+                _form.Text = MainForm.MainFormText;
+            }
+        }
+
+        private void ToolStripMenuItems(bool enabled)
+        {
+            ButtonSaveGpx.Enabled = enabled;
+            ButtonHeartRateZones.Enabled = enabled;
+            ButtonPowerZones.Enabled = enabled;
+            ButtonMyExtras.Enabled = enabled;
+
+            ButtonActivity.Enabled = enabled;
+            ButtonDeveloperDataId.Enabled = enabled;
+            ButtonDeviceInfo.Enabled = enabled;
+            ButtonEvent.Enabled = enabled;
+            ButtonFieldDescription.Enabled = enabled;
+            ButtonFileId.Enabled = enabled;
+            ButtonSport.Enabled = enabled;
+            ButtonWahooFF00.Enabled = enabled;
+            ButtonWahooFF01.Enabled = enabled;
+            ButtonWorkout.Enabled = enabled;
+            ButtonMap.Enabled = enabled;
+        }
+
+        private void ButtonSaveGpx_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.CheckPathExists = true;
+                dialog.DefaultExt = "gpx";
+                dialog.Filter = "GPS-File" + " (*.gpx)|*.gpx";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                    DataManager.Instance.RecordManager.WriteGpx(new FileInfo(dialog.FileName), Path.GetFileNameWithoutExtension(_fileName));
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void ButtonAbout_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                AboutDialog dialog = new AboutDialog();
+                dialog.ShowDialog(_form);
+            }
+            catch
+            {
+            }
+        }
+
+        private void ButtonExit_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.Application.Exit();
+            }
+            catch
+            {
+            }
+        }
+
+        #endregion
+
+        #region View
+
+        private void InitViewEvents()
+        {
+            ButtonSession.ExecuteEvent += ButtonSession_ExecuteEvent;
+            ButtonLaps.ExecuteEvent += ButtonLaps_ExecuteEvent;
+            ButtonMyExtras.ExecuteEvent += ButtonMyExtras_ExecuteEvent;
+            ButtonHeartRateZones.ExecuteEvent += ButtonHeartRateZones_ExecuteEvent;
+            ButtonPowerZones.ExecuteEvent += ButtonPowerZones_ExecuteEvent;
+        }
+
+        private void ButtonSession_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObjects = null;
+                dialog.SelectedObject = DataManager.Instance.Session;
+                dialog.Header = "Session";
+                dialog.Grid.PropertySort = PropertySort.Categorized;
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void ButtonLaps_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.LapManager.LapArray();
+                dialog.Header = "Laps";
+                dialog.Grid.PropertySort = PropertySort.Categorized;
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void ButtonHeartRateZones_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObjects = null;
+                dialog.SelectedObject = DataManager.Instance.HRManager.GetHeartRateZones();
+                dialog.Header = "HeartRate Zones";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void ButtonPowerZones_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObjects = null;
+                dialog.SelectedObject = DataManager.Instance.PowerManager.GetPowerZones();
+                dialog.Header = "Power Zones";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        private void ButtonMyExtras_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObjects = null;
+                dialog.SelectedObject = DataManager.Instance.SessionExtras;
+                dialog.Grid.PropertySort = PropertySort.Categorized;
+                dialog.Header = "Session Extras";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
+            }
+        }
+
+        #endregion
+
+        #region Internals
         //following methods are only for internal use
+
+        private void InitInternalsEvents()
+        {
+            ButtonActivity.ExecuteEvent += ButtonActivity_ExecuteEvent;
+            ButtonDeveloperDataId.ExecuteEvent += ButtonDeveloperDataId_ExecuteEvent;
+            ButtonDeviceInfo.ExecuteEvent += ButtonDeviceInfo_ExecuteEvent;
+            ButtonEvent.ExecuteEvent += ButtonEvent_ExecuteEvent;
+            ButtonFieldDescription.ExecuteEvent += ButtonFieldDescription_ExecuteEvent;
+            ButtonFileId.ExecuteEvent += ButtonFileId_ExecuteEvent;
+            ButtonSport.ExecuteEvent += ButtonSport_ExecuteEvent;
+            ButtonWahooFF00.ExecuteEvent += ButtonWahooFF00_ExecuteEvent;
+            ButtonWahooFF01.ExecuteEvent += ButtonWahooFF01_ExecuteEvent;
+            ButtonWorkout.ExecuteEvent += ButtonWorkout_ExecuteEvent;
+        }
 
         private void ButtonActivity_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.ActivityValues.ToArray();
-            dialog.Header = "Activity";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.ActivityValues.ToArray();
+                dialog.Header = "Activity";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonDeveloperDataId_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.DeveloperDataIdValues.ToArray();
-            dialog.Header = "DeveloperDataId";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.DeveloperDataIdValues.ToArray();
+                dialog.Header = "DeveloperDataId";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonDeviceInfo_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.DeviceInfoValues.ToArray();
-            dialog.Header = "DeviceInfo";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.DeviceInfoValues.ToArray();
+                dialog.Header = "DeviceInfo";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonEvent_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.EventValues.ToArray();
-            dialog.Header = "Event";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.EventValues.ToArray();
+                dialog.Header = "Event";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonFieldDescription_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.FieldDescriptionValues.ToArray();
-            dialog.Header = "FieldDescription";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.FieldDescriptionValues.ToArray();
+                dialog.Header = "FieldDescription";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonFileId_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.FileIdValues.ToArray();
-            dialog.Header = "FileId";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.FileIdValues.ToArray();
+                dialog.Header = "FileId";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonSport_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.SportValues.ToArray();
-            dialog.Header = "Sport";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.SportValues.ToArray();
+                dialog.Header = "Sport";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonWahooFF00_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.WahooFF00Values.ToArray();
-            dialog.Header = "WahooFF00";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.WahooFF00Values.ToArray();
+                dialog.Header = "WahooFF00";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonWahooFF01_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.WahooFF01Values.ToArray();
-            dialog.Header = "WahooFF01";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.WahooFF01Values.ToArray();
+                dialog.Header = "WahooFF01";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
 
         private void ButtonWorkout_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            PropertiesForm dialog = new PropertiesForm();
-            dialog.SelectedObject = null;
-            dialog.SelectedObjects = DataManager.Instance.WorkoutValues.ToArray();
-            dialog.Header = "Workout";
-            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            try
             {
-
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.WorkoutValues.ToArray();
+                dialog.Header = "Workout";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
             }
         }
+        #endregion
     }
 }

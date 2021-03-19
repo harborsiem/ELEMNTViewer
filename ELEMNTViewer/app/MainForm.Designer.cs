@@ -68,7 +68,7 @@ namespace ELEMNTViewer {
             this.chart.Location = new System.Drawing.Point(0, 147);
             this.chart.Margin = new System.Windows.Forms.Padding(0);
             this.chart.Name = "chart";
-            this.chart.Size = new System.Drawing.Size(1008, 615);
+            this.chart.Size = new System.Drawing.Size(1008, 582);
             this.chart.TabIndex = 0;
             this.chart.TextAntiAliasingQuality = System.Windows.Forms.DataVisualization.Charting.TextAntiAliasingQuality.Normal;
             // 
@@ -86,11 +86,11 @@ namespace ELEMNTViewer {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1008, 762);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.ribbon);
             this.Controls.Add(this.chart);
             this.Cursor = System.Windows.Forms.Cursors.Default;
-            this.MinimumSize = new System.Drawing.Size(1024, 800);
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "MainForm";
             ((System.ComponentModel.ISupportInitialize)(this.chart)).EndInit();
             this.ResumeLayout(false);

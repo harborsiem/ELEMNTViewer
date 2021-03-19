@@ -7,10 +7,8 @@
         xmlns:vm="clr-namespace:ViewModel"
         xmlns:local="clr-namespace:WpfMaps"
         mc:Ignorable="d"
-        Title="Map" Height="600" Width="900">
+        Title="Map" Height="750" Width="1000">
     <Window.Resources>
-        <local:LocationToVisibilityConverter x:Key="LocationToVisibilityConverter"/>
-
         <DataTemplate x:Key="PolylineItemTemplate">
             <map:MapPolyline Locations="{Binding Locations}" Stroke="Blue" StrokeThickness="3"/>
         </DataTemplate>
@@ -27,8 +25,8 @@
 
         <Style x:Key="PointItemStyle" TargetType="map:MapItem">
             <EventSetter Event="TouchDown" Handler="MapItemTouchDown"/>
-            <Setter Property="map:MapPanel.Location" Value="{Binding Location}"/>
-            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="AutoCollapse" Value="True"/>
+            <Setter Property="Location" Value="{Binding Location}"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="map:MapItem">
@@ -39,7 +37,9 @@
                                     <VisualState x:Name="Disabled"/>
                                     <VisualState x:Name="MouseOver">
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="labelBackground" Storyboard.TargetProperty="Opacity" To="0.7" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="hoverPath"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0.7" Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </VisualState>
                                 </VisualStateGroup>
@@ -47,27 +47,31 @@
                                     <VisualState x:Name="Unselected"/>
                                     <VisualState x:Name="Selected">
                                         <Storyboard>
-                                            <DoubleAnimation Storyboard.TargetName="selectedPath" Storyboard.TargetProperty="Opacity" To="0.7" Duration="0:0:0.1"/>
+                                            <DoubleAnimation Storyboard.TargetName="selectedPath"
+                                                             Storyboard.TargetProperty="Opacity"
+                                                             To="0.7" Duration="0:0:0.1"/>
                                         </Storyboard>
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
                             <Path x:Name="selectedPath" Fill="White" Opacity="0">
                                 <Path.Data>
-                                    <EllipseGeometry RadiusX="15" RadiusY="15"/>
+                                    <EllipseGeometry RadiusX="12" RadiusY="12"/>
                                 </Path.Data>
                             </Path>
-                            <Path StrokeThickness="2" Fill="Transparent">
-                                <Path.Stroke>
-                                    <SolidColorBrush Color="Gray"/>
-                                </Path.Stroke>
+                            <Path x:Name="hoverPath" StrokeThickness="6" Stroke="White" Opacity="0">
+                                <Path.Data>
+                                    <EllipseGeometry RadiusX="8" RadiusY="8"/>
+                                </Path.Data>
+                            </Path>
+                            <Path StrokeThickness="2" Stroke="Gray" Fill="Transparent">
                                 <Path.Data>
                                     <EllipseGeometry RadiusX="8" RadiusY="8"/>
                                 </Path.Data>
                             </Path>
                             <Grid Canvas.Left="15" Canvas.Top="-8">
-                                <Rectangle x:Name="labelBackground" Fill="White" Opacity="0"/>
-                                <local:OutlinedText Margin="1" OutlineThickness="1.5" Text="{Binding Name}"/>
+                                <local:OutlinedText Margin="1" OutlineThickness="1.5" Text="{Binding Name}"
+                                                    Background="{Binding Background, RelativeSource={RelativeSource AncestorType=map:MapBase}}"/>
                             </Grid>
                         </Canvas>
                     </ControlTemplate>
@@ -82,21 +86,13 @@
 
         <Style x:Key="PushpinItemStyle" TargetType="map:MapItem">
             <EventSetter Event="TouchDown" Handler="MapItemTouchDown"/>
-            <Setter Property="map:MapPanel.Location" Value="{Binding Location}"/>
+            <Setter Property="AutoCollapse" Value="True"/>
+            <Setter Property="Location" Value="{Binding Location}"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Foreground" Value="Black"/>
-            <Setter Property="Visibility">
-                <Setter.Value>
-                    <MultiBinding Converter="{StaticResource LocationToVisibilityConverter}">
-                        <Binding Path="(map:MapPanel.ParentMap)" RelativeSource="{RelativeSource Self}"/>
-                        <Binding Path="(map:MapPanel.ViewPosition)" RelativeSource="{RelativeSource Self}"/>
-                    </MultiBinding>
-                </Setter.Value>
-            </Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="map:MapItem">
-                        <map:Pushpin Content="{Binding Name}" Foreground="{TemplateBinding Foreground}"/>
+                        <map:Pushpin Content="{Binding Name}"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -125,7 +121,7 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <map:Map x:Name="map" ZoomLevel="11" MaxZoomLevel="21"
+        <map:Map x:Name="map" ZoomLevel="11" MaxZoomLevel="21" MouseWheelZoomDelta="1"
                  Center="{Binding MapCenter}"
                  MapLayer="{Binding MapLayers.CurrentMapLayer}"
                  MapProjection="{Binding SelectedValue, ElementName=projectionComboBox,
@@ -152,10 +148,10 @@
             <map:MapItemsControl ItemsSource="{Binding Pushpins}"
                                  ItemContainerStyle="{StaticResource PushpinItemStyle}"/>
 
-            <!--<map:Pushpin map:MapPanel.Location="65,-18" Content="Iceland"/>
-            <map:Pushpin map:MapPanel.Location="71,25" Content="Norway"/>
-            <map:Pushpin map:MapPanel.Location="35,33" Content="Cyprus"/>
-            <map:Pushpin map:MapPanel.Location="28.25,-16.5" Content="Tenerife"/>
+            <!--<map:Pushpin AutoCollapse="True" Location="65,-18" Content="Iceland"/>
+            <map:Pushpin AutoCollapse="True" Location="71,25" Content="Norway"/>
+            <map:Pushpin AutoCollapse="True" Location="35,33" Content="Cyprus"/>
+            <map:Pushpin AutoCollapse="True" Location="28.25,-16.5" Content="Tenerife"/>
 
             <map:MapPath Location="53.5,8.2" Stroke="Blue" StrokeThickness="3" Fill="#1F007F00">
                 <map:MapPath.Data>
@@ -163,14 +159,7 @@
                 </map:MapPath.Data>
             </map:MapPath>-->
 
-            <!--<map:Pushpin map:MapPanel.Location="49.34,10.54" Background="Yellow" Foreground="Blue" Content="N 49°44' E 10°54'">
-                <map:Pushpin.Visibility>
-                    <MultiBinding Converter="{StaticResource LocationToVisibilityConverter}">
-                        <Binding Path="(map:MapPanel.ParentMap)" RelativeSource="{RelativeSource Self}"/>
-                        <Binding Path="(map:MapPanel.ViewPosition)" RelativeSource="{RelativeSource Self}"/>
-                    </MultiBinding>
-                </map:Pushpin.Visibility>
-            </map:Pushpin>-->
+            <!--<map:Pushpin AutoCollapse="True" Location="49.34,10.54" Background="Yellow" Foreground="Blue" Content="N 49°44' E 10°54'"/-->
         </map:Map>
 
         <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#AFFFFFFF">
@@ -196,7 +185,7 @@
                     <TextBlock Text="Heading" Margin="0,0,0,2" HorizontalAlignment="Center" Foreground="Gray" FontSize="10"/>
                     <Slider AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0"
                             Width="100" VerticalAlignment="Center" SmallChange="5" LargeChange="45"
-                            Minimum="0" Maximum="360" Value="{Binding TargetHeading, ElementName=map}"/>
+                            Minimum="0" Maximum="360" Value="{Binding Heading, ElementName=map}"/>
                 </StackPanel>
                 <!--<StackPanel Margin="5">
                     <TextBlock Text="Image Opacity" Margin="0,0,0,2" HorizontalAlignment="Center" Foreground="Gray" FontSize="10"/>

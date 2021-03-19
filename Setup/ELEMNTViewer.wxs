@@ -7,7 +7,7 @@
     lightArgs: "<projectname>.wixobj" -out "<projectname>.msi" -ext WixUtilExtension -ext WixUIExtension -ext WixNetFxExtension
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="{9AD5E249-9CEE-4B02-B569-2ED8AE0ADD08}" Name="ELEMNTViewer" Language="1033" Version="2.0.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
+  <Product Id="{1BCCACCD-053F-4635-B757-1D8DE4590071}" Name="ELEMNTViewer" Language="1033" Version="2.1.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
     <Package InstallerVersion="301" Compressed="yes" Platform="x86" InstallScope="perMachine" Description="ELEMNTViewer" Comments="ELEMNTViewer Install" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />

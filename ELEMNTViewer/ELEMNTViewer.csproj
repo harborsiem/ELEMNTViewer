@@ -41,7 +41,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Resources\Fit.dll</HintPath>
     </Reference>
-    <Reference Include="MapControl.WPF, Version=5.5.0.0, Culture=neutral, PublicKeyToken=f26fcf0059638459, processorArchitecture=MSIL">
+    <Reference Include="MapControl.WPF, Version=5.6.0.0, Culture=neutral, PublicKeyToken=f26fcf0059638459, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\WpfMaps\bin\Release\MapControl.WPF.dll</HintPath>
     </Reference>
@@ -61,9 +61,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="WpfMaps">
-      <HintPath>..\WpfMaps\bin\Release\WpfMaps.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\controls\ChartHelp.cs" />
@@ -168,9 +165,11 @@
     <EmbeddedResource Include="Resources\AppIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Open_6529.png" />
+    <ProjectReference Include="..\WpfMaps\WpfMaps.csproj">
+      <Project>{cfd8d44a-7d92-4a59-a5de-18e19e43579d}</Project>
+      <Name>WpfMaps</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="RibbonMarkup.h" />
     <Content Include="RibbonMarkup.xml">

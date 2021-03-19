@@ -29,11 +29,21 @@ namespace RibbonLib.Controls
             public const uint cmdButtonSession = 43;
             public const uint cmdButtonLaps = 44;
             public const uint cmdButtonMap = 62;
+            public const uint cmdToggleSettings = 70;
+            public const uint cmdTabGroupSettings = 69;
+            public const uint cmdTabSettings = 67;
+            public const uint cmdGroupApp = 74;
+            public const uint cmdCheckCurrentAppSize = 75;
+            public const uint cmdGroupMapControl = 73;
+            public const uint cmdSpinnerMapWidth = 71;
+            public const uint cmdSpinnerMapHeight = 72;
+            public const uint cmdHidden1 = 65;
+            public const uint cmdGroupSettings = 68;
+            public const uint cmdButtonSaveSettings = 64;
             public const uint CmdTabChart = 4;
             public const uint cmdGroupChartSelect = 28;
             public const uint cmdComboSelect = 29;
             public const uint cmdToggleSmooth = 47;
-            public const uint cmdButtonSetSettings = 64;
             public const uint cmdGroupChartSpeed = 7;
             public const uint cmdButtonSpeed = 22;
             public const uint cmdButtonCadence = 23;
@@ -80,6 +90,7 @@ namespace RibbonLib.Controls
             public const uint cmdButtonWorkout = 59;
             public const uint cmdButtonWahooFF00 = 60;
             public const uint cmdButtonWahooFF01 = 61;
+            public const uint cmdHidden2 = 66;
         }
 
         // ContextPopup CommandName
@@ -95,11 +106,21 @@ namespace RibbonLib.Controls
         public RibbonButton ButtonSession { get; private set; }
         public RibbonButton ButtonLaps { get; private set; }
         public RibbonButton ButtonMap { get; private set; }
+        public RibbonToggleButton ToggleSettings { get; private set; }
+        public RibbonTabGroup TabGroupSettings { get; private set; }
+        public RibbonTab TabSettings { get; private set; }
+        public RibbonGroup GroupApp { get; private set; }
+        public RibbonCheckBox CheckCurrentAppSize { get; private set; }
+        public RibbonGroup GroupMapControl { get; private set; }
+        public RibbonSpinner SpinnerMapWidth { get; private set; }
+        public RibbonSpinner SpinnerMapHeight { get; private set; }
+        public RibbonButton Hidden1 { get; private set; }
+        public RibbonGroup GroupSettings { get; private set; }
+        public RibbonButton ButtonSaveSettings { get; private set; }
         public RibbonTab TabChart { get; private set; }
         public RibbonGroup GroupChartSelect { get; private set; }
         public RibbonComboBox ComboSelect { get; private set; }
         public RibbonToggleButton ToggleSmooth { get; private set; }
-        public RibbonButton ButtonSetSettings { get; private set; }
         public RibbonGroup GroupChartSpeed { get; private set; }
         public RibbonCheckBox ButtonSpeed { get; private set; }
         public RibbonCheckBox ButtonCadence { get; private set; }
@@ -146,6 +167,7 @@ namespace RibbonLib.Controls
         public RibbonButton ButtonWorkout { get; private set; }
         public RibbonButton ButtonWahooFF00 { get; private set; }
         public RibbonButton ButtonWahooFF01 { get; private set; }
+        public RibbonButton Hidden2 { get; private set; }
 
         public RibbonItems(Ribbon ribbon)
         {
@@ -162,11 +184,21 @@ namespace RibbonLib.Controls
             ButtonSession = new RibbonButton(ribbon, Cmd.cmdButtonSession);
             ButtonLaps = new RibbonButton(ribbon, Cmd.cmdButtonLaps);
             ButtonMap = new RibbonButton(ribbon, Cmd.cmdButtonMap);
+            ToggleSettings = new RibbonToggleButton(ribbon, Cmd.cmdToggleSettings);
+            TabGroupSettings = new RibbonTabGroup(ribbon, Cmd.cmdTabGroupSettings);
+            TabSettings = new RibbonTab(ribbon, Cmd.cmdTabSettings);
+            GroupApp = new RibbonGroup(ribbon, Cmd.cmdGroupApp);
+            CheckCurrentAppSize = new RibbonCheckBox(ribbon, Cmd.cmdCheckCurrentAppSize);
+            GroupMapControl = new RibbonGroup(ribbon, Cmd.cmdGroupMapControl);
+            SpinnerMapWidth = new RibbonSpinner(ribbon, Cmd.cmdSpinnerMapWidth);
+            SpinnerMapHeight = new RibbonSpinner(ribbon, Cmd.cmdSpinnerMapHeight);
+            Hidden1 = new RibbonButton(ribbon, Cmd.cmdHidden1);
+            GroupSettings = new RibbonGroup(ribbon, Cmd.cmdGroupSettings);
+            ButtonSaveSettings = new RibbonButton(ribbon, Cmd.cmdButtonSaveSettings);
             TabChart = new RibbonTab(ribbon, Cmd.CmdTabChart);
             GroupChartSelect = new RibbonGroup(ribbon, Cmd.cmdGroupChartSelect);
             ComboSelect = new RibbonComboBox(ribbon, Cmd.cmdComboSelect);
             ToggleSmooth = new RibbonToggleButton(ribbon, Cmd.cmdToggleSmooth);
-            ButtonSetSettings = new RibbonButton(ribbon, Cmd.cmdButtonSetSettings);
             GroupChartSpeed = new RibbonGroup(ribbon, Cmd.cmdGroupChartSpeed);
             ButtonSpeed = new RibbonCheckBox(ribbon, Cmd.cmdButtonSpeed);
             ButtonCadence = new RibbonCheckBox(ribbon, Cmd.cmdButtonCadence);
@@ -213,6 +245,7 @@ namespace RibbonLib.Controls
             ButtonWorkout = new RibbonButton(ribbon, Cmd.cmdButtonWorkout);
             ButtonWahooFF00 = new RibbonButton(ribbon, Cmd.cmdButtonWahooFF00);
             ButtonWahooFF01 = new RibbonButton(ribbon, Cmd.cmdButtonWahooFF01);
+            Hidden2 = new RibbonButton(ribbon, Cmd.cmdHidden2);
         }
 
     }

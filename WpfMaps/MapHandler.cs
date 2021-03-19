@@ -12,9 +12,26 @@ namespace WpfMaps
     {
         private WpfMap map;
 
-        public MapHandler()
+        public MapHandler(int width, int height)
         {
             map = new WpfMap();
+            map.Loaded += Map_Loaded;
+            if (width > 0 && height > 0)
+            {
+                Width = width;
+                Height = height;
+            }
+            else
+            {
+                Width = map.Width;
+                Height = map.Height;
+            }
+        }
+
+        private void Map_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            map.Width = Width;
+            map.Height = Height;
         }
 
         public void SetLocations(Location mapCenter, LocationCollection locations, List<PointItem> pointItems)
@@ -39,6 +56,8 @@ namespace WpfMaps
             return map.ShowDialog();
         }
 
+        public double Width { get; set; }
+        public double Height { get; set; }
     }
 
     public class PointCollection
