@@ -37,13 +37,12 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fit, Version=20.74.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Fit, Version=21.47.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Resources\Fit.dll</HintPath>
     </Reference>
     <Reference Include="MapControl.WPF, Version=5.6.0.0, Culture=neutral, PublicKeyToken=f26fcf0059638459, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\WpfMaps\bin\Release\MapControl.WPF.dll</HintPath>
+      <HintPath>..\packages\XAML.MapControl.5.6.0\lib\net462\MapControl.WPF.dll</HintPath>
     </Reference>
     <Reference Include="Ribbon, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4a850abcb1bad68b, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
