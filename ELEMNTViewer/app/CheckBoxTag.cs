@@ -13,7 +13,6 @@ namespace ELEMNTViewer
 {
     internal class CheckBoxTag
     {
-
         public static Chart Chart { get; set; }
         public static ChartHelp ChartHelp { get; set; }
 
@@ -26,18 +25,20 @@ namespace ELEMNTViewer
         private Series _series;
         public RibbonCheckBox ChartCheckBox { get; private set; }
         private RibbonComboBox _smoothChartComboBox;
-        private string _propertyName;
+        private readonly string _propertyName;
         private string _displayName;
         private Int32ArrayAttribute _smoothAvgAttribute;
-        private int _index;
-        private Func<RecordValues, double> _propertyFunc;
+        private readonly int _index;
+        private readonly Func<RecordValues, double> _propertyFunc;
         private Smoothing _smoothing;
 
         public CheckBoxTag(RibbonCheckBox chartCheckBox, int index, string propertyName, RibbonComboBox smoothChartComboBox)
         {
-            _series = new Series(propertyName);
-            _series.ChartType = SeriesChartType.FastLine;
-            _series.Color = ConfigDefaults.GetColor(index);
+            _series = new Series(propertyName)
+            {
+                ChartType = SeriesChartType.FastLine,
+                Color = ConfigDefaults.GetColor(index),
+            };
             ChartCheckBox = chartCheckBox;
             _smoothChartComboBox = smoothChartComboBox;
             chartCheckBox.ExecuteEvent += ChartCheckBoxCheckedChanged;

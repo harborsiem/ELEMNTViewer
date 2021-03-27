@@ -122,6 +122,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -352,6 +353,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -389,6 +391,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -421,6 +424,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -445,6 +449,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -497,6 +502,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -538,6 +544,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -578,6 +585,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -657,6 +665,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -669,6 +678,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -680,6 +690,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -711,6 +722,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -729,6 +741,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -746,6 +759,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -763,6 +777,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -781,6 +796,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -817,6 +833,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -834,6 +851,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -851,6 +869,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -868,6 +887,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -885,6 +905,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -902,6 +923,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -919,6 +941,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -936,6 +959,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -953,6 +977,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
 
@@ -970,6 +995,7 @@ namespace RibbonLib.Controls
             }
             catch
             {
+                throw;
             }
         }
         #endregion

@@ -200,7 +200,7 @@
     <Command Name="cmdSpinnerMapWidth" Id="71" LabelTitle="Width" TooltipTitle="Map Width" TooltipDescription="The value is the default Width for the Map" />
     <Command Name="cmdSpinnerMapHeight" Id="72" LabelTitle="Height" TooltipTitle="Map Height" TooltipDescription="The value is the default Height for the Map" />
     <Command Name="cmdGroupMapControl" Id="73" LabelTitle="Map Control" />
-    <Command Name="cmdGroupApp" Id="74" LabelTitle="App" />
+    <Command Name="cmdGroupApp" Id="74" LabelTitle="Application" />
     <Command Name="cmdCheckCurrentAppSize" Id="75" LabelTitle="App Size" TooltipTitle="Current App Size" TooltipDescription="Saves the current Application size as default if checked" />
   </Application.Commands>
   <Application.Views>
