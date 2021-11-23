@@ -13,6 +13,7 @@ using RibbonLib;
 using RibbonLib.Controls.Events;
 using RibbonLib.Interop;
 using ELEMNTViewer;
+using WpfMaps;
 
 namespace RibbonLib.Controls
 {
@@ -321,7 +322,7 @@ namespace RibbonLib.Controls
             try
             {
                 MapControl.LocationCollection locations = new MapControl.LocationCollection();
-                List<ViewModel.PointItem> pointItems = new List<ViewModel.PointItem>();
+                List<PointItem> pointItems = new List<PointItem>();
                 MapControl.Location mapCenter = null;
                 double distanceStart = 0;
                 List<RecordValues> list = DataManager.Instance.RecordList;
@@ -334,7 +335,7 @@ namespace RibbonLib.Controls
                     if (mapCenter == null && latitude != 0)
                     {
                         mapCenter = location;
-                        pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                        pointItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
                         distanceStart += 5;
                     }
                     if (mapCenter != null && latitude != 0)
@@ -342,12 +343,12 @@ namespace RibbonLib.Controls
                         locations.Add(location);
                         if (distance >= distanceStart)
                         {
-                            pointItems.Add(new ViewModel.PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                            pointItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
                             distanceStart += 5;
                         }
                     }
                 }
-                WpfMaps.MapHandler handler = new WpfMaps.MapHandler((int)SpinnerMapWidth.DecimalValue, (int)SpinnerMapHeight.DecimalValue);
+                MapHandler handler = new MapHandler((int)SpinnerMapWidth.DecimalValue, (int)SpinnerMapHeight.DecimalValue);
                 handler.SetLocations(mapCenter, locations, pointItems);
                 handler.ShowDialog();
             }
@@ -607,8 +608,12 @@ namespace RibbonLib.Controls
                 _form._chartHelp.ResetZoom();
                 _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
                 _fileName = dialog.FileName;
+                //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+                //watch.Restart();
                 _decodeFile = new DecodeFile();
                 _decodeFile.Decode(_fileName);
+                //watch.Stop();
+                //long elapsed = watch.ElapsedMilliseconds;
                 if (DataManager.Instance.Session != null)
                 {
                     ButtonSession.Enabled = true;

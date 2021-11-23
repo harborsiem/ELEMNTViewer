@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MapControl;
-using ViewModel;
 
 namespace WpfMaps
 {
@@ -36,7 +35,7 @@ namespace WpfMaps
 
         public void SetLocations(Location mapCenter, LocationCollection locations, List<PointItem> pointItems)
         {
-            ViewModel.MapViewModel mapViewModel = map.DataContext as ViewModel.MapViewModel;
+            MapViewModel mapViewModel = map.DataContext as MapViewModel;
             if (mapViewModel != null)
             {
                 mapViewModel.MapCenter = mapCenter;
@@ -59,16 +58,4 @@ namespace WpfMaps
         public double Width { get; set; }
         public double Height { get; set; }
     }
-
-    public class PointCollection
-    {
-        public Location Location { get; private set; }
-        public string Name { get; private set; }
-        public PointCollection(Location location, string name)
-        {
-            Location = location;
-            Name = name;
-        }
-    }
-
 }

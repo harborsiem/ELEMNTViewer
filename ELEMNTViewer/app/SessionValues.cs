@@ -10,6 +10,7 @@ namespace ELEMNTViewer
     using System.Threading.Tasks;
     using System.ComponentModel;
 
+    [DefaultProperty("TotalDistance")]
     class SessionValues
     {
         private DateTime timestamp;
@@ -333,6 +334,18 @@ namespace ELEMNTViewer
         [Category("Distance etc")]
         [DisplayName("Total Descent")]
         public ushort TotalDescent { get { return totalDescent; } }
+        [Category("Distance etc")]
+        [DisplayName("Vam")]
+        public float Vam
+        {
+            get
+            {
+                if (TotalTimerTime.TotalHours != 0)
+                    return (float)Math.Round(TotalAscent / TotalTimerTime.TotalHours);
+                else
+                    return 0.0f;
+            }
+        }
         //public byte Sport { get { return sport; } }
         [Category("Misc")]
         public ushort NumLaps { get { return numLaps; } }
@@ -342,5 +355,17 @@ namespace ELEMNTViewer
         public float TrainingStressScore { get { return trainingStressScore; } }
         [Category("Power")]
         public float IntensityFactor { get { return intensityFactor; } }
+        [Category("Power")]
+        [DisplayName("VI")]
+        public float VI
+        {
+            get
+            {
+                if (AvgPower != 0)
+                    return (float)Math.Round((double)NormalizedPower / (double)AvgPower, 2);
+                else
+                    return 0.0f;
+            }
+        }
     }
 }

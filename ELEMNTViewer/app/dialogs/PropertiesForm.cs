@@ -78,7 +78,7 @@ namespace ELEMNTViewer
             _numericToolTip = new ToolTip();
             _numericToolTip.SetToolTip(numberUpDown, "Number");
             numberUpDown.ValueChanged += NumberUpDown_ValueChanged;
-            this.Shown += Dialog_Shown;
+            //this.Shown += Dialog_Shown;
         }
 
         private void NumberUpDown_ValueChanged(object sender, EventArgs e)

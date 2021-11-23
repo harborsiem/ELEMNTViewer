@@ -7,7 +7,6 @@ using System.Windows;
 using System.Windows.Input;
 using MapControl;
 using MapControl.Caching;
-using ViewModel;
 
 namespace WpfMaps
 {
@@ -22,12 +21,16 @@ namespace WpfMaps
             {
                 ImageLoader.HttpClient.DefaultRequestHeaders.Add("User-Agent", "XAML Map Control Test Application");
 
-                TileImageLoader.Cache = new ImageFileCache(TileImageLoader.DefaultCacheFolder);
+                //TileImageLoader.Cache = new ImageFileCache(TileImageLoader.DefaultCacheFolder);
                 //TileImageLoader.Cache = new FileDbCache(TileImageLoader.DefaultCacheFolder);
                 //TileImageLoader.Cache = new SQLiteCache(TileImageLoader.DefaultCacheFolder);
                 //TileImageLoader.Cache = null;
 
-                BingMapsTileLayer.ApiKey = File.ReadAllText(@"..\..\..\BingMapsApiKey.txt")?.Trim();
+                var bingMapsApiKeyPath = Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "MapControl", "BingMapsApiKey.txt");
+
+                if (File.Exists(bingMapsApiKeyPath))
+                    BingMapsTileLayer.ApiKey = File.ReadAllText(bingMapsApiKeyPath)?.Trim();
             }
             catch (Exception ex)
             {
@@ -38,7 +41,7 @@ namespace WpfMaps
         public WpfMap()
         {
             InitializeComponent();
-            
+
 
             if (TileImageLoader.Cache is ImageFileCache cache)
             {
@@ -114,7 +117,7 @@ namespace WpfMaps
 
         private void SeamarksChecked(object sender, RoutedEventArgs e)
         {
-            map.Children.Insert(map.Children.IndexOf(mapGraticule), ((MapViewModel)DataContext).MapLayers.SeamarksLayer);
+            map.Children.Insert(map.Children.IndexOf(graticule), ((MapViewModel)DataContext).MapLayers.SeamarksLayer);
         }
 
         private void SeamarksUnchecked(object sender, RoutedEventArgs e)

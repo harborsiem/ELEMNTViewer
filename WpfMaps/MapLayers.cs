@@ -2,8 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
-#if WINDOWS_UWP
+#if WINUI
+using Microsoft.UI;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Media;
+#elif UWP
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Media;
@@ -12,7 +15,7 @@ using System.Windows;
 using System.Windows.Media;
 #endif
 
-namespace ViewModel
+namespace WpfMaps
 {
     public class MapLayers : INotifyPropertyChanged
     {
@@ -24,7 +27,7 @@ namespace ViewModel
                 "OpenStreetMap",
                 new MapTileLayer
                 {
-                    TileSource = new TileSource { UriFormat = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" },
+                    TileSource = new TileSource { UriFormat = "https://tile.openstreetmap.org/{z}/{x}/{y}.png" },
                     SourceName = "OpenStreetMap",
                     Description = "© [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"
                 }
@@ -33,7 +36,7 @@ namespace ViewModel
                 "OpenStreetMap German",
                 new MapTileLayer
                 {
-                    TileSource = new TileSource { UriFormat = "https://{s}.tile.openstreetmap.de/{z}/{x}/{y}.png" },
+                    TileSource = new TileSource { UriFormat = "https://tile.openstreetmap.de/{z}/{x}/{y}.png" },
                     SourceName = "OpenStreetMap German",
                     Description = "© [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"
                 }
@@ -42,7 +45,7 @@ namespace ViewModel
                 "OpenStreetMap French",
                 new MapTileLayer
                 {
-                    TileSource = new TileSource { UriFormat = "https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png" },
+                    TileSource = new TileSource { UriFormat = "https://tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png" },
                     SourceName = "OpenStreetMap French",
                     Description = "© [OpenStreetMap France](https://www.openstreetmap.fr/mentions-legales/) © [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"
                 }
@@ -51,19 +54,10 @@ namespace ViewModel
                 "OpenTopoMap",
                 new MapTileLayer
                 {
-                    TileSource = new TileSource { UriFormat = "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png" },
+                    TileSource = new TileSource { UriFormat = "https://tile.opentopomap.org/{z}/{x}/{y}.png" },
                     SourceName = "OpenTopoMap",
                     Description = "© [OpenTopoMap](https://opentopomap.org/) © [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)",
                     MaxZoomLevel = 17
-                }
-            },
-            {
-                "Hike & Bike",
-                new MapTileLayer
-                {
-                    TileSource = new TileSource { UriFormat = "https://tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png" },
-                    SourceName = "HikeBike",
-                    Description = "© [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"
                 }
             },
             {
@@ -132,10 +126,6 @@ namespace ViewModel
                     ServiceUri = new Uri("http://ows.terrestris.de/osm/service")
                 }
             },
-            {
-                "SevenCs ChartServer WMS",
-                new ChartServerLayer()
-            },
         };
 
         private string currentMapLayerName = "OpenStreetMap";
@@ -167,11 +157,9 @@ namespace ViewModel
             "OpenStreetMap German",
             "OpenStreetMap French",
             "OpenTopoMap",
-            "Hike & Bike",
             "TopPlusOpen WMTS",
             "TopPlusOpen WMS",
             "OpenStreetMap WMS",
-            "SevenCs ChartServer WMS",
         };
 
         public MapLayers()
@@ -190,27 +178,4 @@ namespace ViewModel
         }
     }
 
-    public class ChartServerLayer : WmsImageLayer
-    {
-        public ChartServerLayer()
-        {
-            Description = "© [SevenCs GmbH](http://www.sevencs.com)";
-            ServiceUri = new Uri("https://wms.sevencs.com:9090");
-            Layers = "ENC";
-            MaxBoundingBoxWidth = 360;
-        }
-
-        protected override string GetCrsParam(MapProjection projection)
-        {
-            switch (projection.CrsId)
-            {
-                case "AUTO2:97001":
-                    return string.Format(CultureInfo.InvariantCulture, "CRS=AUTO2:7CS01,1,{0},{1}", projection.Center.Longitude, projection.Center.Latitude);
-                case "AUTO2:97002":
-                    return string.Format(CultureInfo.InvariantCulture, "CRS=AUTO2:7CS02,1,{0},{1}", projection.Center.Longitude, projection.Center.Latitude);
-                default:
-                    return base.GetCrsParam(projection);
-            }
-        }
-    }
 }

@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:map="clr-namespace:MapControl;assembly=MapControl.WPF"
-        xmlns:vm="clr-namespace:ViewModel"
         xmlns:local="clr-namespace:WpfMaps"
         mc:Ignorable="d"
         Title="Map" Height="750" Width="1000">
@@ -104,6 +103,8 @@
             </Style.Triggers>
         </Style>
 
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
         <map:WebMercatorProjection x:Key="WebMercatorProjection"/>
         <map:WorldMercatorProjection x:Key="WorldMercatorProjection"/>
         <map:EquirectangularProjection x:Key="EquirectangularProjection"/>
@@ -113,7 +114,7 @@
     </Window.Resources>
 
     <Window.DataContext>
-        <vm:MapViewModel/>
+        <local:MapViewModel/>
     </Window.DataContext>
 
     <Grid>
@@ -132,7 +133,15 @@
                  MouseMove="MapMouseMove" MouseLeave="MapMouseLeave"
                  ManipulationInertiaStarting="MapManipulationInertiaStarting">
 
-            <map:MapGraticule x:Name="mapGraticule" Opacity="0.6"/>
+            <!--
+            <Image Source="10_535_330.jpg" Stretch="Fill"
+                   Opacity="{Binding Value, ElementName=imageOpacitySlider}"
+            -->
+            <map:MapGraticule x:Name="graticule" Opacity="0.6"/>
+            <!--
+            Visibility="{Binding IsChecked, ElementName=graticuleCheckBox,
+                                     Converter={StaticResource BooleanToVisibilityConverter}}"/>
+            -->
             <map:MapScale HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
 
             <!-- use ItemTemplate or ItemContainerStyle alternatively -->
@@ -148,7 +157,8 @@
             <map:MapItemsControl ItemsSource="{Binding Pushpins}"
                                  ItemContainerStyle="{StaticResource PushpinItemStyle}"/>
 
-            <!--<map:Pushpin AutoCollapse="True" Location="65,-18" Content="Iceland"/>
+            <!--
+            <map:Pushpin AutoCollapse="True" Location="65,-18" Content="Iceland"/>
             <map:Pushpin AutoCollapse="True" Location="71,25" Content="Norway"/>
             <map:Pushpin AutoCollapse="True" Location="35,33" Content="Cyprus"/>
             <map:Pushpin AutoCollapse="True" Location="28.25,-16.5" Content="Tenerife"/>
@@ -157,13 +167,14 @@
                 <map:MapPath.Data>
                     <EllipseGeometry RadiusX="1852" RadiusY="1852"/>
                 </map:MapPath.Data>
-            </map:MapPath>-->
+            </map:MapPath>
 
-            <!--<map:Pushpin AutoCollapse="True" Location="49.34,10.54" Background="Yellow" Foreground="Blue" Content="N 49°44' E 10°54'"/-->
+            <map:Pushpin AutoCollapse="True" Location="49.34,10.54" Background="Yellow" Foreground="Blue" Content="N 49°44' E 10°54'"/
+            -->
         </map:Map>
 
         <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#AFFFFFFF">
-            <TextBlock Margin="4,2" FontSize="10" map:HyperlinkText.InlinesSource="{Binding MapLayer.Description, ElementName=map}"/>
+            <TextBlock Margin="4,2" FontSize="10" local:HyperlinkText.InlinesSource="{Binding MapLayer.Description, ElementName=map}"/>
         </Border>
 
         <Grid Grid.Row="1">
@@ -174,7 +185,7 @@
             <TextBlock x:Name="mouseLocation" Margin="5" VerticalAlignment="Bottom" FontFamily="Segoe UI Mono"/>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
                 <StackPanel Margin="5">
-                    <TextBlock Text="Zoom Level" Margin="0,0,0,2" HorizontalAlignment="Center" Foreground="Gray" FontSize="10"/>
+                    <TextBlock Text="Zoom Level" Margin="0,0,0,2" HorizontalAlignment="Center" FontSize="10"/>
                     <Slider AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0"
                             Width="100" VerticalAlignment="Center" SmallChange="0.01"
                             Minimum="{Binding MinZoomLevel, ElementName=map}"
@@ -182,19 +193,22 @@
                             Value="{Binding TargetZoomLevel, ElementName=map}"/>
                 </StackPanel>
                 <StackPanel Margin="5">
-                    <TextBlock Text="Heading" Margin="0,0,0,2" HorizontalAlignment="Center" Foreground="Gray" FontSize="10"/>
+                    <TextBlock Text="Heading" Margin="0,0,0,2" HorizontalAlignment="Center" FontSize="10"/>
                     <Slider AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0"
                             Width="100" VerticalAlignment="Center" SmallChange="5" LargeChange="45"
-                            Minimum="0" Maximum="360" Value="{Binding Heading, ElementName=map}"/>
+                            Minimum="0" Maximum="360" Value="{Binding TargetHeading, ElementName=map}"/>
                 </StackPanel>
-                <!--<StackPanel Margin="5">
-                    <TextBlock Text="Image Opacity" Margin="0,0,0,2" HorizontalAlignment="Center" Foreground="Gray" FontSize="10"/>
-                    <Slider AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="1"
-                            Width="100" VerticalAlignment="Center"
-                            Minimum="0" Maximum="1" Value="{Binding Opacity, ElementName=mapImage}"/>
-                </StackPanel>-->
-                <!--<CheckBox ToolTip="Seamarks Overlay" Margin="7" VerticalAlignment="Bottom" Content="Seamarks"
-                          Checked="SeamarksChecked" Unchecked="SeamarksUnchecked"/>
+                <!--
+                <StackPanel Margin="5">
+                    <TextBlock Text="Image Opacity" Margin="0,0,0,2" HorizontalAlignment="Center" FontSize="10"/>
+                    <Slider x:Name="imageOpacitySlider" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="1"
+                            Width="75" VerticalAlignment="Center" Minimum="0" Maximum="1" Value="0.5"/>
+                </StackPanel>
+                <CheckBox x:Name="graticuleCheckBox" ToolTip="Graticule Overlay" Margin="8"
+                          VerticalAlignment="Bottom" Content="Graticule"/>
+
+                <CheckBox ToolTip="Seamarks Overlay" Margin="8" VerticalAlignment="Bottom" Content="Seamarks"
+                    Checked="SeamarksChecked" Unchecked="SeamarksUnchecked"/>
                 <ComboBox ToolTip="Map Layer" Width="200" Margin="5" VerticalAlignment="Bottom"
                           ItemsSource="{Binding MapLayers.MapLayerNames}"
                           SelectedItem="{Binding MapLayers.CurrentMapLayerName}"/>
@@ -206,7 +220,8 @@
                     <ComboBoxItem Content="Orthographic" Tag="{StaticResource OrthographicProjection}"/>
                     <ComboBoxItem Content="Gnomonic" Tag="{StaticResource GnomonicProjection}"/>
                     <ComboBoxItem Content="Stereographic" Tag="{StaticResource StereographicProjection}"/>
-                </ComboBox>-->
+                </ComboBox>
+                -->
             </StackPanel>
         </Grid>
     </Grid>

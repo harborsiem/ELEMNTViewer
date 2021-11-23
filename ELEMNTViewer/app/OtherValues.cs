@@ -31,8 +31,14 @@ namespace ELEMNTViewer
 
         void CalculatePowerExtras()
         {
-            _vam = DataManager.Instance.Session.TotalAscent / DataManager.Instance.Session.TotalTimerTime.TotalHours;
-            _vi = (double)DataManager.Instance.Session.NormalizedPower / (double)DataManager.Instance.Session.AvgPower;
+            if (DataManager.Instance.Session.TotalTimerTime.TotalHours != 0)
+                _vam = DataManager.Instance.Session.TotalAscent / DataManager.Instance.Session.TotalTimerTime.TotalHours;
+            else
+                _vam = 0.0d;
+            if (DataManager.Instance.Session.AvgPower != 0)
+                _vi = (double)DataManager.Instance.Session.NormalizedPower / (double)DataManager.Instance.Session.AvgPower;
+            else
+                _vi = 0.0d;
         }
 
         void AvgLeftRight()
@@ -133,12 +139,12 @@ namespace ELEMNTViewer
         [Category("Distance etc")]
         [DisplayName("Maximum Negative Grade")]
         public float MaxNegGrade { get { return (float)_maxNegGrade; } }
-        [Category("Distance etc")]
-        [DisplayName("Vam")]
-        public float Vam { get { return (float)Math.Round(_vam); } }
-        [Category("Power")]
-        [DisplayName("VI")]
-        public float VI { get { return (float)Math.Round(_vi, 2); } }
+        //[Category("Distance etc")]
+        //[DisplayName("Vam")]
+        //public float Vam { get { return (float)Math.Round(_vam); } }
+        //[Category("Power")]
+        //[DisplayName("VI")]
+        //public float VI { get { return (float)Math.Round(_vi, 2); } }
         [Category("Power")]
         [DisplayName("Left Right Balance")]
         public float LeftRightBalance { get { return (float)Math.Round(_leftRightBalance); } }

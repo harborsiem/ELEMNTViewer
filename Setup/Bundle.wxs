@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
   xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
-  <Bundle Name="ElemntViewer" Version="2.1.0.0" Manufacturer="Harbor" IconSourceFile="..\ELEMNTViewer\Resources\AppIcon.ico" DisableModify="yes" UpgradeCode="fba12fbc-8660-4108-948b-3b90a1a473f1"
+  <Bundle Name="ElemntViewer" Version="2.2.0.0" Manufacturer="Harbor" IconSourceFile="..\ELEMNTViewer\Resources\AppIcon.ico" DisableModify="yes" UpgradeCode="fba12fbc-8660-4108-948b-3b90a1a473f1"
           UpdateUrl="https://github.com/harborsiem/ELEMNTViewer/releases"
           HelpUrl="https://github.com/harborsiem/ELEMNTViewer" DisableRepair="yes" >
     <BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">

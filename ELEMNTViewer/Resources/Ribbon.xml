@@ -4632,12 +4632,6 @@
             </summary>
             <returns>image-from-bitmap factory object</returns>
         </member>
-        <member name="M:RibbonLib.Ribbon.GenerateDefaultRibbonDllName">
-            <summary>
-            Generates a default ribbon dll name
-            </summary>
-            <returns>name of the dll</returns>
-        </member>
         <member name="M:RibbonLib.Ribbon.AddRibbonControl(RibbonLib.IRibbonControl)">
             <summary>
             Adds a ribbon control to the internal map
@@ -4688,6 +4682,13 @@
             <summary>
             Event fires when the Ribbon height changed
             </summary>
+        </member>
+        <member name="P:RibbonLib.Ribbon.MarkupHandle">
+            <summary>
+            Returns the Dll Handle for the culture specific RibbonMarkup.ribbon file.
+            One can use this handle to get Strings, Bitmaps.
+            </summary>
+            <returns>The Dll Handle of the Ribbon resource</returns>
         </member>
         <member name="M:RibbonLib.RibbonUIApplication.#ctor(RibbonLib.Ribbon,RibbonLib.Ribbon)">
             <summary>
