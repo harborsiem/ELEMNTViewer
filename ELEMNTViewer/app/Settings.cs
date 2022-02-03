@@ -62,6 +62,7 @@ namespace ELEMNTViewer
         public int AppHeight { get; set; } = 0;
         public int MapWidth { get; set; } = 0;
         public int MapHeight { get; set; } = 0;
+        public string FitPath { get; set; } = string.Empty;
         public bool AppSizeWrite { get; set; } = false;
 
         public bool Modified { get => _modified; set => _modified = value; }
@@ -162,6 +163,9 @@ namespace ELEMNTViewer
                                 break;
                             case Attributes.TemperatureChecked:
                                 TemperatureChecked = XmlConvert.ToBoolean(ele.Value);
+                                break;
+                            case Attributes.FitPath:
+                                FitPath = ele.Value;
                                 break;
                         }
                     }
@@ -285,6 +289,10 @@ namespace ELEMNTViewer
                     writer.WriteString(XmlConvert.ToString(MapHeight));
                     writer.WriteEndElement();
 
+                    writer.WriteStartElement(Attributes.FitPath);
+                    writer.WriteString(FitPath);
+                    writer.WriteEndElement();
+
                     if (Intern)
                     {
                         writer.WriteStartElement(Attributes.Intern);
@@ -331,6 +339,7 @@ namespace ELEMNTViewer
             public const string AppHeight = nameof(AppHeight);
             public const string MapWidth = nameof(MapWidth);
             public const string MapHeight = nameof(MapHeight);
+            public const string FitPath = nameof(FitPath);
         }
     }
 }

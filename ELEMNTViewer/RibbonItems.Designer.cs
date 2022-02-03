@@ -40,7 +40,7 @@ namespace RibbonLib.Controls
             public const uint cmdHidden1 = 65;
             public const uint cmdGroupSettings = 68;
             public const uint cmdButtonSaveSettings = 64;
-            public const uint CmdTabChart = 4;
+            public const uint cmdTabChart = 4;
             public const uint cmdGroupChartSelect = 28;
             public const uint cmdComboSelect = 29;
             public const uint cmdToggleSmooth = 47;
@@ -195,7 +195,7 @@ namespace RibbonLib.Controls
             Hidden1 = new RibbonButton(ribbon, Cmd.cmdHidden1);
             GroupSettings = new RibbonGroup(ribbon, Cmd.cmdGroupSettings);
             ButtonSaveSettings = new RibbonButton(ribbon, Cmd.cmdButtonSaveSettings);
-            TabChart = new RibbonTab(ribbon, Cmd.CmdTabChart);
+            TabChart = new RibbonTab(ribbon, Cmd.cmdTabChart);
             GroupChartSelect = new RibbonGroup(ribbon, Cmd.cmdGroupChartSelect);
             ComboSelect = new RibbonComboBox(ribbon, Cmd.cmdComboSelect);
             ToggleSmooth = new RibbonToggleButton(ribbon, Cmd.cmdToggleSmooth);

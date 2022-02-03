@@ -32,8 +32,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MapControl.WPF, Version=7.0.0.0, Culture=neutral, PublicKeyToken=f26fcf0059638459, processorArchitecture=MSIL">
-      <HintPath>..\packages\XAML.MapControl.7.0.0\lib\net462\MapControl.WPF.dll</HintPath>
+    <Reference Include="MapControl.WPF, Version=7.1.0.0, Culture=neutral, PublicKeyToken=f26fcf0059638459, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAML.MapControl.7.1.0\lib\net462\MapControl.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="MapUiTools.WPF">
+      <HintPath>..\ELEMNTViewer\Resources\MapUiTools.WPF.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -54,7 +57,6 @@
   <ItemGroup>
     <Compile Include="HyperlinkText.cs" />
     <Compile Include="MapHandler.cs" />
-    <Compile Include="MapLayers.cs" />
     <Compile Include="MapViewModel.cs" />
     <Compile Include="OutlinedText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -70,6 +72,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ValueConverters.cs" />
     <Compile Include="WpfMap.xaml.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,6 +85,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="MapLayers.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="WpfMap.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

@@ -602,12 +602,21 @@ namespace RibbonLib.Controls
             dialog.CheckPathExists = true;
             dialog.DefaultExt = "fit";
             dialog.Filter = "ELEMNT Fit-File" + " (*.fit)|*.fit";
+            Settings settings = Settings.Instance;
+            if (!string.IsNullOrEmpty(settings.FitPath))
+                dialog.InitialDirectory = settings.FitPath;
             if (dialog.ShowDialog(_form) == DialogResult.OK)
             {
                 _form.Cursor = Cursors.WaitCursor;
                 _form._chartHelp.ResetZoom();
                 _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
                 _fileName = dialog.FileName;
+                string fitPath = Path.GetDirectoryName(_fileName);
+                if (settings.FitPath != fitPath)
+                {
+                    settings.FitPath = fitPath;
+                    settings.Modified = true;
+                }
                 //System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
                 //watch.Restart();
                 _decodeFile = new DecodeFile();

@@ -3,7 +3,7 @@
   <Application.Commands>
     <Command Name="cmdQAT" Id="2" />
     <Command Name="cmdApplication" Id="3" />
-    <Command Name="CmdTabChart" Id="4" LabelTitle="Chart" />
+    <Command Name="cmdTabChart" Id="4" LabelTitle="Chart" />
     <Command Name="cmdTabView" Id="5" LabelTitle="View" />
     <Command Name="cmdGroupChartPower1" Id="6" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate with smoothing values" />
     <Command Name="cmdGroupChartSpeed" Id="7" LabelTitle="Speed" TooltipTitle="Monitoring Speed" TooltipDescription="Speed and Cadence" />
@@ -135,7 +135,7 @@
         <Image MinDPI="192">Resources/Info_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Session Extras" TooltipTitle="Session Extras" TooltipDescription="Some self calculated values from the session records, because Wahoo values are wrong">
+    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Session Extras" TooltipTitle="Session Extras" TooltipDescription="Some self calculated values from the session records, because some Wahoo values are wrong">
       <Command.LargeImages>
         <Image>Resources/Document_32.bmp</Image>
         <Image MinDPI="120">Resources/Document_40.bmp</Image>
@@ -377,7 +377,7 @@
         </TabGroup>
       </Ribbon.ContextualTabs>
       <Ribbon.Tabs>
-        <Tab CommandName="CmdTabChart">
+        <Tab CommandName="cmdTabChart">
           <Tab.ScalingPolicy>
             <ScalingPolicy>
               <ScalingPolicy.IdealSizes>

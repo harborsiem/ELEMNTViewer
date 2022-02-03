@@ -3,7 +3,7 @@
 
 ## Description
 
-**Welcome Race- and other bikers with a Wahoo ELEMNT (or Bolt, Roam) Bike Computer**
+**Welcome Road bike rider and other cyclist with a Wahoo ELEMNT (or Bolt, Roam) Bike Computer**
 
 You can analyze your workout and you can see detailed information about your workout with this App on a Windows Computer (Windows 7 and newer versions).
 

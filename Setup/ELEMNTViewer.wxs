@@ -49,6 +49,7 @@
         <File Id="Fi.FitDll" Name="Fit.dll" Source="..\ELEMNTViewer\Resources\Fit.dll" Checksum="yes" />
         <File Id="Fi.MapControlDll" Name="MapControl.WPF.dll" Source="..\WpfMaps\bin\Release\MapControl.WPF.dll" Checksum="yes" />
         <File Id="Fi.WpfMapsDll" Name="WpfMaps.dll" Source="..\WpfMaps\bin\Release\WpfMaps.dll" Checksum="yes" />
+        <File Id="Fi.MapUiToolsDll" Name="MapUiTools.WPF.dll" Source="..\ELEMNTViewer\Resources\MapUiTools.WPF.dll" Checksum="yes" />
       </Component>
     </ComponentGroup>
   </Fragment>

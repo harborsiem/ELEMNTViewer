@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Threading.Tasks;
@@ -7,6 +6,9 @@ using System.Windows;
 using System.Windows.Input;
 using MapControl;
 using MapControl.Caching;
+using MapControl.UiTools;
+using System.Linq;
+using System.Windows.Controls;
 
 namespace WpfMaps
 {
@@ -17,24 +19,19 @@ namespace WpfMaps
     {
         static WpfMap()
         {
-            try
+            ImageLoader.HttpClient.DefaultRequestHeaders.Add("User-Agent", "XAML Map Control Test Application");
+
+            TileImageLoader.Cache = new ImageFileCache(TileImageLoader.DefaultCacheFolder);
+            //TileImageLoader.Cache = new FileDbCache(TileImageLoader.DefaultCacheFolder);
+            //TileImageLoader.Cache = new SQLiteCache(TileImageLoader.DefaultCacheFolder);
+            //TileImageLoader.Cache = null;
+
+            var bingMapsApiKeyPath = Path.Combine(
+                Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "MapControl", "BingMapsApiKey.txt");
+
+            if (File.Exists(bingMapsApiKeyPath))
             {
-                ImageLoader.HttpClient.DefaultRequestHeaders.Add("User-Agent", "XAML Map Control Test Application");
-
-                //TileImageLoader.Cache = new ImageFileCache(TileImageLoader.DefaultCacheFolder);
-                //TileImageLoader.Cache = new FileDbCache(TileImageLoader.DefaultCacheFolder);
-                //TileImageLoader.Cache = new SQLiteCache(TileImageLoader.DefaultCacheFolder);
-                //TileImageLoader.Cache = null;
-
-                var bingMapsApiKeyPath = Path.Combine(
-                    Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "MapControl", "BingMapsApiKey.txt");
-
-                if (File.Exists(bingMapsApiKeyPath))
-                    BingMapsTileLayer.ApiKey = File.ReadAllText(bingMapsApiKeyPath)?.Trim();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine(ex.Message);
+                BingMapsTileLayer.ApiKey = File.ReadAllText(bingMapsApiKeyPath)?.Trim();
             }
         }
 
@@ -42,6 +39,28 @@ namespace WpfMaps
         {
             InitializeComponent();
 
+            //if (!string.IsNullOrEmpty(BingMapsTileLayer.ApiKey))
+            //{
+            //    mapLayersMenuButton.MapLayers.Add(new MapLayerItem
+            //    {
+            //        Text = "Bing Maps Road",
+            //        Layer = (UIElement)Resources["BingMapsRoad"]
+            //    });
+
+            //    mapLayersMenuButton.MapLayers.Add(new MapLayerItem
+            //    {
+            //        Text = "Bing Maps Aerial",
+            //        Layer = (UIElement)Resources["BingMapsAerial"]
+            //    });
+
+            //    mapLayersMenuButton.MapLayers.Add(new MapLayerItem
+            //    {
+            //        Text = "Bing Maps Aerial with Labels",
+            //        Layer = (UIElement)Resources["BingMapsHybrid"]
+            //    });
+            //}
+
+            AddChartServerLayer();
 
             if (TileImageLoader.Cache is ImageFileCache cache)
             {
@@ -53,6 +72,27 @@ namespace WpfMaps
             }
         }
 
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            ContextMenu menu = mapLayersMenuButton.ContextMenu;
+
+            foreach (var item in menu.Items.OfType<MenuItem>())
+            {
+                if (((string)item.Header == "Graticule") || ((string)item.Header == "Scale"))
+                {
+                    item.IsChecked = true;
+                    map.Children.Add((UIElement)item.Tag);
+                }
+            }
+        }
+
+        partial void AddChartServerLayer();
+
+        private void ResetHeadingButtonClick(object sender, RoutedEventArgs e)
+        {
+            map.TargetHeading = 0d;
+        }
 
         private void MapMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -113,16 +153,6 @@ namespace WpfMaps
             var mapItem = (MapItem)sender;
             mapItem.IsSelected = !mapItem.IsSelected;
             e.Handled = true;
-        }
-
-        private void SeamarksChecked(object sender, RoutedEventArgs e)
-        {
-            map.Children.Insert(map.Children.IndexOf(graticule), ((MapViewModel)DataContext).MapLayers.SeamarksLayer);
-        }
-
-        private void SeamarksUnchecked(object sender, RoutedEventArgs e)
-        {
-            map.Children.Remove(((MapViewModel)DataContext).MapLayers.SeamarksLayer);
         }
     }
 }

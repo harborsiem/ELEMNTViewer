@@ -7,8 +7,8 @@
 
 #define cmdQAT 2 
 #define cmdApplication 3 
-#define CmdTabChart 4 
-#define CmdTabChart_LabelTitle_RESID 60001
+#define cmdTabChart 4 
+#define cmdTabChart_LabelTitle_RESID 60001
 #define cmdTabView 5 
 #define cmdTabView_LabelTitle_RESID 60002
 #define cmdGroupChartPower1 6 

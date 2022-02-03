@@ -1,9 +1,9 @@
-﻿# ELEMNTViewer
+﻿﻿﻿# ELEMNTViewer
 
 
 ## Beschreibung
 
-**Willkommen Renn- und andere Radfahrer mit einem Wahoo ELEMNT (oder Bolt, Roam) Bike Computer**
+**Willkommen Rennradfahrer und andere Radfahrer mit einem Wahoo ELEMNT (oder Bolt, Roam) Bike Computer**
 
 Du kannst Dein Workout analysieren und du kannst detaillierte Informationen über dein Workout mit dieser App auf einem Windows Computer anzeigen (Windows 7 und höhere Versionen).
 

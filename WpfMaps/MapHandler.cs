@@ -9,12 +9,12 @@ namespace WpfMaps
 {
     public class MapHandler
     {
-        private WpfMap map;
+        private WpfMap wpfMap;
 
         public MapHandler(int width, int height)
         {
-            map = new WpfMap();
-            map.Loaded += Map_Loaded;
+            wpfMap = new WpfMap();
+            wpfMap.Loaded += Map_Loaded;
             if (width > 0 && height > 0)
             {
                 Width = width;
@@ -22,23 +22,24 @@ namespace WpfMaps
             }
             else
             {
-                Width = map.Width;
-                Height = map.Height;
+                Width = wpfMap.Width;
+                Height = wpfMap.Height;
             }
         }
 
         private void Map_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-            map.Width = Width;
-            map.Height = Height;
+            wpfMap.Width = Width;
+            wpfMap.Height = Height;
         }
 
         public void SetLocations(Location mapCenter, LocationCollection locations, List<PointItem> pointItems)
         {
-            MapViewModel mapViewModel = map.DataContext as MapViewModel;
+            MapViewModel mapViewModel = wpfMap.DataContext as MapViewModel;
             if (mapViewModel != null)
             {
-                mapViewModel.MapCenter = mapCenter;
+                //wpfMap.map.MapProjection= new WebMercatorProjection(); //this is default
+                wpfMap.map.Center = mapCenter;
                 mapViewModel.Polylines.Clear();
                 mapViewModel.Points.Clear();
                 mapViewModel.Pushpins.Clear();
@@ -46,13 +47,13 @@ namespace WpfMaps
                 {
                     mapViewModel.Pushpins.Add(pointItems[i]);
                 }
-                mapViewModel.Polylines.Add(new Polyline() { Locations = locations });
+                mapViewModel.Polylines.Add(new PolylineItem() { Locations = locations });
             }
         }
 
         public bool? ShowDialog()
         {
-            return map.ShowDialog();
+            return wpfMap.ShowDialog();
         }
 
         public double Width { get; set; }

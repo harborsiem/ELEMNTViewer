@@ -4,23 +4,21 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:map="clr-namespace:MapControl;assembly=MapControl.WPF"
+        xmlns:tools="clr-namespace:MapControl.UiTools;assembly=MapUiTools.WPF"
         xmlns:local="clr-namespace:WpfMaps"
         mc:Ignorable="d"
-        Title="Map" Height="750" Width="1000">
+        Title="Map" Height="750" Width="1000"
+        Stylus.IsPressAndHoldEnabled="False">
+    
     <Window.Resources>
-        <DataTemplate x:Key="PolylineItemTemplate">
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="MapLayers.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+        <DataTemplate DataType="{x:Type local:PolylineItem}">
             <map:MapPolyline Locations="{Binding Locations}" Stroke="Blue" StrokeThickness="3"/>
         </DataTemplate>
-
-        <Style x:Key="PolylineItemStyle" TargetType="map:MapItem">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="map:MapItem">
-                        <map:MapPolyline Locations="{Binding Locations}" Stroke="Blue" StrokeThickness="3"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
         <Style x:Key="PointItemStyle" TargetType="map:MapItem">
             <EventSetter Event="TouchDown" Handler="MapItemTouchDown"/>
@@ -103,14 +101,7 @@
             </Style.Triggers>
         </Style>
 
-        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-
-        <map:WebMercatorProjection x:Key="WebMercatorProjection"/>
-        <map:WorldMercatorProjection x:Key="WorldMercatorProjection"/>
-        <map:EquirectangularProjection x:Key="EquirectangularProjection"/>
-        <map:OrthographicProjection x:Key="OrthographicProjection"/>
-        <map:GnomonicProjection x:Key="GnomonicProjection"/>
-        <map:StereographicProjection x:Key="StereographicProjection"/>
+        </ResourceDictionary>
     </Window.Resources>
 
     <Window.DataContext>
@@ -118,37 +109,15 @@
     </Window.DataContext>
 
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <map:Map x:Name="map" ZoomLevel="11" MaxZoomLevel="21" MouseWheelZoomDelta="1"
-                 Center="{Binding MapCenter}"
-                 MapLayer="{Binding MapLayers.CurrentMapLayer}"
-                 MapProjection="{Binding SelectedValue, ElementName=projectionComboBox,
-                                         FallbackValue={StaticResource WebMercatorProjection},
-                                         TargetNullValue={StaticResource WebMercatorProjection}}"
-                 MouseLeftButtonDown="MapMouseLeftButtonDown"
+        <map:Map x:Name="map"
+                 MinZoomLevel="2" MaxZoomLevel="21" ZoomLevel="11" MouseWheelZoomDelta="1"
+                 Center="49.5667, 10.9"
+				 MouseLeftButtonDown="MapMouseLeftButtonDown"
                  MouseRightButtonDown="MapMouseRightButtonDown"
                  MouseMove="MapMouseMove" MouseLeave="MapMouseLeave"
                  ManipulationInertiaStarting="MapManipulationInertiaStarting">
 
-            <!--
-            <Image Source="10_535_330.jpg" Stretch="Fill"
-                   Opacity="{Binding Value, ElementName=imageOpacitySlider}"
-            -->
-            <map:MapGraticule x:Name="graticule" Opacity="0.6"/>
-            <!--
-            Visibility="{Binding IsChecked, ElementName=graticuleCheckBox,
-                                     Converter={StaticResource BooleanToVisibilityConverter}}"/>
-            -->
-            <map:MapScale HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-
-            <!-- use ItemTemplate or ItemContainerStyle alternatively -->
-            <map:MapItemsControl ItemsSource="{Binding Polylines}"
-                                 ItemTemplate="{StaticResource PolylineItemTemplate}"/>
-            <!--<map:MapItemsControl ItemsSource="{Binding Polylines}"
-                                 ItemContainerStyle="{StaticResource PolylineItemStyle}"/>-->
+            <map:MapItemsControl ItemsSource="{Binding Polylines}"/>
 
             <map:MapItemsControl ItemsSource="{Binding Points}"
                                  ItemContainerStyle="{StaticResource PointItemStyle}"
@@ -174,55 +143,55 @@
         </map:Map>
 
         <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#AFFFFFFF">
-            <TextBlock Margin="4,2" FontSize="10" local:HyperlinkText.InlinesSource="{Binding MapLayer.Description, ElementName=map}"/>
+            <TextBlock Margin="4,2" FontSize="10"
+			local:HyperlinkText.InlinesSource="{Binding MapLayer.Description, ElementName=map}"/>
         </Border>
 
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock x:Name="mouseLocation" Margin="5" VerticalAlignment="Bottom" FontFamily="Segoe UI Mono"/>
-            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                <StackPanel Margin="5">
-                    <TextBlock Text="Zoom Level" Margin="0,0,0,2" HorizontalAlignment="Center" FontSize="10"/>
-                    <Slider AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0"
-                            Width="100" VerticalAlignment="Center" SmallChange="0.01"
-                            Minimum="{Binding MinZoomLevel, ElementName=map}"
-                            Maximum="{Binding MaxZoomLevel, ElementName=map}"
-                            Value="{Binding TargetZoomLevel, ElementName=map}"/>
-                </StackPanel>
-                <StackPanel Margin="5">
-                    <TextBlock Text="Heading" Margin="0,0,0,2" HorizontalAlignment="Center" FontSize="10"/>
-                    <Slider AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0"
-                            Width="100" VerticalAlignment="Center" SmallChange="5" LargeChange="45"
-                            Minimum="0" Maximum="360" Value="{Binding TargetHeading, ElementName=map}"/>
-                </StackPanel>
-                <!--
-                <StackPanel Margin="5">
-                    <TextBlock Text="Image Opacity" Margin="0,0,0,2" HorizontalAlignment="Center" FontSize="10"/>
-                    <Slider x:Name="imageOpacitySlider" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="1"
-                            Width="75" VerticalAlignment="Center" Minimum="0" Maximum="1" Value="0.5"/>
-                </StackPanel>
-                <CheckBox x:Name="graticuleCheckBox" ToolTip="Graticule Overlay" Margin="8"
-                          VerticalAlignment="Bottom" Content="Graticule"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6">
+            <tools:MapLayersMenuButton x:Name="mapLayersMenuButton"
+                Margin="2" ToolTip="Map Layers and Overlays"
+                Map="{Binding ElementName=map}">
+                <tools:MapLayerItem Text="OpenStreetMap" Layer="{StaticResource OpenStreetMap}"/>
+                <tools:MapLayerItem Text="OpenStreetMap German" Layer="{StaticResource OpenStreetMapGerman}"/>
+                <tools:MapLayerItem Text="OpenStreetMap French" Layer="{StaticResource OpenStreetMapFrench}"/>
+                <tools:MapLayerItem Text="OpenTopoMap" Layer="{StaticResource OpenTopoMap}"/>
+                <tools:MapLayerItem Text="TopPlusOpen WMTS" Layer="{StaticResource TopPlusOpenWMTS}"/>
+                <tools:MapLayerItem Text="TopPlusOpen WMS" Layer="{StaticResource TopPlusOpenWMS}"/>
+                <tools:MapLayerItem Text="OpenStreetMap WMS" Layer="{StaticResource OpenStreetMapWMS}"/>
 
-                <CheckBox ToolTip="Seamarks Overlay" Margin="8" VerticalAlignment="Bottom" Content="Seamarks"
-                    Checked="SeamarksChecked" Unchecked="SeamarksUnchecked"/>
-                <ComboBox ToolTip="Map Layer" Width="200" Margin="5" VerticalAlignment="Bottom"
-                          ItemsSource="{Binding MapLayers.MapLayerNames}"
-                          SelectedItem="{Binding MapLayers.CurrentMapLayerName}"/>
-                <ComboBox x:Name="projectionComboBox" ToolTip="Map Projection" Width="120" Margin="5" VerticalAlignment="Bottom"
-                          SelectedValuePath="Tag" SelectedIndex="0">
-                    <ComboBoxItem Content="Web Mercator" Tag="{StaticResource WebMercatorProjection}"/>
-                    <ComboBoxItem Content="World Mercator" Tag="{StaticResource WorldMercatorProjection}"/>
-                    <ComboBoxItem Content="Equirectangular" Tag="{StaticResource EquirectangularProjection}"/>
-                    <ComboBoxItem Content="Orthographic" Tag="{StaticResource OrthographicProjection}"/>
-                    <ComboBoxItem Content="Gnomonic" Tag="{StaticResource GnomonicProjection}"/>
-                    <ComboBoxItem Content="Stereographic" Tag="{StaticResource StereographicProjection}"/>
-                </ComboBox>
-                -->
-            </StackPanel>
-        </Grid>
+                <tools:MapLayersMenuButton.MapOverlays>
+                    <tools:MapLayerItem Text="Graticule">
+                        <map:MapGraticule Opacity="0.7"/>
+                    </tools:MapLayerItem>
+                    <tools:MapLayerItem Text="Scale">
+                        <map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+                    </tools:MapLayerItem>
+                </tools:MapLayersMenuButton.MapOverlays>
+            </tools:MapLayersMenuButton>
+
+            <Slider Orientation="Vertical" Margin="8" Height="100"
+                    Minimum="{Binding MinZoomLevel, ElementName=map}"
+                    Maximum="{Binding MaxZoomLevel, ElementName=map}"
+                    Value="{Binding TargetZoomLevel, ElementName=map}"
+                    SmallChange="0.1"
+                    AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="0" ToolTip="Zoom"/>
+
+            <Button Margin="2" Padding="8" ToolTip="Reset Heading" Click="ResetHeadingButtonClick"
+                    FontSize="20" FontFamily="Segoe MDL2 Assets" Content="&#xEBE6;">
+                <Button.Visibility>
+                    <Binding Path="Heading" ElementName="map">
+                        <Binding.Converter>
+                            <local:HeadingToVisibilityConverter/>
+                        </Binding.Converter>
+                    </Binding>
+                </Button.Visibility>
+            </Button>
+        </StackPanel>
+        <local:OutlinedText
+            x:Name="mouseLocation" Margin="4"
+            Background="{Binding Background, ElementName=map}"
+            Foreground="{Binding Foreground, ElementName=map}"
+            HorizontalAlignment="Left" VerticalAlignment="Bottom"
+            IsHitTestVisible="False"/>
     </Grid>
 </Window>
