@@ -36,6 +36,7 @@ namespace RibbonLib.Controls
         private DecodeFile _decodeFile;
         //private bool _modifiedSettings;
         private byte[] _loadedQatSettings;
+        private Summaries _summaries;
 
         private UICollectionChangedEvent _uiCollectionChangedEvent;
 
@@ -322,6 +323,7 @@ namespace RibbonLib.Controls
             try
             {
                 MapControl.LocationCollection locations = new MapControl.LocationCollection();
+                List<PointItem> pushpinItems = new List<PointItem>();
                 List<PointItem> pointItems = new List<PointItem>();
                 MapControl.Location mapCenter = null;
                 double distanceStart = 0;
@@ -335,7 +337,7 @@ namespace RibbonLib.Controls
                     if (mapCenter == null && latitude != 0)
                     {
                         mapCenter = location;
-                        pointItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                        pushpinItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
                         distanceStart += 5;
                     }
                     if (mapCenter != null && latitude != 0)
@@ -343,13 +345,13 @@ namespace RibbonLib.Controls
                         locations.Add(location);
                         if (distance >= distanceStart)
                         {
-                            pointItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                            pushpinItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
                             distanceStart += 5;
                         }
                     }
                 }
                 MapHandler handler = new MapHandler((int)SpinnerMapWidth.DecimalValue, (int)SpinnerMapHeight.DecimalValue);
-                handler.SetLocations(mapCenter, locations, pointItems);
+                handler.SetLocations(mapCenter, locations, pushpinItems, pointItems);
                 handler.ShowDialog();
             }
             catch
@@ -561,11 +563,41 @@ namespace RibbonLib.Controls
 
         private void InitApplication()
         {
-            ButtonOpen.ExecuteEvent += ButtonOpen_ExecuteEvent;
+            //_summaries = new Summaries();
+            //_summaries.Execute1();
+            ButtonStatistics.Enabled = false; //@ Todo
+            ButtonOpenFit.ExecuteEvent += ButtonOpenFit_ExecuteEvent;
+            ButtonOpenGpx.ExecuteEvent += ButtonOpenGpx_ExecuteEvent;
             ButtonSaveGpx.ExecuteEvent += ButtonSaveGpx_ExecuteEvent;
             ButtonHelp.ExecuteEvent += ButtonAbout_ExecuteEvent;
             ButtonAbout.ExecuteEvent += ButtonAbout_ExecuteEvent;
             ButtonExit.ExecuteEvent += ButtonExit_ExecuteEvent;
+        }
+
+        private void ButtonOpenGpx_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.CheckFileExists = true;
+            dialog.CheckPathExists = true;
+            dialog.DefaultExt = "gpx";
+            dialog.Filter = "Gpx-File" + " (*.gpx)|*.gpx";
+            if (dialog.ShowDialog(_form) == DialogResult.OK)
+            {
+                _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
+                try
+                {
+                    GpxParser parser = new GpxParser(Settings.Instance.MapWidth, Settings.Instance.MapHeight);
+                    parser.Parse(dialog.FileName);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                _form.Text = MainForm.MainFormText;
+            }
         }
 
         private void InitModes()
@@ -578,7 +610,7 @@ namespace RibbonLib.Controls
             Ribbon.SetModes(modes);
         }
 
-        private void ButtonOpen_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonOpenFit_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
             try
             {
@@ -719,6 +751,7 @@ namespace RibbonLib.Controls
             ButtonMyExtras.ExecuteEvent += ButtonMyExtras_ExecuteEvent;
             ButtonHeartRateZones.ExecuteEvent += ButtonHeartRateZones_ExecuteEvent;
             ButtonPowerZones.ExecuteEvent += ButtonPowerZones_ExecuteEvent;
+            ButtonStatistics.ExecuteEvent += ButtonStatistics_ExecuteEvent;
         }
 
         private void ButtonSession_ExecuteEvent(object sender, ExecuteEventArgs e)
@@ -757,6 +790,12 @@ namespace RibbonLib.Controls
             {
                 throw;
             }
+        }
+
+        private void ButtonStatistics_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            //_summaries.GetMonthSummaries(2022, 5);
+            MessageBox.Show("Not supported");
         }
 
         private void ButtonHeartRateZones_ExecuteEvent(object sender, ExecuteEventArgs e)

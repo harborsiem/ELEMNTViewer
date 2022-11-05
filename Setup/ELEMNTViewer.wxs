@@ -7,8 +7,8 @@
     lightArgs: "<projectname>.wixobj" -out "<projectname>.msi" -ext WixUtilExtension -ext WixUIExtension -ext WixNetFxExtension
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="{E262A33F-02A1-41CF-B0CD-2CBB42BA9360}" Name="ELEMNTViewer" Language="1033" Version="2.2.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
-    <Package InstallerVersion="301" Compressed="yes" Platform="x86" InstallScope="perMachine" Description="ELEMNTViewer" Comments="ELEMNTViewer Install" />
+  <Product Id="{B50D7716-9853-4A47-BB35-068D80328ED5}" Name="ElemntViewer" Language="1033" Version="2.3.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
+    <Package InstallerVersion="301" Compressed="yes" Platform="x86" InstallScope="perMachine" Description="ElemntViewer" Comments="ELEMNTViewer Install" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <Media Id="1" Cabinet="Data.cab" EmbedCab="yes" />
@@ -46,7 +46,8 @@
       <Component Id="C.ELEMNTViewerExe" Guid="DA142E1C-78BE-4FE9-82D1-91978CDF8CDB">
         <File Id="Fi.ELEMNTViewerExe" Name="ELEMNTViewer.exe" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe" KeyPath="yes" Checksum="yes" />
         <File Id="Fi.ELEMNTViewerConfig" Name="ELEMNTViewer.exe.config" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe.config" Checksum="yes" />
-        <File Id="Fi.FitDll" Name="Fit.dll" Source="..\ELEMNTViewer\Resources\Fit.dll" Checksum="yes" />
+        <File Id="Fi.RibbonDll" Name="Ribbon.dll" Source="..\ELEMNTViewer\bin\Release\Ribbon.dll" Checksum="yes" />
+		<File Id="Fi.FitDll" Name="Fit.dll" Source="..\ELEMNTViewer\Resources\Fit.dll" Checksum="yes" />
         <File Id="Fi.MapControlDll" Name="MapControl.WPF.dll" Source="..\WpfMaps\bin\Release\MapControl.WPF.dll" Checksum="yes" />
         <File Id="Fi.WpfMapsDll" Name="WpfMaps.dll" Source="..\WpfMaps\bin\Release\WpfMaps.dll" Checksum="yes" />
         <File Id="Fi.MapUiToolsDll" Name="MapUiTools.WPF.dll" Source="..\ELEMNTViewer\Resources\MapUiTools.WPF.dll" Checksum="yes" />

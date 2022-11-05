@@ -50,12 +50,16 @@ namespace ELEMNTViewer
                     break;
                 case RecordMesg.FieldDefNum.Cadence:
                     cadence = Convert.ToByte(value); //Byte
+                    //if (cadence > 130)
+                    //    cadence = Convert.ToByte(value);
                     break;
                 case RecordMesg.FieldDefNum.Distance:
                     distance = FitConvert.ToKm((float)value); //Single
                     break;
                 case RecordMesg.FieldDefNum.Speed:
                     speed = FitConvert.ToKmPerHour((float)value); //Single
+                    //if (speed > 60.0f)
+                    //    speed = FitConvert.ToKmPerHour((float)value);
                     break;
                 case RecordMesg.FieldDefNum.Power:
                     power = Convert.ToUInt16(value); //UInt16
@@ -86,9 +90,16 @@ namespace ELEMNTViewer
                     break;
 
                 case RecordMesg.FieldDefNum.GpsAccuracy:
+                    break;
                 case RecordMesg.FieldDefNum.EnhancedSpeed:
+                    //float speedEnh = FitConvert.ToKmPerHour((float)value); //Single
+                    //if (speedEnh > 50.0f)
+                    //    speedEnh = FitConvert.ToKmPerHour((float)value);
+                    break;
                 case RecordMesg.FieldDefNum.EnhancedAltitude:
                 case RecordMesg.FieldDefNum.BatterySoc:
+                    break;
+                case RecordMesg.FieldDefNum.Calories:
                     break;
                 default:
                     break;

@@ -17,7 +17,6 @@ namespace ELEMNTViewer
 {
     public partial class MainForm : Form
     {
-
         public const string MainFormText = "ELEMNTViewer";
         private RibbonItems _ribbonItems;
         internal ChartHelp _chartHelp;

@@ -11,6 +11,8 @@ Dieses Programm kann die *.fit Dateien des Wahoo ELEMNT und ELEMNT Bolt auslesen
 
 Der einfachste Weg die *.fit Dateien auf den Windows Computer zu bekommen: Richte einen freien DropBox Account ein und verbinde diesen zu der Wahoo App auf deinem Phone. Nun werden die *.fit Dateien zur DropBox kopiert nach jedem Workout. Im Windows Computer muss auch die DropBox installiert werden mit deinem Account. Nun kann man die *.fit Dateien im DropBox Ordner Apps\WahooFitness sehen. Diese Dateien müssen über die App ELEMNTViewer ausgewählt werden.
 
+Auch *.gpx Dateien mit Routen (Tracks) und Wegpunkten können im ElemntViewer ab Version 2.3.0 in einer Landkarte dargestellt werden.
+
 ELEMNTViewer ist Open Source Software, veröffentlicht unter der MIT License.
 
 ELEMNTViewer benutzt die Fit Dll von ThisIsAnt FitSDK zum Dekodieren der *.fit Files

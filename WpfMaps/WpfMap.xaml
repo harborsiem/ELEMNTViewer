@@ -1,4 +1,4 @@
-﻿<Window x:Class="WpfMaps.WpfMap"
+<Window x:Class="WpfMaps.WpfMap"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -85,11 +85,13 @@
             <EventSetter Event="TouchDown" Handler="MapItemTouchDown"/>
             <Setter Property="AutoCollapse" Value="True"/>
             <Setter Property="Location" Value="{Binding Location}"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="map:MapItem">
-                        <map:Pushpin Content="{Binding Name}"/>
+                        <map:Pushpin Content="{Binding Name}"
+                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"/>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
@@ -100,7 +102,6 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
         </ResourceDictionary>
     </Window.Resources>
 
@@ -112,7 +113,7 @@
         <map:Map x:Name="map"
                  MinZoomLevel="2" MaxZoomLevel="21" ZoomLevel="11" MouseWheelZoomDelta="1"
                  Center="49.5667, 10.9"
-				 MouseLeftButtonDown="MapMouseLeftButtonDown"
+                 MouseLeftButtonDown="MapMouseLeftButtonDown"
                  MouseRightButtonDown="MapMouseRightButtonDown"
                  MouseMove="MapMouseMove" MouseLeave="MapMouseLeave"
                  ManipulationInertiaStarting="MapManipulationInertiaStarting">
@@ -142,10 +143,33 @@
             -->
         </map:Map>
 
-        <Border HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#AFFFFFFF">
-            <TextBlock Margin="4,2" FontSize="10"
-			local:HyperlinkText.InlinesSource="{Binding MapLayer.Description, ElementName=map}"/>
-        </Border>
+        <local:OutlinedText
+            x:Name="mouseLocation" Margin="4" FontFamily="Consolas"
+            Background="{Binding Background, ElementName=map}"
+            Foreground="{Binding Foreground, ElementName=map}"
+            HorizontalAlignment="Left" VerticalAlignment="Bottom"
+            IsHitTestVisible="False"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#AFFFFFFF"
+                    DataContext="{Binding MapLayer, ElementName=map}">
+            <ProgressBar Width="100" Height="8" Margin="4,2" VerticalAlignment="Center"
+                         Maximum="1" Value="{Binding LoadingProgress}">
+                <ProgressBar.Style>
+                    <Style TargetType="ProgressBar">
+                        <Style.Triggers>
+                            <Trigger Property="Value" Value="0">
+                                <Setter Property="IsIndeterminate" Value="True"/>
+                            </Trigger>
+                            <Trigger Property="Value" Value="1">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ProgressBar.Style>
+            </ProgressBar>
+
+            <TextBlock Margin="4,2" FontSize="10" local:HyperlinkText.InlinesSource="{Binding Description}"/>
+        </StackPanel>
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6">
             <tools:MapLayersMenuButton x:Name="mapLayersMenuButton"
@@ -178,20 +202,16 @@
 
             <Button Margin="2" Padding="8" ToolTip="Reset Heading" Click="ResetHeadingButtonClick"
                     FontSize="20" FontFamily="Segoe MDL2 Assets" Content="&#xEBE6;">
-                <Button.Visibility>
-                    <Binding Path="Heading" ElementName="map">
-                        <Binding.Converter>
-                            <local:HeadingToVisibilityConverter/>
-                        </Binding.Converter>
-                    </Binding>
-                </Button.Visibility>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Heading, ElementName=map}" Value="0">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
             </Button>
         </StackPanel>
-        <local:OutlinedText
-            x:Name="mouseLocation" Margin="4"
-            Background="{Binding Background, ElementName=map}"
-            Foreground="{Binding Foreground, ElementName=map}"
-            HorizontalAlignment="Left" VerticalAlignment="Bottom"
-            IsHitTestVisible="False"/>
     </Grid>
 </Window>

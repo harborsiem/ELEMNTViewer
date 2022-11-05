@@ -39,26 +39,26 @@ namespace WpfMaps
         {
             InitializeComponent();
 
-            //if (!string.IsNullOrEmpty(BingMapsTileLayer.ApiKey))
-            //{
-            //    mapLayersMenuButton.MapLayers.Add(new MapLayerItem
-            //    {
-            //        Text = "Bing Maps Road",
-            //        Layer = (UIElement)Resources["BingMapsRoad"]
-            //    });
+            if (!string.IsNullOrEmpty(BingMapsTileLayer.ApiKey))
+            {
+                mapLayersMenuButton.MapLayers.Add(new MapLayerItem
+                {
+                    Text = "Bing Maps Road",
+                    Layer = (UIElement)Resources["BingMapsRoad"]
+                });
 
-            //    mapLayersMenuButton.MapLayers.Add(new MapLayerItem
-            //    {
-            //        Text = "Bing Maps Aerial",
-            //        Layer = (UIElement)Resources["BingMapsAerial"]
-            //    });
+                mapLayersMenuButton.MapLayers.Add(new MapLayerItem
+                {
+                    Text = "Bing Maps Aerial",
+                    Layer = (UIElement)Resources["BingMapsAerial"]
+                });
 
-            //    mapLayersMenuButton.MapLayers.Add(new MapLayerItem
-            //    {
-            //        Text = "Bing Maps Aerial with Labels",
-            //        Layer = (UIElement)Resources["BingMapsHybrid"]
-            //    });
-            //}
+                mapLayersMenuButton.MapLayers.Add(new MapLayerItem
+                {
+                    Text = "Bing Maps Aerial with Labels",
+                    Layer = (UIElement)Resources["BingMapsHybrid"]
+                });
+            }
 
             AddChartServerLayer();
 
@@ -98,8 +98,6 @@ namespace WpfMaps
         {
             if (e.ClickCount == 2)
             {
-                //map.ZoomMap(e.GetPosition(map), Math.Floor(map.ZoomLevel + 1.5));
-                //map.ZoomToBounds(new BoundingBox(53, 7, 54, 9));
                 map.TargetCenter = map.ViewToLocation(e.GetPosition(map));
             }
         }
@@ -115,27 +113,35 @@ namespace WpfMaps
         private void MapMouseMove(object sender, MouseEventArgs e)
         {
             var location = map.ViewToLocation(e.GetPosition(map));
-            var latitude = (int)Math.Round(location.Latitude * 60000d);
-            var longitude = (int)Math.Round(Location.NormalizeLongitude(location.Longitude) * 60000d);
-            var latHemisphere = 'N';
-            var lonHemisphere = 'E';
 
-            if (latitude < 0)
+            if (location != null)
             {
-                latitude = -latitude;
-                latHemisphere = 'S';
-            }
+                var latitude = (int)Math.Round(location.Latitude * 60000d);
+                var longitude = (int)Math.Round(Location.NormalizeLongitude(location.Longitude) * 60000d);
+                var latHemisphere = 'N';
+                var lonHemisphere = 'E';
 
-            if (longitude < 0)
+                if (latitude < 0)
+                {
+                    latitude = -latitude;
+                    latHemisphere = 'S';
+                }
+
+                if (longitude < 0)
+                {
+                    longitude = -longitude;
+                    lonHemisphere = 'W';
+                }
+
+                mouseLocation.Text = string.Format(CultureInfo.InvariantCulture,
+                    "{0}  {1:00} {2:00.000}\n{3} {4:000} {5:00.000}",
+                    latHemisphere, latitude / 60000, (latitude % 60000) / 1000d,
+                    lonHemisphere, longitude / 60000, (longitude % 60000) / 1000d);
+            }
+            else
             {
-                longitude = -longitude;
-                lonHemisphere = 'W';
+                mouseLocation.Text = string.Empty;
             }
-
-            mouseLocation.Text = string.Format(CultureInfo.InvariantCulture,
-                "{0}  {1:00} {2:00.000}\n{3} {4:000} {5:00.000}",
-                latHemisphere, latitude / 60000, (latitude % 60000) / 1000d,
-                lonHemisphere, longitude / 60000, (longitude % 60000) / 1000d);
         }
 
         private void MapMouseLeave(object sender, MouseEventArgs e)

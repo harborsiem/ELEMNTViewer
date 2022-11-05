@@ -14,7 +14,7 @@
     <Command Name="cmdButtonRSmoothness" Id="12" LabelTitle="Right" TooltipTitle="Right Smoothness" TooltipDescription="Powermeter: Right Smoothness" />
     <Command Name="cmdButtonLTorqueEff" Id="13" LabelTitle="Left" TooltipTitle="Left Torque Effectiveness" TooltipDescription="Powermeter: Left Torque Effectiveness" />
     <Command Name="cmdButtonRTorqueEff" Id="14" LabelTitle="Right" TooltipTitle="Right Torque Effectiveness" TooltipDescription="Powermeter: Right Torque Effectiveness" />
-    <Command Name="cmdButtonOpen" Id="15" LabelTitle="&amp;Open" TooltipTitle="Fit file" TooltipDescription="Open the Fit file">
+    <Command Name="cmdSplitButtonOpen" Id="15" LabelTitle="&amp;Open" TooltipTitle="Fit, Gpx file" TooltipDescription="Open the Fit or Gpx file">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/OpenFile_16.bmp</Image>
         <Image MinDPI="120">Resources/OpenFile_20.bmp</Image>
@@ -26,6 +26,48 @@
         <Image MinDPI="120">Resources/OpenFile_40.bmp</Image>
         <Image MinDPI="144">Resources/OpenFile_48.bmp</Image>
         <Image MinDPI="192">Resources/OpenFile_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdButtonOpen" Id="80" LabelTitle="Open" TooltipTitle="Fit, Gpx file" TooltipDescription="Open the Fit or Gpx file">
+      <Command.SmallImages>
+        <Image>Resources/OpenFile_16.bmp</Image>
+        <Image MinDPI="120">Resources/OpenFile_20.bmp</Image>
+        <Image MinDPI="144">Resources/OpenFile_24.bmp</Image>
+        <Image MinDPI="192">Resources/OpenFile_32.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Resources/OpenFile_32.bmp</Image>
+        <Image MinDPI="120">Resources/OpenFile_40.bmp</Image>
+        <Image MinDPI="144">Resources/OpenFile_48.bmp</Image>
+        <Image MinDPI="192">Resources/OpenFile_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdButtonOpenFit" Id="78" LabelTitle="Open &amp;Fit" TooltipTitle="Fit file" TooltipDescription="Open the Fit file">
+      <Command.SmallImages>
+        <Image>Resources/OpenFile_16.bmp</Image>
+        <Image MinDPI="120">Resources/OpenFile_20.bmp</Image>
+        <Image MinDPI="144">Resources/OpenFile_24.bmp</Image>
+        <Image MinDPI="192">Resources/OpenFile_32.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Resources/OpenFile_32.bmp</Image>
+        <Image MinDPI="120">Resources/OpenFile_40.bmp</Image>
+        <Image MinDPI="144">Resources/OpenFile_48.bmp</Image>
+        <Image MinDPI="192">Resources/OpenFile_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdButtonOpenGpx" Id="79" LabelTitle="Open &amp;Gpx" TooltipTitle="Gpx file" TooltipDescription="Open the Gpx file">
+      <Command.SmallImages>
+        <Image>Resources/route_16.bmp</Image>
+        <Image MinDPI="120">Resources/route_20.bmp</Image>
+        <Image MinDPI="144">Resources/route_24.bmp</Image>
+        <Image MinDPI="192">Resources/route_32.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Resources/route_32.bmp</Image>
+        <Image MinDPI="120">Resources/route_40.bmp</Image>
+        <Image MinDPI="144">Resources/route_48.bmp</Image>
+        <Image MinDPI="192">Resources/route_64.bmp</Image>
       </Command.LargeImages>
     </Command>
     <Command Name="cmdButtonSaveGpx" Id="16" LabelTitle="Save as Gpx" TooltipTitle="GPX File" TooltipDescription="Save the session to a *.gpx file">
@@ -50,7 +92,7 @@
         <Image MinDPI="192">Resources/Close_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonHelp" Id="18" />
+    <Command Name="cmdButtonHelp" Id="18" TooltipTitle="Help" TooltipDescription="Get help" />
     <Command Name="cmdButtonHeartRate" Id="19" LabelTitle="HeartRate" TooltipTitle="HeartRate" TooltipDescription="Monitoring Heart rate" />
     <Command Name="cmdButtonAltitude" Id="20" LabelTitle="Altitude" />
     <Command Name="cmdButtonGrade" Id="21" LabelTitle="Grade" />
@@ -202,6 +244,21 @@
     <Command Name="cmdGroupMapControl" Id="73" LabelTitle="Map Control" />
     <Command Name="cmdGroupApp" Id="74" LabelTitle="Application" />
     <Command Name="cmdCheckCurrentAppSize" Id="75" LabelTitle="App Size" TooltipTitle="Current App Size" TooltipDescription="Saves the current Application size as default if checked" />
+    <Command Name="cmdButtonStatistics" Id="76" TooltipTitle="Statistics" TooltipDescription="Distance, Ascent per year or month">
+      <Command.SmallImages>
+        <Image>Resources/statistics_16.bmp</Image>
+        <Image MinDPI="120">Resources/statistics_20.bmp</Image>
+        <Image MinDPI="144">Resources/statistics_24.bmp</Image>
+        <Image MinDPI="192">Resources/statistics_32.bmp</Image>
+      </Command.SmallImages>
+      <Command.LargeImages>
+        <Image>Resources/statistics_32.bmp</Image>
+        <Image MinDPI="120">Resources/statistics_40.bmp</Image>
+        <Image MinDPI="144">Resources/statistics_48.bmp</Image>
+        <Image MinDPI="192">Resources/statistics_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
+    <Command Name="cmdGroupStatistics" Id="77" LabelTitle="Statistics" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -322,7 +379,17 @@
       <Ribbon.ApplicationMenu>
         <ApplicationMenu CommandName="cmdApplication">
           <MenuGroup>
-            <Button CommandName="cmdButtonOpen" />
+            <SplitButton CommandName="cmdSplitButtonOpen">
+              <SplitButton.ButtonItem>
+                <Button CommandName="cmdButtonOpen" />
+              </SplitButton.ButtonItem>
+              <SplitButton.MenuGroups>
+                <MenuGroup Class="MajorItems">
+                  <Button CommandName="cmdButtonOpenFit" />
+                  <Button CommandName="cmdButtonOpenGpx" />
+                </MenuGroup>
+              </SplitButton.MenuGroups>
+            </SplitButton>
             <Button CommandName="cmdButtonSaveGpx" />
           </MenuGroup>
           <MenuGroup>
@@ -339,7 +406,7 @@
       <Ribbon.QuickAccessToolbar>
         <QuickAccessToolbar CommandName="cmdQAT">
           <QuickAccessToolbar.ApplicationDefaults>
-            <Button CommandName="cmdButtonOpen" ApplicationDefaults.IsChecked="true" />
+            <Button CommandName="cmdButtonOpenFit" ApplicationDefaults.IsChecked="true" />
             <Button CommandName="cmdButtonSession" ApplicationDefaults.IsChecked="true" />
             <Button CommandName="cmdButtonLaps" ApplicationDefaults.IsChecked="false" />
             <Button CommandName="cmdButtonMap" ApplicationDefaults.IsChecked="true" />
@@ -460,6 +527,9 @@
           </Group>
           <Group CommandName="cmdGroupMaps" SizeDefinition="OneButton">
             <Button CommandName="cmdButtonMap" />
+          </Group>
+          <Group CommandName="cmdGroupStatistics" SizeDefinition="OneButton">
+            <Button CommandName="cmdButtonStatistics" />
           </Group>
           <Group CommandName="cmdGroupZones">
             <Button CommandName="cmdButtonHeartRateZones" />

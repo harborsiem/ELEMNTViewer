@@ -1,3 +1,9 @@
+First step: Open ElemntViewerSetup.sln in Visual Studio
+Build solution (Release)
+
+The ElemntViewer.msi in folder msi is the setup for installation.
+
+Older Versions (till version 2.2.0):
 First step: Open Setup.sln in Visual Studio
 Build solution (Release)
 

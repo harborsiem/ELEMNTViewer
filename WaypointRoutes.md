@@ -3,6 +3,7 @@
 There are some possibilities to copy routes to the Wahoo bike computer.
 I will describe a way how to copy routes with waypoints to the Wahoo bike computer.
 The waypoints will be shown at your Wahoo Elemnt when you arrive the waypoint.
+Important: The waypoints must be on the track.
 
 ## Copy a route.
 

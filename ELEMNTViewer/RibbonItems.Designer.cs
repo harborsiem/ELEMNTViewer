@@ -20,7 +20,10 @@ namespace RibbonLib.Controls
         private static class Cmd
         {
             public const uint cmdApplication = 3;
-            public const uint cmdButtonOpen = 15;
+            public const uint cmdSplitButtonOpen = 15;
+            public const uint cmdButtonOpen = 80;
+            public const uint cmdButtonOpenFit = 78;
+            public const uint cmdButtonOpenGpx = 79;
             public const uint cmdButtonSaveGpx = 16;
             public const uint cmdButtonAbout = 48;
             public const uint cmdButtonExit = 17;
@@ -76,6 +79,8 @@ namespace RibbonLib.Controls
             public const uint cmdGroupExtras = 39;
             public const uint cmdButtonMyExtras = 49;
             public const uint cmdGroupMaps = 63;
+            public const uint cmdGroupStatistics = 77;
+            public const uint cmdButtonStatistics = 76;
             public const uint cmdGroupZones = 38;
             public const uint cmdButtonHeartRateZones = 45;
             public const uint cmdButtonPowerZones = 46;
@@ -97,7 +102,10 @@ namespace RibbonLib.Controls
 
         public Ribbon Ribbon { get; private set; }
         public RibbonApplicationMenu Application { get; private set; }
+        public RibbonSplitButton SplitButtonOpen { get; private set; }
         public RibbonButton ButtonOpen { get; private set; }
+        public RibbonButton ButtonOpenFit { get; private set; }
+        public RibbonButton ButtonOpenGpx { get; private set; }
         public RibbonButton ButtonSaveGpx { get; private set; }
         public RibbonButton ButtonAbout { get; private set; }
         public RibbonButton ButtonExit { get; private set; }
@@ -153,6 +161,8 @@ namespace RibbonLib.Controls
         public RibbonGroup GroupExtras { get; private set; }
         public RibbonButton ButtonMyExtras { get; private set; }
         public RibbonGroup GroupMaps { get; private set; }
+        public RibbonGroup GroupStatistics { get; private set; }
+        public RibbonButton ButtonStatistics { get; private set; }
         public RibbonGroup GroupZones { get; private set; }
         public RibbonButton ButtonHeartRateZones { get; private set; }
         public RibbonButton ButtonPowerZones { get; private set; }
@@ -175,7 +185,10 @@ namespace RibbonLib.Controls
                 throw new ArgumentNullException(nameof(ribbon), "Parameter is null");
             this.Ribbon = ribbon;
             Application = new RibbonApplicationMenu(ribbon, Cmd.cmdApplication);
+            SplitButtonOpen = new RibbonSplitButton(ribbon, Cmd.cmdSplitButtonOpen);
             ButtonOpen = new RibbonButton(ribbon, Cmd.cmdButtonOpen);
+            ButtonOpenFit = new RibbonButton(ribbon, Cmd.cmdButtonOpenFit);
+            ButtonOpenGpx = new RibbonButton(ribbon, Cmd.cmdButtonOpenGpx);
             ButtonSaveGpx = new RibbonButton(ribbon, Cmd.cmdButtonSaveGpx);
             ButtonAbout = new RibbonButton(ribbon, Cmd.cmdButtonAbout);
             ButtonExit = new RibbonButton(ribbon, Cmd.cmdButtonExit);
@@ -231,6 +244,8 @@ namespace RibbonLib.Controls
             GroupExtras = new RibbonGroup(ribbon, Cmd.cmdGroupExtras);
             ButtonMyExtras = new RibbonButton(ribbon, Cmd.cmdButtonMyExtras);
             GroupMaps = new RibbonGroup(ribbon, Cmd.cmdGroupMaps);
+            GroupStatistics = new RibbonGroup(ribbon, Cmd.cmdGroupStatistics);
+            ButtonStatistics = new RibbonButton(ribbon, Cmd.cmdButtonStatistics);
             GroupZones = new RibbonGroup(ribbon, Cmd.cmdGroupZones);
             ButtonHeartRateZones = new RibbonButton(ribbon, Cmd.cmdButtonHeartRateZones);
             ButtonPowerZones = new RibbonButton(ribbon, Cmd.cmdButtonPowerZones);

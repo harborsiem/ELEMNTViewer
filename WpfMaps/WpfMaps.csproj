@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MapControl.WPF, Version=7.1.0.0, Culture=neutral, PublicKeyToken=f26fcf0059638459, processorArchitecture=MSIL">
-      <HintPath>..\packages\XAML.MapControl.7.1.0\lib\net462\MapControl.WPF.dll</HintPath>
+    <Reference Include="MapControl.WPF, Version=7.3.0.0, Culture=neutral, PublicKeyToken=f26fcf0059638459, processorArchitecture=MSIL">
+      <HintPath>..\packages\XAML.MapControl.7.3.0\lib\net462\MapControl.WPF.dll</HintPath>
     </Reference>
     <Reference Include="MapUiTools.WPF">
       <HintPath>..\ELEMNTViewer\Resources\MapUiTools.WPF.dll</HintPath>
@@ -72,12 +72,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ValueConverters.cs" />
     <Compile Include="WpfMap.xaml.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

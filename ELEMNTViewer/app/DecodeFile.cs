@@ -11,10 +11,19 @@ namespace ELEMNTViewer
 {
     class DecodeFile
     {
+        private static List<Task<RecordValues>> s_Records = new List<Task<RecordValues>>();
+        private static int s_RecordCount;
+        private static Task<SessionValues> s_Session;
+        private static List<Task<LapValues>> s_Laps = new List<Task<LapValues>>();
+        private static List<int> s_LapEnd = new List<int>();
         private Stream _fitSource;
 
         public void Decode(string fileName)
         {
+            s_Records.Clear();
+            s_RecordCount = 0;
+            s_Laps.Clear();
+            s_LapEnd.Clear();
             try
             {
                 // Attempt to open .FIT file
@@ -36,7 +45,6 @@ namespace ELEMNTViewer
                 mesgBroadcaster.EventMesgEvent += EventValues.OnEventMesg;
                 mesgBroadcaster.SportMesgEvent += SportValues.OnSportMesg;
                 mesgBroadcaster.WorkoutMesgEvent += WorkoutValues.OnWorkoutMesg;
-                //mesgBroadcaster.HrZoneMesgEvent += HRZonesManager.OnMesg;
 
                 bool status = decodeDemo.IsFIT(_fitSource);
                 status &= decodeDemo.CheckIntegrity(_fitSource);
@@ -87,6 +95,24 @@ namespace ELEMNTViewer
             {
 
             }
+            Task task = EndAsync();
+        }
+
+        static async Task EndAsync()
+        {
+            RecordValues[] records = await Task.WhenAll(s_Records);
+            for (int i = 0; i < records.Length; i++)
+            {
+                DataManager.Instance.RecordList.Add(records[i]);
+            }
+            SessionValues[] sessions = await Task.WhenAll(s_Session);
+            DataManager.Instance.Session = sessions[0];
+            HandleSessionExtras();
+            LapValues[] laps = await Task.WhenAll(s_Laps);
+            for (int i = 0; i < laps.Length; i++)
+            {
+                DataManager.Instance.LapManager.Add(laps[i], s_LapEnd[i]);
+            }
         }
 
         static void OnMesg(object sender, MesgEventArgs e)
@@ -101,14 +127,19 @@ namespace ELEMNTViewer
                     HandlePowerZones(e);
                     break;
                 case MesgNum.Session:
-                    HandleSession(e);
-                    HandleSessionExtras();
+                    s_Session = HandleSessionAsync(e);
+                    //HandleSession(e);
+                    //HandleSessionExtras();
                     break;
                 case MesgNum.Lap:
-                    HandleLap(e);
+                    s_Laps.Add(HandleLapAsync(e));
+                    s_LapEnd.Add(s_RecordCount - 1);
+                    //HandleLap(e);
                     break;
                 case MesgNum.Record:
-                    HandleRecord(e);
+                    s_RecordCount++;
+                    s_Records.Add(HandleRecordAsync(e));
+                    //HandleRecord(e);
                     break;
                 case 65280: //0xff00
                     HandleWahooFF00(e);
@@ -126,7 +157,6 @@ namespace ELEMNTViewer
             WahooFF00Values values = new WahooFF00Values();
             object value;
 
-            int i = 0;
             foreach (Field field in e.mesg.Fields)
             {
                 for (int j = 0; j < field.GetNumValues(); j++)
@@ -134,8 +164,6 @@ namespace ELEMNTViewer
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
-
-                i++;
             }
             DataManager.Instance.WahooFF00Values.Add(values);
         }
@@ -145,7 +173,6 @@ namespace ELEMNTViewer
             WahooFF01Values values = new WahooFF01Values();
             object value;
 
-            int i = 0;
             foreach (Field field in e.mesg.Fields)
             {
                 for (int j = 0; j < field.GetNumValues(); j++)
@@ -153,61 +180,68 @@ namespace ELEMNTViewer
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
-
-                i++;
             }
             DataManager.Instance.WahooFF01Values.Add(values);
         }
 
-        static async void HandleSessionExtras()
+        static void HandleSessionExtras()
         {
             OtherValues others = new OtherValues();
             DataManager.Instance.SessionExtras = others;
-            await Task.CompletedTask;
         }
 
-        static async void HandleHrZones(MesgEventArgs e)
+        static void HandleHrZones(MesgEventArgs e)
         {
             object value = 0;
 
-            int i = 0;
             foreach (Field field in e.mesg.Fields)
             {
                 for (int j = 0; j < field.GetNumValues(); j++)
                 {
                     value = field.GetValue(j);
                 }
-
-                i++;
             }
             DataManager.Instance.HRManager.Add((byte)value);
-            await Task.CompletedTask;
         }
 
-        static async void HandlePowerZones(MesgEventArgs e)
+        static void HandlePowerZones(MesgEventArgs e)
         {
             object value = 0;
 
-            int i = 0;
             foreach (Field field in e.mesg.Fields)
             {
                 for (int j = 0; j < field.GetNumValues(); j++)
                 {
                     value = field.GetValue(j);
                 }
-
-                i++;
             }
             DataManager.Instance.PowerManager.Add((ushort)value);
-            await Task.CompletedTask;
         }
 
-        static async void HandleSession(MesgEventArgs e)
+        static Task<SessionValues> HandleSessionAsync(MesgEventArgs e)
+        {
+            return Task<SessionValues>.Run(() =>
+            {
+                SessionValues values = new SessionValues();
+                object value;
+
+                foreach (Field field in e.mesg.Fields)
+                {
+                    for (int j = 0; j < field.GetNumValues(); j++)
+                    {
+                        value = field.GetValue(j);
+                        values.SetValue(field.Num, j, value);
+                    }
+                }
+                return values;
+            });
+        }
+
+        static void HandleSession(MesgEventArgs e)
         {
             SessionValues values = new SessionValues();
             object value;
 
-            int i = 0;
             foreach (Field field in e.mesg.Fields)
             {
                 for (int j = 0; j < field.GetNumValues(); j++)
@@ -215,19 +249,34 @@ namespace ELEMNTViewer
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
-
-                i++;
             }
             DataManager.Instance.Session = (values);
-            await Task.CompletedTask;
         }
 
-        static async void HandleLap(MesgEventArgs e)
+        static Task<LapValues> HandleLapAsync(MesgEventArgs e)
+        {
+            return Task<LapValues>.Run(() =>
+            {
+                LapValues values = new LapValues();
+                object value;
+
+                foreach (Field field in e.mesg.Fields)
+                {
+                    for (int j = 0; j < field.GetNumValues(); j++)
+                    {
+                        value = field.GetValue(j);
+                        values.SetValue(field.Num, j, value);
+                    }
+                }
+                return values;
+            });
+        }
+
+        static void HandleLap(MesgEventArgs e)
         {
             LapValues values = new LapValues();
             object value;
 
-            int i = 0;
             foreach (Field field in e.mesg.Fields)
             {
                 for (int j = 0; j < field.GetNumValues(); j++)
@@ -235,19 +284,34 @@ namespace ELEMNTViewer
                     value = field.GetValue(j);
                     values.SetValue(field.Num, j, value);
                 }
-
-                i++;
             }
             DataManager.Instance.LapManager.Add(values, DataManager.Instance.RecordList.Count - 1);
-            await Task.CompletedTask;
         }
 
-        static async void HandleRecord(MesgEventArgs e)
+        static Task<RecordValues> HandleRecordAsync(MesgEventArgs e)
+        {
+            return Task<RecordValues>.Run(() =>
+            {
+                RecordValues values = new RecordValues();
+                object value = 0;
+
+                foreach (Field field in e.mesg.Fields)
+                {
+                    for (int j = 0; j < field.GetNumValues(); j++)
+                    {
+                        value = field.GetValue(j);
+                        values.SetValue(field.Num, value);
+                    }
+                }
+                return values;
+            });
+        }
+
+        static void HandleRecord(MesgEventArgs e)
         {
             RecordValues values = new RecordValues();
             object value;
 
-            int i = 0;
             foreach (Field field in e.mesg.Fields)
             {
                 for (int j = 0; j < field.GetNumValues(); j++)
@@ -255,11 +319,8 @@ namespace ELEMNTViewer
                     value = field.GetValue(j);
                     values.SetValue(field.Num, value);
                 }
-
-                i++;
             }
             DataManager.Instance.RecordList.Add(values);
-            await Task.CompletedTask;
         }
     }
 }

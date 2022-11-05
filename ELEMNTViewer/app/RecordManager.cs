@@ -65,23 +65,33 @@
             double lon;
             double lat;
             double ele;
+            DateTime time;
             for (int i = 0; i < _recordValuesList.Count; i += recordIncrement)
             {
                 RecordValues values = _recordValuesList[i];
                 lon = values.PositionLong;
                 lat = values.PositionLat;
                 ele = values.Altitude;
-                XmlNode trkptNode = document.CreateElement("trkpt");
-                XmlAttribute lonAttr = document.CreateAttribute("lon");
-                lonAttr.Value = lon.ToString(CultureInfo.InvariantCulture);
-                XmlAttribute latAttr = document.CreateAttribute("lat");
-                latAttr.Value = lat.ToString(CultureInfo.InvariantCulture);
-                trkptNode.Attributes.SetNamedItem(lonAttr);
-                trkptNode.Attributes.SetNamedItem(latAttr);
-                XmlNode eleNode = document.CreateElement("ele");
-                eleNode.InnerText = ele.ToString(CultureInfo.InvariantCulture);
-                trkptNode.AppendChild(eleNode);
-                trksegNode.AppendChild(trkptNode);
+                time = values.Timestamp;
+                if (!(lat == 0.0 && lon == 0.0 && ele == 0.0))
+                {
+                    XmlNode trkptNode = document.CreateElement("trkpt");
+                    XmlAttribute lonAttr = document.CreateAttribute("lon");
+                    lonAttr.Value = lon.ToString(CultureInfo.InvariantCulture);
+                    XmlAttribute latAttr = document.CreateAttribute("lat");
+                    latAttr.Value = lat.ToString(CultureInfo.InvariantCulture);
+                    trkptNode.Attributes.SetNamedItem(lonAttr);
+                    trkptNode.Attributes.SetNamedItem(latAttr);
+                    XmlNode eleNode = document.CreateElement("ele");
+                    eleNode.InnerText = ele.ToString(CultureInfo.InvariantCulture);
+                    trkptNode.AppendChild(eleNode);
+                    long utcLong = time.ToFileTimeUtc();
+                    DateTime utcTime = DateTime.FromFileTimeUtc(utcLong);
+                    XmlNode timeNode = document.CreateElement("time");
+                    timeNode.InnerText = utcTime.ToString("s") + "Z";
+                    trkptNode.AppendChild(timeNode);
+                    trksegNode.AppendChild(trkptNode);
+                }
             }
 
             document.AppendChild(gpxNode);

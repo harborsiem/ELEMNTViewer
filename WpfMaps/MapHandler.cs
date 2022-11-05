@@ -33,7 +33,7 @@ namespace WpfMaps
             wpfMap.Height = Height;
         }
 
-        public void SetLocations(Location mapCenter, LocationCollection locations, List<PointItem> pointItems)
+        public void SetLocations(Location mapCenter, LocationCollection locations, List<PointItem> pushpinItems, List<PointItem> pointItems)
         {
             MapViewModel mapViewModel = wpfMap.DataContext as MapViewModel;
             if (mapViewModel != null)
@@ -45,7 +45,11 @@ namespace WpfMaps
                 mapViewModel.Pushpins.Clear();
                 for (int i = 0; i < pointItems.Count; i++)
                 {
-                    mapViewModel.Pushpins.Add(pointItems[i]);
+                    mapViewModel.Points.Add(pointItems[i]);
+                }
+                for (int i = 0; i < pushpinItems.Count; i++)
+                {
+                    mapViewModel.Pushpins.Add(pushpinItems[i]);
                 }
                 mapViewModel.Polylines.Add(new PolylineItem() { Locations = locations });
             }
