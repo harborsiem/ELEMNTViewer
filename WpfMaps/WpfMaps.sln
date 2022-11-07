@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MapUiTools", "MapUiTools\MapUiTools.csproj", "{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMaps", "WpfMaps.csproj", "{CFD8D44A-7D92-4A59-A5DE-18E19E43579D}"
 EndProject
 Global
@@ -11,6 +13,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CFD8D44A-7D92-4A59-A5DE-18E19E43579D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CFD8D44A-7D92-4A59-A5DE-18E19E43579D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFD8D44A-7D92-4A59-A5DE-18E19E43579D}.Release|Any CPU.ActiveCfg = Release|Any CPU
