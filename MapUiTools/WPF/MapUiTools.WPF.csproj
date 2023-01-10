@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net462</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <RootNamespace>MapControl.UiTools</RootNamespace>
+        <AssemblyTitle>XAML Map Control UI Tools Library for WPF</AssemblyTitle>
+        <Product>XAML Map Control</Product>
+        <Version>8.0.0</Version>
+        <Authors>Clemens Fischer</Authors>
+        <Copyright>Copyright © 2023 Clemens Fischer</Copyright>
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\MapControl.snk</AssemblyOriginatorKeyFile>
+        <DelaySign>false</DelaySign>
+        <DefineConstants></DefineConstants>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\MapControl.snk" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Include="..\Shared\*.cs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="XAML.MapControl" Version="8.0.0" />
+    </ItemGroup>
+
+</Project>

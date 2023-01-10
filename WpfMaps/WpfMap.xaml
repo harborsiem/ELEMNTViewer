@@ -51,6 +51,12 @@
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
+                                <Path Fill="Red" Opacity="0.4" IsHitTestVisible="False">
+                                    <Path.Data>
+                                        <EllipseGeometry RadiusX="20" RadiusY="20"
+                                                         Transform="{Binding MapTransform, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                    </Path.Data>
+                                </Path>
                             <Path x:Name="selectedPath" Fill="White" Opacity="0">
                                 <Path.Data>
                                     <EllipseGeometry RadiusX="12" RadiusY="12"/>
@@ -67,8 +73,7 @@
                                 </Path.Data>
                             </Path>
                             <Grid Canvas.Left="15" Canvas.Top="-8">
-                                <local:OutlinedText Margin="1" OutlineThickness="1.5" Text="{Binding Name}"
-                                                    Background="{Binding Background, RelativeSource={RelativeSource AncestorType=map:MapBase}}"/>
+                                    <TextBlock Margin="2,0" Text="{Binding Name}"/>
                             </Grid>
                         </Canvas>
                     </ControlTemplate>
@@ -111,12 +116,18 @@
 
     <Grid>
         <map:Map x:Name="map"
-                 MinZoomLevel="2" MaxZoomLevel="21" ZoomLevel="11" MouseWheelZoomDelta="1"
-                 Center="49.5667, 10.9"
+                 MinZoomLevel="2" MaxZoomLevel="21" ZoomLevel="11"
+                 Center="49.5667, 10.9" ManipulationMode="All"
                  MouseLeftButtonDown="MapMouseLeftButtonDown"
                  MouseRightButtonDown="MapMouseRightButtonDown"
-                 MouseMove="MapMouseMove" MouseLeave="MapMouseLeave"
+                 MouseRightButtonUp="MapMouseRightButtonUp"
+                 MouseMove="MapMouseMove"
+                 MouseLeave="MapMouseLeave"
                  ManipulationInertiaStarting="MapManipulationInertiaStarting">
+
+            <map:MapPolyline x:Name="measurementLine" Visibility="Collapsed"
+                             Stroke="{Binding Foreground, ElementName=map}"
+                             StrokeThickness="2" StrokeDashArray="1,1"/>
 
             <map:MapItemsControl ItemsSource="{Binding Polylines}"/>
 
@@ -143,12 +154,14 @@
             -->
         </map:Map>
 
-        <local:OutlinedText
-            x:Name="mouseLocation" Margin="4" FontFamily="Consolas"
-            Background="{Binding Background, ElementName=map}"
-            Foreground="{Binding Foreground, ElementName=map}"
-            HorizontalAlignment="Left" VerticalAlignment="Bottom"
-            IsHitTestVisible="False"/>
+        <TextBlock x:Name="mouseLocation"
+                   HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="4" Padding="4,2"
+                   FontFamily="Consolas" IsHitTestVisible="False" Visibility="Collapsed"
+                   Foreground="{Binding Foreground, ElementName=map}">
+            <TextBlock.Background>
+                <SolidColorBrush Color="{Binding Background.Color, ElementName=map}" Opacity="0.5"/>
+            </TextBlock.Background>
+        </TextBlock>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#AFFFFFFF"
                     DataContext="{Binding MapLayer, ElementName=map}">
@@ -182,7 +195,6 @@
                 <tools:MapLayerItem Text="TopPlusOpen WMTS" Layer="{StaticResource TopPlusOpenWMTS}"/>
                 <tools:MapLayerItem Text="TopPlusOpen WMS" Layer="{StaticResource TopPlusOpenWMS}"/>
                 <tools:MapLayerItem Text="OpenStreetMap WMS" Layer="{StaticResource OpenStreetMapWMS}"/>
-
                 <tools:MapLayersMenuButton.MapOverlays>
                     <tools:MapLayerItem Text="Graticule">
                         <map:MapGraticule Opacity="0.7"/>
@@ -192,7 +204,16 @@
                     </tools:MapLayerItem>
                 </tools:MapLayersMenuButton.MapOverlays>
             </tools:MapLayersMenuButton>
-
+<!--
+            <tools:MapProjectionsMenuButton x:Name="mapProjectionsMenuButton"
+                Margin="2" ToolTip="Map Projections"
+                Map="{Binding ElementName=map}">
+                <tools:MapProjectionItem Text="Web Mercator" Projection="EPSG:3857"/>
+                <tools:MapProjectionItem Text="Equirectangular" Projection="EPSG:4326"/>
+                <tools:MapProjectionItem Text="ETRS89 / UTM zone 32N" Projection="EPSG:25832"/>
+                <tools:MapProjectionItem Text="WGS84 / Auto UTM" Projection="AUTO2:42001"/>
+            </tools:MapProjectionsMenuButton>
+-->
             <Slider Orientation="Vertical" Margin="8" Height="100"
                     Minimum="{Binding MinZoomLevel, ElementName=map}"
                     Maximum="{Binding MaxZoomLevel, ElementName=map}"

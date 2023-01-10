@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### ELEMNTViewer V2.3.x
+
+#### Changed
+
+- WpfMaps updated to version 8.0.0
+- MapControl V8.0.0 from Nuget, MapUITools V8.0.0
+- MapUITools is the same as ClemensFischer provided
+
 ### ELEMNTViewer V2.3.0
 
 #### Changed

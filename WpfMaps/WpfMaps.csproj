@@ -54,7 +54,6 @@
     <Compile Include="HyperlinkText.cs" />
     <Compile Include="MapHandler.cs" />
     <Compile Include="MapViewModel.cs" />
-    <Compile Include="OutlinedText.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -90,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="XAML.MapControl">
-      <Version>7.3.0</Version>
+      <Version>8.0.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

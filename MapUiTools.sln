@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MapUiTools.WPF", "MapUiTools\WPF\MapUiTools.WPF.csproj", "{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Debug|x64.Build.0 = Debug|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Release|x64.ActiveCfg = Release|Any CPU
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E}.Release|x64.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9B2886B0-D2A8-479B-B52E-1C7B63CAB97E} = {ABFA5526-FCE4-47C9-94F4-84D5F59EECA8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {458346DD-B23F-4FDC-8F9D-A10F1882A4DB}
+	EndGlobalSection
+EndGlobal

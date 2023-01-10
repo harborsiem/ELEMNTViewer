@@ -1,13 +1,14 @@
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using MapControl;
 using MapControl.Caching;
 using MapControl.UiTools;
-using System.Linq;
 using System.Windows.Controls;
 
 namespace WpfMaps
@@ -60,7 +61,7 @@ namespace WpfMaps
                 });
             }
 
-            AddChartServerLayer();
+            AddTestLayers();
 
             if (TileImageLoader.Cache is ImageFileCache cache)
             {
@@ -82,32 +83,46 @@ namespace WpfMaps
                 if (((string)item.Header == "Graticule") || ((string)item.Header == "Scale"))
                 {
                     item.IsChecked = true;
-                    map.Children.Add((UIElement)item.Tag);
+                    map.Children.Add(((MapLayerItem)item.Tag).Layer);
                 }
             }
         }
 
-        partial void AddChartServerLayer();
+        partial void AddTestLayers();
 
         private void ResetHeadingButtonClick(object sender, RoutedEventArgs e)
         {
             map.TargetHeading = 0d;
         }
 
-        private void MapMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void MapMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ClickCount == 2)
             {
                 map.TargetCenter = map.ViewToLocation(e.GetPosition(map));
             }
+            else if (Keyboard.Modifiers.HasFlag(ModifierKeys.Control) &&
+                map.MapLayer is WmsImageLayer wmsLayer)
+            {
+                Debug.WriteLine(await wmsLayer.GetFeatureInfoAsync(e.GetPosition(map)));
+            }
         }
 
         private void MapMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount == 2)
+            var location = map.ViewToLocation(e.GetPosition(map));
+
+            if (location != null)
             {
-                //map.ZoomMap(e.GetPosition(map), Math.Ceiling(map.ZoomLevel - 1.5));
+                measurementLine.Visibility = Visibility.Visible;
+                measurementLine.Locations = new LocationCollection(location);
             }
+        }
+
+        private void MapMouseRightButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            measurementLine.Visibility = Visibility.Collapsed;
+            measurementLine.Locations = null;
         }
 
         private void MapMouseMove(object sender, MouseEventArgs e)
@@ -116,36 +131,27 @@ namespace WpfMaps
 
             if (location != null)
             {
-                var latitude = (int)Math.Round(location.Latitude * 60000d);
-                var longitude = (int)Math.Round(Location.NormalizeLongitude(location.Longitude) * 60000d);
-                var latHemisphere = 'N';
-                var lonHemisphere = 'E';
+                mouseLocation.Visibility = Visibility.Visible;
+                mouseLocation.Text = GetLatLonText(location);
 
-                if (latitude < 0)
+                var start = measurementLine.Locations?.FirstOrDefault();
+
+                if (start != null)
                 {
-                    latitude = -latitude;
-                    latHemisphere = 'S';
+                    measurementLine.Locations = LocationCollection.OrthodromeLocations(start, location);
+                    mouseLocation.Text += GetDistanceText(location.GetDistance(start));
                 }
-
-                if (longitude < 0)
-                {
-                    longitude = -longitude;
-                    lonHemisphere = 'W';
-                }
-
-                mouseLocation.Text = string.Format(CultureInfo.InvariantCulture,
-                    "{0}  {1:00} {2:00.000}\n{3} {4:000} {5:00.000}",
-                    latHemisphere, latitude / 60000, (latitude % 60000) / 1000d,
-                    lonHemisphere, longitude / 60000, (longitude % 60000) / 1000d);
             }
             else
             {
+                mouseLocation.Visibility = Visibility.Collapsed;
                 mouseLocation.Text = string.Empty;
             }
         }
 
         private void MapMouseLeave(object sender, MouseEventArgs e)
         {
+            mouseLocation.Visibility = Visibility.Collapsed;
             mouseLocation.Text = string.Empty;
         }
 
@@ -159,6 +165,46 @@ namespace WpfMaps
             var mapItem = (MapItem)sender;
             mapItem.IsSelected = !mapItem.IsSelected;
             e.Handled = true;
+        }
+
+        private static string GetLatLonText(Location location)
+        {
+            var latitude = (int)Math.Round(location.Latitude * 60000d);
+            var longitude = (int)Math.Round(Location.NormalizeLongitude(location.Longitude) * 60000d);
+            var latHemisphere = 'N';
+            var lonHemisphere = 'E';
+
+            if (latitude < 0)
+            {
+                latitude = -latitude;
+                latHemisphere = 'S';
+            }
+
+            if (longitude < 0)
+            {
+                longitude = -longitude;
+                lonHemisphere = 'W';
+            }
+
+            return string.Format(CultureInfo.InvariantCulture,
+                "{0}  {1:00} {2:00.000}\n{3} {4:000} {5:00.000}",
+                latHemisphere, latitude / 60000, (latitude % 60000) / 1000d,
+                lonHemisphere, longitude / 60000, (longitude % 60000) / 1000d);
+        }
+
+        private string GetDistanceText(double distance)
+        {
+            var unit = "m";
+
+            if (distance >= 1000d)
+            {
+                distance /= 1000d;
+                unit = "km";
+            }
+
+            var distanceFormat = distance >= 100d ? "F0" : "F1";
+
+            return string.Format(CultureInfo.InvariantCulture, "\n   {0:" + distanceFormat + "} {1}", distance, unit);
         }
     }
 }
