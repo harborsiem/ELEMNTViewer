@@ -17,9 +17,13 @@ namespace ELEMNTViewer
         private string[] _summariesFiles;
         private Dictionary<int, List<Summary>> _processedSummaries;
         private Summary _current;
+        private Action _executeReady;
 
-        public Summaries()
+        public List<int> SummaryYears { get; private set; } = new List<int>();
+
+        public Summaries(Action executeReady)
         {
+            _executeReady = executeReady;
             _processedSummaries = new Dictionary<int, List<Summary>>();
             _updateYears = new List<int>();
         }
@@ -34,7 +38,7 @@ namespace ELEMNTViewer
             Task task = Task.Run(() => ExecuteAsync(null));
         }
 
-        public Summary GetYearSummaries(int year)
+        public Summary GetYearSummaries(int year, ushort antId)
         {
             double sumDistance = 0;
             double sumAscent = 0;
@@ -43,8 +47,19 @@ namespace ELEMNTViewer
                 List<Summary> summaries = _processedSummaries[year];
                 foreach (Summary summary in summaries)
                 {
-                    sumDistance += summary.Distance;
-                    sumAscent += summary.Ascent;
+                    if (antId == 0)
+                    {
+                        sumDistance += summary.Distance;
+                        sumAscent += summary.Ascent;
+                    }
+                    else
+                    {
+                        if (HasAntDeviceById(summary, antId))
+                        {
+                            sumDistance += summary.Distance;
+                            sumAscent += summary.Ascent;
+                        }
+                    }
                 }
             }
             Summary result = new Summary()
@@ -55,7 +70,7 @@ namespace ELEMNTViewer
             return result;
         }
 
-        public Summary GetMonthSummaries(int year, int month)
+        public Summary GetMonthSummaries(int year, int month, ushort antId)
         {
             if (!(month > 0 && month <= 12))
                 throw new ArgumentException("Month wrong", nameof(month));
@@ -68,8 +83,19 @@ namespace ELEMNTViewer
                 {
                     if (summary.GetMonth() == month)
                     {
-                        sumDistance += summary.Distance;
-                        sumAscent += summary.Ascent;
+                        if (antId == 0)
+                        {
+                            sumDistance += summary.Distance;
+                            sumAscent += summary.Ascent;
+                        }
+                        else
+                        {
+                            if (HasAntDeviceById(summary, antId))
+                            {
+                                sumDistance += summary.Distance;
+                                sumAscent += summary.Ascent;
+                            }
+                        }
                     }
                 }
             }
@@ -81,8 +107,46 @@ namespace ELEMNTViewer
             return result;
         }
 
+        public List<AntDevice> GetAntDevices(int year)
+        {
+            List<AntDevice> antDevices = new List<AntDevice>();
+            if (_processedSummaries.ContainsKey(year))
+            {
+                List<Summary> summaries = _processedSummaries[year];
+                foreach (Summary summary in summaries)
+                {
+                    foreach (AntDevice antDevice in summary.AntDevices)
+                    {
+                        bool found = false;
+                        foreach (AntDevice listAntDevice in antDevices)
+                        {
+                            if (antDevice.Id == listAntDevice.Id)
+                            {
+                                found = true;
+                            }
+                        }
+                        if (!found)
+                            antDevices.Add(antDevice);
+                    }
+                }
+            }
+            return antDevices;
+        }
+
+        private bool HasAntDeviceById(Summary summery, ushort antId)
+        {
+            List<AntDevice> devices = summery.AntDevices;
+            foreach (AntDevice antDevice in devices)
+            {
+                if (antDevice.Id == antId)
+                    return true;
+            }
+            return false;
+        }
+
         public void ExecuteAsync(object state)
         {
+            int currentYear = System.DateTime.Now.Year;
             string fitPath = Settings.Instance.FitPath;
             if (Directory.Exists(fitPath))
             {
@@ -91,6 +155,12 @@ namespace ELEMNTViewer
                 BuildRemaindedFiles();
                 ProcessFitFiles();
                 WriteSummaries();
+                Dictionary<int, List<Summary>>.KeyCollection collection = _processedSummaries.Keys;
+                foreach (int year in collection)
+                {
+                    SummaryYears.Insert(0, year);
+                }
+                _executeReady();
             }
         }
 
@@ -195,7 +265,7 @@ namespace ELEMNTViewer
             Summary result = new Summary();
             result.Filename = fileName;
             _current = result;
-            FastDecodeFit(Path.Combine(Settings.Instance.FitPath, fileName));
+            DecodeFit(Path.Combine(Settings.Instance.FitPath, fileName));
             result = _current;
             return result;
         }
@@ -250,7 +320,8 @@ namespace ELEMNTViewer
                         for (int i = 0; i < definition[5]; i++)
                         {
                             int fi = fields[i];
-                            if ((fi & 0xff0000) >> 16 == SessionMesg.FieldDefNum.TotalDistance)
+                            int fiDefNum = (fi & 0xff0000) >> 16;
+                            if (fiDefNum == SessionMesg.FieldDefNum.TotalDistance)
                             {
                                 fitSource.Seek(dataStart, SeekOrigin.Current);
                                 byte[] buffer = new byte[4];
@@ -262,7 +333,7 @@ namespace ELEMNTViewer
                                 dataStart = 0;
                                 continue;
                             }
-                            if ((fi & 0xff0000) >> 16 == SessionMesg.FieldDefNum.TotalAscent)
+                            if (fiDefNum == SessionMesg.FieldDefNum.TotalAscent)
                             {
                                 fitSource.Seek(dataStart, SeekOrigin.Current);
                                 byte[] buffer = new byte[2];
@@ -271,6 +342,30 @@ namespace ELEMNTViewer
                                     Array.Reverse(buffer);
                                 UInt16 ascent = BitConverter.ToUInt16(buffer, 0);
                                 _current.Ascent = ascent;
+                                dataStart = 0;
+                                continue;
+                            }
+                            if (fiDefNum == SessionMesg.FieldDefNum.AvgSpeed)
+                            {
+                                fitSource.Seek(dataStart, SeekOrigin.Current);
+                                byte[] buffer = new byte[4];
+                                fitSource.Read(buffer, 0, 4);
+                                if (definition[2] == Fit.BigEndian)
+                                    Array.Reverse(buffer);
+                                double avgSpeed = FitConvert.ToKmPerHour(Convert.ToSingle(BitConverter.ToUInt32(buffer, 0)));
+                                _current.AvgSpeed = avgSpeed;
+                                dataStart = 0;
+                                continue;
+                            }
+                            if (fiDefNum == SessionMesg.FieldDefNum.TotalTimerTime)
+                            {
+                                fitSource.Seek(dataStart, SeekOrigin.Current);
+                                byte[] buffer = new byte[4];
+                                fitSource.Read(buffer, 0, 4);
+                                if (definition[2] == Fit.BigEndian)
+                                    Array.Reverse(buffer);
+                                TimeSpan totalTimerTime = FitConvert.ToTimeSpan(Convert.ToSingle(BitConverter.ToUInt32(buffer, 0)));
+                                _current.TotalTimerTime = totalTimerTime;
                                 dataStart = 0;
                                 continue;
                             }
@@ -305,8 +400,10 @@ namespace ELEMNTViewer
                 fitSource = new FileStream(fileName, FileMode.Open);
 
                 Decode decodeDemo = new Decode();
-                decodeDemo.MesgEvent += OnMesg;
                 //MesgBroadcaster mesgBroadcaster = new MesgBroadcaster();
+                decodeDemo.MesgEvent += OnMesg;
+                //mesgBroadcaster.MesgEvent += OnMesg;
+                //mesgBroadcaster.DeviceInfoMesgEvent += OnDeviceInfoMesg;
                 bool status = decodeDemo.IsFIT(fitSource);
                 status &= decodeDemo.CheckIntegrity(fitSource);
 
@@ -365,8 +462,40 @@ namespace ELEMNTViewer
                 case MesgNum.Session:
                     HandleSession(e);
                     break;
+                case MesgNum.DeviceInfo:
+                    HandleDeviceInfo(e);
+                    break;
                 default:
                     break;
+            }
+        }
+
+        //private void OnDeviceInfoMesg(object sender, MesgEventArgs e)
+        //{
+        //    DeviceInfoMesg mesg = (DeviceInfoMesg)e.mesg;
+        //    mesg.GetAntDeviceNumber();
+        //}
+
+        private void HandleDeviceInfo(MesgEventArgs e)
+        {
+            DeviceInfoMesg mesg = new DeviceInfoMesg(e.mesg);
+            ushort? antDeviceNumber = mesg.GetAntDeviceNumber();
+            string productName = mesg.GetProductNameAsString();
+            if (antDeviceNumber != null)
+            {
+                bool antExist = false;
+                foreach (AntDevice antDevice in _current.AntDevices)
+                {
+                    if (antDevice.Id == (ushort)antDeviceNumber)
+                    {
+                        antExist = true;
+                        break;
+                    }
+                }
+                if (!antExist)
+                {
+                    _current.AntDevices.Add(new AntDevice() { Id = (ushort)antDeviceNumber, ProductName = productName });
+                }
             }
         }
 
@@ -394,6 +523,12 @@ namespace ELEMNTViewer
                     break;
                 case SessionMesg.FieldDefNum.TotalAscent:
                     _current.Ascent = Convert.ToUInt16(value); //UInt16
+                    break;
+                case SessionMesg.FieldDefNum.AvgSpeed:
+                    _current.AvgSpeed = Math.Round(FitConvert.ToKmPerHour(Convert.ToSingle(value)), 2);
+                    break;
+                case SessionMesg.FieldDefNum.TotalTimerTime:
+                    _current.TotalTimerTime = FitConvert.ToTimeSpan(Convert.ToSingle(value));
                     break;
                 default:
                     break;

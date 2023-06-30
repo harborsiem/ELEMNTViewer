@@ -196,6 +196,7 @@
     <Command Name="cmdButtonWorkout" Id="59" LabelTitle="Workout" TooltipTitle="Workout" />
     <Command Name="cmdButtonWahooFF00" Id="60" LabelTitle="WahooFF00" TooltipTitle="WahooFF00" />
     <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="WahooFF01" TooltipTitle="WahooFF01" />
+    <Command Name="cmdButtonWahooFF04" Id="81" LabelTitle="WahooFF04" TooltipTitle="WahooFF04" />
     <Command Name="cmdButtonSaveSettings" Id="64" LabelTitle="Save Settings" TooltipTitle="Save Settings" TooltipDescription="Save the state of the CheckBoxes and Smooth values in the Chart Tab, current App size and Map size to a settings file">
       <Command.LargeImages>
         <Image>Resources/SaveFile_32.bmp</Image>
@@ -259,6 +260,14 @@
       </Command.LargeImages>
     </Command>
     <Command Name="cmdGroupStatistics" Id="77" LabelTitle="Statistics" />
+    <Command Name="cmdButtonGears" Id="82" LabelTitle="Gears" TooltipTitle="Gears" TooltipDescription="Show statistics for gears">
+      <Command.LargeImages>
+        <Image>Resources/Gear_32.bmp</Image>
+        <Image MinDPI="120">Resources/Gear_40.bmp</Image>
+        <Image MinDPI="144">Resources/Gear_48.bmp</Image>
+        <Image MinDPI="192">Resources/Gear_64.bmp</Image>
+      </Command.LargeImages>
+    </Command>
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -519,8 +528,19 @@
             </ScalingPolicy>
           </Tab.ScalingPolicy>
           <Group CommandName="cmdGroupTotals">
+            <SizeDefinition>
+              <GroupSizeDefinition Size="Large">
+                <ControlSizeDefinition />
+                <ControlSizeDefinition />
+                <ControlSizeDefinition />
+                <ColumnBreak />
+                <ControlSizeDefinition ImageSize="Large" />
+              </GroupSizeDefinition>
+            </SizeDefinition>
             <Button CommandName="cmdButtonSession" />
             <Button CommandName="cmdButtonLaps" />
+            <Button CommandName="cmdHidden1" />
+            <Button CommandName="cmdButtonGears" />
           </Group>
           <Group CommandName="cmdGroupExtras" SizeDefinition="OneButton">
             <Button CommandName="cmdButtonMyExtras" />
@@ -566,7 +586,7 @@
                 <ColumnBreak ShowSeparator="false" />
                 <ControlSizeDefinition IsImageVisible="false" ControlName="b9" />
                 <ControlSizeDefinition IsImageVisible="false" ControlName="b10" />
-                <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" ControlName="h2" />
+                <ControlSizeDefinition IsImageVisible="false" ControlName="h2" />
               </GroupSizeDefinition>
             </SizeDefinition>
             <Button CommandName="cmdButtonActivity" />
@@ -580,7 +600,7 @@
             <Button CommandName="cmdHidden1" />
             <Button CommandName="cmdButtonWahooFF00" />
             <Button CommandName="cmdButtonWahooFF01" />
-            <Button CommandName="cmdHidden2" />
+            <Button CommandName="cmdButtonWahooFF04" />
           </Group>
         </Tab>
       </Ribbon.Tabs>

@@ -25,7 +25,7 @@ namespace ELEMNTViewer
                 values._eventType = mesg.GetEventType();
                 values._data = mesg.GetData();
 
-                ////Make sure properties with sub properties arent null before trying to create objects based on them
+                ////Make sure properties with sub properties aren't null before trying to create objects based on them
                 if (mesg.GetTimestamp() != null)
                 {
                     uint tc = (uint)mesg.GetTimestamp().GetTimeStamp();
@@ -43,6 +43,8 @@ namespace ELEMNTViewer
         public Event? Event0 { get { return _event0; } }
         public EventType? EventType { get { return _eventType; } }
         public uint? Data { get { return _data; } }
+        public string DataBytes { get { if (_data == null) return string.Empty; 
+                return ((byte)(_data >> 24)).ToString() + " " + ((byte)(_data >> 16)).ToString() + " " + ((byte)(_data >> 8)).ToString() + " " + ((byte)(_data)).ToString(); } }
         public DateTime Timestamp { get { return _timestamp; } }
     }
 }

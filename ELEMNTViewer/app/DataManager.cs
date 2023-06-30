@@ -20,6 +20,8 @@ namespace ELEMNTViewer
         private RecordManager _recordManager = new RecordManager();
         private List<CheckBoxTag> _checkBoxTags = new List<CheckBoxTag>();
 
+        public Summaries Summaries { get; set; }
+
         public PowerZonesManager PowerManager { get { return _powerManager; } }
 
         public HRZonesManager HRManager { get { return _hrManager; } }
@@ -29,6 +31,8 @@ namespace ELEMNTViewer
         public RecordManager RecordManager { get { return _recordManager; } }
 
         public List<RecordValues> RecordList { get { return RecordManager.RecordValuesList; } }
+
+        public Gears Gears { get; set; }
 
         public SessionValues Session
         {
@@ -57,6 +61,7 @@ namespace ELEMNTViewer
             _hrManager.Clear();
             _powerManager.Clear();
             _session = null;
+            Gears = null;
             ClearAdditionalValues();
             ClearChart();
         }
@@ -89,6 +94,7 @@ namespace ELEMNTViewer
         {
             WahooFF00Values.Clear();
             WahooFF01Values.Clear();
+            WahooFF04Values.Clear();
             ActivityValues.Clear();
             FileIdValues.Clear();
             DeviceInfoValues.Clear();
@@ -101,6 +107,7 @@ namespace ELEMNTViewer
 
         public List<WahooFF00Values> WahooFF00Values { get; private set; } = new List<WahooFF00Values>();
         public List<WahooFF01Values> WahooFF01Values { get; private set; } = new List<WahooFF01Values>();
+        public List<WahooFF04Values> WahooFF04Values { get; private set; } = new List<WahooFF04Values>();
         public List<ActivityValues> ActivityValues { get; private set; } = new List<ActivityValues>();
         public List<FileIdValues> FileIdValues { get; private set; } = new List<FileIdValues>();
         public List<DeviceInfoValues> DeviceInfoValues { get; private set; } = new List<DeviceInfoValues>();

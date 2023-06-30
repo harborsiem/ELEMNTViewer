@@ -132,6 +132,8 @@ namespace ELEMNTViewer
         {
             chart.SuspendLayout();
             Axis axisX1 = chart.ChartAreas["ChartArea1"].AxisX;
+            axisX1.ScaleView.SmallScrollMinSizeType = DateTimeIntervalType.Minutes;
+            axisX1.ScaleView.SmallScrollMinSize = 1.0;
             if (delta <= new TimeSpan(0, 5, 0, 0))
             {
                 if (delta <= new TimeSpan(0, 0, 30, 0))

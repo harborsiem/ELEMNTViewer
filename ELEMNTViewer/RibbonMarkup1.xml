@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
+  <Application.Commands>
+    <Command Name="cmdTabStart" Id="2" LabelTitle="Start" />
+    <Command Name="cmdComboYear" Id="3" LabelTitle="Year" TooltipTitle="Year" TooltipDescription="Year selector for the results" />
+    <Command Name="cmdComboMonth" Id="4" LabelTitle="Month" TooltipTitle="Month" TooltipDescription="Month selector for the results" />
+    <Command Name="cmdGroupSelect" Id="5" LabelTitle="Select" />
+    <Command Name="cmdGroupSelectFunction" Id="6" LabelTitle="Function Selector" />
+    <Command Name="cmdGroupSelect2" Id="11" LabelTitle="Select" />
+    <Command Name="cmdCheckMonthly" Id="12" LabelTitle="Monthly" TooltipTitle="Monthly results" TooltipDescription="Shows the result for the selected month" />
+    <Command Name="cmdCheckAntDevice" Id="9" LabelTitle="ANT+" TooltipTitle="ANT+ Device" TooltipDescription="Shows results with the selected ANT+ Device" />
+    <Command Name="cmdGroupAnt" Id="10" LabelTitle="ANT+ Devices" />
+    <Command Name="cmdComboAnt" Id="13" LabelTitle="ANT+" TooltipTitle="ANT+ Id" TooltipDescription="The Id or Number of ANT+ device" />
+    <Command Name="cmdComboAntName" Id="14" TooltipTitle="Name" TooltipDescription="Name of ANT+ device" />
+  </Application.Commands>
+  <Application.Views>
+    <Ribbon>
+      <Ribbon.ApplicationMenu>
+        <ApplicationMenu />
+      </Ribbon.ApplicationMenu>
+      <Ribbon.QuickAccessToolbar>
+        <QuickAccessToolbar />
+      </Ribbon.QuickAccessToolbar>
+      <Ribbon.Tabs>
+        <Tab CommandName="cmdTabStart">
+          <Group CommandName="cmdGroupSelectFunction">
+            <CheckBox CommandName="cmdCheckMonthly" />
+            <CheckBox CommandName="cmdCheckAntDevice" />
+          </Group>
+          <Group CommandName="cmdGroupSelect2" ApplicationModes="2">
+            <SizeDefinition>
+              <GroupSizeDefinition Size="Large">
+                <ControlSizeDefinition IsImageVisible="false" />
+              </GroupSizeDefinition>
+            </SizeDefinition>
+            <ComboBox CommandName="cmdComboYear" IsEditable="false" IsAutoCompleteEnabled="false" />
+          </Group>
+          <Group CommandName="cmdGroupSelect" ApplicationModes="1">
+            <SizeDefinition>
+              <GroupSizeDefinition Size="Large">
+                <ControlSizeDefinition IsImageVisible="false" />
+                <ControlSizeDefinition IsImageVisible="false" />
+              </GroupSizeDefinition>
+            </SizeDefinition>
+            <ComboBox CommandName="cmdComboYear" IsEditable="false" IsAutoCompleteEnabled="false" />
+            <ComboBox CommandName="cmdComboMonth" IsEditable="false" IsAutoCompleteEnabled="false" />
+          </Group>
+          <Group CommandName="cmdGroupAnt">
+            <SizeDefinition>
+              <GroupSizeDefinition Size="Large">
+                <ControlSizeDefinition IsImageVisible="false" />
+                <ControlSizeDefinition IsLabelVisible="false" IsImageVisible="false" />
+              </GroupSizeDefinition>
+            </SizeDefinition>
+            <ComboBox CommandName="cmdComboAnt" IsEditable="false" IsAutoCompleteEnabled="false" />
+            <ComboBox CommandName="cmdComboAntName" IsEditable="false" IsAutoCompleteEnabled="false" />
+          </Group>
+        </Tab>
+      </Ribbon.Tabs>
+    </Ribbon>
+    <ContextPopup />
+  </Application.Views>
+</Application>
+<!--ResourceName Value="APPLICATION"-->

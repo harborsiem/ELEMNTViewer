@@ -36,7 +36,6 @@ namespace RibbonLib.Controls
         private DecodeFile _decodeFile;
         //private bool _modifiedSettings;
         private byte[] _loadedQatSettings;
-        private Summaries _summaries;
 
         private UICollectionChangedEvent _uiCollectionChangedEvent;
 
@@ -48,7 +47,7 @@ namespace RibbonLib.Controls
         {
             this._form = form;
             Hidden1.Enabled = false;
-            Hidden2.Enabled = false;
+            //Hidden2.Enabled = false;
             SetMapItems(false);
             InitChart();
             InitApplication();
@@ -68,9 +67,25 @@ namespace RibbonLib.Controls
         /// </summary>
         public void Load()
         {
+            Summaries summaries = new Summaries(StatisticsEnabled);
+            summaries.Execute1();
+            DataManager.Instance.Summaries = summaries;
             SetMapItems(true);
             InitModes();
             GetMapSettings();
+        }
+
+        private void StatisticsEnabled()
+        {
+            if (Ribbon.InvokeRequired)
+                Ribbon.Invoke((Action)ButtonStatisticsEnabled);
+            else
+                ButtonStatisticsEnabled();
+        }
+
+        private void ButtonStatisticsEnabled()
+        {
+            ButtonStatistics.Enabled = true;
         }
 
         #region Chart Smooth
@@ -196,6 +211,7 @@ namespace RibbonLib.Controls
         {
             ButtonSession.Enabled = false;
             ButtonLaps.Enabled = false;
+            ButtonGears.Enabled = false;
             ToolStripMenuItems(false);
             ComboSelect.RepresentativeString = "Select" + ComboSize;
             //ComboSelect.ItemsSourceReady += ComboSelect_ItemsSourceReady;
@@ -563,9 +579,7 @@ namespace RibbonLib.Controls
 
         private void InitApplication()
         {
-            //_summaries = new Summaries();
-            //_summaries.Execute1();
-            ButtonStatistics.Enabled = false; //@ Todo
+            ButtonStatistics.Enabled = false; //Button turn to true when background task for statistic value is executed
             ButtonOpenFit.ExecuteEvent += ButtonOpenFit_ExecuteEvent;
             ButtonOpenGpx.ExecuteEvent += ButtonOpenGpx_ExecuteEvent;
             ButtonSaveGpx.ExecuteEvent += ButtonSaveGpx_ExecuteEvent;
@@ -626,6 +640,7 @@ namespace RibbonLib.Controls
         {
             ButtonSession.Enabled = false;
             ButtonLaps.Enabled = false;
+            ButtonGears.Enabled = false;
             ToolStripMenuItems(false);
             DataManager.Instance.Clear();
             MakeComboItems();
@@ -653,6 +668,9 @@ namespace RibbonLib.Controls
                 //watch.Restart();
                 _decodeFile = new DecodeFile();
                 _decodeFile.Decode(_fileName);
+                Gears gears = new Gears();
+                ButtonGears.Enabled = gears.AntGearChanger;
+                DataManager.Instance.Gears = gears;
                 //watch.Stop();
                 //long elapsed = watch.ElapsedMilliseconds;
                 if (DataManager.Instance.Session != null)
@@ -692,6 +710,7 @@ namespace RibbonLib.Controls
             ButtonSport.Enabled = enabled;
             ButtonWahooFF00.Enabled = enabled;
             ButtonWahooFF01.Enabled = enabled;
+            ButtonWahooFF04.Enabled = enabled;
             ButtonWorkout.Enabled = enabled;
             ButtonMap.Enabled = enabled;
         }
@@ -749,9 +768,29 @@ namespace RibbonLib.Controls
             ButtonSession.ExecuteEvent += ButtonSession_ExecuteEvent;
             ButtonLaps.ExecuteEvent += ButtonLaps_ExecuteEvent;
             ButtonMyExtras.ExecuteEvent += ButtonMyExtras_ExecuteEvent;
+            ButtonGears.ExecuteEvent += ButtonGears_ExecuteEvent;
             ButtonHeartRateZones.ExecuteEvent += ButtonHeartRateZones_ExecuteEvent;
             ButtonPowerZones.ExecuteEvent += ButtonPowerZones_ExecuteEvent;
             ButtonStatistics.ExecuteEvent += ButtonStatistics_ExecuteEvent;
+        }
+
+        private void ButtonGears_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObjects = null;
+                dialog.SelectedObject = DataManager.Instance.Gears;
+                dialog.Header = "Gears";
+                dialog.Grid.PropertySort = PropertySort.Categorized;
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         private void ButtonSession_ExecuteEvent(object sender, ExecuteEventArgs e)
@@ -794,8 +833,8 @@ namespace RibbonLib.Controls
 
         private void ButtonStatistics_ExecuteEvent(object sender, ExecuteEventArgs e)
         {
-            //_summaries.GetMonthSummaries(2022, 5);
-            MessageBox.Show("Not supported");
+            StatisticsForm dialog = new StatisticsForm();
+            dialog.ShowDialog(_form);
         }
 
         private void ButtonHeartRateZones_ExecuteEvent(object sender, ExecuteEventArgs e)
@@ -869,6 +908,7 @@ namespace RibbonLib.Controls
             ButtonSport.ExecuteEvent += ButtonSport_ExecuteEvent;
             ButtonWahooFF00.ExecuteEvent += ButtonWahooFF00_ExecuteEvent;
             ButtonWahooFF01.ExecuteEvent += ButtonWahooFF01_ExecuteEvent;
+            ButtonWahooFF04.ExecuteEvent += ButtonWahooFF04_ExecuteEvent;
             ButtonWorkout.ExecuteEvent += ButtonWorkout_ExecuteEvent;
         }
 
@@ -1024,6 +1064,24 @@ namespace RibbonLib.Controls
                 dialog.SelectedObject = null;
                 dialog.SelectedObjects = DataManager.Instance.WahooFF01Values.ToArray();
                 dialog.Header = "WahooFF01";
+                if (dialog.ShowDialog(_form) == DialogResult.OK)
+                {
+                }
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        private void ButtonWahooFF04_ExecuteEvent(object sender, ExecuteEventArgs e)
+        {
+            try
+            {
+                PropertiesForm dialog = new PropertiesForm();
+                dialog.SelectedObject = null;
+                dialog.SelectedObjects = DataManager.Instance.WahooFF04Values.ToArray();
+                dialog.Header = "WahooFF04";
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
                 }

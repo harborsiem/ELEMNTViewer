@@ -2,13 +2,20 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### ELEMNTViewer V2.3.x
+### ELEMNTViewer V2.3.4
 
 #### Changed
 
-- WpfMaps updated to version 8.0.0
-- MapControl V8.0.0 from Nuget, MapUITools V8.0.0
+- WpfMaps updated to version 8.1.0
+- MapControl V8.1.0 from Nuget, MapUITools V8.1.0
 - MapUITools is the same as ClemensFischer provided
+- WindowsRibbon V2.14.0
+- Chart in Zoom mode: Slider can be used
+- new Gears button: Shows count of gear changes if you have an electronic shifter like Shimano DI2
+- new Statistics button: Shows year or month summary for distance and ascent values.
+ If you use the Wahoo with more than one bike, you can select the summary by ANT+ device Id (Number) for selecting the bike.
+ All *.fit files have to be in one folder. The first time when you use the new app version, it can take a longer time (maybe 5 minutes) that the Statistics button is enabled.
+ This is because the app have to scan all *.fit files first in a background task.
 
 ### ELEMNTViewer V2.3.0
 

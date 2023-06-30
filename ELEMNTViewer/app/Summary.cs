@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace ELEMNTViewer
 {
-    struct Summary : IComparable<Summary>
+    class Summary : IComparable<Summary>
     {
-        public Summary(string fileName, double distance, double ascent)
-        {
-            Filename = fileName;
-            Distance = distance;
-            Ascent = ascent;
-        }
+        public Summary() { }
 
         public string Filename { get; set; }
         public double Distance { get; set; }
         public double Ascent { get; set; }
+        public double AvgSpeed { get; set; }
+        public TimeSpan TotalTimerTime { get; set; }
+        public List<AntDevice> AntDevices { get; private set; } = new List<AntDevice>();
 
         public int GetYear()
         {

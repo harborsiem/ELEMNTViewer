@@ -75,6 +75,7 @@ namespace RibbonLib.Controls
             public const uint cmdButtonTemperature = 24;
             public const uint cmdTabView = 5;
             public const uint cmdGroupTotals = 37;
+            public const uint cmdButtonGears = 82;
             public const uint cmdGroupExtras = 39;
             public const uint cmdButtonMyExtras = 49;
             public const uint cmdGroupMaps = 63;
@@ -94,7 +95,7 @@ namespace RibbonLib.Controls
             public const uint cmdButtonWorkout = 59;
             public const uint cmdButtonWahooFF00 = 60;
             public const uint cmdButtonWahooFF01 = 61;
-            public const uint cmdHidden2 = 66;
+            public const uint cmdButtonWahooFF04 = 81;
         }
 
         // ContextPopup CommandName
@@ -157,6 +158,7 @@ namespace RibbonLib.Controls
         public RibbonCheckBox ButtonTemperature { get; private set; }
         public RibbonTab TabView { get; private set; }
         public RibbonGroup GroupTotals { get; private set; }
+        public RibbonButton ButtonGears { get; private set; }
         public RibbonGroup GroupExtras { get; private set; }
         public RibbonButton ButtonMyExtras { get; private set; }
         public RibbonGroup GroupMaps { get; private set; }
@@ -176,7 +178,7 @@ namespace RibbonLib.Controls
         public RibbonButton ButtonWorkout { get; private set; }
         public RibbonButton ButtonWahooFF00 { get; private set; }
         public RibbonButton ButtonWahooFF01 { get; private set; }
-        public RibbonButton Hidden2 { get; private set; }
+        public RibbonButton ButtonWahooFF04 { get; private set; }
 
         public RibbonItems(Ribbon ribbon)
         {
@@ -240,6 +242,7 @@ namespace RibbonLib.Controls
             ButtonTemperature = new RibbonCheckBox(ribbon, Cmd.cmdButtonTemperature);
             TabView = new RibbonTab(ribbon, Cmd.cmdTabView);
             GroupTotals = new RibbonGroup(ribbon, Cmd.cmdGroupTotals);
+            ButtonGears = new RibbonButton(ribbon, Cmd.cmdButtonGears);
             GroupExtras = new RibbonGroup(ribbon, Cmd.cmdGroupExtras);
             ButtonMyExtras = new RibbonButton(ribbon, Cmd.cmdButtonMyExtras);
             GroupMaps = new RibbonGroup(ribbon, Cmd.cmdGroupMaps);
@@ -259,7 +262,7 @@ namespace RibbonLib.Controls
             ButtonWorkout = new RibbonButton(ribbon, Cmd.cmdButtonWorkout);
             ButtonWahooFF00 = new RibbonButton(ribbon, Cmd.cmdButtonWahooFF00);
             ButtonWahooFF01 = new RibbonButton(ribbon, Cmd.cmdButtonWahooFF01);
-            Hidden2 = new RibbonButton(ribbon, Cmd.cmdHidden2);
+            ButtonWahooFF04 = new RibbonButton(ribbon, Cmd.cmdButtonWahooFF04);
         }
 
     }

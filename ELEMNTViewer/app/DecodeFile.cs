@@ -147,9 +147,31 @@ namespace ELEMNTViewer
                 case 65281: //0xff01
                     HandleWahooFF01(e);
                     break;
+                case 0xff04:
+                    HandleWahooFF04(e);
+                    break;
                 default:
+                    //if (e.mesg.Name == "Activity" || e.mesg.Name == "DeveloperDataId" || e.mesg.Name == "DeviceInfo" || e.mesg.Name == "FieldDescription" || e.mesg.Name == "FileId"
+                    //     || e.mesg.Name == "Event" || e.mesg.Name == "Sport" || e.mesg.Name == "Workout")
+                    //    break;
                     break;
             }
+        }
+
+        static void HandleWahooFF04(MesgEventArgs e)
+        {
+            WahooFF04Values values = new WahooFF04Values();
+            object value;
+
+            foreach (Field field in e.mesg.Fields)
+            {
+                for (int j = 0; j < field.GetNumValues(); j++)
+                {
+                    value = field.GetValue(j);
+                    values.SetValue(field.Num, j, value);
+                }
+            }
+            DataManager.Instance.WahooFF04Values.Add(values);
         }
 
         static void HandleWahooFF00(MesgEventArgs e)

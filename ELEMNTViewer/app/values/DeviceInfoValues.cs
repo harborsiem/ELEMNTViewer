@@ -43,7 +43,7 @@ namespace ELEMNTViewer
                 values._sourceType = mesg.GetSourceType();
                 values._productName = mesg.GetProductNameAsString();
 
-                //Make sure properties with sub properties arent null before trying to create objects based on them
+                //Make sure properties with sub properties aren't null before trying to create objects based on them
                 if (mesg.GetTimestamp() != null)
                 {
                     //values.timestamp = new Dynastream.Fit.DateTime(mesg.GetTimestamp().GetTimeStamp());

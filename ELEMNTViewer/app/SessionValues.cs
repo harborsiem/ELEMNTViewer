@@ -148,13 +148,16 @@ namespace ELEMNTViewer
                     maxAltitude = Convert.ToSingle(value); //Single
                     break;
                 case SessionMesg.FieldDefNum.AvgGrade:
+                    //avgGrade = (float)(Math.Tan(Convert.ToSingle(value) * Math.PI / 180.0) * 100.0); //Single
                     avgGrade = Convert.ToSingle(value); //Single
                     break;
                 case SessionMesg.FieldDefNum.MaxPosGrade:
+                    //maxPosGrade = (float)(Math.Tan(Convert.ToSingle(value) * Math.PI / 180.0) * 100.0); //Single
                     maxPosGrade = Convert.ToSingle(value); // (float)(Math.Tan(Convert.ToSingle(value) * Math.PI / 180.0) * 100.0); //Single
                     break;
                 case SessionMesg.FieldDefNum.MaxNegGrade:
-                    maxNegGrade = Convert.ToSingle(value); // (float)(Math.Tan(Convert.ToSingle(value) * Math.PI / 180.0) * 100.0); //Single
+                    //maxNegGrade = (float)(Math.Tan(Convert.ToSingle(value) * Math.PI / 180.0) * 100.0); //Single
+                    maxNegGrade = Convert.ToSingle(value); //Single
                     break;
                 case SessionMesg.FieldDefNum.AvgTemperature:
                     avgTemperature = Convert.ToSByte(value); //SByte
