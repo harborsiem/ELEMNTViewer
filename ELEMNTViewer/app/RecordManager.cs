@@ -19,7 +19,10 @@
         public void Clear()
         {
             _recordValuesList.Clear();
+            HasValidPowerFlag = false;
         }
+
+        public bool HasValidPowerFlag { get; set; }
 
         public int Count
         {

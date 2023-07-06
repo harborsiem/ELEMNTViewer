@@ -48,6 +48,8 @@ namespace ELEMNTViewer
             double leftThreshholdEff = 0;
             double rightPowerSmooth = 0;
             double rightThreshholdEff = 0;
+            int validCount = 0;
+
             List<RecordValues> list = DataManager.Instance.RecordList;
             DateTime lastTime;
             if (list.Count > 0)
@@ -59,14 +61,20 @@ namespace ELEMNTViewer
                 _leftRightBalance = 0;
                 return;
             }
+            bool hasValidPowerFlag = DataManager.Instance.RecordManager.HasValidPowerFlag;
             for (int i = 0; i < list.Count; i++)
             {
                 RecordValues values = list[i];
-                balance += values.LeftRightBalance;
-                leftPowerSmooth += values.LeftPedalSmoothness;
-                leftThreshholdEff += values.LeftTorqueEffectiveness;
-                rightPowerSmooth += values.RightPedalSmoothness;
-                rightThreshholdEff += values.RightTorqueEffectiveness;
+                if (!hasValidPowerFlag || hasValidPowerFlag && values.HasValidLeftRightBalance)
+                {
+                    validCount++;
+                    balance += values.LeftRightBalance;
+                    leftPowerSmooth += values.LeftPedalSmoothness;
+                    leftThreshholdEff += values.LeftTorqueEffectiveness;
+                    rightPowerSmooth += values.RightPedalSmoothness;
+                    rightThreshholdEff += values.RightTorqueEffectiveness;
+                }
+
                 DateTime actTime = values.Timestamp;
                 TimeSpan delta = actTime - lastTime;
                 long deltaSeconds = delta.Ticks / TimeSpan.TicksPerSecond;
@@ -76,11 +84,11 @@ namespace ELEMNTViewer
 
                 }
             }
-            _leftRightBalance = balance / list.Count;
-            _leftPS = leftPowerSmooth / list.Count;
-            _leftTE = leftThreshholdEff / list.Count;
-            _rightPS = rightPowerSmooth / list.Count;
-            _rightTE = rightThreshholdEff / list.Count;
+            _leftRightBalance = balance / validCount;
+            _leftPS = leftPowerSmooth / validCount;
+            _leftTE = leftThreshholdEff / validCount;
+            _rightPS = rightPowerSmooth / validCount;
+            _rightTE = rightThreshholdEff / validCount;
         }
 
         void CalculateSessionMaxValues()

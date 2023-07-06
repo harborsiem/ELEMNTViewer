@@ -2,7 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### ELEMNTViewer V2.3.4
+### ELEMNTViewer V2.4.1
+
+#### Changed
+
+- Evaluation of a valid flag in the powermeters left right balance value.
+
+### ELEMNTViewer V2.4.0
 
 #### Changed
 

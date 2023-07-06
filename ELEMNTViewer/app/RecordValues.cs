@@ -9,7 +9,6 @@ namespace ELEMNTViewer
 
     class RecordValues
     {
-
         private DateTime timestamp;
         private double positionLat;
         private double positionLong;
@@ -72,6 +71,11 @@ namespace ELEMNTViewer
                     break;
                 case RecordMesg.FieldDefNum.LeftRightBalance:
                     leftRightBalance = Convert.ToByte(value); //Byte
+                    if ((leftRightBalance & 0x80) != 0)
+                    {
+                        DataManager.Instance.RecordManager.HasValidPowerFlag = true;
+                        HasValidLeftRightBalance = true;
+                    }
                     break;
                 case RecordMesg.FieldDefNum.LeftTorqueEffectiveness:
                     leftTorqueEffectiveness = Convert.ToSingle(value); //Single
@@ -122,9 +126,23 @@ namespace ELEMNTViewer
         public double Speed { get { return speed; } }
         [Int32ArrayAttribute(0, 3, 10, 15, 30)]
         public double Power { get { return power; } }
+        [Browsable(false)]
+        public bool HasValidLeftRightBalance { get; private set; }
         [DisplayName("Left Right Balance")]
         [Int32ArrayAttribute(0, 3, 10, 15, 30)]
-        public double LeftRightBalance { get { return leftRightBalance; } }
+        public double LeftRightBalance
+        {
+            get
+            {
+                if (DataManager.Instance.RecordManager.HasValidPowerFlag)
+                    if ((leftRightBalance & 0x80) != 0)
+                        return leftRightBalance & 0x7f;
+                    else
+                        return 50.0;
+                else
+                    return leftRightBalance;
+            }
+        }
         [DisplayName("Left Pedal Smoothness")]
         [Int32ArrayAttribute(0, 3, 10, 15, 30)]
         public double LeftPedalSmoothness { get { return leftPedalSmoothness; } }
