@@ -19,7 +19,7 @@ ELEMNTViewer uses the Fit Dll from "ThisIsAnt FitSDK" for decoding of *.fit file
 
 Minimum Display resolution is 1024 x 768.
 
-ELEMNTViewer is developed using Visual Studio Community and uses .NET-framework 4.6.2
+ELEMNTViewer is developed using Visual Studio Community and uses .NET-Framework 4.6.2
 
 
 
@@ -41,6 +41,9 @@ ELEMNTViewer is developed using Visual Studio Community and uses .NET-framework 
 - Power Zones 
 - graphical view from the workout values with zoom function. You can choose to show the whole session or a single lap. Some values (Power, other Power specific values, ...) can be smoothed from 3 sec to 30 sec.
 - Show the route of the workout in a map, store the route to a gpx - file.
+- Showing the route of a gpx - file (with waypoints) in a map.
+- Gear changes for electronic shifting systems.
+- Statistic values for summaries of distance and ascent per year or month.
 
 ## Installation
 Requirement for installation is the Microsoft .NET Framework 4.6.2 or any higher version. If it is not installed on your computer then you can download it from a Microsoft page. Install this first.
