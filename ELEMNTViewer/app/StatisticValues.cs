@@ -9,11 +9,11 @@ namespace ELEMNTViewer
 {
     class StatisticValues
     {
-        [Category("Distance etc")]
-        [DisplayName("Total Distance (km)")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(TotalDistance))]
         public double TotalDistance { get; set; }
-        [Category("Distance etc")]
-        [DisplayName("Total Ascent (m)")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(TotalAscent))]
         public double TotalAscent { get; set; }
     }
 }

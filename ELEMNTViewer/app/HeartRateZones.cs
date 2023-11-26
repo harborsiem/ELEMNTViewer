@@ -9,23 +9,29 @@ namespace ELEMNTViewer
 {
     class HeartRateZones
     {
+        const string CatHeartRate = "HeartRate";
         //[DisplayName("Einfach")]
-        [DisplayName("Easy")]
+        [SRCategory(CatHeartRate)]
+        [SRDisplayName(nameof(Easy))]
         [ReadOnly(true)]
         public string Easy { get; set; }
         //[DisplayName("Fettverbrennung")]
-        [DisplayName("Fat Burning")]
+        [SRCategory(CatHeartRate)]
+        [SRDisplayName(nameof(FatBurning))]
         [ReadOnly(true)]
         public string FatBurning { get; set; }
-        [DisplayName("Cardio")]
+        [SRCategory(CatHeartRate)]
+        [SRDisplayName(nameof(Cardio))]
         [ReadOnly(true)]
         public string Cardio { get; set; }
         //[DisplayName("Schwierig")]
-        [DisplayName("Hard")]
+        [SRCategory(CatHeartRate)]
+        [SRDisplayName(nameof(Hard))]
         [ReadOnly(true)]
         public string Hard { get; set; }
         //[DisplayName("Spitze")]
-        [DisplayName("Peak")]
+        [SRCategory(CatHeartRate)]
+        [SRDisplayName(nameof(Peak))]
         [ReadOnly(true)]
         public string Peak { get; set; }
     }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Resources = ELEMNTViewer.Properties.Resources;
 using RibbonLib;
 using RibbonLib.Controls;
 
@@ -20,7 +21,8 @@ namespace ELEMNTViewer
         public StatisticsForm()
         {
             InitializeComponent();
-            _items1 = new RibbonItems1(statisticRibbon);
+            this.Text = Resources.RS_Statistics;
+			_items1 = new RibbonItems1(statisticRibbon);
             _items1.Init(this);
             _statisticValues = new StatisticValues();
             propertyGrid.SelectedObject = _statisticValues;

@@ -16178,6 +16178,16 @@
             Field Numbers for <see cref="T:Dynastream.Fit.SplitMesg"/>
             </summary>
         </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetMessageIndex">
+            <summary>
+             Retrieves the MessageIndex field</summary>
+             <returns>Returns nullable ushort representing the MessageIndex field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetMessageIndex(System.Nullable{System.UInt16})">
+            <summary>
+            Set MessageIndex field</summary>
+            <param name="messageIndex_">Nullable field value to be set</param>
+        </member>
         <member name="M:Dynastream.Fit.SplitMesg.GetSplitType">
             <summary>
              Retrieves the SplitType field</summary>
@@ -16224,6 +16234,18 @@
             Units: m</summary>
             <param name="totalDistance_">Nullable field value to be set</param>
         </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetAvgSpeed">
+            <summary>
+             Retrieves the AvgSpeed field
+             Units: m/s</summary>
+             <returns>Returns nullable float representing the AvgSpeed field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetAvgSpeed(System.Nullable{System.Single})">
+            <summary>
+            Set AvgSpeed field
+            Units: m/s</summary>
+            <param name="avgSpeed_">Nullable field value to be set</param>
+        </member>
         <member name="M:Dynastream.Fit.SplitMesg.GetStartTime">
             <summary>
              Retrieves the StartTime field</summary>
@@ -16233,6 +16255,320 @@
             <summary>
             Set StartTime field</summary>
             <param name="startTime_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetTotalAscent">
+            <summary>
+             Retrieves the TotalAscent field
+             Units: m</summary>
+             <returns>Returns nullable ushort representing the TotalAscent field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetTotalAscent(System.Nullable{System.UInt16})">
+            <summary>
+            Set TotalAscent field
+            Units: m</summary>
+            <param name="totalAscent_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetTotalDescent">
+            <summary>
+             Retrieves the TotalDescent field
+             Units: m</summary>
+             <returns>Returns nullable ushort representing the TotalDescent field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetTotalDescent(System.Nullable{System.UInt16})">
+            <summary>
+            Set TotalDescent field
+            Units: m</summary>
+            <param name="totalDescent_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetStartPositionLat">
+            <summary>
+             Retrieves the StartPositionLat field
+             Units: semicircles</summary>
+             <returns>Returns nullable int representing the StartPositionLat field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetStartPositionLat(System.Nullable{System.Int32})">
+            <summary>
+            Set StartPositionLat field
+            Units: semicircles</summary>
+            <param name="startPositionLat_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetStartPositionLong">
+            <summary>
+             Retrieves the StartPositionLong field
+             Units: semicircles</summary>
+             <returns>Returns nullable int representing the StartPositionLong field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetStartPositionLong(System.Nullable{System.Int32})">
+            <summary>
+            Set StartPositionLong field
+            Units: semicircles</summary>
+            <param name="startPositionLong_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetEndPositionLat">
+            <summary>
+             Retrieves the EndPositionLat field
+             Units: semicircles</summary>
+             <returns>Returns nullable int representing the EndPositionLat field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetEndPositionLat(System.Nullable{System.Int32})">
+            <summary>
+            Set EndPositionLat field
+            Units: semicircles</summary>
+            <param name="endPositionLat_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetEndPositionLong">
+            <summary>
+             Retrieves the EndPositionLong field
+             Units: semicircles</summary>
+             <returns>Returns nullable int representing the EndPositionLong field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetEndPositionLong(System.Nullable{System.Int32})">
+            <summary>
+            Set EndPositionLong field
+            Units: semicircles</summary>
+            <param name="endPositionLong_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetMaxSpeed">
+            <summary>
+             Retrieves the MaxSpeed field
+             Units: m/s</summary>
+             <returns>Returns nullable float representing the MaxSpeed field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetMaxSpeed(System.Nullable{System.Single})">
+            <summary>
+            Set MaxSpeed field
+            Units: m/s</summary>
+            <param name="maxSpeed_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetAvgVertSpeed">
+            <summary>
+             Retrieves the AvgVertSpeed field
+             Units: m/s</summary>
+             <returns>Returns nullable float representing the AvgVertSpeed field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetAvgVertSpeed(System.Nullable{System.Single})">
+            <summary>
+            Set AvgVertSpeed field
+            Units: m/s</summary>
+            <param name="avgVertSpeed_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetEndTime">
+            <summary>
+             Retrieves the EndTime field</summary>
+             <returns>Returns DateTime representing the EndTime field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetEndTime(Dynastream.Fit.DateTime)">
+            <summary>
+            Set EndTime field</summary>
+            <param name="endTime_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetTotalCalories">
+            <summary>
+             Retrieves the TotalCalories field
+             Units: kcal</summary>
+             <returns>Returns nullable uint representing the TotalCalories field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetTotalCalories(System.Nullable{System.UInt32})">
+            <summary>
+            Set TotalCalories field
+            Units: kcal</summary>
+            <param name="totalCalories_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetStartElevation">
+            <summary>
+             Retrieves the StartElevation field
+             Units: m</summary>
+             <returns>Returns nullable float representing the StartElevation field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetStartElevation(System.Nullable{System.Single})">
+            <summary>
+            Set StartElevation field
+            Units: m</summary>
+            <param name="startElevation_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.GetTotalMovingTime">
+            <summary>
+             Retrieves the TotalMovingTime field
+             Units: s</summary>
+             <returns>Returns nullable float representing the TotalMovingTime field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitMesg.SetTotalMovingTime(System.Nullable{System.Single})">
+            <summary>
+            Set TotalMovingTime field
+            Units: s</summary>
+            <param name="totalMovingTime_">Nullable field value to be set</param>
+        </member>
+        <member name="T:Dynastream.Fit.SplitSummaryMesg">
+            <summary>
+            Implements the SplitSummary profile message.
+            </summary>
+        </member>
+        <member name="T:Dynastream.Fit.SplitSummaryMesg.FieldDefNum">
+            <summary>
+            Field Numbers for <see cref="T:Dynastream.Fit.SplitSummaryMesg"/>
+            </summary>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetMessageIndex">
+            <summary>
+             Retrieves the MessageIndex field</summary>
+             <returns>Returns nullable ushort representing the MessageIndex field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetMessageIndex(System.Nullable{System.UInt16})">
+            <summary>
+            Set MessageIndex field</summary>
+            <param name="messageIndex_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetSplitType">
+            <summary>
+             Retrieves the SplitType field</summary>
+             <returns>Returns nullable SplitType enum representing the SplitType field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetSplitType(System.Nullable{Dynastream.Fit.SplitType})">
+            <summary>
+            Set SplitType field</summary>
+            <param name="splitType_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetNumSplits">
+            <summary>
+             Retrieves the NumSplits field</summary>
+             <returns>Returns nullable ushort representing the NumSplits field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetNumSplits(System.Nullable{System.UInt16})">
+            <summary>
+            Set NumSplits field</summary>
+            <param name="numSplits_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetTotalTimerTime">
+            <summary>
+             Retrieves the TotalTimerTime field
+             Units: s</summary>
+             <returns>Returns nullable float representing the TotalTimerTime field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetTotalTimerTime(System.Nullable{System.Single})">
+            <summary>
+            Set TotalTimerTime field
+            Units: s</summary>
+            <param name="totalTimerTime_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetTotalDistance">
+            <summary>
+             Retrieves the TotalDistance field
+             Units: m</summary>
+             <returns>Returns nullable float representing the TotalDistance field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetTotalDistance(System.Nullable{System.Single})">
+            <summary>
+            Set TotalDistance field
+            Units: m</summary>
+            <param name="totalDistance_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetAvgSpeed">
+            <summary>
+             Retrieves the AvgSpeed field
+             Units: m/s</summary>
+             <returns>Returns nullable float representing the AvgSpeed field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetAvgSpeed(System.Nullable{System.Single})">
+            <summary>
+            Set AvgSpeed field
+            Units: m/s</summary>
+            <param name="avgSpeed_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetMaxSpeed">
+            <summary>
+             Retrieves the MaxSpeed field
+             Units: m/s</summary>
+             <returns>Returns nullable float representing the MaxSpeed field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetMaxSpeed(System.Nullable{System.Single})">
+            <summary>
+            Set MaxSpeed field
+            Units: m/s</summary>
+            <param name="maxSpeed_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetTotalAscent">
+            <summary>
+             Retrieves the TotalAscent field
+             Units: m</summary>
+             <returns>Returns nullable ushort representing the TotalAscent field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetTotalAscent(System.Nullable{System.UInt16})">
+            <summary>
+            Set TotalAscent field
+            Units: m</summary>
+            <param name="totalAscent_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetTotalDescent">
+            <summary>
+             Retrieves the TotalDescent field
+             Units: m</summary>
+             <returns>Returns nullable ushort representing the TotalDescent field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetTotalDescent(System.Nullable{System.UInt16})">
+            <summary>
+            Set TotalDescent field
+            Units: m</summary>
+            <param name="totalDescent_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetAvgHeartRate">
+            <summary>
+             Retrieves the AvgHeartRate field
+             Units: bpm</summary>
+             <returns>Returns nullable byte representing the AvgHeartRate field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetAvgHeartRate(System.Nullable{System.Byte})">
+            <summary>
+            Set AvgHeartRate field
+            Units: bpm</summary>
+            <param name="avgHeartRate_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetMaxHeartRate">
+            <summary>
+             Retrieves the MaxHeartRate field
+             Units: bpm</summary>
+             <returns>Returns nullable byte representing the MaxHeartRate field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetMaxHeartRate(System.Nullable{System.Byte})">
+            <summary>
+            Set MaxHeartRate field
+            Units: bpm</summary>
+            <param name="maxHeartRate_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetAvgVertSpeed">
+            <summary>
+             Retrieves the AvgVertSpeed field
+             Units: m/s</summary>
+             <returns>Returns nullable float representing the AvgVertSpeed field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetAvgVertSpeed(System.Nullable{System.Single})">
+            <summary>
+            Set AvgVertSpeed field
+            Units: m/s</summary>
+            <param name="avgVertSpeed_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetTotalCalories">
+            <summary>
+             Retrieves the TotalCalories field
+             Units: kcal</summary>
+             <returns>Returns nullable uint representing the TotalCalories field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetTotalCalories(System.Nullable{System.UInt32})">
+            <summary>
+            Set TotalCalories field
+            Units: kcal</summary>
+            <param name="totalCalories_">Nullable field value to be set</param>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.GetTotalMovingTime">
+            <summary>
+             Retrieves the TotalMovingTime field
+             Units: s</summary>
+             <returns>Returns nullable float representing the TotalMovingTime field</returns>
+        </member>
+        <member name="M:Dynastream.Fit.SplitSummaryMesg.SetTotalMovingTime(System.Nullable{System.Single})">
+            <summary>
+            Set TotalMovingTime field
+            Units: s</summary>
+            <param name="totalMovingTime_">Nullable field value to be set</param>
         </member>
         <member name="T:Dynastream.Fit.Spo2DataMesg">
             <summary>
@@ -17240,22 +17576,26 @@
         </member>
         <member name="M:Dynastream.Fit.UserProfileMesg.GetFriendlyName">
             <summary>
-             Retrieves the FriendlyName field</summary>
+             Retrieves the FriendlyName field
+             Comment: Used for Morning Report greeting</summary>
              <returns>Returns byte[] representing the FriendlyName field</returns>
         </member>
         <member name="M:Dynastream.Fit.UserProfileMesg.GetFriendlyNameAsString">
             <summary>
-             Retrieves the FriendlyName field</summary>
+             Retrieves the FriendlyName field
+             Comment: Used for Morning Report greeting</summary>
              <returns>Returns String representing the FriendlyName field</returns>
         </member>
         <member name="M:Dynastream.Fit.UserProfileMesg.SetFriendlyName(System.String)">
             <summary>
-             Set FriendlyName field</summary>
+             Set FriendlyName field
+             Comment: Used for Morning Report greeting</summary>
              <param name="friendlyName_"> field value to be set</param>
         </member>
         <member name="M:Dynastream.Fit.UserProfileMesg.SetFriendlyName(System.Byte[])">
             <summary>
-            Set FriendlyName field</summary>
+            Set FriendlyName field
+            Comment: Used for Morning Report greeting</summary>
             <param name="friendlyName_">field value to be set</param>
         </member>
         <member name="M:Dynastream.Fit.UserProfileMesg.GetGender">

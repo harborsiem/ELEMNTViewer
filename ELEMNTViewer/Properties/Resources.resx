@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -123,5 +123,266 @@
   </data>
   <data name="Web_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Web_Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DistanceEtc" xml:space="preserve">
+    <value>Distance etc</value>
+  </data>
+  <data name="HeartRate" xml:space="preserve">
+    <value>HeartRate</value>
+  </data>
+  <data name="Misc" xml:space="preserve">
+    <value>Misc</value>
+  </data>
+  <data name="Power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Starttime</value>
+  </data>
+  <data name="Timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data>
+  <data name="TotalElapsedTime" xml:space="preserve">
+    <value>Total elapsed time</value>
+  </data>
+  <data name="TotalTimerTime" xml:space="preserve">
+    <value>Total timer time</value>
+  </data>
+  <data name="AvgSpeed" xml:space="preserve">
+    <value>Average speed [km/h]</value>
+  </data>
+  <data name="MaxSpeed" xml:space="preserve">
+    <value>Maximum speed [km/h]</value>
+  </data>
+  <data name="TotalDistance" xml:space="preserve">
+    <value>Total distance [km]</value>
+  </data>
+  <data name="AvgCadence" xml:space="preserve">
+    <value>Average cadence [rpm]</value>
+  </data>
+  <data name="MaxCadence" xml:space="preserve">
+    <value>Maximum cadence [rpm]</value>
+  </data>
+  <data name="MinHeartRate" xml:space="preserve">
+    <value>Minimum heartrate [bpm]</value>
+  </data>
+  <data name="AvgHeartRate" xml:space="preserve">
+    <value>Average heartrate [bpm]</value>
+  </data>
+  <data name="MaxHeartRate" xml:space="preserve">
+    <value>Maximum heartrate [bpm]</value>
+  </data>
+  <data name="TimeInHrZone0" xml:space="preserve">
+    <value>Time in Hr. zone 0</value>
+  </data>
+  <data name="TimeInHrZone1" xml:space="preserve">
+    <value>Time in Hr. zone 1</value>
+  </data>
+  <data name="TimeInHrZone2" xml:space="preserve">
+    <value>Time in Hr. zone 2</value>
+  </data>
+  <data name="TimeInHrZone3" xml:space="preserve">
+    <value>Time in Hr. zone 3</value>
+  </data>
+  <data name="TimeInHrZone4" xml:space="preserve">
+    <value>Time in Hr. zone 4</value>
+  </data>
+  <data name="AvgPower" xml:space="preserve">
+    <value>Average power [W]</value>
+  </data>
+  <data name="MaxPower" xml:space="preserve">
+    <value>Maximum power [W]</value>
+  </data>
+  <data name="TimeInPowerZone0" xml:space="preserve">
+    <value>Time in power zone 0</value>
+  </data>
+  <data name="TimeInPowerZone1" xml:space="preserve">
+    <value>Time in power zone 1</value>
+  </data>
+  <data name="TimeInPowerZone2" xml:space="preserve">
+    <value>Time in power zone 2</value>
+  </data>
+  <data name="TimeInPowerZone3" xml:space="preserve">
+    <value>Time in power zone 3</value>
+  </data>
+  <data name="TimeInPowerZone4" xml:space="preserve">
+    <value>Time in power zone 4</value>
+  </data>
+  <data name="TimeInPowerZone5" xml:space="preserve">
+    <value>Time in power zone 5</value>
+  </data>
+  <data name="TotalWork" xml:space="preserve">
+    <value>Total work [Kj]</value>
+  </data>
+  <data name="MinAltitude" xml:space="preserve">
+    <value>Minimum altitude [m]</value>
+  </data>
+  <data name="AvgAltitude" xml:space="preserve">
+    <value>Average altitude [m]</value>
+  </data>
+  <data name="MaxAltitude" xml:space="preserve">
+    <value>Maximum altitude [m]</value>
+  </data>
+  <data name="MaxNegGrade" xml:space="preserve">
+    <value>Maximum negative grade [%]</value>
+  </data>
+  <data name="AvgGrade" xml:space="preserve">
+    <value>Average grade [%]</value>
+  </data>
+  <data name="MaxPosGrade" xml:space="preserve">
+    <value>Maximum positive grade [%]</value>
+  </data>
+  <data name="TotalCalories" xml:space="preserve">
+    <value>Total calories [Kj]</value>
+  </data>
+  <data name="NormalizedPower" xml:space="preserve">
+    <value>Normalized power [W]</value>
+  </data>
+  <data name="AvgTemperature" xml:space="preserve">
+    <value>Average temperature [C]</value>
+  </data>
+  <data name="MaxTemperature" xml:space="preserve">
+    <value>Maximum temperature [C]</value>
+  </data>
+  <data name="TotalAscent" xml:space="preserve">
+    <value>Total ascent [m]</value>
+  </data>
+  <data name="TotalDescent" xml:space="preserve">
+    <value>Total descent [m]</value>
+  </data>
+  <data name="Vam" xml:space="preserve">
+    <value>Vam [m/h]</value>
+  </data>
+  <data name="NumLaps" xml:space="preserve">
+    <value>Num. laps</value>
+  </data>
+  <data name="ThresholdPower" xml:space="preserve">
+    <value>FTP [W]</value>
+  </data>
+  <data name="TrainingStressScore" xml:space="preserve">
+    <value>Training Stress Score</value>
+  </data>
+  <data name="IntensityFactor" xml:space="preserve">
+    <value>Intensity factor</value>
+  </data>
+  <data name="VI" xml:space="preserve">
+    <value>VI</value>
+  </data>
+  <data name="FrontGearChanges" xml:space="preserve">
+    <value>Front gear changes</value>
+  </data>
+  <data name="RearGearChanges" xml:space="preserve">
+    <value>Rear gear changes</value>
+  </data>
+  <data name="TotalGearChanges" xml:space="preserve">
+    <value>Total gear changes</value>
+  </data>
+  <data name="LRBalance" xml:space="preserve">
+    <value>Left right balance [%]</value>
+  </data>
+  <data name="LeftSmooth" xml:space="preserve">
+    <value>Left smooth [%]</value>
+  </data>
+  <data name="RightSmooth" xml:space="preserve">
+    <value>Right smooth [%]</value>
+  </data>
+  <data name="LeftTorque" xml:space="preserve">
+    <value>Left torque effectiveness [%]</value>
+  </data>
+  <data name="RightTorque" xml:space="preserve">
+    <value>Right torque effectiveness [%]</value>
+  </data>
+  <data name="FTPValue" xml:space="preserve">
+    <value>FTP value</value>
+  </data>
+  <data name="ActiveRecovery" xml:space="preserve">
+    <value>Active recovery</value>
+  </data>
+  <data name="AerobeThreshold" xml:space="preserve">
+    <value>Aerobe threshold</value>
+  </data>
+  <data name="Tempo" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="LaktatThreshold" xml:space="preserve">
+    <value>Laktat threshold</value>
+  </data>
+  <data name="AerobeCapacity" xml:space="preserve">
+    <value>Aerobe capacity</value>
+  </data>
+  <data name="AnaerobeCapacity" xml:space="preserve">
+    <value>Anaerobe capacity</value>
+  </data>
+  <data name="Easy" xml:space="preserve">
+    <value>Easy</value>
+  </data>
+  <data name="FatBurning" xml:space="preserve">
+    <value>Fat burning</value>
+  </data>
+  <data name="Cardio" xml:space="preserve">
+    <value>Cardio</value>
+  </data>
+  <data name="Hard" xml:space="preserve">
+    <value>Hard</value>
+  </data>
+  <data name="Peak" xml:space="preserve">
+    <value>Peak</value>
+  </data>
+  <data name="RS_Session" xml:space="preserve">
+    <value>Session</value>
+  </data>
+  <data name="RS_SessionExtras" xml:space="preserve">
+    <value>Session extras</value>
+  </data>
+  <data name="RS_Laps" xml:space="preserve">
+    <value>Laps</value>
+  </data>
+  <data name="RS_Lap" xml:space="preserve">
+    <value>Lap</value>
+  </data>
+  <data name="RS_PowerZones" xml:space="preserve">
+    <value>Power zones [W]</value>
+  </data>
+  <data name="RS_HeartRateZones" xml:space="preserve">
+    <value>Heartrate zones [bpm]</value>
+  </data>
+  <data name="RS_ELEMNT_FitFile" xml:space="preserve">
+    <value>ELEMNT Fit-File</value>
+  </data>
+  <data name="RS_GpsFile" xml:space="preserve">
+    <value>GPS-File</value>
+  </data>
+  <data name="RS_GpxFile" xml:space="preserve">
+    <value>Gpx-File</value>
+  </data>
+  <data name="RS_Statistics" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="RS_Gears" xml:space="preserve">
+    <value>Gears</value>
+  </data>
+  <data name="RS_Km" xml:space="preserve">
+    <value>km</value>
+  </data>
+  <data name="RS_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="RS_Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="RS_Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="RS_About" xml:space="preserve">
+    <value>About</value>
   </data>
 </root>

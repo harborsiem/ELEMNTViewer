@@ -13,6 +13,7 @@ using RibbonLib;
 using RibbonLib.Controls.Events;
 using RibbonLib.Interop;
 using ELEMNTViewer;
+using Resources = ELEMNTViewer.Properties.Resources;
 using WpfMaps;
 
 namespace RibbonLib.Controls
@@ -233,12 +234,12 @@ namespace RibbonLib.Controls
                 itemsSource.Clear();
                 return;
             }
-            itemsSource.Add(new GalleryItemPropertySet() { Label = "Session", CategoryID = Constants.UI_Collection_InvalidIndex });
+            itemsSource.Add(new GalleryItemPropertySet() { Label = Resources.RS_Session, CategoryID = Constants.UI_Collection_InvalidIndex });
             if (DataManager.Instance.LapManager.Count > 1)
             {
                 for (int i = 0; i < DataManager.Instance.LapManager.Count; i++)
                 {
-                    itemsSource.Add(new GalleryItemPropertySet() { Label = "Lap " + (i + 1).ToString(), CategoryID = Constants.UI_Collection_InvalidIndex });
+                    itemsSource.Add(new GalleryItemPropertySet() { Label = Resources.RS_Lap + " " + (i + 1).ToString(), CategoryID = Constants.UI_Collection_InvalidIndex });
                 }
             }
             ComboSelect.SelectedItem = 0;
@@ -343,6 +344,7 @@ namespace RibbonLib.Controls
                 List<PointItem> pointItems = new List<PointItem>();
                 MapControl.Location mapCenter = null;
                 double distanceStart = 0;
+                string km = Resources.RS_Km;
                 List<RecordValues> list = DataManager.Instance.RecordList;
                 for (int i = 0; i < list.Count; i++)
                 {
@@ -353,7 +355,7 @@ namespace RibbonLib.Controls
                     if (mapCenter == null && latitude != 0)
                     {
                         mapCenter = location;
-                        pushpinItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                        pushpinItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " " + km });
                         distanceStart += 5;
                     }
                     if (mapCenter != null && latitude != 0)
@@ -361,7 +363,7 @@ namespace RibbonLib.Controls
                         locations.Add(location);
                         if (distance >= distanceStart)
                         {
-                            pushpinItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " km" });
+                            pushpinItems.Add(new PointItem() { Location = location, Name = distanceStart.ToString() + " " + km });
                             distanceStart += 5;
                         }
                     }
@@ -418,7 +420,7 @@ namespace RibbonLib.Controls
         {
             if (_loadedQatSettings == null || stream.Length != _loadedQatSettings.Length)
                 return false;
-            byte[] buffer = stream.GetBuffer();
+            byte[] buffer = stream.ToArray();
             for (int i = 0; i < buffer.Length; i++)
                 if (_loadedQatSettings[i] != buffer[i])
                     return false;
@@ -594,7 +596,7 @@ namespace RibbonLib.Controls
             dialog.CheckFileExists = true;
             dialog.CheckPathExists = true;
             dialog.DefaultExt = "gpx";
-            dialog.Filter = "Gpx-File" + " (*.gpx)|*.gpx";
+            dialog.Filter = Resources.RS_GpxFile + " (*.gpx)|*.gpx";
             if (dialog.ShowDialog(_form) == DialogResult.OK)
             {
                 _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
@@ -648,7 +650,7 @@ namespace RibbonLib.Controls
             dialog.CheckFileExists = true;
             dialog.CheckPathExists = true;
             dialog.DefaultExt = "fit";
-            dialog.Filter = "ELEMNT Fit-File" + " (*.fit)|*.fit";
+            dialog.Filter = Resources.RS_ELEMNT_FitFile + " (*.fit)|*.fit";
             Settings settings = Settings.Instance;
             if (!string.IsNullOrEmpty(settings.FitPath))
                 dialog.InitialDirectory = settings.FitPath;
@@ -722,7 +724,7 @@ namespace RibbonLib.Controls
                 SaveFileDialog dialog = new SaveFileDialog();
                 dialog.CheckPathExists = true;
                 dialog.DefaultExt = "gpx";
-                dialog.Filter = "GPS-File" + " (*.gpx)|*.gpx";
+                dialog.Filter = Resources.RS_GpsFile + " (*.gpx)|*.gpx";
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
                     DataManager.Instance.RecordManager.WriteGpx(new FileInfo(dialog.FileName), Path.GetFileNameWithoutExtension(_fileName));
@@ -781,7 +783,7 @@ namespace RibbonLib.Controls
                 PropertiesForm dialog = new PropertiesForm();
                 dialog.SelectedObjects = null;
                 dialog.SelectedObject = DataManager.Instance.Gears;
-                dialog.Header = "Gears";
+                dialog.Header = Resources.RS_Gears;
                 dialog.Grid.PropertySort = PropertySort.Categorized;
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
@@ -800,7 +802,7 @@ namespace RibbonLib.Controls
                 PropertiesForm dialog = new PropertiesForm();
                 dialog.SelectedObjects = null;
                 dialog.SelectedObject = DataManager.Instance.Session;
-                dialog.Header = "Session";
+                dialog.Header = Resources.RS_Session;
                 dialog.Grid.PropertySort = PropertySort.Categorized;
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
@@ -819,7 +821,7 @@ namespace RibbonLib.Controls
                 PropertiesForm dialog = new PropertiesForm();
                 dialog.SelectedObject = null;
                 dialog.SelectedObjects = DataManager.Instance.LapManager.LapArray();
-                dialog.Header = "Laps";
+                dialog.Header = Resources.RS_Laps;
                 dialog.Grid.PropertySort = PropertySort.Categorized;
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
@@ -844,7 +846,7 @@ namespace RibbonLib.Controls
                 PropertiesForm dialog = new PropertiesForm();
                 dialog.SelectedObjects = null;
                 dialog.SelectedObject = DataManager.Instance.HRManager.GetHeartRateZones();
-                dialog.Header = "HeartRate Zones";
+                dialog.Header = Resources.RS_HeartRateZones;
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
                 }
@@ -862,7 +864,7 @@ namespace RibbonLib.Controls
                 PropertiesForm dialog = new PropertiesForm();
                 dialog.SelectedObjects = null;
                 dialog.SelectedObject = DataManager.Instance.PowerManager.GetPowerZones();
-                dialog.Header = "Power Zones";
+                dialog.Header = Resources.RS_PowerZones;
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
                 }
@@ -881,7 +883,7 @@ namespace RibbonLib.Controls
                 dialog.SelectedObjects = null;
                 dialog.SelectedObject = DataManager.Instance.SessionExtras;
                 dialog.Grid.PropertySort = PropertySort.Categorized;
-                dialog.Header = "Session Extras";
+                dialog.Header = Resources.RS_SessionExtras;
                 if (dialog.ShowDialog(_form) == DialogResult.OK)
                 {
                 }

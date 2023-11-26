@@ -8,13 +8,17 @@ namespace ELEMNTViewer
 {
     class Gears
     {
+        const string CatMisc = "Misc";
         [Browsable(false)]
         public bool AntGearChanger { get; private set; }
-        [DisplayName("Front Gear Changes")]
+        [SRCategory(CatMisc)]
+        [SRDisplayName(nameof(FrontGearChanges))]
         public int FrontGearChanges { get; private set; }
-        [DisplayName("Rear Gear Changes")]
+        [SRCategory(CatMisc)]
+        [SRDisplayName(nameof(RearGearChanges))]
         public int RearGearChanges { get; private set; }
-        [DisplayName("Total Gear Changes")]
+        [SRCategory(CatMisc)]
+        [SRDisplayName(nameof(TotalGearChanges))]
         public int TotalGearChanges { get; private set; }
 
         //Data, Bit31..16 : FrontGear 36, 1 or 52, 2

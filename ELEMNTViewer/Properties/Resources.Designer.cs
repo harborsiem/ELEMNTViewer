@@ -61,12 +61,795 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Active recovery.
+        /// </summary>
+        internal static string ActiveRecovery {
+            get {
+                return ResourceManager.GetString("ActiveRecovery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aerobe capacity.
+        /// </summary>
+        internal static string AerobeCapacity {
+            get {
+                return ResourceManager.GetString("AerobeCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aerobe threshold.
+        /// </summary>
+        internal static string AerobeThreshold {
+            get {
+                return ResourceManager.GetString("AerobeThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Anaerobe capacity.
+        /// </summary>
+        internal static string AnaerobeCapacity {
+            get {
+                return ResourceManager.GetString("AnaerobeCapacity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average altitude [m].
+        /// </summary>
+        internal static string AvgAltitude {
+            get {
+                return ResourceManager.GetString("AvgAltitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average cadence [rpm].
+        /// </summary>
+        internal static string AvgCadence {
+            get {
+                return ResourceManager.GetString("AvgCadence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average grade [%].
+        /// </summary>
+        internal static string AvgGrade {
+            get {
+                return ResourceManager.GetString("AvgGrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average heartrate [bpm].
+        /// </summary>
+        internal static string AvgHeartRate {
+            get {
+                return ResourceManager.GetString("AvgHeartRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average power [W].
+        /// </summary>
+        internal static string AvgPower {
+            get {
+                return ResourceManager.GetString("AvgPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average speed [km/h].
+        /// </summary>
+        internal static string AvgSpeed {
+            get {
+                return ResourceManager.GetString("AvgSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Average temperature [C].
+        /// </summary>
+        internal static string AvgTemperature {
+            get {
+                return ResourceManager.GetString("AvgTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cardio.
+        /// </summary>
+        internal static string Cardio {
+            get {
+                return ResourceManager.GetString("Cardio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance etc.
+        /// </summary>
+        internal static string DistanceEtc {
+            get {
+                return ResourceManager.GetString("DistanceEtc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Easy.
+        /// </summary>
+        internal static string Easy {
+            get {
+                return ResourceManager.GetString("Easy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ElemntBolt {
             get {
                 object obj = ResourceManager.GetObject("ElemntBolt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fat burning.
+        /// </summary>
+        internal static string FatBurning {
+            get {
+                return ResourceManager.GetString("FatBurning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Front gear changes.
+        /// </summary>
+        internal static string FrontGearChanges {
+            get {
+                return ResourceManager.GetString("FrontGearChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FTP value.
+        /// </summary>
+        internal static string FTPValue {
+            get {
+                return ResourceManager.GetString("FTPValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hard.
+        /// </summary>
+        internal static string Hard {
+            get {
+                return ResourceManager.GetString("Hard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HeartRate.
+        /// </summary>
+        internal static string HeartRate {
+            get {
+                return ResourceManager.GetString("HeartRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Intensity factor.
+        /// </summary>
+        internal static string IntensityFactor {
+            get {
+                return ResourceManager.GetString("IntensityFactor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Laktat threshold.
+        /// </summary>
+        internal static string LaktatThreshold {
+            get {
+                return ResourceManager.GetString("LaktatThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left smooth [%].
+        /// </summary>
+        internal static string LeftSmooth {
+            get {
+                return ResourceManager.GetString("LeftSmooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left torque effectiveness [%].
+        /// </summary>
+        internal static string LeftTorque {
+            get {
+                return ResourceManager.GetString("LeftTorque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left right balance [%].
+        /// </summary>
+        internal static string LRBalance {
+            get {
+                return ResourceManager.GetString("LRBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum altitude [m].
+        /// </summary>
+        internal static string MaxAltitude {
+            get {
+                return ResourceManager.GetString("MaxAltitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum cadence [rpm].
+        /// </summary>
+        internal static string MaxCadence {
+            get {
+                return ResourceManager.GetString("MaxCadence", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum heartrate [bpm].
+        /// </summary>
+        internal static string MaxHeartRate {
+            get {
+                return ResourceManager.GetString("MaxHeartRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum negative grade [%].
+        /// </summary>
+        internal static string MaxNegGrade {
+            get {
+                return ResourceManager.GetString("MaxNegGrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum positive grade [%].
+        /// </summary>
+        internal static string MaxPosGrade {
+            get {
+                return ResourceManager.GetString("MaxPosGrade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum power [W].
+        /// </summary>
+        internal static string MaxPower {
+            get {
+                return ResourceManager.GetString("MaxPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum speed [km/h].
+        /// </summary>
+        internal static string MaxSpeed {
+            get {
+                return ResourceManager.GetString("MaxSpeed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum temperature [C].
+        /// </summary>
+        internal static string MaxTemperature {
+            get {
+                return ResourceManager.GetString("MaxTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum altitude [m].
+        /// </summary>
+        internal static string MinAltitude {
+            get {
+                return ResourceManager.GetString("MinAltitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimum heartrate [bpm].
+        /// </summary>
+        internal static string MinHeartRate {
+            get {
+                return ResourceManager.GetString("MinHeartRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Misc.
+        /// </summary>
+        internal static string Misc {
+            get {
+                return ResourceManager.GetString("Misc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Normalized power [W].
+        /// </summary>
+        internal static string NormalizedPower {
+            get {
+                return ResourceManager.GetString("NormalizedPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Num. laps.
+        /// </summary>
+        internal static string NumLaps {
+            get {
+                return ResourceManager.GetString("NumLaps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peak.
+        /// </summary>
+        internal static string Peak {
+            get {
+                return ResourceManager.GetString("Peak", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Power.
+        /// </summary>
+        internal static string Power {
+            get {
+                return ResourceManager.GetString("Power", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rear gear changes.
+        /// </summary>
+        internal static string RearGearChanges {
+            get {
+                return ResourceManager.GetString("RearGearChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right smooth [%].
+        /// </summary>
+        internal static string RightSmooth {
+            get {
+                return ResourceManager.GetString("RightSmooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right torque effectiveness [%].
+        /// </summary>
+        internal static string RightTorque {
+            get {
+                return ResourceManager.GetString("RightTorque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string RS_About {
+            get {
+                return ResourceManager.GetString("RS_About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        internal static string RS_Author {
+            get {
+                return ResourceManager.GetString("RS_Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copyright.
+        /// </summary>
+        internal static string RS_Copyright {
+            get {
+                return ResourceManager.GetString("RS_Copyright", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ELEMNT Fit-File.
+        /// </summary>
+        internal static string RS_ELEMNT_FitFile {
+            get {
+                return ResourceManager.GetString("RS_ELEMNT_FitFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gears.
+        /// </summary>
+        internal static string RS_Gears {
+            get {
+                return ResourceManager.GetString("RS_Gears", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPS-File.
+        /// </summary>
+        internal static string RS_GpsFile {
+            get {
+                return ResourceManager.GetString("RS_GpsFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gpx-File.
+        /// </summary>
+        internal static string RS_GpxFile {
+            get {
+                return ResourceManager.GetString("RS_GpxFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heartrate zones [bpm].
+        /// </summary>
+        internal static string RS_HeartRateZones {
+            get {
+                return ResourceManager.GetString("RS_HeartRateZones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to km.
+        /// </summary>
+        internal static string RS_Km {
+            get {
+                return ResourceManager.GetString("RS_Km", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lap.
+        /// </summary>
+        internal static string RS_Lap {
+            get {
+                return ResourceManager.GetString("RS_Lap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Laps.
+        /// </summary>
+        internal static string RS_Laps {
+            get {
+                return ResourceManager.GetString("RS_Laps", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Power zones [W].
+        /// </summary>
+        internal static string RS_PowerZones {
+            get {
+                return ResourceManager.GetString("RS_PowerZones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session.
+        /// </summary>
+        internal static string RS_Session {
+            get {
+                return ResourceManager.GetString("RS_Session", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Session extras.
+        /// </summary>
+        internal static string RS_SessionExtras {
+            get {
+                return ResourceManager.GetString("RS_SessionExtras", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Statistics.
+        /// </summary>
+        internal static string RS_Statistics {
+            get {
+                return ResourceManager.GetString("RS_Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string RS_Version {
+            get {
+                return ResourceManager.GetString("RS_Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed.
+        /// </summary>
+        internal static string Speed {
+            get {
+                return ResourceManager.GetString("Speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starttime.
+        /// </summary>
+        internal static string StartTime {
+            get {
+                return ResourceManager.GetString("StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        internal static string Temperature {
+            get {
+                return ResourceManager.GetString("Temperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tempo.
+        /// </summary>
+        internal static string Tempo {
+            get {
+                return ResourceManager.GetString("Tempo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FTP [W].
+        /// </summary>
+        internal static string ThresholdPower {
+            get {
+                return ResourceManager.GetString("ThresholdPower", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        internal static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in Hr. zone 0.
+        /// </summary>
+        internal static string TimeInHrZone0 {
+            get {
+                return ResourceManager.GetString("TimeInHrZone0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in Hr. zone 1.
+        /// </summary>
+        internal static string TimeInHrZone1 {
+            get {
+                return ResourceManager.GetString("TimeInHrZone1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in Hr. zone 2.
+        /// </summary>
+        internal static string TimeInHrZone2 {
+            get {
+                return ResourceManager.GetString("TimeInHrZone2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in Hr. zone 3.
+        /// </summary>
+        internal static string TimeInHrZone3 {
+            get {
+                return ResourceManager.GetString("TimeInHrZone3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in Hr. zone 4.
+        /// </summary>
+        internal static string TimeInHrZone4 {
+            get {
+                return ResourceManager.GetString("TimeInHrZone4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in power zone 0.
+        /// </summary>
+        internal static string TimeInPowerZone0 {
+            get {
+                return ResourceManager.GetString("TimeInPowerZone0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in power zone 1.
+        /// </summary>
+        internal static string TimeInPowerZone1 {
+            get {
+                return ResourceManager.GetString("TimeInPowerZone1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in power zone 2.
+        /// </summary>
+        internal static string TimeInPowerZone2 {
+            get {
+                return ResourceManager.GetString("TimeInPowerZone2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in power zone 3.
+        /// </summary>
+        internal static string TimeInPowerZone3 {
+            get {
+                return ResourceManager.GetString("TimeInPowerZone3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in power zone 4.
+        /// </summary>
+        internal static string TimeInPowerZone4 {
+            get {
+                return ResourceManager.GetString("TimeInPowerZone4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time in power zone 5.
+        /// </summary>
+        internal static string TimeInPowerZone5 {
+            get {
+                return ResourceManager.GetString("TimeInPowerZone5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timestamp.
+        /// </summary>
+        internal static string Timestamp {
+            get {
+                return ResourceManager.GetString("Timestamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total ascent [m].
+        /// </summary>
+        internal static string TotalAscent {
+            get {
+                return ResourceManager.GetString("TotalAscent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total calories [Kj].
+        /// </summary>
+        internal static string TotalCalories {
+            get {
+                return ResourceManager.GetString("TotalCalories", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total descent [m].
+        /// </summary>
+        internal static string TotalDescent {
+            get {
+                return ResourceManager.GetString("TotalDescent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total distance [km].
+        /// </summary>
+        internal static string TotalDistance {
+            get {
+                return ResourceManager.GetString("TotalDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total elapsed time.
+        /// </summary>
+        internal static string TotalElapsedTime {
+            get {
+                return ResourceManager.GetString("TotalElapsedTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total gear changes.
+        /// </summary>
+        internal static string TotalGearChanges {
+            get {
+                return ResourceManager.GetString("TotalGearChanges", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total timer time.
+        /// </summary>
+        internal static string TotalTimerTime {
+            get {
+                return ResourceManager.GetString("TotalTimerTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total work [Kj].
+        /// </summary>
+        internal static string TotalWork {
+            get {
+                return ResourceManager.GetString("TotalWork", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Training Stress Score.
+        /// </summary>
+        internal static string TrainingStressScore {
+            get {
+                return ResourceManager.GetString("TrainingStressScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vam [m/h].
+        /// </summary>
+        internal static string Vam {
+            get {
+                return ResourceManager.GetString("Vam", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to VI.
+        /// </summary>
+        internal static string VI {
+            get {
+                return ResourceManager.GetString("VI", resourceCulture);
             }
         }
         

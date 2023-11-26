@@ -9,31 +9,39 @@ namespace ELEMNTViewer
 {
     class PowerZones
     {
+        const string CatPower = "Power";
         //[DisplayName("FTP Wert")]
-        [DisplayName("FTP value")]
+        [SRCategory(CatPower)]
+        [SRDisplayName(nameof(FTPValue))]
         [ReadOnly(true)]
         public string FTPValue { get; set; }
         //[DisplayName("Aktive Erholung")]
-        [DisplayName("Active Recovery")]
+        [SRCategory(CatPower)]
+        [SRDisplayName(nameof(ActiveRecovery))]
         [ReadOnly(true)]
         public string ActiveRecovery { get; set; }
         //[DisplayName("Aerober Schwellenwert")]
-        [DisplayName("Aerobe Threshold")]
+        [SRCategory(CatPower)]
+        [SRDisplayName(nameof(AerobeThreshold))]
         [ReadOnly(true)]
         public string AerobeThreshold { get; set; }
-        [DisplayName("Tempo")]
+        [SRCategory(CatPower)]
+        [SRDisplayName(nameof(Tempo))]
         [ReadOnly(true)]
         public string Tempo { get; set; }
         //[DisplayName("Laktat Schwellwert")]
-        [DisplayName("Laktat Threshold")]
+        [SRCategory(CatPower)]
+        [SRDisplayName(nameof(LaktatThreshold))]
         [ReadOnly(true)]
         public string LaktatThreshold { get; set; }
         //[DisplayName("Aerobe Kapazität")]
-        [DisplayName("Aerobe Capacity")]
+        [SRCategory(CatPower)]
+        [SRDisplayName(nameof(AerobeCapacity))]
         [ReadOnly(true)]
         public string AerobeCapacity { get; set; }
         //[DisplayName("Anaerobe Kapazität")]
-        [DisplayName("Anaerobe Capacity")]
+        [SRCategory(CatPower)]
+        [SRDisplayName(nameof(AnaerobeCapacity))]
         [ReadOnly(true)]
         public string AnaerobeCapacity { get; set; }
     }

@@ -235,110 +235,124 @@ namespace ELEMNTViewer
             }
         }
 
-        [Category("Time")]
+        [SRCategory("Time")]
+        [SRDisplayName(nameof(Timestamp))]
         public DateTime Timestamp { get { return timestamp; } }
-        [Category("Time")]
+        [SRCategory("Time")]
+        [SRDisplayName(nameof(StartTime))]
         public DateTime StartTime { get { return startTime; } }
-        [Category("Time")]
-        [DisplayName("Total Elapsed Time")]
+        [SRCategory("Time")]
+        [SRDisplayName(nameof(TotalElapsedTime))]
         public TimeSpan TotalElapsedTime { get { return FitConvert.ToTimeSpan(totalElapsedTime); } }
-        [Category("Time")]
-        [DisplayName("Total Timer Time")]
+        [SRCategory("Time")]
+        [SRDisplayName(nameof(TotalTimerTime))]
         public TimeSpan TotalTimerTime { get { return FitConvert.ToTimeSpan(totalTimerTime); } }
-        [Category("Speed")]
-        [DisplayName("Average Speed")]
-        public float AvgSpeed { get { return avgSpeed; } }
-        [Category("Speed")]
-        [DisplayName("Maximum Speed")]
-        public float MaxSpeed { get { return maxSpeed; } }
-        [Category("Distance etc")]
-        [DisplayName("Total Distance")]
-        public float TotalDistance { get { return FitConvert.ToKm(totalDistance); } }
-        [Category("Speed")]
-        [DisplayName("Average Cadence")]
+        [SRCategory("Speed")]
+        [SRDisplayName(nameof(AvgSpeed))]
+        public float AvgSpeed { get { return (float)Math.Round(avgSpeed, 2); } }
+        [SRCategory("Speed")]
+        [SRDisplayName(nameof(MaxSpeed))]
+        public float MaxSpeed { get { return (float)Math.Round(maxSpeed, 2); } }
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(TotalDistance))]
+        public float TotalDistance { get { return (float)Math.Round(FitConvert.ToKm(totalDistance), 2); } }
+        [SRCategory("Speed")]
+        [SRDisplayName(nameof(AvgCadence))]
         public byte AvgCadence { get { return avgCadence; } }
-        [Category("Speed")]
-        [DisplayName("Maximum Cadence")]
+        [SRCategory("Speed")]
+        [SRDisplayName(nameof(MaxCadence))]
         public byte MaxCadence { get { return maxCadence; } }
-        [Category("HeartRate")]
-        [DisplayName("Minimum HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(MinHeartRate))]
         public byte MinHeartRate { get { return minHeartRate; } }
-        [Category("HeartRate")]
-        [DisplayName("Average HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(AvgHeartRate))]
         public byte AvgHeartRate { get { return avgHeartRate; } }
-        [Category("HeartRate")]
-        [DisplayName("Maximum HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(MaxHeartRate))]
         public byte MaxHeartRate { get { return maxHeartRate; } }
-        [Category("HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(TimeInHrZone0))]
         public TimeSpan TimeInHrZone0 { get { return FitConvert.ToTimeSpan(timeInHrZone0); } }
-        [Category("HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(TimeInHrZone1))]
         public TimeSpan TimeInHrZone1 { get { return FitConvert.ToTimeSpan(timeInHrZone1); } }
-        [Category("HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(TimeInHrZone2))]
         public TimeSpan TimeInHrZone2 { get { return FitConvert.ToTimeSpan(timeInHrZone2); } }
-        [Category("HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(TimeInHrZone3))]
         public TimeSpan TimeInHrZone3 { get { return FitConvert.ToTimeSpan(timeInHrZone3); } }
-        [Category("HeartRate")]
+        [SRCategory("HeartRate")]
+        [SRDisplayName(nameof(TimeInHrZone4))]
         public TimeSpan TimeInHrZone4 { get { return FitConvert.ToTimeSpan(timeInHrZone4); } }
-        [Category("Power")]
-        [DisplayName("Average Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(AvgPower))]
         public ushort AvgPower { get { return avgPower; } }
-        [Category("Power")]
-        [DisplayName("Maximum Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(MaxPower))]
         public ushort MaxPower { get { return maxPower; } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TimeInPowerZone0))]
         public TimeSpan TimeInPowerZone0 { get { return FitConvert.ToTimeSpan(timeInPowerZone0); } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TimeInPowerZone1))]
         public TimeSpan TimeInPowerZone1 { get { return FitConvert.ToTimeSpan(timeInPowerZone1); } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TimeInPowerZone2))]
         public TimeSpan TimeInPowerZone2 { get { return FitConvert.ToTimeSpan(timeInPowerZone2); } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TimeInPowerZone3))]
         public TimeSpan TimeInPowerZone3 { get { return FitConvert.ToTimeSpan(timeInPowerZone3); } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TimeInPowerZone4))]
         public TimeSpan TimeInPowerZone4 { get { return FitConvert.ToTimeSpan(timeInPowerZone4); } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TimeInPowerZone5))]
         public TimeSpan TimeInPowerZone5 { get { return FitConvert.ToTimeSpan(timeInPowerZone5); } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TotalWork))]
         public uint TotalWork { get { return FitConvert.ToKJoule(totalWork); } }
 
-        [Category("Distance etc")]
-        [DisplayName("Minimum Altitude")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(MinAltitude))]
         public float MinAltitude { get { return minAltitude; } }
-        [Category("Distance etc")]
-        [DisplayName("Average Altitude")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(AvgAltitude))]
         public float AvgAltitude { get { return avgAltitude; } }
-        [Category("Distance etc")]
-        [DisplayName("Maximum Altitude")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(MaxAltitude))]
         public float MaxAltitude { get { return maxAltitude; } }
-        [Category("Distance etc")]
-        [DisplayName("Maximum Negative Grade")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(MaxNegGrade))]
         public float MaxNegGrade { get { return maxNegGrade; } }
-        [Category("Distance etc")]
-        [DisplayName("Average Grade")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(AvgGrade))]
         public float AvgGrade { get { return avgGrade; } }
-        [Category("Distance etc")]
-        [DisplayName("Maximum Positive Grade")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(MaxPosGrade))]
         public float MaxPosGrade { get { return maxPosGrade; } }
 
-        [Category("Misc")]
-        [DisplayName("Total Calories")]
+        [SRCategory("Misc")]
+        [SRDisplayName(nameof(TotalCalories))]
         public ushort TotalCalories { get { return totalCalories; } }
-        [Category("Power")]
-        [DisplayName("Normalized Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(NormalizedPower))]
         public ushort NormalizedPower { get { return normalizedPower; } }
-        [Category("Temperature")]
-        [DisplayName("Average Temperature")]
+        [SRCategory("Temperature")]
+        [SRDisplayName(nameof(AvgTemperature))]
         public sbyte AvgTemperature { get { return avgTemperature; } }
-        [Category("Temperature")]
-        [DisplayName("Maximum Temperature")]
+        [SRCategory("Temperature")]
+        [SRDisplayName(nameof(MaxTemperature))]
         public sbyte MaxTemperature { get { return maxTemperature; } }
-        [Category("Distance etc")]
-        [DisplayName("Total Ascent")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(TotalAscent))]
         public ushort TotalAscent { get { return totalAscent; } }
-        [Category("Distance etc")]
-        [DisplayName("Total Descent")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(TotalDescent))]
         public ushort TotalDescent { get { return totalDescent; } }
-        [Category("Distance etc")]
-        [DisplayName("Vam")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(Vam))]
         public float Vam
         {
             get
@@ -350,16 +364,20 @@ namespace ELEMNTViewer
             }
         }
         //public byte Sport { get { return sport; } }
-        [Category("Misc")]
+        [SRCategory("Misc")]
+        [SRDisplayNameAttribute(nameof(NumLaps))]
         public ushort NumLaps { get { return numLaps; } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(ThresholdPower))]
         public ushort ThresholdPower { get { return thresholdPower; } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(TrainingStressScore))]
         public float TrainingStressScore { get { return trainingStressScore; } }
-        [Category("Power")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(IntensityFactor))]
         public float IntensityFactor { get { return intensityFactor; } }
-        [Category("Power")]
-        [DisplayName("VI")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(VI))]
         public float VI
         {
             get

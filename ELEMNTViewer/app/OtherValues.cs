@@ -1,4 +1,4 @@
-﻿using Dynastream.Fit;
+using Dynastream.Fit;
 
 namespace ELEMNTViewer
 {
@@ -8,6 +8,7 @@ namespace ELEMNTViewer
     using System.Text;
     using System.Threading.Tasks;
     using System.ComponentModel;
+    using System.Globalization;
 
     class OtherValues
     {
@@ -138,14 +139,14 @@ namespace ELEMNTViewer
             this._maxPosGrade = maxPosGrade;
         }
 
-        [Category("Distance etc")]
-        [DisplayName("Average Grade")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(AvgGrade))]
         public float AvgGrade { get { return (float)Math.Round(_avgGrade, 3); } }
-        [Category("Distance etc")]
-        [DisplayName("Maximum Positive Grade")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(MaxPosGrade))]
         public float MaxPosGrade { get { return (float)_maxPosGrade; } }
-        [Category("Distance etc")]
-        [DisplayName("Maximum Negative Grade")]
+        [SRCategory("DistanceEtc")]
+        [SRDisplayName(nameof(MaxNegGrade))]
         public float MaxNegGrade { get { return (float)_maxNegGrade; } }
         //[Category("Distance etc")]
         //[DisplayName("Vam")]
@@ -153,20 +154,29 @@ namespace ELEMNTViewer
         //[Category("Power")]
         //[DisplayName("VI")]
         //public float VI { get { return (float)Math.Round(_vi, 2); } }
-        [Category("Power")]
-        [DisplayName("Left Right Balance")]
-        public float LeftRightBalance { get { return (float)Math.Round(_leftRightBalance); } }
-        [Category("Power")]
-        [DisplayName("Left Smooth")]
-        public float LeftRightSmooth { get { return (float)Math.Round(_leftPS); } }
-        [Category("Power")]
-        [DisplayName("Right Smooth")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(LRBalance))]
+        //public float LRBalance { get { return (float)Math.Round(_leftRightBalance); } }
+        public string LRBalance
+        {
+            get
+            {
+                int right = (int)Math.Round(_leftRightBalance);
+                int left = 100 - right;
+                return left.ToString() + " / " + right.ToString();
+            }
+        }
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(LeftSmooth))]
+        public float LeftSmooth { get { return (float)Math.Round(_leftPS); } }
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(RightSmooth))]
         public float RightSmooth { get { return (float)Math.Round(_rightPS); } }
-        [Category("Power")]
-        [DisplayName("Left Torque Effectiveness")]
-        public float LeftRightTorque { get { return (float)Math.Round(_leftTE); } }
-        [Category("Power")]
-        [DisplayName("Right Torque Effectiveness")]
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(LeftTorque))]
+        public float LeftTorque { get { return (float)Math.Round(_leftTE); } }
+        [SRCategory("Power")]
+        [SRDisplayName(nameof(RightTorque))]
         public float RightTorque { get { return (float)Math.Round(_rightTE); } }
     }
 }

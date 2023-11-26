@@ -24,6 +24,7 @@ namespace RibbonLib.Controls
             public const uint cmdButtonOpenFit = 78;
             public const uint cmdButtonOpenGpx = 79;
             public const uint cmdButtonSaveGpx = 16;
+            public const uint cmdToggleSettings = 70;
             public const uint cmdButtonAbout = 48;
             public const uint cmdButtonExit = 17;
             public const uint cmdButtonHelp = 18;
@@ -31,7 +32,6 @@ namespace RibbonLib.Controls
             public const uint cmdButtonSession = 43;
             public const uint cmdButtonLaps = 44;
             public const uint cmdButtonMap = 62;
-            public const uint cmdToggleSettings = 70;
             public const uint cmdTabGroupSettings = 69;
             public const uint cmdTabSettings = 67;
             public const uint cmdGroupApp = 74;
@@ -107,6 +107,7 @@ namespace RibbonLib.Controls
         public RibbonButton ButtonOpenFit { get; private set; }
         public RibbonButton ButtonOpenGpx { get; private set; }
         public RibbonButton ButtonSaveGpx { get; private set; }
+        public RibbonToggleButton ToggleSettings { get; private set; }
         public RibbonButton ButtonAbout { get; private set; }
         public RibbonButton ButtonExit { get; private set; }
         public RibbonHelpButton ButtonHelp { get; private set; }
@@ -114,7 +115,6 @@ namespace RibbonLib.Controls
         public RibbonButton ButtonSession { get; private set; }
         public RibbonButton ButtonLaps { get; private set; }
         public RibbonButton ButtonMap { get; private set; }
-        public RibbonToggleButton ToggleSettings { get; private set; }
         public RibbonTabGroup TabGroupSettings { get; private set; }
         public RibbonTab TabSettings { get; private set; }
         public RibbonGroup GroupApp { get; private set; }
@@ -191,6 +191,7 @@ namespace RibbonLib.Controls
             ButtonOpenFit = new RibbonButton(ribbon, Cmd.cmdButtonOpenFit);
             ButtonOpenGpx = new RibbonButton(ribbon, Cmd.cmdButtonOpenGpx);
             ButtonSaveGpx = new RibbonButton(ribbon, Cmd.cmdButtonSaveGpx);
+            ToggleSettings = new RibbonToggleButton(ribbon, Cmd.cmdToggleSettings);
             ButtonAbout = new RibbonButton(ribbon, Cmd.cmdButtonAbout);
             ButtonExit = new RibbonButton(ribbon, Cmd.cmdButtonExit);
             ButtonHelp = new RibbonHelpButton(ribbon, Cmd.cmdButtonHelp);
@@ -198,7 +199,6 @@ namespace RibbonLib.Controls
             ButtonSession = new RibbonButton(ribbon, Cmd.cmdButtonSession);
             ButtonLaps = new RibbonButton(ribbon, Cmd.cmdButtonLaps);
             ButtonMap = new RibbonButton(ribbon, Cmd.cmdButtonMap);
-            ToggleSettings = new RibbonToggleButton(ribbon, Cmd.cmdToggleSettings);
             TabGroupSettings = new RibbonTabGroup(ribbon, Cmd.cmdTabGroupSettings);
             TabSettings = new RibbonTab(ribbon, Cmd.cmdTabSettings);
             GroupApp = new RibbonGroup(ribbon, Cmd.cmdGroupApp);

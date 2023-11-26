@@ -65,7 +65,6 @@
             this.Name = "StatisticsForm";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Statistics";
             this.ResumeLayout(false);
 
         }
