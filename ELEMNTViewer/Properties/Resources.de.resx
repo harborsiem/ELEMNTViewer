@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DistanceEtc" xml:space="preserve">
+    <value>Entfernung usw</value>
+  </data>
+  <data name="HeartRate" xml:space="preserve">
+    <value>Herzfrequenz</value>
+  </data>
+  <data name="Misc" xml:space="preserve">
+    <value>Sonstiges</value>
+  </data>
+  <data name="Power" xml:space="preserve">
+    <value>Leistung</value>
+  </data>
+  <data name="Speed" xml:space="preserve">
+    <value>Geschwindigkeit</value>
+  </data>
+  <data name="Temperature" xml:space="preserve">
+    <value>Temperatur</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Zeiten</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Startzeit</value>
+  </data>
+  <data name="Timestamp" xml:space="preserve">
+    <value>Zeitstempel</value>
+  </data>
+  <data name="TotalElapsedTime" xml:space="preserve">
+    <value>Gesamtzeit</value>
+  </data>
+  <data name="TotalTimerTime" xml:space="preserve">
+    <value>Bewegungszeit</value>
+  </data>
+  <data name="AvgSpeed" xml:space="preserve">
+    <value>Durchschn. Tempo [km/h]</value>
+  </data>
+  <data name="MaxSpeed" xml:space="preserve">
+    <value>Maximales Tempo [km/h]</value>
+  </data>
+  <data name="TotalDistance" xml:space="preserve">
+    <value>Distanz [km]</value>
+  </data>
+  <data name="AvgCadence" xml:space="preserve">
+    <value>Durchschn. Kadenz [rpm]</value>
+  </data>
+  <data name="MaxCadence" xml:space="preserve">
+    <value>Maximale Kadenz [rpm]</value>
+  </data>
+  <data name="MinHeartRate" xml:space="preserve">
+    <value>Min. Herzfrequenz [bpm]</value>
+  </data>
+  <data name="AvgHeartRate" xml:space="preserve">
+    <value>Durchschn. Herzfrequenz [bpm]</value>
+  </data>
+  <data name="MaxHeartRate" xml:space="preserve">
+    <value>Max. Herzfrequenz [bpm]</value>
+  </data>
+  <data name="TimeInHrZone0" xml:space="preserve">
+    <value>Zeit in Hf. Zone 0</value>
+  </data>
+  <data name="TimeInHrZone1" xml:space="preserve">
+    <value>Zeit in Hf. Zone 1</value>
+  </data>
+  <data name="TimeInHrZone2" xml:space="preserve">
+    <value>Zeit in Hf. Zone 2</value>
+  </data>
+  <data name="TimeInHrZone3" xml:space="preserve">
+    <value>Zeit in Hf. Zone 3</value>
+  </data>
+  <data name="TimeInHrZone4" xml:space="preserve">
+    <value>Zeit in Hf. Zone 4</value>
+  </data>
+  <data name="AvgPower" xml:space="preserve">
+    <value>Durchschn. Leistung [W]</value>
+  </data>
+  <data name="MaxPower" xml:space="preserve">
+    <value>Max. Leistung [W]</value>
+  </data>
+  <data name="TimeInPowerZone0" xml:space="preserve">
+    <value>Zeit in Leistung Zone 0</value>
+  </data>
+  <data name="TimeInPowerZone1" xml:space="preserve">
+    <value>Zeit in Leistung Zone 1</value>
+  </data>
+  <data name="TimeInPowerZone2" xml:space="preserve">
+    <value>Zeit in Leistung Zone 2</value>
+  </data>
+  <data name="TimeInPowerZone3" xml:space="preserve">
+    <value>Zeit in Leistung Zone 3</value>
+  </data>
+  <data name="TimeInPowerZone4" xml:space="preserve">
+    <value>Zeit in Leistung Zone 4</value>
+  </data>
+  <data name="TimeInPowerZone5" xml:space="preserve">
+    <value>Zeit in Leistung Zone 5</value>
+  </data>
+  <data name="TotalWork" xml:space="preserve">
+    <value>Gesamt-Arbeit [Kj]</value>
+  </data>
+  <data name="MinAltitude" xml:space="preserve">
+    <value>Min. Höhe [m]</value>
+  </data>
+  <data name="AvgAltitude" xml:space="preserve">
+    <value>Durchschn. Höhe [m]</value>
+  </data>
+  <data name="MaxAltitude" xml:space="preserve">
+    <value>Max. Höhe [m]</value>
+  </data>
+  <data name="MaxNegGrade" xml:space="preserve">
+    <value>Max. neg. Steigung [%]</value>
+  </data>
+  <data name="AvgGrade" xml:space="preserve">
+    <value>Durchschn.-Steigung [%]</value>
+  </data>
+  <data name="MaxPosGrade" xml:space="preserve">
+    <value>Max. pos. Steigung [%]</value>
+  </data>
+  <data name="TotalCalories" xml:space="preserve">
+    <value>Kalorien [Kj]</value>
+  </data>
+  <data name="NormalizedPower" xml:space="preserve">
+    <value>Normalisierte Leistung [W]</value>
+  </data>
+  <data name="AvgTemperature" xml:space="preserve">
+    <value>Durchschn. Temperatur [C]</value>
+  </data>
+  <data name="MaxTemperature" xml:space="preserve">
+    <value>Max. Temperatur [C]</value>
+  </data>
+  <data name="TotalAscent" xml:space="preserve">
+    <value>Aufstieg [m]</value>
+  </data>
+  <data name="TotalDescent" xml:space="preserve">
+    <value>Abstieg [m]</value>
+  </data>
+  <data name="Vam" xml:space="preserve">
+    <value>Vam [m/h]</value>
+  </data>
+  <data name="NumLaps" xml:space="preserve">
+    <value>Anz. Runden</value>
+  </data>
+  <data name="ThresholdPower" xml:space="preserve">
+    <value>FTP [W]</value>
+  </data>
+  <data name="TrainingStressScore" xml:space="preserve">
+    <value>Training Stress Score</value>
+  </data>
+  <data name="IntensityFactor" xml:space="preserve">
+    <value>Intensität Faktor</value>
+  </data>
+  <data name="VI" xml:space="preserve">
+    <value>VI</value>
+  </data>
+  <data name="FrontGearChanges" xml:space="preserve">
+    <value>Gangwechsel vorne</value>
+  </data>
+  <data name="RearGearChanges" xml:space="preserve">
+    <value>Gangwechsel hinten</value>
+  </data>
+  <data name="TotalGearChanges" xml:space="preserve">
+    <value>Gangwechsel gesamt</value>
+  </data>
+  <data name="LRBalance" xml:space="preserve">
+    <value>L/R Balance [%]</value>
+  </data>
+  <data name="LeftSmooth" xml:space="preserve">
+    <value>L. Gleichmässigkeit [%]</value>
+  </data>
+  <data name="RightSmooth" xml:space="preserve">
+    <value>R. Gleichmässigkeit [%]</value>
+  </data>
+  <data name="LeftTorque" xml:space="preserve">
+    <value>L. Drehmoment Effektivität [%]</value>
+  </data>
+  <data name="RightTorque" xml:space="preserve">
+    <value>R. Drehmoment Effektivität [%]</value>
+  </data>
+  <data name="FTPValue" xml:space="preserve">
+    <value>FTP Wert</value>
+  </data>
+  <data name="ActiveRecovery" xml:space="preserve">
+    <value>Aktive Erholung</value>
+  </data>
+  <data name="AerobeThreshold" xml:space="preserve">
+    <value>Aerobe Schwelle</value>
+  </data>
+  <data name="Tempo" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="LaktatThreshold" xml:space="preserve">
+    <value>Laktat Schwelle</value>
+  </data>
+  <data name="AerobeCapacity" xml:space="preserve">
+    <value>Aerobe Kapazität</value>
+  </data>
+  <data name="AnaerobeCapacity" xml:space="preserve">
+    <value>Anaerobe Kapazität</value>
+  </data>
+  <data name="Easy" xml:space="preserve">
+    <value>Leicht</value>
+  </data>
+  <data name="FatBurning" xml:space="preserve">
+    <value>Fettverbrennung</value>
+  </data>
+  <data name="Cardio" xml:space="preserve">
+    <value>Kardio</value>
+  </data>
+  <data name="Hard" xml:space="preserve">
+    <value>Schwierig</value>
+  </data>
+  <data name="Peak" xml:space="preserve">
+    <value>Spitze</value>
+  </data>
+  <data name="RS_Session" xml:space="preserve">
+    <value>Session</value>
+  </data>
+  <data name="RS_SessionExtras" xml:space="preserve">
+    <value>Session Extras</value>
+  </data>
+  <data name="RS_Laps" xml:space="preserve">
+    <value>Runden</value>
+  </data>
+  <data name="RS_Lap" xml:space="preserve">
+    <value>Runde</value>
+  </data>
+  <data name="RS_PowerZones" xml:space="preserve">
+    <value>Leistung Zonen [W]</value>
+  </data>
+  <data name="RS_HeartRateZones" xml:space="preserve">
+    <value>Herzfrequenz Zonen [bpm]</value>
+  </data>
+  <data name="RS_ELEMNT_FitFile" xml:space="preserve">
+    <value>ELEMNT Fit-Datei</value>
+  </data>
+  <data name="RS_GpsFile" xml:space="preserve">
+    <value>GPS-Datei</value>
+  </data>
+  <data name="RS_GpxFile" xml:space="preserve">
+    <value>Gpx-Datei</value>
+  </data>
+  <data name="RS_Statistics" xml:space="preserve">
+    <value>Statistiken</value>
+  </data>
+  <data name="RS_Gears" xml:space="preserve">
+    <value>Gänge</value>
+  </data>
+  <data name="RS_Km" xml:space="preserve">
+    <value>km</value>
+  </data>
+  <data name="RS_Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="RS_Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
+  <data name="RS_Copyright" xml:space="preserve">
+    <value>Copyright</value>
+  </data>
+  <data name="RS_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+</root>

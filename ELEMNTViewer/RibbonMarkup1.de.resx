@@ -117,25 +117,70 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Graticule" xml:space="preserve">
-    <value>Graticule</value>
+  <data name="cmdTabStart_LabelTitle" xml:space="preserve">
+    <value>Start</value>
   </data>
-  <data name="Km" xml:space="preserve">
-    <value>km</value>
+  <data name="cmdComboYear_LabelTitle" xml:space="preserve">
+    <value>Jahr</value>
   </data>
-  <data name="Map" xml:space="preserve">
-    <value>Map</value>
+  <data name="cmdComboYear_TooltipTitle" xml:space="preserve">
+    <value>Jahr</value>
   </data>
-  <data name="MapLayersButton_Tooltip" xml:space="preserve">
-    <value>Map Layers and Overlays</value>
+  <data name="cmdComboYear_TooltipDescription" xml:space="preserve">
+    <value>Jahres Auswahl für die Ergebnisse</value>
   </data>
-  <data name="Meter" xml:space="preserve">
-    <value>m</value>
+  <data name="cmdComboMonth_LabelTitle" xml:space="preserve">
+    <value>Monat</value>
   </data>
-  <data name="Scale" xml:space="preserve">
-    <value>Scale</value>
+  <data name="cmdComboMonth_TooltipTitle" xml:space="preserve">
+    <value>Monat</value>
   </data>
-  <data name="Zoom" xml:space="preserve">
-    <value>Zoom</value>
+  <data name="cmdComboMonth_TooltipDescription" xml:space="preserve">
+    <value>Monats Auswahl für die Ergebnisse</value>
+  </data>
+  <data name="cmdGroupSelect_LabelTitle" xml:space="preserve">
+    <value>Auswahl</value>
+  </data>
+  <data name="cmdGroupSelectFunction_LabelTitle" xml:space="preserve">
+    <value>Funktions Auswahl</value>
+  </data>
+  <data name="cmdGroupSelect2_LabelTitle" xml:space="preserve">
+    <value>Auswahl</value>
+  </data>
+  <data name="cmdCheckMonthly_LabelTitle" xml:space="preserve">
+    <value>Monatlich</value>
+  </data>
+  <data name="cmdCheckMonthly_TooltipTitle" xml:space="preserve">
+    <value>Monatliche Ergebnisse</value>
+  </data>
+  <data name="cmdCheckMonthly_TooltipDescription" xml:space="preserve">
+    <value>Zeigt die Ergebnisse für den gewählten Monat</value>
+  </data>
+  <data name="cmdCheckAntDevice_LabelTitle" xml:space="preserve">
+    <value>ANT+</value>
+  </data>
+  <data name="cmdCheckAntDevice_TooltipTitle" xml:space="preserve">
+    <value>ANT+ Gerät</value>
+  </data>
+  <data name="cmdCheckAntDevice_TooltipDescription" xml:space="preserve">
+    <value>Zeigt die Ergebnisse für das ANT+ Gerät</value>
+  </data>
+  <data name="cmdGroupAnt_LabelTitle" xml:space="preserve">
+    <value>ANT+ Geräte</value>
+  </data>
+  <data name="cmdComboAnt_LabelTitle" xml:space="preserve">
+    <value>ANT+</value>
+  </data>
+  <data name="cmdComboAnt_TooltipTitle" xml:space="preserve">
+    <value>ANT+ Id</value>
+  </data>
+  <data name="cmdComboAnt_TooltipDescription" xml:space="preserve">
+    <value>Die Id oder Nummer des ANT+ Gerätes</value>
+  </data>
+  <data name="cmdComboAntName_TooltipTitle" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="cmdComboAntName_TooltipDescription" xml:space="preserve">
+    <value>Name des ANT+ Gerätes</value>
   </data>
 </root>

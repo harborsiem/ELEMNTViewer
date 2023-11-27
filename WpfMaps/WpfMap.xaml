@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:map="clr-namespace:MapControl;assembly=MapControl.WPF"
         xmlns:tools="clr-namespace:MapControl.UiTools;assembly=MapUiTools.WPF"
+        xmlns:localization="clr-namespace:WpfMaps.Properties"
         xmlns:local="clr-namespace:WpfMaps"
         mc:Ignorable="d"
-        Title="Map" Height="750" Width="1000"
+        Title="{x:Static localization:Resources.Map}" Height="750" Width="1000"
         Stylus.IsPressAndHoldEnabled="False">
     
     <Window.Resources>
@@ -192,7 +193,7 @@
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6">
             <tools:MapLayersMenuButton x:Name="mapLayersMenuButton"
-                Margin="2" ToolTip="Map Layers and Overlays"
+                Margin="2" ToolTip="{x:Static localization:Resources.MapLayersButton_Tooltip}"
                 Map="{Binding ElementName=map}">
                 <tools:MapLayerItem Text="OpenStreetMap" Layer="{StaticResource OpenStreetMap}"/>
                 <tools:MapLayerItem Text="OpenStreetMap German" Layer="{StaticResource OpenStreetMapGerman}"/>
@@ -202,10 +203,10 @@
                 <tools:MapLayerItem Text="TopPlusOpen WMS" Layer="{StaticResource TopPlusOpenWMS}"/>
                 <tools:MapLayerItem Text="OpenStreetMap WMS" Layer="{StaticResource OpenStreetMapWMS}"/>
                 <tools:MapLayersMenuButton.MapOverlays>
-                    <tools:MapLayerItem Text="Graticule">
+                    <tools:MapLayerItem Text="{x:Static localization:Resources.Graticule}">
                         <map:MapGraticule Opacity="0.7"/>
                     </tools:MapLayerItem>
-                    <tools:MapLayerItem Text="Scale">
+                    <tools:MapLayerItem Text="{x:Static localization:Resources.Scale}">
                         <map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                     </tools:MapLayerItem>
                 </tools:MapLayersMenuButton.MapOverlays>
@@ -225,7 +226,7 @@
                     Maximum="{Binding MaxZoomLevel, ElementName=map}"
                     Value="{Binding TargetZoomLevel, ElementName=map}"
                     SmallChange="0.1"
-                    AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="0" ToolTip="Zoom"/>
+                    AutoToolTipPlacement="BottomRight" AutoToolTipPrecision="0" ToolTip="{x:Static localization:Resources.Zoom}"/>
 
             <Button Margin="2" Padding="8" ToolTip="Reset Heading" Click="ResetHeadingButtonClick"
                     FontSize="20" FontFamily="Segoe MDL2 Assets" Content="&#xEBE6;">

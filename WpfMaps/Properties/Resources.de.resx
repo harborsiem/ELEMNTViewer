@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Graticule" xml:space="preserve">
-    <value>Graticule</value>
+    <value>Gitternetz</value>
   </data>
   <data name="Km" xml:space="preserve">
     <value>km</value>
   </data>
   <data name="Map" xml:space="preserve">
-    <value>Map</value>
+    <value>Karte</value>
   </data>
   <data name="MapLayersButton_Tooltip" xml:space="preserve">
-    <value>Map Layers and Overlays</value>
+    <value>Karten Auswahl und Überlagerungen</value>
   </data>
   <data name="Meter" xml:space="preserve">
     <value>m</value>
   </data>
   <data name="Scale" xml:space="preserve">
-    <value>Scale</value>
+    <value>Skala</value>
   </data>
   <data name="Zoom" xml:space="preserve">
     <value>Zoom</value>

@@ -2,6 +2,17 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### ELEMNTViewer V2.4.2
+
+#### Changed
+
+- Categories added in Gears, HeartrateZones, PowerZones.
+- ToggleButton Settings in Filemenu added
+- Text improved in Session, Laps, ... with unit information
+- Prepare for localized version
+- WindowsRibbon version V2.15.0
+- Bugfixes
+
 ### ELEMNTViewer V2.4.1
 
 #### Changed

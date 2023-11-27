@@ -1,0 +1,627 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="cmdTabChart_LabelTitle" xml:space="preserve">
+    <value>Chart</value>
+  </data>
+  <data name="cmdTabView_LabelTitle" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="cmdGroupChartPower1_LabelTitle" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="cmdGroupChartPower1_TooltipTitle" xml:space="preserve">
+    <value>Monitoring Power</value>
+  </data>
+  <data name="cmdGroupChartPower1_TooltipDescription" xml:space="preserve">
+    <value>Power, Balance and HeartRate with smoothing values</value>
+  </data>
+  <data name="cmdGroupChartSpeed_LabelTitle" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="cmdGroupChartSpeed_TooltipTitle" xml:space="preserve">
+    <value>Monitoring Speed</value>
+  </data>
+  <data name="cmdGroupChartSpeed_TooltipDescription" xml:space="preserve">
+    <value>Speed and Cadence</value>
+  </data>
+  <data name="cmdGroupChartClimbing_LabelTitle" xml:space="preserve">
+    <value>Climbing</value>
+  </data>
+  <data name="cmdGroupChartClimbing_TooltipTitle" xml:space="preserve">
+    <value>Monitoring Climbing</value>
+  </data>
+  <data name="cmdGroupChartClimbing_TooltipDescription" xml:space="preserve">
+    <value>Monitoring Altitude and Grade</value>
+  </data>
+  <data name="cmdButtonPower_LabelTitle" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="cmdButtonPower_TooltipTitle" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="cmdButtonPower_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Overall Power</value>
+  </data>
+  <data name="cmdButtonLRBalance_LabelTitle" xml:space="preserve">
+    <value>LR Balance</value>
+  </data>
+  <data name="cmdButtonLRBalance_TooltipTitle" xml:space="preserve">
+    <value>Left Right Balance</value>
+  </data>
+  <data name="cmdButtonLRBalance_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Balance between left and right pedal</value>
+  </data>
+  <data name="cmdButtonLSmoothness_LabelTitle" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="cmdButtonLSmoothness_TooltipTitle" xml:space="preserve">
+    <value>Left Smoothness</value>
+  </data>
+  <data name="cmdButtonLSmoothness_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Left Smoothness</value>
+  </data>
+  <data name="cmdButtonRSmoothness_LabelTitle" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="cmdButtonRSmoothness_TooltipTitle" xml:space="preserve">
+    <value>Right Smoothness</value>
+  </data>
+  <data name="cmdButtonRSmoothness_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Right Smoothness</value>
+  </data>
+  <data name="cmdButtonLTorqueEff_LabelTitle" xml:space="preserve">
+    <value>Left</value>
+  </data>
+  <data name="cmdButtonLTorqueEff_TooltipTitle" xml:space="preserve">
+    <value>Left Torque Effectiveness</value>
+  </data>
+  <data name="cmdButtonLTorqueEff_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Left Torque Effectiveness</value>
+  </data>
+  <data name="cmdButtonRTorqueEff_LabelTitle" xml:space="preserve">
+    <value>Right</value>
+  </data>
+  <data name="cmdButtonRTorqueEff_TooltipTitle" xml:space="preserve">
+    <value>Right Torque Effectiveness</value>
+  </data>
+  <data name="cmdButtonRTorqueEff_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Right Torque Effectiveness</value>
+  </data>
+  <data name="cmdSplitButtonOpen_LabelTitle" xml:space="preserve">
+    <value>&amp;Open</value>
+  </data>
+  <data name="cmdSplitButtonOpen_TooltipTitle" xml:space="preserve">
+    <value>Fit, Gpx file</value>
+  </data>
+  <data name="cmdSplitButtonOpen_TooltipDescription" xml:space="preserve">
+    <value>Open the Fit or Gpx file</value>
+  </data>
+  <data name="cmdButtonOpen_LabelTitle" xml:space="preserve">
+    <value>Open</value>
+  </data>
+  <data name="cmdButtonOpen_TooltipTitle" xml:space="preserve">
+    <value>Fit, Gpx file</value>
+  </data>
+  <data name="cmdButtonOpen_TooltipDescription" xml:space="preserve">
+    <value>Open the Fit or Gpx file</value>
+  </data>
+  <data name="cmdButtonOpenFit_LabelTitle" xml:space="preserve">
+    <value>Open &amp;Fit</value>
+  </data>
+  <data name="cmdButtonOpenFit_TooltipTitle" xml:space="preserve">
+    <value>Fit file</value>
+  </data>
+  <data name="cmdButtonOpenFit_TooltipDescription" xml:space="preserve">
+    <value>Open the Fit file</value>
+  </data>
+  <data name="cmdButtonOpenGpx_LabelTitle" xml:space="preserve">
+    <value>Open &amp;Gpx</value>
+  </data>
+  <data name="cmdButtonOpenGpx_TooltipTitle" xml:space="preserve">
+    <value>Gpx file</value>
+  </data>
+  <data name="cmdButtonOpenGpx_TooltipDescription" xml:space="preserve">
+    <value>Open the Gpx file</value>
+  </data>
+  <data name="cmdButtonSaveGpx_LabelTitle" xml:space="preserve">
+    <value>Save as Gpx</value>
+  </data>
+  <data name="cmdButtonSaveGpx_TooltipTitle" xml:space="preserve">
+    <value>GPX File</value>
+  </data>
+  <data name="cmdButtonSaveGpx_TooltipDescription" xml:space="preserve">
+    <value>Save the session to a *.gpx file</value>
+  </data>
+  <data name="cmdButtonExit_LabelTitle" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="cmdButtonHelp_TooltipTitle" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="cmdButtonHelp_TooltipDescription" xml:space="preserve">
+    <value>Get help</value>
+  </data>
+  <data name="cmdButtonHeartRate_LabelTitle" xml:space="preserve">
+    <value>HeartRate</value>
+  </data>
+  <data name="cmdButtonHeartRate_TooltipTitle" xml:space="preserve">
+    <value>HeartRate</value>
+  </data>
+  <data name="cmdButtonHeartRate_TooltipDescription" xml:space="preserve">
+    <value>Monitoring Heart rate</value>
+  </data>
+  <data name="cmdButtonAltitude_LabelTitle" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="cmdButtonGrade_LabelTitle" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="cmdButtonSpeed_LabelTitle" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="cmdButtonSpeed_TooltipTitle" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="cmdButtonSpeed_TooltipDescription" xml:space="preserve">
+    <value>Monitoring the speed in km/h</value>
+  </data>
+  <data name="cmdButtonCadence_LabelTitle" xml:space="preserve">
+    <value>Cadence</value>
+  </data>
+  <data name="cmdButtonCadence_TooltipTitle" xml:space="preserve">
+    <value>Cadence</value>
+  </data>
+  <data name="cmdButtonCadence_TooltipDescription" xml:space="preserve">
+    <value>Monitoring pedaling cadence (rpm)</value>
+  </data>
+  <data name="cmdButtonTemperature_LabelTitle" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="cmdButtonTemperature_TooltipTitle" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="cmdButtonTemperature_TooltipDescription" xml:space="preserve">
+    <value>Temperature in Celsius</value>
+  </data>
+  <data name="cmdGroupChartEffectiveness1_LabelTitle" xml:space="preserve">
+    <value>Torque Effectiveness</value>
+  </data>
+  <data name="cmdGroupChartEffectiveness1_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Torque Effectiveness with smoothing values</value>
+  </data>
+  <data name="cmdGroupChartSmoothness1_LabelTitle" xml:space="preserve">
+    <value>Smoothness</value>
+  </data>
+  <data name="cmdGroupChartSmoothness1_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Smoothness with smoothing values</value>
+  </data>
+  <data name="cmdGroupChartExtras_LabelTitle" xml:space="preserve">
+    <value>Extras</value>
+  </data>
+  <data name="cmdGroupChartSelect_LabelTitle" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="cmdGroupChartSelect_TooltipDescription" xml:space="preserve">
+    <value>Selection of Session or Laps</value>
+  </data>
+  <data name="cmdComboSelect_LabelTitle" xml:space="preserve">
+    <value>Chart</value>
+  </data>
+  <data name="cmdComboSelect_TooltipTitle" xml:space="preserve">
+    <value>Select for Chart</value>
+  </data>
+  <data name="cmdComboSelect_TooltipDescription" xml:space="preserve">
+    <value>Selection of Session or Laps</value>
+  </data>
+  <data name="cmdComboPower_TooltipTitle" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="cmdComboPower_TooltipDescription" xml:space="preserve">
+    <value>Smoothing of Power</value>
+  </data>
+  <data name="cmdComboLRBalance_TooltipTitle" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="cmdComboLRBalance_TooltipDescription" xml:space="preserve">
+    <value>Smoothing of Left Right Balance</value>
+  </data>
+  <data name="cmdComboLSmoothness_TooltipTitle" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="cmdComboLSmoothness_TooltipDescription" xml:space="preserve">
+    <value>Smoothing the smoothness of left pedal</value>
+  </data>
+  <data name="cmdComboRSmoothness_TooltipTitle" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="cmdComboRSmoothness_TooltipDescription" xml:space="preserve">
+    <value>Smoothing the smoothness of right pedal</value>
+  </data>
+  <data name="cmdComboLTorque_TooltipTitle" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="cmdComboLTorque_TooltipDescription" xml:space="preserve">
+    <value>Smoothing the torque of left pedal</value>
+  </data>
+  <data name="cmdComboRTorque_TooltipTitle" xml:space="preserve">
+    <value>Smooth</value>
+  </data>
+  <data name="cmdComboRTorque_TooltipDescription" xml:space="preserve">
+    <value>Smoothing the torque of right pedal</value>
+  </data>
+  <data name="cmdGroupTotals_LabelTitle" xml:space="preserve">
+    <value>Totals</value>
+  </data>
+  <data name="cmdGroupZones_LabelTitle" xml:space="preserve">
+    <value>Zones</value>
+  </data>
+  <data name="cmdGroupZones_TooltipTitle" xml:space="preserve">
+    <value>Individual Zones</value>
+  </data>
+  <data name="cmdGroupZones_TooltipDescription" xml:space="preserve">
+    <value>Pre defined HeartRate and Power Zones</value>
+  </data>
+  <data name="cmdGroupExtras_LabelTitle" xml:space="preserve">
+    <value>Extras</value>
+  </data>
+  <data name="cmdGroupChartPower_LabelTitle" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="cmdGroupChartPower_TooltipTitle" xml:space="preserve">
+    <value>Monitoring Power</value>
+  </data>
+  <data name="cmdGroupChartPower_TooltipDescription" xml:space="preserve">
+    <value>Power, Balance and HeartRate</value>
+  </data>
+  <data name="cmdGroupChartEffectiveness_LabelTitle" xml:space="preserve">
+    <value>Torque Effectiveness</value>
+  </data>
+  <data name="cmdGroupChartEffectiveness_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Torque Effectiveness</value>
+  </data>
+  <data name="cmdGroupChartSmoothness_LabelTitle" xml:space="preserve">
+    <value>Smoothness</value>
+  </data>
+  <data name="cmdGroupChartSmoothness_TooltipDescription" xml:space="preserve">
+    <value>Powermeter: Smoothness</value>
+  </data>
+  <data name="cmdButtonSession_LabelTitle" xml:space="preserve">
+    <value>Session</value>
+  </data>
+  <data name="cmdButtonSession_TooltipTitle" xml:space="preserve">
+    <value>Summary Session</value>
+  </data>
+  <data name="cmdButtonSession_TooltipDescription" xml:space="preserve">
+    <value>Display all Values of the Session</value>
+  </data>
+  <data name="cmdButtonLaps_LabelTitle" xml:space="preserve">
+    <value>Laps</value>
+  </data>
+  <data name="cmdButtonLaps_TooltipTitle" xml:space="preserve">
+    <value>Summary Laps</value>
+  </data>
+  <data name="cmdButtonLaps_TooltipDescription" xml:space="preserve">
+    <value>Display all Values of Laps</value>
+  </data>
+  <data name="cmdButtonHeartRateZones_LabelTitle" xml:space="preserve">
+    <value>HeartRate Zones</value>
+  </data>
+  <data name="cmdButtonHeartRateZones_TooltipTitle" xml:space="preserve">
+    <value>Individual Zones</value>
+  </data>
+  <data name="cmdButtonHeartRateZones_TooltipDescription" xml:space="preserve">
+    <value>Pre defined HeartRate Zones</value>
+  </data>
+  <data name="cmdButtonPowerZones_LabelTitle" xml:space="preserve">
+    <value>Power Zones</value>
+  </data>
+  <data name="cmdButtonPowerZones_TooltipTitle" xml:space="preserve">
+    <value>Individual Zones</value>
+  </data>
+  <data name="cmdButtonPowerZones_TooltipDescription" xml:space="preserve">
+    <value>Pre defined Power Zones</value>
+  </data>
+  <data name="cmdToggleSmooth_LabelTitle" xml:space="preserve">
+    <value>Smooth Settings</value>
+  </data>
+  <data name="cmdToggleSmooth_TooltipTitle" xml:space="preserve">
+    <value>Show or hide Smoothness</value>
+  </data>
+  <data name="cmdToggleSmooth_TooltipDescription" xml:space="preserve">
+    <value>Show and configure Smoothness values</value>
+  </data>
+  <data name="cmdButtonAbout_LabelTitle" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="cmdButtonMyExtras_LabelTitle" xml:space="preserve">
+    <value>Session Extras</value>
+  </data>
+  <data name="cmdButtonMyExtras_TooltipTitle" xml:space="preserve">
+    <value>Session Extras</value>
+  </data>
+  <data name="cmdButtonMyExtras_TooltipDescription" xml:space="preserve">
+    <value>Some self calculated values from the session records, because some Wahoo values are wrong</value>
+  </data>
+  <data name="cmdGroupIntern_LabelTitle" xml:space="preserve">
+    <value>Internals</value>
+  </data>
+  <data name="cmdButtonActivity_LabelTitle" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="cmdButtonActivity_TooltipTitle" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="cmdButtonDeveloperDataId_LabelTitle" xml:space="preserve">
+    <value>DeveloperDataId</value>
+  </data>
+  <data name="cmdButtonDeveloperDataId_TooltipTitle" xml:space="preserve">
+    <value>DeveloperDataId</value>
+  </data>
+  <data name="cmdButtonDeviceInfo_LabelTitle" xml:space="preserve">
+    <value>DeviceInfo</value>
+  </data>
+  <data name="cmdButtonDeviceInfo_TooltipTitle" xml:space="preserve">
+    <value>DeviceInfo</value>
+  </data>
+  <data name="cmdButtonEvent_LabelTitle" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="cmdButtonEvent_TooltipTitle" xml:space="preserve">
+    <value>Event</value>
+  </data>
+  <data name="cmdButtonFieldDescription_LabelTitle" xml:space="preserve">
+    <value>FieldDescription</value>
+  </data>
+  <data name="cmdButtonFieldDescription_TooltipTitle" xml:space="preserve">
+    <value>FieldDescription</value>
+  </data>
+  <data name="cmdButtonFileId_LabelTitle" xml:space="preserve">
+    <value>FileId</value>
+  </data>
+  <data name="cmdButtonFileId_TooltipTitle" xml:space="preserve">
+    <value>FileId</value>
+  </data>
+  <data name="cmdButtonSport_LabelTitle" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="cmdButtonSport_TooltipTitle" xml:space="preserve">
+    <value>Sport</value>
+  </data>
+  <data name="cmdButtonWorkout_LabelTitle" xml:space="preserve">
+    <value>Workout</value>
+  </data>
+  <data name="cmdButtonWorkout_TooltipTitle" xml:space="preserve">
+    <value>Workout</value>
+  </data>
+  <data name="cmdButtonWahooFF00_LabelTitle" xml:space="preserve">
+    <value>WahooFF00</value>
+  </data>
+  <data name="cmdButtonWahooFF00_TooltipTitle" xml:space="preserve">
+    <value>WahooFF00</value>
+  </data>
+  <data name="cmdButtonWahooFF01_LabelTitle" xml:space="preserve">
+    <value>WahooFF01</value>
+  </data>
+  <data name="cmdButtonWahooFF01_TooltipTitle" xml:space="preserve">
+    <value>WahooFF01</value>
+  </data>
+  <data name="cmdButtonWahooFF04_LabelTitle" xml:space="preserve">
+    <value>WahooFF04</value>
+  </data>
+  <data name="cmdButtonWahooFF04_TooltipTitle" xml:space="preserve">
+    <value>WahooFF04</value>
+  </data>
+  <data name="cmdButtonSaveSettings_LabelTitle" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
+  <data name="cmdButtonSaveSettings_TooltipTitle" xml:space="preserve">
+    <value>Save Settings</value>
+  </data>
+  <data name="cmdButtonSaveSettings_TooltipDescription" xml:space="preserve">
+    <value>Save the state of the CheckBoxes and Smooth values in the Chart Tab, current App size and Map size to a settings file</value>
+  </data>
+  <data name="cmdButtonMap_LabelTitle" xml:space="preserve">
+    <value>Route</value>
+  </data>
+  <data name="cmdButtonMap_TooltipTitle" xml:space="preserve">
+    <value>Route on Map</value>
+  </data>
+  <data name="cmdButtonMap_TooltipDescription" xml:space="preserve">
+    <value>Show the route in a map</value>
+  </data>
+  <data name="cmdGroupMaps_LabelTitle" xml:space="preserve">
+    <value>Maps</value>
+  </data>
+  <data name="cmdTabSettings_LabelTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="cmdGroupSettings_LabelTitle" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="cmdTabGroupSettings_LabelTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="cmdToggleSettings_LabelTitle" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="cmdToggleSettings_TooltipTitle" xml:space="preserve">
+    <value>Show or hide Settings</value>
+  </data>
+  <data name="cmdSpinnerMapWidth_LabelTitle" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="cmdSpinnerMapWidth_TooltipTitle" xml:space="preserve">
+    <value>Map Width</value>
+  </data>
+  <data name="cmdSpinnerMapWidth_TooltipDescription" xml:space="preserve">
+    <value>The value is the default Width for the Map</value>
+  </data>
+  <data name="cmdSpinnerMapHeight_LabelTitle" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="cmdSpinnerMapHeight_TooltipTitle" xml:space="preserve">
+    <value>Map Height</value>
+  </data>
+  <data name="cmdSpinnerMapHeight_TooltipDescription" xml:space="preserve">
+    <value>The value is the default Height for the Map</value>
+  </data>
+  <data name="cmdGroupMapControl_LabelTitle" xml:space="preserve">
+    <value>Map Control</value>
+  </data>
+  <data name="cmdGroupApp_LabelTitle" xml:space="preserve">
+    <value>Application</value>
+  </data>
+  <data name="cmdCheckCurrentAppSize_LabelTitle" xml:space="preserve">
+    <value>App Size</value>
+  </data>
+  <data name="cmdCheckCurrentAppSize_TooltipTitle" xml:space="preserve">
+    <value>Current App Size</value>
+  </data>
+  <data name="cmdCheckCurrentAppSize_TooltipDescription" xml:space="preserve">
+    <value>Saves the current Application size as default if checked</value>
+  </data>
+  <data name="cmdButtonStatistics_TooltipTitle" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="cmdButtonStatistics_TooltipDescription" xml:space="preserve">
+    <value>Distance, Ascent per year or month</value>
+  </data>
+  <data name="cmdGroupStatistics_LabelTitle" xml:space="preserve">
+    <value>Statistics</value>
+  </data>
+  <data name="cmdButtonGears_LabelTitle" xml:space="preserve">
+    <value>Gears</value>
+  </data>
+  <data name="cmdButtonGears_TooltipTitle" xml:space="preserve">
+    <value>Gears</value>
+  </data>
+  <data name="cmdButtonGears_TooltipDescription" xml:space="preserve">
+    <value>Show statistics for gears</value>
+  </data>
+  <data name="cmdCheckLocalize_LabelTitle" xml:space="preserve">
+    <value>Localize</value>
+  </data>
+  <data name="cmdCheckLocalize_TooltipTitle" xml:space="preserve">
+    <value>Localize</value>
+  </data>
+  <data name="cmdCheckLocalize_TooltipDescription" xml:space="preserve">
+    <value>Localize Application at next restart</value>
+  </data>
+</root>

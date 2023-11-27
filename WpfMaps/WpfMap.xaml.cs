@@ -9,6 +9,7 @@ using System.Windows.Input;
 using MapControl;
 using MapControl.Caching;
 using MapControl.UiTools;
+using PropResources = WpfMaps.Properties.Resources;
 using System.Windows.Controls;
 
 namespace WpfMaps
@@ -80,7 +81,7 @@ namespace WpfMaps
 
             foreach (var item in menu.Items.OfType<MenuItem>())
             {
-                if (((string)item.Header == "Graticule") || ((string)item.Header == "Scale"))
+                if (((string)item.Header == PropResources.Graticule) || ((string)item.Header == PropResources.Scale))
                 {
                     item.IsChecked = true;
                     map.Children.Add(((MapLayerItem)item.Tag).Layer);
@@ -194,12 +195,12 @@ namespace WpfMaps
 
         private string GetDistanceText(double distance)
         {
-            var unit = "m";
+            var unit = PropResources.Meter;
 
             if (distance >= 1000d)
             {
                 distance /= 1000d;
-                unit = "km";
+                unit = PropResources.Km;
             }
 
             var distanceFormat = distance >= 100d ? "F0" : "F1";

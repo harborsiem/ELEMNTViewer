@@ -64,6 +64,7 @@ namespace ELEMNTViewer
         public int MapHeight { get; set; } = 0;
         public string FitPath { get; set; } = string.Empty;
         public bool AppSizeWrite { get; set; } = false;
+        public bool Localized { get; set; } = false;
 
         public bool Modified { get => _modified; set => _modified = value; }
 
@@ -166,6 +167,9 @@ namespace ELEMNTViewer
                                 break;
                             case Attributes.FitPath:
                                 FitPath = ele.Value;
+                                break;
+                            case Attributes.Localized:
+                                Localized = XmlConvert.ToBoolean(ele.Value);
                                 break;
                         }
                     }
@@ -293,6 +297,10 @@ namespace ELEMNTViewer
                     writer.WriteString(FitPath);
                     writer.WriteEndElement();
 
+                    writer.WriteStartElement(Attributes.Localized);
+                    writer.WriteString(XmlConvert.ToString(Localized));
+                    writer.WriteEndElement();
+
                     if (Intern)
                     {
                         writer.WriteStartElement(Attributes.Intern);
@@ -340,6 +348,7 @@ namespace ELEMNTViewer
             public const string MapWidth = nameof(MapWidth);
             public const string MapHeight = nameof(MapHeight);
             public const string FitPath = nameof(FitPath);
+            public const string Localized = nameof(Localized);
         }
     }
 }
