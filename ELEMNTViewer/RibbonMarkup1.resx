@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -127,7 +127,7 @@
     <value>Year</value>
   </data>
   <data name="cmdComboYear_TooltipDescription" xml:space="preserve">
-    <value>Year selector for the results</value>
+    <value>Year selector for results.</value>
   </data>
   <data name="cmdComboMonth_LabelTitle" xml:space="preserve">
     <value>Month</value>
@@ -136,7 +136,7 @@
     <value>Month</value>
   </data>
   <data name="cmdComboMonth_TooltipDescription" xml:space="preserve">
-    <value>Month selector for the results</value>
+    <value>Month selector for results.</value>
   </data>
   <data name="cmdGroupSelect_LabelTitle" xml:space="preserve">
     <value>Select</value>
@@ -154,7 +154,7 @@
     <value>Monthly results</value>
   </data>
   <data name="cmdCheckMonthly_TooltipDescription" xml:space="preserve">
-    <value>Shows the result for the selected month</value>
+    <value>Show results for selected month.</value>
   </data>
   <data name="cmdCheckAntDevice_LabelTitle" xml:space="preserve">
     <value>ANT+</value>
@@ -163,7 +163,7 @@
     <value>ANT+ Device</value>
   </data>
   <data name="cmdCheckAntDevice_TooltipDescription" xml:space="preserve">
-    <value>Shows results with the selected ANT+ Device</value>
+    <value>Show results for selected ANT+ Device.</value>
   </data>
   <data name="cmdGroupAnt_LabelTitle" xml:space="preserve">
     <value>ANT+ Devices</value>
@@ -175,12 +175,18 @@
     <value>ANT+ Id</value>
   </data>
   <data name="cmdComboAnt_TooltipDescription" xml:space="preserve">
-    <value>The Id or Number of ANT+ device</value>
+    <value>The Id or Number of ANT+ device.</value>
   </data>
   <data name="cmdComboAntName_TooltipTitle" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="cmdComboAntName_TooltipDescription" xml:space="preserve">
-    <value>Name of ANT+ device</value>
+    <value>Name of ANT+ device.</value>
+  </data>
+  <data name="cmdDialogApplication_TooltipTitle" xml:space="preserve">
+    <value>ELEMNTViewer</value>
+  </data>
+  <data name="cmdDialogApplication_TooltipDescription" xml:space="preserve">
+    <value>Dialog with statistic values.</value>
   </data>
 </root>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -127,7 +127,7 @@
     <value>Jahr</value>
   </data>
   <data name="cmdComboYear_TooltipDescription" xml:space="preserve">
-    <value>Jahres Auswahl für die Ergebnisse</value>
+    <value>Jahres Auswahl für die Ergebnisse.</value>
   </data>
   <data name="cmdComboMonth_LabelTitle" xml:space="preserve">
     <value>Monat</value>
@@ -136,7 +136,7 @@
     <value>Monat</value>
   </data>
   <data name="cmdComboMonth_TooltipDescription" xml:space="preserve">
-    <value>Monats Auswahl für die Ergebnisse</value>
+    <value>Monats Auswahl für die Ergebnisse.</value>
   </data>
   <data name="cmdGroupSelect_LabelTitle" xml:space="preserve">
     <value>Auswahl</value>
@@ -154,7 +154,7 @@
     <value>Monatliche Ergebnisse</value>
   </data>
   <data name="cmdCheckMonthly_TooltipDescription" xml:space="preserve">
-    <value>Zeigt die Ergebnisse für den gewählten Monat</value>
+    <value>Zeigt die Ergebnisse für den gewählten Monat.</value>
   </data>
   <data name="cmdCheckAntDevice_LabelTitle" xml:space="preserve">
     <value>ANT+</value>
@@ -163,7 +163,7 @@
     <value>ANT+ Gerät</value>
   </data>
   <data name="cmdCheckAntDevice_TooltipDescription" xml:space="preserve">
-    <value>Zeigt die Ergebnisse für das ANT+ Gerät</value>
+    <value>Zeigt Ergebnisse für das gewählte ANT+ Gerät.</value>
   </data>
   <data name="cmdGroupAnt_LabelTitle" xml:space="preserve">
     <value>ANT+ Geräte</value>
@@ -175,12 +175,18 @@
     <value>ANT+ Id</value>
   </data>
   <data name="cmdComboAnt_TooltipDescription" xml:space="preserve">
-    <value>Die Id oder Nummer des ANT+ Gerätes</value>
+    <value>Die Id oder Nummer des ANT+ Gerätes.</value>
   </data>
   <data name="cmdComboAntName_TooltipTitle" xml:space="preserve">
     <value>Name</value>
   </data>
   <data name="cmdComboAntName_TooltipDescription" xml:space="preserve">
-    <value>Name des ANT+ Gerätes</value>
+    <value>Name des ANT+ Gerätes.</value>
+  </data>
+  <data name="cmdDialogApplication_TooltipTitle" xml:space="preserve">
+    <value>ELEMNTViewer</value>
+  </data>
+  <data name="cmdDialogApplication_TooltipDescription" xml:space="preserve">
+    <value>Dialog mit statistischen Werten.</value>
   </data>
 </root>

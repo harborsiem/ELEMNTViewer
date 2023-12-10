@@ -37,7 +37,7 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fit, Version=21.78.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Fit, Version=21.126.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Resources\Fit.dll</HintPath>
     </Reference>
@@ -200,7 +200,7 @@
       <Version>2.15.0</Version>
     </PackageReference>
     <PackageReference Include="XAML.MapControl">
-      <Version>8.1.0</Version>
+      <Version>8.2.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -38,4 +38,6 @@
 #define cmdComboAntName 14 
 #define cmdComboAntName_TooltipTitle_RESID 60021
 #define cmdComboAntName_TooltipDescription_RESID 60022
-#define InternalCmd2_LabelTitle_RESID 60023
+#define cmdDialogApplication 15 
+#define cmdDialogApplication_TooltipTitle_RESID 60023
+#define cmdDialogApplication_TooltipDescription_RESID 60024

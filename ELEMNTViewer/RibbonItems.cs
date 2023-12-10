@@ -599,7 +599,7 @@ namespace RibbonLib.Controls
             dialog.Filter = Resources.RS_GpxFile + " (*.gpx)|*.gpx";
             if (dialog.ShowDialog(_form) == DialogResult.OK)
             {
-                _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
+                _form.Text = Path.GetFileName(dialog.FileName); // + " - " + MainForm.MainFormText;
                 try
                 {
                     GpxParser parser = new GpxParser(Settings.Instance.MapWidth, Settings.Instance.MapHeight);
@@ -658,7 +658,7 @@ namespace RibbonLib.Controls
             {
                 _form.Cursor = Cursors.WaitCursor;
                 _form._chartHelp.ResetZoom();
-                _form.Text = Path.GetFileName(dialog.FileName) + " - " + MainForm.MainFormText;
+                _form.Text = Path.GetFileName(dialog.FileName); // + " - " + MainForm.MainFormText;
                 _fileName = dialog.FileName;
                 string fitPath = Path.GetDirectoryName(_fileName);
                 if (settings.FitPath != fitPath)

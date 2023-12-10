@@ -11,6 +11,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Text improved in Session, Laps, ... with unit information
 - Prepare for localized version
 - WindowsRibbon version V2.15.0
+- WpfMaps updated to version 8.2.0
+- Fit updated to version V21.126
 - Bugfixes
 
 ### ELEMNTViewer V2.4.1

@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
   <Application.Commands>
-    <Command Name="cmdQAT" Id="2" />
-    <Command Name="cmdApplication" Id="3" />
-    <Command Name="cmdTabChart" Id="4" LabelTitle="Chart" />
-    <Command Name="cmdTabView" Id="5" LabelTitle="View" />
-    <Command Name="cmdGroupChartPower1" Id="6" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate with smoothing values" />
-    <Command Name="cmdGroupChartSpeed" Id="7" LabelTitle="Speed" TooltipTitle="Monitoring Speed" TooltipDescription="Speed and Cadence" />
-    <Command Name="cmdGroupChartClimbing" Id="8" LabelTitle="Climbing" TooltipTitle="Monitoring Climbing" TooltipDescription="Monitoring Altitude and Grade" />
-    <Command Name="cmdButtonPower" Id="9" LabelTitle="Power" TooltipTitle="Power" TooltipDescription="Powermeter: Overall Power" />
-    <Command Name="cmdButtonLRBalance" Id="10" LabelTitle="LR Balance" TooltipTitle="Left Right Balance" TooltipDescription="Powermeter: Balance between left and right pedal" />
-    <Command Name="cmdButtonLSmoothness" Id="11" LabelTitle="Left" TooltipTitle="Left Smoothness" TooltipDescription="Powermeter: Left Smoothness" />
-    <Command Name="cmdButtonRSmoothness" Id="12" LabelTitle="Right" TooltipTitle="Right Smoothness" TooltipDescription="Powermeter: Right Smoothness" />
-    <Command Name="cmdButtonLTorqueEff" Id="13" LabelTitle="Left" TooltipTitle="Left Torque Effectiveness" TooltipDescription="Powermeter: Left Torque Effectiveness" />
-    <Command Name="cmdButtonRTorqueEff" Id="14" LabelTitle="Right" TooltipTitle="Right Torque Effectiveness" TooltipDescription="Powermeter: Right Torque Effectiveness" />
-    <Command Name="cmdSplitButtonOpen" Id="15" LabelTitle="&amp;Open" TooltipTitle="Fit, Gpx file" TooltipDescription="Open the Fit or Gpx file">
+    <Command Name="cmdQAT" Id="2"/>
+    <Command Name="cmdApplication" Id="3" TooltipTitle="{Resource:cmdApplication_TooltipTitle}" TooltipDescription="{Resource:cmdApplication_TooltipDescription}" />
+    <Command Name="cmdTabChart" Id="4" LabelTitle="{Resource:cmdTabChart_LabelTitle}" />
+    <Command Name="cmdTabView" Id="5" LabelTitle="{Resource:cmdTabView_LabelTitle}" />
+    <Command Name="cmdGroupChartPower1" Id="6" LabelTitle="{Resource:cmdGroupChartPower1_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartPower1_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartPower1_TooltipDescription}" />
+    <Command Name="cmdGroupChartSpeed" Id="7" LabelTitle="{Resource:cmdGroupChartSpeed_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartSpeed_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartSpeed_TooltipDescription}" />
+    <Command Name="cmdGroupChartClimbing" Id="8" LabelTitle="{Resource:cmdGroupChartClimbing_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartClimbing_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartClimbing_TooltipDescription}" />
+    <Command Name="cmdButtonPower" Id="9" LabelTitle="{Resource:cmdButtonPower_LabelTitle}" TooltipTitle="{Resource:cmdButtonPower_TooltipTitle}" TooltipDescription="{Resource:cmdButtonPower_TooltipDescription}" />
+    <Command Name="cmdButtonLRBalance" Id="10" LabelTitle="{Resource:cmdButtonLRBalance_LabelTitle}" TooltipTitle="{Resource:cmdButtonLRBalance_TooltipTitle}" TooltipDescription="{Resource:cmdButtonLRBalance_TooltipDescription}" />
+    <Command Name="cmdButtonLSmoothness" Id="11" LabelTitle="{Resource:cmdButtonLSmoothness_LabelTitle}" TooltipTitle="{Resource:cmdButtonLSmoothness_TooltipTitle}" TooltipDescription="{Resource:cmdButtonLSmoothness_TooltipDescription}" />
+    <Command Name="cmdButtonRSmoothness" Id="12" LabelTitle="{Resource:cmdButtonRSmoothness_LabelTitle}" TooltipTitle="{Resource:cmdButtonRSmoothness_TooltipTitle}" TooltipDescription="{Resource:cmdButtonRSmoothness_TooltipDescription}" />
+    <Command Name="cmdButtonLTorqueEff" Id="13" LabelTitle="{Resource:cmdButtonLTorqueEff_LabelTitle}" TooltipTitle="{Resource:cmdButtonLTorqueEff_TooltipTitle}" TooltipDescription="{Resource:cmdButtonLTorqueEff_TooltipDescription}" />
+    <Command Name="cmdButtonRTorqueEff" Id="14" LabelTitle="{Resource:cmdButtonRTorqueEff_LabelTitle}" TooltipTitle="{Resource:cmdButtonRTorqueEff_TooltipTitle}" TooltipDescription="{Resource:cmdButtonRTorqueEff_TooltipDescription}" />
+    <Command Name="cmdSplitButtonOpen" Id="15" LabelTitle="{Resource:cmdSplitButtonOpen_LabelTitle}" TooltipTitle="{Resource:cmdSplitButtonOpen_TooltipTitle}" TooltipDescription="{Resource:cmdSplitButtonOpen_TooltipDescription}">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/OpenFile_16.bmp</Image>
         <Image MinDPI="120">Resources/OpenFile_20.bmp</Image>
@@ -28,7 +28,7 @@
         <Image MinDPI="192">Resources/OpenFile_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonOpen" Id="80" LabelTitle="Open" TooltipTitle="Fit, Gpx file" TooltipDescription="Open the Fit or Gpx file">
+    <Command Name="cmdButtonOpen" Id="80" LabelTitle="{Resource:cmdButtonOpen_LabelTitle}" TooltipTitle="{Resource:cmdButtonOpen_TooltipTitle}" TooltipDescription="{Resource:cmdButtonOpen_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/OpenFile_16.bmp</Image>
         <Image MinDPI="120">Resources/OpenFile_20.bmp</Image>
@@ -42,7 +42,7 @@
         <Image MinDPI="192">Resources/OpenFile_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonOpenFit" Id="78" LabelTitle="Open &amp;Fit" TooltipTitle="Fit file" TooltipDescription="Open the Fit file">
+    <Command Name="cmdButtonOpenFit" Id="78" LabelTitle="{Resource:cmdButtonOpenFit_LabelTitle}" TooltipTitle="{Resource:cmdButtonOpenFit_TooltipTitle}" TooltipDescription="{Resource:cmdButtonOpenFit_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/OpenFile_16.bmp</Image>
         <Image MinDPI="120">Resources/OpenFile_20.bmp</Image>
@@ -56,7 +56,7 @@
         <Image MinDPI="192">Resources/OpenFile_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonOpenGpx" Id="79" LabelTitle="Open &amp;Gpx" TooltipTitle="Gpx file" TooltipDescription="Open the Gpx file">
+    <Command Name="cmdButtonOpenGpx" Id="79" LabelTitle="{Resource:cmdButtonOpenGpx_LabelTitle}" TooltipTitle="{Resource:cmdButtonOpenGpx_TooltipTitle}" TooltipDescription="{Resource:cmdButtonOpenGpx_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/route_16.bmp</Image>
         <Image MinDPI="120">Resources/route_20.bmp</Image>
@@ -70,7 +70,7 @@
         <Image MinDPI="192">Resources/route_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonSaveGpx" Id="16" LabelTitle="Save as Gpx" TooltipTitle="GPX File" TooltipDescription="Save the session to a *.gpx file">
+    <Command Name="cmdButtonSaveGpx" Id="16" LabelTitle="{Resource:cmdButtonSaveGpx_LabelTitle}" TooltipTitle="{Resource:cmdButtonSaveGpx_TooltipTitle}" TooltipDescription="{Resource:cmdButtonSaveGpx_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/SaveAs_16.bmp</Image>
         <Image MinDPI="120">Resources/SaveAs_20.bmp</Image>
@@ -84,7 +84,7 @@
         <Image MinDPI="192">Resources/SaveAs_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonExit" Id="17" LabelTitle="Exit">
+    <Command Name="cmdButtonExit" Id="17" LabelTitle="{Resource:cmdButtonExit_LabelTitle}">
       <Command.LargeImages>
         <Image>Resources/Close_32.bmp</Image>
         <Image MinDPI="120">Resources/Close_40.bmp</Image>
@@ -92,18 +92,18 @@
         <Image MinDPI="192">Resources/Close_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonHelp" Id="18" TooltipTitle="Help" TooltipDescription="Get help" />
-    <Command Name="cmdButtonHeartRate" Id="19" LabelTitle="HeartRate" TooltipTitle="HeartRate" TooltipDescription="Monitoring Heart rate" />
-    <Command Name="cmdButtonAltitude" Id="20" LabelTitle="Altitude" />
-    <Command Name="cmdButtonGrade" Id="21" LabelTitle="Grade" />
-    <Command Name="cmdButtonSpeed" Id="22" LabelTitle="Speed" TooltipTitle="Speed" TooltipDescription="Monitoring the speed in km/h" />
-    <Command Name="cmdButtonCadence" Id="23" LabelTitle="Cadence" TooltipTitle="Cadence" TooltipDescription="Monitoring pedaling cadence (rpm)" />
-    <Command Name="cmdButtonTemperature" Id="24" LabelTitle="Temperature" TooltipTitle="Temperature" TooltipDescription="Temperature in Celsius" />
-    <Command Name="cmdGroupChartEffectiveness1" Id="25" LabelTitle="Torque Effectiveness" TooltipDescription="Powermeter: Torque Effectiveness with smoothing values" />
-    <Command Name="cmdGroupChartSmoothness1" Id="26" LabelTitle="Smoothness" TooltipDescription="Powermeter: Smoothness with smoothing values" />
-    <Command Name="cmdGroupChartExtras" Id="27" LabelTitle="Extras" />
-    <Command Name="cmdGroupChartSelect" Id="28" LabelTitle="Select" TooltipDescription="Selection of Session or Laps" />
-    <Command Name="cmdComboSelect" Id="29" LabelTitle="Chart" TooltipTitle="Select for Chart" TooltipDescription="Selection of Session or Laps">
+    <Command Name="cmdButtonHelp" Id="18" TooltipTitle="{Resource:cmdButtonHelp_TooltipTitle}" TooltipDescription="{Resource:cmdButtonHelp_TooltipDescription}" />
+    <Command Name="cmdButtonHeartRate" Id="19" LabelTitle="{Resource:cmdButtonHeartRate_LabelTitle}" TooltipTitle="{Resource:cmdButtonHeartRate_TooltipTitle}" TooltipDescription="{Resource:cmdButtonHeartRate_TooltipDescription}" />
+    <Command Name="cmdButtonAltitude" Id="20" LabelTitle="{Resource:cmdButtonAltitude_LabelTitle}" TooltipTitle="{Resource:cmdButtonAltitude_TooltipTitle}" TooltipDescription="{Resource:cmdButtonAltitude_TooltipDescription}" />
+    <Command Name="cmdButtonGrade" Id="21" LabelTitle="{Resource:cmdButtonGrade_LabelTitle}" TooltipTitle="{Resource:cmdButtonGrade_TooltipTitle}" TooltipDescription="{Resource:cmdButtonGrade_TooltipDescription}" />
+    <Command Name="cmdButtonSpeed" Id="22" LabelTitle="{Resource:cmdButtonSpeed_LabelTitle}" TooltipTitle="{Resource:cmdButtonSpeed_TooltipTitle}" TooltipDescription="{Resource:cmdButtonSpeed_TooltipDescription}" />
+    <Command Name="cmdButtonCadence" Id="23" LabelTitle="{Resource:cmdButtonCadence_LabelTitle}" TooltipTitle="{Resource:cmdButtonCadence_TooltipTitle}" TooltipDescription="{Resource:cmdButtonCadence_TooltipDescription}" />
+    <Command Name="cmdButtonTemperature" Id="24" LabelTitle="{Resource:cmdButtonTemperature_LabelTitle}" TooltipTitle="{Resource:cmdButtonTemperature_TooltipTitle}" TooltipDescription="{Resource:cmdButtonTemperature_TooltipDescription}" />
+    <Command Name="cmdGroupChartEffectiveness1" Id="25" LabelTitle="{Resource:cmdGroupChartEffectiveness1_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartEffectiveness1_TooltipDescription}" />
+    <Command Name="cmdGroupChartSmoothness1" Id="26" LabelTitle="{Resource:cmdGroupChartSmoothness1_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartSmoothness1_TooltipDescription}" />
+    <Command Name="cmdGroupChartExtras" Id="27" LabelTitle="{Resource:cmdGroupChartExtras_LabelTitle}" />
+    <Command Name="cmdGroupChartSelect" Id="28" LabelTitle="{Resource:cmdGroupChartSelect_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartSelect_TooltipDescription}" />
+    <Command Name="cmdComboSelect" Id="29" LabelTitle="{Resource:cmdComboSelect_LabelTitle}" TooltipTitle="{Resource:cmdComboSelect_TooltipTitle}" TooltipDescription="{Resource:cmdComboSelect_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/Select_16.bmp</Image>
         <Image MinDPI="120">Resources/Select_20.bmp</Image>
@@ -111,19 +111,19 @@
         <Image MinDPI="192">Resources/Select_32.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdComboPower" Id="30" TooltipTitle="Smooth" TooltipDescription="Smoothing of Power" />
-    <Command Name="cmdComboLRBalance" Id="31" TooltipTitle="Smooth" TooltipDescription="Smoothing of Left Right Balance" />
-    <Command Name="cmdComboLSmoothness" Id="32" TooltipTitle="Smooth" TooltipDescription="Smoothing the smoothness of left pedal" />
-    <Command Name="cmdComboRSmoothness" Id="33" TooltipTitle="Smooth" TooltipDescription="Smoothing the smoothness of right pedal" />
-    <Command Name="cmdComboLTorque" Id="34" TooltipTitle="Smooth" TooltipDescription="Smoothing the torque of left pedal" />
-    <Command Name="cmdComboRTorque" Id="35" TooltipTitle="Smooth" TooltipDescription="Smoothing the torque of right pedal" />
-    <Command Name="cmdGroupTotals" Id="37" LabelTitle="Totals" />
-    <Command Name="cmdGroupZones" Id="38" LabelTitle="Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined HeartRate and Power Zones" />
-    <Command Name="cmdGroupExtras" Id="39" LabelTitle="Extras" />
-    <Command Name="cmdGroupChartPower" Id="40" LabelTitle="Power" TooltipTitle="Monitoring Power" TooltipDescription="Power, Balance and HeartRate" />
-    <Command Name="cmdGroupChartEffectiveness" Id="41" LabelTitle="Torque Effectiveness" TooltipDescription="Powermeter: Torque Effectiveness" />
-    <Command Name="cmdGroupChartSmoothness" Id="42" LabelTitle="Smoothness" TooltipDescription="Powermeter: Smoothness" />
-    <Command Name="cmdButtonSession" Id="43" LabelTitle="Session" TooltipTitle="Summary Session" TooltipDescription="Display all Values of the Session">
+    <Command Name="cmdComboPower" Id="30" TooltipTitle="{Resource:cmdComboPower_TooltipTitle}" TooltipDescription="{Resource:cmdComboPower_TooltipDescription}" />
+    <Command Name="cmdComboLRBalance" Id="31" TooltipTitle="{Resource:cmdComboLRBalance_TooltipTitle}" TooltipDescription="{Resource:cmdComboLRBalance_TooltipDescription}" />
+    <Command Name="cmdComboLSmoothness" Id="32" TooltipTitle="{Resource:cmdComboLSmoothness_TooltipTitle}" TooltipDescription="{Resource:cmdComboLSmoothness_TooltipDescription}" />
+    <Command Name="cmdComboRSmoothness" Id="33" TooltipTitle="{Resource:cmdComboRSmoothness_TooltipTitle}" TooltipDescription="{Resource:cmdComboRSmoothness_TooltipDescription}" />
+    <Command Name="cmdComboLTorque" Id="34" TooltipTitle="{Resource:cmdComboLTorque_TooltipTitle}" TooltipDescription="{Resource:cmdComboLTorque_TooltipDescription}" />
+    <Command Name="cmdComboRTorque" Id="35" TooltipTitle="{Resource:cmdComboRTorque_TooltipTitle}" TooltipDescription="{Resource:cmdComboRTorque_TooltipDescription}" />
+    <Command Name="cmdGroupTotals" Id="37" LabelTitle="{Resource:cmdGroupTotals_LabelTitle}" />
+    <Command Name="cmdGroupZones" Id="38" LabelTitle="{Resource:cmdGroupZones_LabelTitle}" TooltipTitle="{Resource:cmdGroupZones_TooltipTitle}" TooltipDescription="{Resource:cmdGroupZones_TooltipDescription}" />
+    <Command Name="cmdGroupExtras" Id="39" />
+    <Command Name="cmdGroupChartPower" Id="40" LabelTitle="{Resource:cmdGroupChartPower_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartPower_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartPower_TooltipDescription}" />
+    <Command Name="cmdGroupChartEffectiveness" Id="41" LabelTitle="{Resource:cmdGroupChartEffectiveness_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartEffectiveness_TooltipDescription}" />
+    <Command Name="cmdGroupChartSmoothness" Id="42" LabelTitle="{Resource:cmdGroupChartSmoothness_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartSmoothness_TooltipDescription}" />
+    <Command Name="cmdButtonSession" Id="43" LabelTitle="{Resource:cmdButtonSession_LabelTitle}" TooltipTitle="{Resource:cmdButtonSession_TooltipTitle}" TooltipDescription="{Resource:cmdButtonSession_TooltipDescription}">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/Document_16.bmp</Image>
         <Image MinDPI="120">Resources/Document_20.bmp</Image>
@@ -137,7 +137,7 @@
         <Image MinDPI="192">Resources/Document_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonLaps" Id="44" LabelTitle="Laps" TooltipTitle="Summary Laps" TooltipDescription="Display all Values of Laps">
+    <Command Name="cmdButtonLaps" Id="44" LabelTitle="{Resource:cmdButtonLaps_LabelTitle}" TooltipTitle="{Resource:cmdButtonLaps_TooltipTitle}" TooltipDescription="{Resource:cmdButtonLaps_TooltipDescription}">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/Copy_16.bmp</Image>
         <Image MinDPI="120">Resources/Copy_20.bmp</Image>
@@ -145,17 +145,17 @@
         <Image MinDPI="192">Resources/Copy_32.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdButtonHeartRateZones" Id="45" LabelTitle="HeartRate Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined HeartRate Zones">
+    <Command Name="cmdButtonHeartRateZones" Id="45" LabelTitle="{Resource:cmdButtonHeartRateZones_LabelTitle}" TooltipTitle="{Resource:cmdButtonHeartRateZones_TooltipTitle}" TooltipDescription="{Resource:cmdButtonHeartRateZones_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/Heartrate-40.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdButtonPowerZones" Id="46" LabelTitle="Power Zones" TooltipTitle="Individual Zones" TooltipDescription="Pre defined Power Zones">
+    <Command Name="cmdButtonPowerZones" Id="46" LabelTitle="{Resource:cmdButtonPowerZones_LabelTitle}" TooltipTitle="{Resource:cmdButtonPowerZones_TooltipTitle}" TooltipDescription="{Resource:cmdButtonPowerZones_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/Power-48.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdToggleSmooth" Id="47" LabelTitle="Smooth Settings" TooltipTitle="Show or hide Smoothness" TooltipDescription="Show and configure Smoothness values">
+    <Command Name="cmdToggleSmooth" Id="47" LabelTitle="{Resource:cmdToggleSmooth_LabelTitle}" TooltipTitle="{Resource:cmdToggleSmooth_TooltipTitle}" TooltipDescription="{Resource:cmdToggleSmooth_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/Smooth_16.bmp</Image>
         <Image MinDPI="120">Resources/Smooth_20.bmp</Image>
@@ -163,7 +163,7 @@
         <Image MinDPI="192">Resources/Smooth_32.bmp</Image>
       </Command.SmallImages>
     </Command>
-    <Command Name="cmdButtonAbout" Id="48" LabelTitle="About">
+    <Command Name="cmdButtonAbout" Id="48" LabelTitle="{Resource:cmdButtonAbout_LabelTitle}">
       <Command.SmallImages>
         <Image MinDPI="96">Resources/Info_16.bmp</Image>
         <Image MinDPI="120">Resources/Info_20.bmp</Image>
@@ -177,7 +177,7 @@
         <Image MinDPI="192">Resources/Info_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="Session Extras" TooltipTitle="Session Extras" TooltipDescription="Some self calculated values from the session records, because some Wahoo values are wrong">
+    <Command Name="cmdButtonMyExtras" Id="49" LabelTitle="{Resource:cmdButtonMyExtras_LabelTitle}" TooltipTitle="{Resource:cmdButtonMyExtras_TooltipTitle}" TooltipDescription="{Resource:cmdButtonMyExtras_TooltipDescription}">
       <Command.LargeImages>
         <Image>Resources/Document_32.bmp</Image>
         <Image MinDPI="120">Resources/Document_40.bmp</Image>
@@ -185,19 +185,19 @@
         <Image MinDPI="192">Resources/Document_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdGroupIntern" Id="50" LabelTitle="Internals" />
-    <Command Name="cmdButtonActivity" Id="52" LabelTitle="Activity" TooltipTitle="Activity" />
-    <Command Name="cmdButtonDeveloperDataId" Id="53" LabelTitle="DeveloperDataId" TooltipTitle="DeveloperDataId" />
-    <Command Name="cmdButtonDeviceInfo" Id="54" LabelTitle="DeviceInfo" TooltipTitle="DeviceInfo" />
-    <Command Name="cmdButtonEvent" Id="55" LabelTitle="Event" TooltipTitle="Event" />
-    <Command Name="cmdButtonFieldDescription" Id="56" LabelTitle="FieldDescription" TooltipTitle="FieldDescription" />
-    <Command Name="cmdButtonFileId" Id="57" LabelTitle="FileId" TooltipTitle="FileId" />
-    <Command Name="cmdButtonSport" Id="58" LabelTitle="Sport" TooltipTitle="Sport" />
-    <Command Name="cmdButtonWorkout" Id="59" LabelTitle="Workout" TooltipTitle="Workout" />
-    <Command Name="cmdButtonWahooFF00" Id="60" LabelTitle="WahooFF00" TooltipTitle="WahooFF00" />
-    <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="WahooFF01" TooltipTitle="WahooFF01" />
-    <Command Name="cmdButtonWahooFF04" Id="81" LabelTitle="WahooFF04" TooltipTitle="WahooFF04" />
-    <Command Name="cmdButtonSaveSettings" Id="64" LabelTitle="Save Settings" TooltipTitle="Save Settings" TooltipDescription="Save the state of the CheckBoxes and Smooth values in the Chart Tab, current App size and Map size to a settings file">
+    <Command Name="cmdGroupIntern" Id="50" LabelTitle="{Resource:cmdGroupIntern_LabelTitle}" />
+    <Command Name="cmdButtonActivity" Id="52" LabelTitle="{Resource:cmdButtonActivity_LabelTitle}" TooltipTitle="{Resource:cmdButtonActivity_TooltipTitle}" />
+    <Command Name="cmdButtonDeveloperDataId" Id="53" LabelTitle="{Resource:cmdButtonDeveloperDataId_LabelTitle}" TooltipTitle="{Resource:cmdButtonDeveloperDataId_TooltipTitle}" />
+    <Command Name="cmdButtonDeviceInfo" Id="54" LabelTitle="{Resource:cmdButtonDeviceInfo_LabelTitle}" TooltipTitle="{Resource:cmdButtonDeviceInfo_TooltipTitle}" />
+    <Command Name="cmdButtonEvent" Id="55" LabelTitle="{Resource:cmdButtonEvent_LabelTitle}" TooltipTitle="{Resource:cmdButtonEvent_TooltipTitle}" />
+    <Command Name="cmdButtonFieldDescription" Id="56" LabelTitle="{Resource:cmdButtonFieldDescription_LabelTitle}" TooltipTitle="{Resource:cmdButtonFieldDescription_TooltipTitle}" />
+    <Command Name="cmdButtonFileId" Id="57" LabelTitle="{Resource:cmdButtonFileId_LabelTitle}" TooltipTitle="{Resource:cmdButtonFileId_TooltipTitle}" />
+    <Command Name="cmdButtonSport" Id="58" LabelTitle="{Resource:cmdButtonSport_LabelTitle}" TooltipTitle="{Resource:cmdButtonSport_TooltipTitle}" />
+    <Command Name="cmdButtonWorkout" Id="59" LabelTitle="{Resource:cmdButtonWorkout_LabelTitle}" TooltipTitle="{Resource:cmdButtonWorkout_TooltipTitle}" />
+    <Command Name="cmdButtonWahooFF00" Id="60" LabelTitle="{Resource:cmdButtonWahooFF00_LabelTitle}" TooltipTitle="{Resource:cmdButtonWahooFF00_TooltipTitle}" />
+    <Command Name="cmdButtonWahooFF01" Id="61" LabelTitle="{Resource:cmdButtonWahooFF01_LabelTitle}" TooltipTitle="{Resource:cmdButtonWahooFF01_TooltipTitle}" />
+    <Command Name="cmdButtonWahooFF04" Id="81" LabelTitle="{Resource:cmdButtonWahooFF04_LabelTitle}" TooltipTitle="{Resource:cmdButtonWahooFF04_TooltipTitle}" />
+    <Command Name="cmdButtonSaveSettings" Id="64" LabelTitle="{Resource:cmdButtonSaveSettings_LabelTitle}" TooltipTitle="{Resource:cmdButtonSaveSettings_TooltipTitle}" TooltipDescription="{Resource:cmdButtonSaveSettings_TooltipDescription}">
       <Command.LargeImages>
         <Image>Resources/SaveFile_32.bmp</Image>
         <Image MinDPI="120">Resources/SaveFile_40.bmp</Image>
@@ -205,7 +205,7 @@
         <Image MinDPI="192">Resources/SaveFile_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdButtonMap" Id="62" LabelTitle="Route" TooltipTitle="Route on Map" TooltipDescription="Show the route in a map">
+    <Command Name="cmdButtonMap" Id="62" LabelTitle="{Resource:cmdButtonMap_LabelTitle}" TooltipTitle="{Resource:cmdButtonMap_TooltipTitle}" TooltipDescription="{Resource:cmdButtonMap_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/map_16.bmp</Image>
         <Image MinDPI="120">Resources/map_20.bmp</Image>
@@ -219,11 +219,11 @@
         <Image MinDPI="192">Resources/map_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdGroupMaps" Id="63" LabelTitle="Maps" />
+    <Command Name="cmdGroupMaps" Id="63" LabelTitle="{Resource:cmdGroupMaps_LabelTitle}" />
     <Command Name="cmdHidden1" Id="65" />
     <Command Name="cmdHidden2" Id="66" />
-    <Command Name="cmdTabSettings" Id="67" LabelTitle="Settings" />
-    <Command Name="cmdGroupSettings" Id="68" LabelTitle="Save">
+    <Command Name="cmdTabSettings" Id="67" LabelTitle="{Resource:cmdTabSettings_LabelTitle}" />
+    <Command Name="cmdGroupSettings" Id="68" LabelTitle="{Resource:cmdGroupSettings_LabelTitle}">
       <Command.LargeImages>
         <Image>Resources/Settings_32.bmp</Image>
         <Image MinDPI="120">Resources/Settings_40.bmp</Image>
@@ -231,8 +231,8 @@
         <Image MinDPI="192">Resources/Settings_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdTabGroupSettings" Id="69" LabelTitle="Settings" />
-    <Command Name="cmdToggleSettings" Id="70" LabelTitle="Settings" TooltipTitle="Show or hide Settings">
+    <Command Name="cmdTabGroupSettings" Id="69" LabelTitle="{Resource:cmdTabGroupSettings_LabelTitle}" />
+    <Command Name="cmdToggleSettings" Id="70" LabelTitle="{Resource:cmdToggleSettings_LabelTitle}" TooltipTitle="{Resource:cmdToggleSettings_TooltipTitle}">
       <Command.SmallImages>
         <Image>Resources/Settings_16.bmp</Image>
         <Image MinDPI="120">Resources/Settings_20.bmp</Image>
@@ -246,12 +246,12 @@
         <Image MinDPI="192">Resources/Settings_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdSpinnerMapWidth" Id="71" LabelTitle="Width" TooltipTitle="Map Width" TooltipDescription="The value is the default Width for the Map" />
-    <Command Name="cmdSpinnerMapHeight" Id="72" LabelTitle="Height" TooltipTitle="Map Height" TooltipDescription="The value is the default Height for the Map" />
-    <Command Name="cmdGroupMapControl" Id="73" LabelTitle="Map Control" />
-    <Command Name="cmdGroupApp" Id="74" LabelTitle="Application" />
-    <Command Name="cmdCheckCurrentAppSize" Id="75" LabelTitle="App Size" TooltipTitle="Current App Size" TooltipDescription="Saves the current Application size as default if checked" />
-    <Command Name="cmdButtonStatistics" Id="76" TooltipTitle="Statistics" TooltipDescription="Distance, Ascent per year or month">
+    <Command Name="cmdSpinnerMapWidth" Id="71" LabelTitle="{Resource:cmdSpinnerMapWidth_LabelTitle}" TooltipTitle="{Resource:cmdSpinnerMapWidth_TooltipTitle}" TooltipDescription="{Resource:cmdSpinnerMapWidth_TooltipDescription}" />
+    <Command Name="cmdSpinnerMapHeight" Id="72" LabelTitle="{Resource:cmdSpinnerMapHeight_LabelTitle}" TooltipTitle="{Resource:cmdSpinnerMapHeight_TooltipTitle}" TooltipDescription="{Resource:cmdSpinnerMapHeight_TooltipDescription}" />
+    <Command Name="cmdGroupMapControl" Id="73" LabelTitle="{Resource:cmdGroupMapControl_LabelTitle}" />
+    <Command Name="cmdGroupApp" Id="74" LabelTitle="{Resource:cmdGroupApp_LabelTitle}" />
+    <Command Name="cmdCheckCurrentAppSize" Id="75" LabelTitle="{Resource:cmdCheckCurrentAppSize_LabelTitle}" TooltipTitle="{Resource:cmdCheckCurrentAppSize_TooltipTitle}" TooltipDescription="{Resource:cmdCheckCurrentAppSize_TooltipDescription}" />
+    <Command Name="cmdButtonStatistics" Id="76" TooltipTitle="{Resource:cmdButtonStatistics_TooltipTitle}" TooltipDescription="{Resource:cmdButtonStatistics_TooltipDescription}">
       <Command.SmallImages>
         <Image>Resources/statistics_16.bmp</Image>
         <Image MinDPI="120">Resources/statistics_20.bmp</Image>
@@ -265,8 +265,8 @@
         <Image MinDPI="192">Resources/statistics_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdGroupStatistics" Id="77" LabelTitle="Statistics" />
-    <Command Name="cmdButtonGears" Id="82" LabelTitle="Gears" TooltipTitle="Gears" TooltipDescription="Show statistics for gears">
+    <Command Name="cmdGroupStatistics" Id="77" LabelTitle="{Resource:cmdGroupStatistics_LabelTitle}" />
+    <Command Name="cmdButtonGears" Id="82" LabelTitle="{Resource:cmdButtonGears_LabelTitle}" TooltipTitle="{Resource:cmdButtonGears_TooltipTitle}" TooltipDescription="{Resource:cmdButtonGears_TooltipDescription}">
       <Command.LargeImages>
         <Image>Resources/Gear_32.bmp</Image>
         <Image MinDPI="120">Resources/Gear_40.bmp</Image>
@@ -274,6 +274,7 @@
         <Image MinDPI="192">Resources/Gear_64.bmp</Image>
       </Command.LargeImages>
     </Command>
+    <Command Name="cmdCheckLocalize" Id="83" LabelTitle="{Resource:cmdCheckLocalize_LabelTitle}" TooltipTitle="{Resource:cmdCheckLocalize_TooltipTitle}" TooltipDescription="{Resource:cmdCheckLocalize_TooltipDescription}" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
@@ -441,6 +442,7 @@
           <Tab CommandName="cmdTabSettings">
             <Group CommandName="cmdGroupApp">
               <CheckBox CommandName="cmdCheckCurrentAppSize" />
+              <CheckBox CommandName="cmdCheckLocalize" />
             </Group>
             <Group CommandName="cmdGroupMapControl">
               <SizeDefinition>

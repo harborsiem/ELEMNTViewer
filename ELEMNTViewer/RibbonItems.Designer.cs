@@ -36,6 +36,7 @@ namespace RibbonLib.Controls
             public const uint cmdTabSettings = 67;
             public const uint cmdGroupApp = 74;
             public const uint cmdCheckCurrentAppSize = 75;
+            public const uint cmdCheckLocalize = 83;
             public const uint cmdGroupMapControl = 73;
             public const uint cmdSpinnerMapWidth = 71;
             public const uint cmdSpinnerMapHeight = 72;
@@ -119,6 +120,7 @@ namespace RibbonLib.Controls
         public RibbonTab TabSettings { get; private set; }
         public RibbonGroup GroupApp { get; private set; }
         public RibbonCheckBox CheckCurrentAppSize { get; private set; }
+        public RibbonCheckBox CheckLocalize { get; private set; }
         public RibbonGroup GroupMapControl { get; private set; }
         public RibbonSpinner SpinnerMapWidth { get; private set; }
         public RibbonSpinner SpinnerMapHeight { get; private set; }
@@ -203,6 +205,7 @@ namespace RibbonLib.Controls
             TabSettings = new RibbonTab(ribbon, Cmd.cmdTabSettings);
             GroupApp = new RibbonGroup(ribbon, Cmd.cmdGroupApp);
             CheckCurrentAppSize = new RibbonCheckBox(ribbon, Cmd.cmdCheckCurrentAppSize);
+            CheckLocalize = new RibbonCheckBox(ribbon, Cmd.cmdCheckLocalize);
             GroupMapControl = new RibbonGroup(ribbon, Cmd.cmdGroupMapControl);
             SpinnerMapWidth = new RibbonSpinner(ribbon, Cmd.cmdSpinnerMapWidth);
             SpinnerMapHeight = new RibbonSpinner(ribbon, Cmd.cmdSpinnerMapHeight);

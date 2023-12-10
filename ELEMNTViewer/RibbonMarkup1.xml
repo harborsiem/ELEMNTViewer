@@ -1,22 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
   <Application.Commands>
-    <Command Name="cmdTabStart" Id="2" LabelTitle="Start" />
-    <Command Name="cmdComboYear" Id="3" LabelTitle="Year" TooltipTitle="Year" TooltipDescription="Year selector for the results" />
-    <Command Name="cmdComboMonth" Id="4" LabelTitle="Month" TooltipTitle="Month" TooltipDescription="Month selector for the results" />
-    <Command Name="cmdGroupSelect" Id="5" LabelTitle="Select" />
-    <Command Name="cmdGroupSelectFunction" Id="6" LabelTitle="Function Selector" />
-    <Command Name="cmdGroupSelect2" Id="11" LabelTitle="Select" />
-    <Command Name="cmdCheckMonthly" Id="12" LabelTitle="Monthly" TooltipTitle="Monthly results" TooltipDescription="Shows the result for the selected month" />
-    <Command Name="cmdCheckAntDevice" Id="9" LabelTitle="ANT+" TooltipTitle="ANT+ Device" TooltipDescription="Shows results with the selected ANT+ Device" />
-    <Command Name="cmdGroupAnt" Id="10" LabelTitle="ANT+ Devices" />
-    <Command Name="cmdComboAnt" Id="13" LabelTitle="ANT+" TooltipTitle="ANT+ Id" TooltipDescription="The Id or Number of ANT+ device" />
-    <Command Name="cmdComboAntName" Id="14" TooltipTitle="Name" TooltipDescription="Name of ANT+ device" />
+    <Command Name="cmdTabStart" Id="2" LabelTitle="{Resource:cmdTabStart_LabelTitle}" />
+    <Command Name="cmdComboYear" Id="3" LabelTitle="{Resource:cmdComboYear_LabelTitle}" TooltipTitle="{Resource:cmdComboYear_TooltipTitle}" TooltipDescription="{Resource:cmdComboYear_TooltipDescription}" />
+    <Command Name="cmdComboMonth" Id="4" LabelTitle="{Resource:cmdComboMonth_LabelTitle}" TooltipTitle="{Resource:cmdComboMonth_TooltipTitle}" TooltipDescription="{Resource:cmdComboMonth_TooltipDescription}" />
+    <Command Name="cmdGroupSelect" Id="5" LabelTitle="{Resource:cmdGroupSelect_LabelTitle}" />
+    <Command Name="cmdGroupSelectFunction" Id="6" LabelTitle="{Resource:cmdGroupSelectFunction_LabelTitle}" />
+    <Command Name="cmdGroupSelect2" Id="11" LabelTitle="{Resource:cmdGroupSelect2_LabelTitle}" />
+    <Command Name="cmdCheckMonthly" Id="12" LabelTitle="{Resource:cmdCheckMonthly_LabelTitle}" TooltipTitle="{Resource:cmdCheckMonthly_TooltipTitle}" TooltipDescription="{Resource:cmdCheckMonthly_TooltipDescription}" />
+    <Command Name="cmdCheckAntDevice" Id="9" LabelTitle="{Resource:cmdCheckAntDevice_LabelTitle}" TooltipTitle="{Resource:cmdCheckAntDevice_TooltipTitle}" TooltipDescription="{Resource:cmdCheckAntDevice_TooltipDescription}" />
+    <Command Name="cmdGroupAnt" Id="10" LabelTitle="{Resource:cmdGroupAnt_LabelTitle}" />
+    <Command Name="cmdComboAnt" Id="13" LabelTitle="{Resource:cmdComboAnt_LabelTitle}" TooltipTitle="{Resource:cmdComboAnt_TooltipTitle}" TooltipDescription="{Resource:cmdComboAnt_TooltipDescription}" />
+    <Command Name="cmdComboAntName" Id="14" TooltipTitle="{Resource:cmdComboAntName_TooltipTitle}" TooltipDescription="{Resource:cmdComboAntName_TooltipDescription}" />
+    <Command Name="cmdDialogApplication" Id="15" TooltipTitle="{Resource:cmdDialogApplication_TooltipTitle}" TooltipDescription="{Resource:cmdDialogApplication_TooltipDescription}" />
   </Application.Commands>
   <Application.Views>
     <Ribbon>
       <Ribbon.ApplicationMenu>
-        <ApplicationMenu />
+        <ApplicationMenu CommandName="cmdDialogApplication" />
       </Ribbon.ApplicationMenu>
       <Ribbon.QuickAccessToolbar>
         <QuickAccessToolbar />

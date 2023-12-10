@@ -169,7 +169,7 @@
     <value>Min. Herzfrequenz [bpm]</value>
   </data>
   <data name="AvgHeartRate" xml:space="preserve">
-    <value>Durchschn. Herzfrequenz [bpm]</value>
+    <value>Durchschn. Herzfreq. [bpm]</value>
   </data>
   <data name="MaxHeartRate" xml:space="preserve">
     <value>Max. Herzfrequenz [bpm]</value>
