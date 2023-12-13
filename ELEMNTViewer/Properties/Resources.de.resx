@@ -214,7 +214,7 @@
     <value>Zeit in Leistung Zone 5</value>
   </data>
   <data name="TotalWork" xml:space="preserve">
-    <value>Gesamt-Arbeit [Kj]</value>
+    <value>Gesamt-Arbeit [kJ]</value>
   </data>
   <data name="MinAltitude" xml:space="preserve">
     <value>Min. Höhe [m]</value>
@@ -235,7 +235,7 @@
     <value>Max. pos. Steigung [%]</value>
   </data>
   <data name="TotalCalories" xml:space="preserve">
-    <value>Kalorien [Kj]</value>
+    <value>Kalorien [kJ]</value>
   </data>
   <data name="NormalizedPower" xml:space="preserve">
     <value>Normalisierte Leistung [W]</value>
@@ -370,12 +370,12 @@
     <value>Version</value>
   </data>
   <data name="RS_Author" xml:space="preserve">
-    <value>Author</value>
+    <value>Autor</value>
   </data>
   <data name="RS_Copyright" xml:space="preserve">
     <value>Copyright</value>
   </data>
   <data name="RS_About" xml:space="preserve">
-    <value>About</value>
+    <value>Über</value>
   </data>
 </root>

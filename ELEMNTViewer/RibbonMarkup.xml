@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application xmlns="http://schemas.microsoft.com/windows/2009/Ribbon">
   <Application.Commands>
-    <Command Name="cmdQAT" Id="2"/>
+    <Command Name="cmdQAT" Id="2" />
     <Command Name="cmdApplication" Id="3" TooltipTitle="{Resource:cmdApplication_TooltipTitle}" TooltipDescription="{Resource:cmdApplication_TooltipDescription}" />
     <Command Name="cmdTabChart" Id="4" LabelTitle="{Resource:cmdTabChart_LabelTitle}" />
     <Command Name="cmdTabView" Id="5" LabelTitle="{Resource:cmdTabView_LabelTitle}" />
-    <Command Name="cmdGroupChartPower1" Id="6" LabelTitle="{Resource:cmdGroupChartPower1_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartPower1_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartPower1_TooltipDescription}" />
-    <Command Name="cmdGroupChartSpeed" Id="7" LabelTitle="{Resource:cmdGroupChartSpeed_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartSpeed_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartSpeed_TooltipDescription}" />
-    <Command Name="cmdGroupChartClimbing" Id="8" LabelTitle="{Resource:cmdGroupChartClimbing_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartClimbing_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartClimbing_TooltipDescription}" />
+    <Command Name="cmdGroupChartPower1" Id="6" LabelTitle="{Resource:cmdGroupChartPower1_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartPower1_TooltipDescription}" />
+    <Command Name="cmdGroupChartSpeed" Id="7" LabelTitle="{Resource:cmdGroupChartSpeed_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartSpeed_TooltipDescription}" />
+    <Command Name="cmdGroupChartClimbing" Id="8" LabelTitle="{Resource:cmdGroupChartClimbing_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartClimbing_TooltipDescription}" />
     <Command Name="cmdButtonPower" Id="9" LabelTitle="{Resource:cmdButtonPower_LabelTitle}" TooltipTitle="{Resource:cmdButtonPower_TooltipTitle}" TooltipDescription="{Resource:cmdButtonPower_TooltipDescription}" />
     <Command Name="cmdButtonLRBalance" Id="10" LabelTitle="{Resource:cmdButtonLRBalance_LabelTitle}" TooltipTitle="{Resource:cmdButtonLRBalance_TooltipTitle}" TooltipDescription="{Resource:cmdButtonLRBalance_TooltipDescription}" />
     <Command Name="cmdButtonLSmoothness" Id="11" LabelTitle="{Resource:cmdButtonLSmoothness_LabelTitle}" TooltipTitle="{Resource:cmdButtonLSmoothness_TooltipTitle}" TooltipDescription="{Resource:cmdButtonLSmoothness_TooltipDescription}" />
@@ -118,9 +118,9 @@
     <Command Name="cmdComboLTorque" Id="34" TooltipTitle="{Resource:cmdComboLTorque_TooltipTitle}" TooltipDescription="{Resource:cmdComboLTorque_TooltipDescription}" />
     <Command Name="cmdComboRTorque" Id="35" TooltipTitle="{Resource:cmdComboRTorque_TooltipTitle}" TooltipDescription="{Resource:cmdComboRTorque_TooltipDescription}" />
     <Command Name="cmdGroupTotals" Id="37" LabelTitle="{Resource:cmdGroupTotals_LabelTitle}" />
-    <Command Name="cmdGroupZones" Id="38" LabelTitle="{Resource:cmdGroupZones_LabelTitle}" TooltipTitle="{Resource:cmdGroupZones_TooltipTitle}" TooltipDescription="{Resource:cmdGroupZones_TooltipDescription}" />
+    <Command Name="cmdGroupZones" Id="38" LabelTitle="{Resource:cmdGroupZones_LabelTitle}" TooltipDescription="{Resource:cmdGroupZones_TooltipDescription}" />
     <Command Name="cmdGroupExtras" Id="39" />
-    <Command Name="cmdGroupChartPower" Id="40" LabelTitle="{Resource:cmdGroupChartPower_LabelTitle}" TooltipTitle="{Resource:cmdGroupChartPower_TooltipTitle}" TooltipDescription="{Resource:cmdGroupChartPower_TooltipDescription}" />
+    <Command Name="cmdGroupChartPower" Id="40" LabelTitle="{Resource:cmdGroupChartPower_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartPower_TooltipDescription}" />
     <Command Name="cmdGroupChartEffectiveness" Id="41" LabelTitle="{Resource:cmdGroupChartEffectiveness_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartEffectiveness_TooltipDescription}" />
     <Command Name="cmdGroupChartSmoothness" Id="42" LabelTitle="{Resource:cmdGroupChartSmoothness_LabelTitle}" TooltipDescription="{Resource:cmdGroupChartSmoothness_TooltipDescription}" />
     <Command Name="cmdButtonSession" Id="43" LabelTitle="{Resource:cmdButtonSession_LabelTitle}" TooltipTitle="{Resource:cmdButtonSession_TooltipTitle}" TooltipDescription="{Resource:cmdButtonSession_TooltipDescription}">

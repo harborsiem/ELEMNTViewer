@@ -132,17 +132,11 @@
   <data name="cmdGroupChartPower1_LabelTitle" xml:space="preserve">
     <value>Power</value>
   </data>
-  <data name="cmdGroupChartPower1_TooltipTitle" xml:space="preserve">
-    <value>Monitoring power</value>
-  </data>
   <data name="cmdGroupChartPower1_TooltipDescription" xml:space="preserve">
     <value>Power, balance and heart rate with smoothing values.</value>
   </data>
   <data name="cmdGroupChartSpeed_LabelTitle" xml:space="preserve">
     <value>Speed</value>
-  </data>
-  <data name="cmdGroupChartSpeed_TooltipTitle" xml:space="preserve">
-    <value>Monitoring speed</value>
   </data>
   <data name="cmdGroupChartSpeed_TooltipDescription" xml:space="preserve">
     <value>Speed and cadence.</value>
@@ -150,11 +144,8 @@
   <data name="cmdGroupChartClimbing_LabelTitle" xml:space="preserve">
     <value>Climbing</value>
   </data>
-  <data name="cmdGroupChartClimbing_TooltipTitle" xml:space="preserve">
-    <value>Monitoring climbing</value>
-  </data>
   <data name="cmdGroupChartClimbing_TooltipDescription" xml:space="preserve">
-    <value>Monitoring altitude and grade.</value>
+    <value>Display altitude and grade.</value>
   </data>
   <data name="cmdButtonPower_LabelTitle" xml:space="preserve">
     <value>Power</value>
@@ -271,7 +262,7 @@
     <value>Heart rate</value>
   </data>
   <data name="cmdButtonHeartRate_TooltipDescription" xml:space="preserve">
-    <value>Monitoring heart rate [bpm].</value>
+    <value>Display heart rate [bpm].</value>
   </data>
   <data name="cmdButtonAltitude_LabelTitle" xml:space="preserve">
     <value>Altitude</value>
@@ -298,7 +289,7 @@
     <value>Speed</value>
   </data>
   <data name="cmdButtonSpeed_TooltipDescription" xml:space="preserve">
-    <value>Monitoring the speed [km/h].</value>
+    <value>Display the speed [km/h].</value>
   </data>
   <data name="cmdButtonCadence_LabelTitle" xml:space="preserve">
     <value>Cadence</value>
@@ -307,7 +298,7 @@
     <value>Cadence</value>
   </data>
   <data name="cmdButtonCadence_TooltipDescription" xml:space="preserve">
-    <value>Monitoring pedaling cadence [rpm].</value>
+    <value>Display pedaling cadence [rpm].</value>
   </data>
   <data name="cmdButtonTemperature_LabelTitle" xml:space="preserve">
     <value>Temperature</value>
@@ -390,17 +381,11 @@
   <data name="cmdGroupZones_LabelTitle" xml:space="preserve">
     <value>Zones</value>
   </data>
-  <data name="cmdGroupZones_TooltipTitle" xml:space="preserve">
-    <value>Individual zones</value>
-  </data>
   <data name="cmdGroupZones_TooltipDescription" xml:space="preserve">
     <value>Pre defined heart rate and power zones.</value>
   </data>
   <data name="cmdGroupChartPower_LabelTitle" xml:space="preserve">
     <value>Power</value>
-  </data>
-  <data name="cmdGroupChartPower_TooltipTitle" xml:space="preserve">
-    <value>Monitoring power</value>
   </data>
   <data name="cmdGroupChartPower_TooltipDescription" xml:space="preserve">
     <value>Power, balance and heart rate.</value>

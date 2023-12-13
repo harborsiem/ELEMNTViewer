@@ -18,6 +18,7 @@ namespace RibbonLib.Controls
     {
         private static class Cmd
         {
+            public const uint cmdDialogApplication = 15;
             public const uint cmdTabStart = 2;
             public const uint cmdGroupSelectFunction = 6;
             public const uint cmdCheckMonthly = 12;
@@ -34,6 +35,7 @@ namespace RibbonLib.Controls
         // ContextPopup CommandName
 
         public Ribbon Ribbon { get; private set; }
+        public RibbonApplicationMenu DialogApplication { get; private set; }
         public RibbonTab TabStart { get; private set; }
         public RibbonGroup GroupSelectFunction { get; private set; }
         public RibbonCheckBox CheckMonthly { get; private set; }
@@ -51,6 +53,7 @@ namespace RibbonLib.Controls
             if (ribbon == null)
                 throw new ArgumentNullException(nameof(ribbon), "Parameter is null");
             this.Ribbon = ribbon;
+            DialogApplication = new RibbonApplicationMenu(ribbon, Cmd.cmdDialogApplication);
             TabStart = new RibbonTab(ribbon, Cmd.cmdTabStart);
             GroupSelectFunction = new RibbonGroup(ribbon, Cmd.cmdGroupSelectFunction);
             CheckMonthly = new RibbonCheckBox(ribbon, Cmd.cmdCheckMonthly);

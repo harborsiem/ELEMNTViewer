@@ -16,7 +16,8 @@
     <Feature Id="ProductFeature" Title="ELEMNTViewer Setup" Level="1">
       <ComponentGroupRef Id="ProductComponents1" />
       <ComponentGroupRef Id="ProductComponents2" />
-    </Feature>
+	  <ComponentGroupRef Id="ProductComponents3" />
+	</Feature>
     <UI />
     <UIRef Id="WixUI_Minimal" />
     <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
@@ -34,6 +35,7 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
         <Directory Id="Di.INSTALLDIR" Name="ELEMNTViewer">
+			<Directory Id="Di.LANG_de" Name="de"/>
         </Directory>
       </Directory>
       <Directory Id="ProgramMenuFolder">
@@ -63,5 +65,13 @@
       </Component>
     </ComponentGroup>
   </Fragment>
-  
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents3" Directory="Di.LANG_de">
+			<Component Id="C.ELEMNTViewer_de" Guid="6D0E6832-5B8E-4D48-9A4A-9EEC08277A02">
+				<File Id="Fi.DE_ELEMNTViewer_RES" Name="ELEMNTViewer.resources.dll" Source="..\ELEMNTViewer\bin\Release\de\ELEMNTViewer.resources.dll" KeyPath="yes" Checksum="yes" />
+				<File Id="Fi.DE_WpfMaps_RES" Name="WpfMaps.resources.dll" Source="..\WpfMaps\bin\Release\de\WpfMaps.resources.dll" Checksum="yes" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
 </Wix>

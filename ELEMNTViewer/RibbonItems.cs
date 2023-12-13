@@ -457,6 +457,7 @@ namespace RibbonLib.Controls
         {
             ToggleSettings.ExecuteEvent += ToggleSettings_ExecuteEvent;
             ButtonSaveSettings.ExecuteEvent += ButtonSaveSettings_ExecuteEvent;
+            CheckLocalize.BooleanValue = Settings.Instance.Localized;
         }
 
         private void ToggleSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
@@ -518,6 +519,7 @@ namespace RibbonLib.Controls
                     settings.AppHeight = _form.Height;
                     settings.AppSizeWrite = true;
                 }
+                settings.Localized = CheckLocalize.BooleanValue;
 
                 Settings.Instance.Modified = true;
             }

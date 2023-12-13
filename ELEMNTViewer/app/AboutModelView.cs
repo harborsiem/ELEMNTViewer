@@ -4,6 +4,7 @@ using System.Text;
 using System.Reflection;
 using System.Diagnostics;
 using System.Globalization;
+using Resources = ELEMNTViewer.Properties.Resources;
 
 namespace ELEMNTViewer
 {
@@ -13,7 +14,7 @@ namespace ELEMNTViewer
         {
             get
             {
-                return String.Format(CultureInfo.CurrentCulture, "About {0}", AssemblyTitle);
+                return String.Format(CultureInfo.CurrentCulture, Resources.RS_About + " {0}", AssemblyTitle);
             }
         }
 
@@ -54,7 +55,7 @@ namespace ELEMNTViewer
         {
             get
             {
-                return String.Format(CultureInfo.CurrentCulture, "Version: {0}", AssemblyFileVersion);
+                return String.Format(CultureInfo.CurrentCulture, Resources.RS_Version + ": {0}", AssemblyFileVersion);
             }
         }
 
@@ -71,7 +72,7 @@ namespace ELEMNTViewer
         {
             get
             {
-                return "Author: Hartmut Borkenhagen";
+                return Resources.RS_Author + ": Hartmut Borkenhagen";
             }
         }
 

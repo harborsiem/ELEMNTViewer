@@ -121,358 +121,343 @@
     <value>ELEMNTViewer</value>
   </data>
   <data name="cmdApplication_TooltipDescription" xml:space="preserve">
-    <value>Show recorded values from a Wahoo bike computer.</value>
+    <value>Zeigt aufgezeichnete Werte eines Wahoo Rad Computers an.</value>
   </data>
   <data name="cmdTabChart_LabelTitle" xml:space="preserve">
     <value>Chart</value>
   </data>
   <data name="cmdTabView_LabelTitle" xml:space="preserve">
-    <value>View</value>
+    <value>Ansicht</value>
   </data>
   <data name="cmdGroupChartPower1_LabelTitle" xml:space="preserve">
-    <value>Power</value>
-  </data>
-  <data name="cmdGroupChartPower1_TooltipTitle" xml:space="preserve">
-    <value>Monitoring power</value>
+    <value>Leistung</value>
   </data>
   <data name="cmdGroupChartPower1_TooltipDescription" xml:space="preserve">
-    <value>Power, balance and heart rate with smoothing values.</value>
+    <value>Leistung, Balance und Puls mit Glättungswerten.</value>
   </data>
   <data name="cmdGroupChartSpeed_LabelTitle" xml:space="preserve">
-    <value>Speed</value>
-  </data>
-  <data name="cmdGroupChartSpeed_TooltipTitle" xml:space="preserve">
-    <value>Monitoring speed</value>
+    <value>Tempo</value>
   </data>
   <data name="cmdGroupChartSpeed_TooltipDescription" xml:space="preserve">
-    <value>Speed and cadence.</value>
+    <value>Tempo und Kadenz.</value>
   </data>
   <data name="cmdGroupChartClimbing_LabelTitle" xml:space="preserve">
-    <value>Climbing</value>
-  </data>
-  <data name="cmdGroupChartClimbing_TooltipTitle" xml:space="preserve">
-    <value>Monitoring climbing</value>
+    <value>Klettern</value>
   </data>
   <data name="cmdGroupChartClimbing_TooltipDescription" xml:space="preserve">
-    <value>Monitoring altitude and grade.</value>
+    <value>Zeige Höhe und Steigung.</value>
   </data>
   <data name="cmdButtonPower_LabelTitle" xml:space="preserve">
-    <value>Power</value>
+    <value>Leistung</value>
   </data>
   <data name="cmdButtonPower_TooltipTitle" xml:space="preserve">
-    <value>Power</value>
+    <value>Leistung</value>
   </data>
   <data name="cmdButtonPower_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Overall power [W].</value>
+    <value>Powermeter: Gesamtleistung [W].</value>
   </data>
   <data name="cmdButtonLRBalance_LabelTitle" xml:space="preserve">
     <value>LR Balance</value>
   </data>
   <data name="cmdButtonLRBalance_TooltipTitle" xml:space="preserve">
-    <value>Left Right Balance</value>
+    <value>Links Rechts Balance</value>
   </data>
   <data name="cmdButtonLRBalance_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Balance between left and right pedal [%].</value>
+    <value>Powermeter: Balance zwischen linken und rechten Pedal [%].</value>
   </data>
   <data name="cmdButtonLSmoothness_LabelTitle" xml:space="preserve">
-    <value>Left</value>
+    <value>Links</value>
   </data>
   <data name="cmdButtonLSmoothness_TooltipTitle" xml:space="preserve">
-    <value>Left smoothness</value>
+    <value>Links: Gleichmäßigkeit Tritt</value>
   </data>
   <data name="cmdButtonLSmoothness_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Left smoothness [%].</value>
+    <value>Powermeter: Gleichmäßigkeit Tritt Links [%].</value>
   </data>
   <data name="cmdButtonRSmoothness_LabelTitle" xml:space="preserve">
-    <value>Right</value>
+    <value>Rechts</value>
   </data>
   <data name="cmdButtonRSmoothness_TooltipTitle" xml:space="preserve">
-    <value>Right smoothness</value>
+    <value>Recht: Gleichmäßigkeit Tritt</value>
   </data>
   <data name="cmdButtonRSmoothness_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Right smoothness [%].</value>
+    <value>Powermeter: Gleichmäßigkeit Tritt Rechts [%].</value>
   </data>
   <data name="cmdButtonLTorqueEff_LabelTitle" xml:space="preserve">
-    <value>Left</value>
+    <value>Links</value>
   </data>
   <data name="cmdButtonLTorqueEff_TooltipTitle" xml:space="preserve">
-    <value>Left torque effectiveness</value>
+    <value>Links: Drehmoment Effektivität</value>
   </data>
   <data name="cmdButtonLTorqueEff_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Left torque effectiveness [%].</value>
+    <value>Powermeter: Drehmoment Effektivität Links [%].</value>
   </data>
   <data name="cmdButtonRTorqueEff_LabelTitle" xml:space="preserve">
-    <value>Right</value>
+    <value>Rechts</value>
   </data>
   <data name="cmdButtonRTorqueEff_TooltipTitle" xml:space="preserve">
-    <value>Right torque effectiveness</value>
+    <value>Rechts: Drehmoment Effektivität</value>
   </data>
   <data name="cmdButtonRTorqueEff_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Right torque effectiveness [%].</value>
+    <value>Powermeter: Drehmoment Effektivität Rechts [%].</value>
   </data>
   <data name="cmdSplitButtonOpen_LabelTitle" xml:space="preserve">
-    <value>&amp;Open</value>
+    <value>&amp;Oeffnen</value>
   </data>
   <data name="cmdSplitButtonOpen_TooltipTitle" xml:space="preserve">
-    <value>Fit, Gpx file</value>
+    <value>Fit, Gpx Datei</value>
   </data>
   <data name="cmdSplitButtonOpen_TooltipDescription" xml:space="preserve">
-    <value>Open the Fit or Gpx file.</value>
+    <value>Öffne die Fit oder Gpx Datei.</value>
   </data>
   <data name="cmdButtonOpen_LabelTitle" xml:space="preserve">
-    <value>Open</value>
+    <value>Öffnen</value>
   </data>
   <data name="cmdButtonOpen_TooltipTitle" xml:space="preserve">
-    <value>Fit, Gpx file</value>
+    <value>Fit, Gpx Datei</value>
   </data>
   <data name="cmdButtonOpen_TooltipDescription" xml:space="preserve">
-    <value>Open the Fit or Gpx file.</value>
+    <value>Öffne die Fit oder Gpx Datei.</value>
   </data>
   <data name="cmdButtonOpenFit_LabelTitle" xml:space="preserve">
-    <value>Open &amp;Fit</value>
+    <value>Öffne &amp;Fit</value>
   </data>
   <data name="cmdButtonOpenFit_TooltipTitle" xml:space="preserve">
-    <value>Fit file</value>
+    <value>Fit Datei</value>
   </data>
   <data name="cmdButtonOpenFit_TooltipDescription" xml:space="preserve">
-    <value>Open the Fit file.</value>
+    <value>Öffne die Fit Datei.</value>
   </data>
   <data name="cmdButtonOpenGpx_LabelTitle" xml:space="preserve">
-    <value>Open &amp;Gpx</value>
+    <value>Öffne &amp;Gpx</value>
   </data>
   <data name="cmdButtonOpenGpx_TooltipTitle" xml:space="preserve">
-    <value>Gpx file</value>
+    <value>Gpx Datei</value>
   </data>
   <data name="cmdButtonOpenGpx_TooltipDescription" xml:space="preserve">
-    <value>Open the Gpx file.</value>
+    <value>Öffne die Gpx Datei.</value>
   </data>
   <data name="cmdButtonSaveGpx_LabelTitle" xml:space="preserve">
-    <value>Save as Gpx</value>
+    <value>Speichere als Gpx</value>
   </data>
   <data name="cmdButtonSaveGpx_TooltipTitle" xml:space="preserve">
-    <value>Gpx file</value>
+    <value>Gpx Datei</value>
   </data>
   <data name="cmdButtonSaveGpx_TooltipDescription" xml:space="preserve">
-    <value>Save the session to a *.gpx file.</value>
+    <value>Speichere die Session als *.gpx Datei.</value>
   </data>
   <data name="cmdButtonExit_LabelTitle" xml:space="preserve">
-    <value>Exit</value>
+    <value>Beenden</value>
   </data>
   <data name="cmdButtonHelp_TooltipTitle" xml:space="preserve">
-    <value>Help</value>
+    <value>Hilfe</value>
   </data>
   <data name="cmdButtonHelp_TooltipDescription" xml:space="preserve">
-    <value>Get help.</value>
+    <value>Hilfe.</value>
   </data>
   <data name="cmdButtonHeartRate_LabelTitle" xml:space="preserve">
-    <value>Heart rate</value>
+    <value>Puls</value>
   </data>
   <data name="cmdButtonHeartRate_TooltipTitle" xml:space="preserve">
-    <value>Heart rate</value>
+    <value>Puls</value>
   </data>
   <data name="cmdButtonHeartRate_TooltipDescription" xml:space="preserve">
-    <value>Monitoring heart rate [bpm].</value>
+    <value>Zeige Puls [bpm].</value>
   </data>
   <data name="cmdButtonAltitude_LabelTitle" xml:space="preserve">
-    <value>Altitude</value>
+    <value>Höhe</value>
   </data>
   <data name="cmdButtonAltitude_TooltipTitle" xml:space="preserve">
-    <value>Altitude</value>
+    <value>Höhenverlauf</value>
   </data>
   <data name="cmdButtonAltitude_TooltipDescription" xml:space="preserve">
-    <value>Altitude [m].</value>
+    <value>Höhenverlauf [m].</value>
   </data>
   <data name="cmdButtonGrade_LabelTitle" xml:space="preserve">
-    <value>Grade</value>
+    <value>Steigung</value>
   </data>
   <data name="cmdButtonGrade_TooltipTitle" xml:space="preserve">
-    <value>Grade</value>
+    <value>Steigung</value>
   </data>
   <data name="cmdButtonGrade_TooltipDescription" xml:space="preserve">
-    <value>Grade [%].</value>
+    <value>Steigung [%].</value>
   </data>
   <data name="cmdButtonSpeed_LabelTitle" xml:space="preserve">
-    <value>Speed</value>
+    <value>Tempo</value>
   </data>
   <data name="cmdButtonSpeed_TooltipTitle" xml:space="preserve">
-    <value>Speed</value>
+    <value>Tempo</value>
   </data>
   <data name="cmdButtonSpeed_TooltipDescription" xml:space="preserve">
-    <value>Monitoring the speed [km/h].</value>
+    <value>Zeige das Tempo [km/h].</value>
   </data>
   <data name="cmdButtonCadence_LabelTitle" xml:space="preserve">
-    <value>Cadence</value>
+    <value>Kadenz</value>
   </data>
   <data name="cmdButtonCadence_TooltipTitle" xml:space="preserve">
-    <value>Cadence</value>
+    <value>Kadenz</value>
   </data>
   <data name="cmdButtonCadence_TooltipDescription" xml:space="preserve">
-    <value>Monitoring pedaling cadence [rpm].</value>
+    <value>Zeige Kadenz, Trittfrequenz [rpm].</value>
   </data>
   <data name="cmdButtonTemperature_LabelTitle" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Temperatur</value>
   </data>
   <data name="cmdButtonTemperature_TooltipTitle" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Temperatur</value>
   </data>
   <data name="cmdButtonTemperature_TooltipDescription" xml:space="preserve">
-    <value>Temperature [Celsius].</value>
+    <value>Temperatur [Celsius].</value>
   </data>
   <data name="cmdGroupChartEffectiveness1_LabelTitle" xml:space="preserve">
-    <value>Torque effectiveness</value>
+    <value>Drehmoment Effektivität</value>
   </data>
   <data name="cmdGroupChartEffectiveness1_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Torque effectiveness with smoothing values.</value>
+    <value>Powermeter: Drehmoment Effektivität mit geglätteten Werten.</value>
   </data>
   <data name="cmdGroupChartSmoothness1_LabelTitle" xml:space="preserve">
-    <value>Smoothness</value>
+    <value>Gleichmäßigkeit Tritt</value>
   </data>
   <data name="cmdGroupChartSmoothness1_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Smoothness with smoothing values.</value>
+    <value>Powermeter: Gleichmäßigkeit Tritt mit geglätteten Werten.</value>
   </data>
   <data name="cmdGroupChartExtras_LabelTitle" xml:space="preserve">
     <value>Extras</value>
   </data>
   <data name="cmdGroupChartSelect_LabelTitle" xml:space="preserve">
-    <value>Select</value>
+    <value>Auswahl</value>
   </data>
   <data name="cmdGroupChartSelect_TooltipDescription" xml:space="preserve">
-    <value>Selection of Session or Laps.</value>
+    <value>Auswahl von Session oder Runde.</value>
   </data>
   <data name="cmdComboSelect_LabelTitle" xml:space="preserve">
     <value>Chart</value>
   </data>
   <data name="cmdComboSelect_TooltipTitle" xml:space="preserve">
-    <value>Select for Chart</value>
+    <value>Auswahl für Chart</value>
   </data>
   <data name="cmdComboSelect_TooltipDescription" xml:space="preserve">
-    <value>Selection of Session or Laps.</value>
+    <value>Auswahl von Session oder Runde.</value>
   </data>
   <data name="cmdComboPower_TooltipTitle" xml:space="preserve">
-    <value>Smooth</value>
+    <value>Glättung</value>
   </data>
   <data name="cmdComboPower_TooltipDescription" xml:space="preserve">
-    <value>Smoothing of power.</value>
+    <value>Glättung der Leistungswerte.</value>
   </data>
   <data name="cmdComboLRBalance_TooltipTitle" xml:space="preserve">
-    <value>Smooth</value>
+    <value>Glättung</value>
   </data>
   <data name="cmdComboLRBalance_TooltipDescription" xml:space="preserve">
-    <value>Smoothing of left right balance.</value>
+    <value>Glättung der Links Rechts Balance.</value>
   </data>
   <data name="cmdComboLSmoothness_TooltipTitle" xml:space="preserve">
-    <value>Smooth</value>
+    <value>Glättung</value>
   </data>
   <data name="cmdComboLSmoothness_TooltipDescription" xml:space="preserve">
-    <value>Smoothing the smoothness of left pedal.</value>
+    <value>Glättung von Gleichmäßigkeit Tritt des linken Pedals.</value>
   </data>
   <data name="cmdComboRSmoothness_TooltipTitle" xml:space="preserve">
-    <value>Smooth</value>
+    <value>Glättung</value>
   </data>
   <data name="cmdComboRSmoothness_TooltipDescription" xml:space="preserve">
-    <value>Smoothing the smoothness of right pedal.</value>
+    <value>Glättung von Gleichmäßigkeit Tritt des rechten Pedals.</value>
   </data>
   <data name="cmdComboLTorque_TooltipTitle" xml:space="preserve">
-    <value>Smooth</value>
+    <value>Glättung</value>
   </data>
   <data name="cmdComboLTorque_TooltipDescription" xml:space="preserve">
-    <value>Smoothing the torque of left pedal.</value>
+    <value>Glättung der Drehmoment Effektivität des linken Pedals.</value>
   </data>
   <data name="cmdComboRTorque_TooltipTitle" xml:space="preserve">
-    <value>Smooth</value>
+    <value>Glättung</value>
   </data>
   <data name="cmdComboRTorque_TooltipDescription" xml:space="preserve">
-    <value>Smoothing the torque of right pedal.</value>
+    <value>Glättung der Drehmoment Effektivität des rechten Pedals.</value>
   </data>
   <data name="cmdGroupTotals_LabelTitle" xml:space="preserve">
-    <value>Totals</value>
+    <value>Gesamtwerte</value>
   </data>
   <data name="cmdGroupZones_LabelTitle" xml:space="preserve">
-    <value>Zones</value>
-  </data>
-  <data name="cmdGroupZones_TooltipTitle" xml:space="preserve">
-    <value>Individual zones</value>
+    <value>Zonen</value>
   </data>
   <data name="cmdGroupZones_TooltipDescription" xml:space="preserve">
-    <value>Pre defined heart rate and power zones.</value>
+    <value>Vordefinierte Puls und Leistungs Zonen.</value>
   </data>
   <data name="cmdGroupChartPower_LabelTitle" xml:space="preserve">
-    <value>Power</value>
-  </data>
-  <data name="cmdGroupChartPower_TooltipTitle" xml:space="preserve">
-    <value>Monitoring power</value>
+    <value>Leistung</value>
   </data>
   <data name="cmdGroupChartPower_TooltipDescription" xml:space="preserve">
-    <value>Power, balance and heart rate.</value>
+    <value>Leistung, Balance und Puls.</value>
   </data>
   <data name="cmdGroupChartEffectiveness_LabelTitle" xml:space="preserve">
-    <value>Torque effectiveness</value>
+    <value>Drehmoment Effektivität</value>
   </data>
   <data name="cmdGroupChartEffectiveness_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Torque effectiveness.</value>
+    <value>Powermeter: Drehmoment Effektivität.</value>
   </data>
   <data name="cmdGroupChartSmoothness_LabelTitle" xml:space="preserve">
-    <value>Smoothness</value>
+    <value>Gleichmäßigkeit Tritt</value>
   </data>
   <data name="cmdGroupChartSmoothness_TooltipDescription" xml:space="preserve">
-    <value>Powermeter: Smoothness.</value>
+    <value>Powermeter: Gleichmäßigkeit Tritt.</value>
   </data>
   <data name="cmdButtonSession_LabelTitle" xml:space="preserve">
     <value>Session</value>
   </data>
   <data name="cmdButtonSession_TooltipTitle" xml:space="preserve">
-    <value>Summary session</value>
+    <value>Zusammenfassung Session</value>
   </data>
   <data name="cmdButtonSession_TooltipDescription" xml:space="preserve">
-    <value>Display all values of the session.</value>
+    <value>Zeige alle Werte der Session an.</value>
   </data>
   <data name="cmdButtonLaps_LabelTitle" xml:space="preserve">
-    <value>Laps</value>
+    <value>Runden</value>
   </data>
   <data name="cmdButtonLaps_TooltipTitle" xml:space="preserve">
-    <value>Summary laps</value>
+    <value>Zusammenfassung Runden</value>
   </data>
   <data name="cmdButtonLaps_TooltipDescription" xml:space="preserve">
-    <value>Display all values of the laps.</value>
+    <value>Zeige alle Werte der Runden an.</value>
   </data>
   <data name="cmdButtonHeartRateZones_LabelTitle" xml:space="preserve">
-    <value>Heart rate zones</value>
+    <value>Puls Zonen</value>
   </data>
   <data name="cmdButtonHeartRateZones_TooltipTitle" xml:space="preserve">
-    <value>Individual zones</value>
+    <value>Individuelle Zonen</value>
   </data>
   <data name="cmdButtonHeartRateZones_TooltipDescription" xml:space="preserve">
-    <value>Pre defined heart rate zones.</value>
+    <value>Vordefinierte Puls Zonen.</value>
   </data>
   <data name="cmdButtonPowerZones_LabelTitle" xml:space="preserve">
-    <value>Power zones</value>
+    <value>Leistungs Zonen</value>
   </data>
   <data name="cmdButtonPowerZones_TooltipTitle" xml:space="preserve">
-    <value>Individual zones</value>
+    <value>Individuelle Zonen</value>
   </data>
   <data name="cmdButtonPowerZones_TooltipDescription" xml:space="preserve">
-    <value>Pre defined power zones.</value>
+    <value>Vordefinierte Leistungs Zonen.</value>
   </data>
   <data name="cmdToggleSmooth_LabelTitle" xml:space="preserve">
-    <value>Smooth settings</value>
+    <value>Einstellungen Glättung</value>
   </data>
   <data name="cmdToggleSmooth_TooltipTitle" xml:space="preserve">
-    <value>Show or hide smoothness</value>
+    <value>Umschaltung mit / ohne Glättung</value>
   </data>
   <data name="cmdToggleSmooth_TooltipDescription" xml:space="preserve">
-    <value>Show and configure smoothness values.</value>
+    <value>Zeige und konfiguriere Glättungs Werte.</value>
   </data>
   <data name="cmdButtonAbout_LabelTitle" xml:space="preserve">
-    <value>About</value>
+    <value>Über</value>
   </data>
   <data name="cmdButtonMyExtras_LabelTitle" xml:space="preserve">
-    <value>Session extras</value>
+    <value>Session Extras</value>
   </data>
   <data name="cmdButtonMyExtras_TooltipTitle" xml:space="preserve">
-    <value>Session extras</value>
+    <value>Session Extras</value>
   </data>
   <data name="cmdButtonMyExtras_TooltipDescription" xml:space="preserve">
-    <value>Some self calculated values from the session records, because some Wahoo values have wrong units.</value>
+    <value>Einige selbst berechnete Werte aus den Session Aufzeichnungen, weil einige Wahoo Werte falsche Einheiten haben.</value>
   </data>
   <data name="cmdGroupIntern_LabelTitle" xml:space="preserve">
     <value>Internals</value>
@@ -544,99 +529,99 @@
     <value>WahooFF04</value>
   </data>
   <data name="cmdButtonSaveSettings_LabelTitle" xml:space="preserve">
-    <value>Save settings</value>
+    <value>Speichere Einstellungen</value>
   </data>
   <data name="cmdButtonSaveSettings_TooltipTitle" xml:space="preserve">
-    <value>Save settings</value>
+    <value>Speichere Einstellungen</value>
   </data>
   <data name="cmdButtonSaveSettings_TooltipDescription" xml:space="preserve">
-    <value>Save the state of the checkboxes and smooth values in the Chart tab, current application size and map size to a settings file.</value>
+    <value>Speichere den Status der Checkboxen und Glättungswerten im Chart Tab, aktuelle Applikation und Landkarten Größe in eine Einstellungsdatei.</value>
   </data>
   <data name="cmdButtonMap_LabelTitle" xml:space="preserve">
     <value>Route</value>
   </data>
   <data name="cmdButtonMap_TooltipTitle" xml:space="preserve">
-    <value>Route on map</value>
+    <value>Route auf Landkarte</value>
   </data>
   <data name="cmdButtonMap_TooltipDescription" xml:space="preserve">
-    <value>Show the route in a map.</value>
+    <value>Zeige die Route auf einer Landkarte.</value>
   </data>
   <data name="cmdGroupMaps_LabelTitle" xml:space="preserve">
-    <value>Maps</value>
+    <value>Landkarte</value>
   </data>
   <data name="cmdTabSettings_LabelTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen</value>
   </data>
   <data name="cmdGroupSettings_LabelTitle" xml:space="preserve">
-    <value>Save</value>
+    <value>Speichern</value>
   </data>
   <data name="cmdTabGroupSettings_LabelTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen</value>
   </data>
   <data name="cmdToggleSettings_LabelTitle" xml:space="preserve">
-    <value>Settings</value>
+    <value>Einstellungen</value>
   </data>
   <data name="cmdToggleSettings_TooltipTitle" xml:space="preserve">
-    <value>Show or hide settings</value>
+    <value>Umschaltung Einstellungen</value>
   </data>
   <data name="cmdSpinnerMapWidth_LabelTitle" xml:space="preserve">
-    <value>Width</value>
+    <value>Breite</value>
   </data>
   <data name="cmdSpinnerMapWidth_TooltipTitle" xml:space="preserve">
-    <value>Map width</value>
+    <value>Landkarten Breite</value>
   </data>
   <data name="cmdSpinnerMapWidth_TooltipDescription" xml:space="preserve">
-    <value>The value is the default width for the map.</value>
+    <value>Der Wert ist die Default Breite für die Landkarte.</value>
   </data>
   <data name="cmdSpinnerMapHeight_LabelTitle" xml:space="preserve">
-    <value>Height</value>
+    <value>Höhe</value>
   </data>
   <data name="cmdSpinnerMapHeight_TooltipTitle" xml:space="preserve">
-    <value>Map height</value>
+    <value>Landkarten Höhe</value>
   </data>
   <data name="cmdSpinnerMapHeight_TooltipDescription" xml:space="preserve">
-    <value>The value is the default height for the map.</value>
+    <value>Der Wert ist die Default Höhe für die Landkarte.</value>
   </data>
   <data name="cmdGroupMapControl_LabelTitle" xml:space="preserve">
-    <value>Map Control</value>
+    <value>Landkarte</value>
   </data>
   <data name="cmdGroupApp_LabelTitle" xml:space="preserve">
-    <value>Application</value>
+    <value>Applikation</value>
   </data>
   <data name="cmdCheckCurrentAppSize_LabelTitle" xml:space="preserve">
-    <value>App size</value>
+    <value>App Fenster Größe</value>
   </data>
   <data name="cmdCheckCurrentAppSize_TooltipTitle" xml:space="preserve">
-    <value>Current application size</value>
+    <value>Aktuelle Applikation Größe</value>
   </data>
   <data name="cmdCheckCurrentAppSize_TooltipDescription" xml:space="preserve">
-    <value>Saves the current application size as default if checked.</value>
+    <value>Speichere die aktuelle Applikation Größe als Voreinstellung.</value>
   </data>
   <data name="cmdButtonStatistics_TooltipTitle" xml:space="preserve">
-    <value>Statistics</value>
+    <value>Statistiken</value>
   </data>
   <data name="cmdButtonStatistics_TooltipDescription" xml:space="preserve">
-    <value>Distance, ascent per year, month or ANT+ device.</value>
+    <value>Entfernung, Aufstieg pro Jahr, Monat oder ANT+ Gerät.</value>
   </data>
   <data name="cmdGroupStatistics_LabelTitle" xml:space="preserve">
-    <value>Statistics</value>
+    <value>Statistiken</value>
   </data>
   <data name="cmdButtonGears_LabelTitle" xml:space="preserve">
-    <value>Gears</value>
+    <value>Gangwechsel</value>
   </data>
   <data name="cmdButtonGears_TooltipTitle" xml:space="preserve">
-    <value>Gears</value>
+    <value>Gangwechsel</value>
   </data>
   <data name="cmdButtonGears_TooltipDescription" xml:space="preserve">
-    <value>Show statistics for gear changes.</value>
+    <value>Zeige Statistiken der Gangwechsel.</value>
   </data>
   <data name="cmdCheckLocalize_LabelTitle" xml:space="preserve">
-    <value>Localize</value>
+    <value>Lokalisieren</value>
   </data>
   <data name="cmdCheckLocalize_TooltipTitle" xml:space="preserve">
-    <value>Localize</value>
+    <value>Lokalisieren</value>
   </data>
   <data name="cmdCheckLocalize_TooltipDescription" xml:space="preserve">
-    <value>Localize application at next restart.</value>
+    <value>Lokalisiere Applikation beim nächsten Start des Programms.</value>
   </data>
 </root>
