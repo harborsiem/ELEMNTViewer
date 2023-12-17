@@ -21,6 +21,10 @@ namespace ELEMNTViewer
         public StatisticsForm()
         {
             InitializeComponent();
+            if (!DesignMode)
+            {
+                this.Font = SystemFonts.MessageBoxFont;
+            }
             this.Text = Resources.RS_Statistics;
 			_items1 = new RibbonItems1(statisticRibbon);
             _items1.Init(this);

@@ -32,13 +32,12 @@ namespace RibbonLib.Controls
         const string ComboSize = "XXXX";
         private static readonly string[] s_smooth = { "0", "3", "10", "15", "30" };
         private MainForm _form;
+        private readonly Settings settings = Settings.Instance;
         private bool _toggleSmooth;
         private string _fileName;
         private DecodeFile _decodeFile;
         //private bool _modifiedSettings;
         private byte[] _loadedQatSettings;
-
-        private UICollectionChangedEvent _uiCollectionChangedEvent;
 
         /// <summary>
         /// Must be called from MainForm Constructor
@@ -68,6 +67,7 @@ namespace RibbonLib.Controls
         /// </summary>
         public void Load()
         {
+            //MakeCheckControls();
             Summaries summaries = new Summaries(StatisticsEnabled);
             summaries.Execute1();
             DataManager.Instance.Summaries = summaries;
@@ -107,7 +107,6 @@ namespace RibbonLib.Controls
             ComboRSmoothness.ItemsSourceReady += Combo_ItemsSourceReady;
             ComboLTorque.ItemsSourceReady += Combo_ItemsSourceReady;
             ComboRTorque.ItemsSourceReady += Combo_ItemsSourceReady;
-            _uiCollectionChangedEvent = new UICollectionChangedEvent();
             ComboPower.ExecuteEvent += ComboSettings_ExecuteEvent;
             ComboLRBalance.ExecuteEvent += ComboSettings_ExecuteEvent;
             ComboLSmoothness.ExecuteEvent += ComboSettings_ExecuteEvent;
@@ -123,14 +122,14 @@ namespace RibbonLib.Controls
                 byte[] modes;
                 if (_toggleSmooth)
                 {
-                    if (Settings.Instance.Intern)
+                    if (settings.Intern)
                         modes = new byte[] { 0, 1, 3 };
                     else
                         modes = new byte[] { 0, 1 };
                 }
                 else
                 {
-                    if (Settings.Instance.Intern)
+                    if (settings.Intern)
                         modes = new byte[] { 0, 2, 3 };
                     else
                         modes = new byte[] { 0, 2 };
@@ -166,7 +165,6 @@ namespace RibbonLib.Controls
 
         private uint GetSelectedItem(RibbonComboBox combo)
         {
-            Settings settings = Settings.Instance;
             switch (combo.CommandID)
             {
                 case Cmd.cmdComboPower:
@@ -247,40 +245,28 @@ namespace RibbonLib.Controls
 
         private void MakeCheckControls()
         {
-            List<RibbonCheckBox> checkBoxList = new List<RibbonCheckBox>();
-            List<RibbonComboBox> comboBoxList = new List<RibbonComboBox>();
-            checkBoxList.Add(ButtonAltitude);
-            comboBoxList.Add(null);
-            checkBoxList.Add(ButtonGrade);
-            comboBoxList.Add(null);
-            checkBoxList.Add(ButtonHeartRate);
-            comboBoxList.Add(null);
-            checkBoxList.Add(ButtonCadence);
-            comboBoxList.Add(null);
-            checkBoxList.Add(ButtonSpeed);
-            comboBoxList.Add(null);
-            checkBoxList.Add(ButtonPower);
-            comboBoxList.Add(ComboPower);
-            checkBoxList.Add(ButtonLRBalance);
-            comboBoxList.Add(ComboLRBalance);
-            checkBoxList.Add(ButtonLSmoothness);
-            comboBoxList.Add(ComboLSmoothness);
-            checkBoxList.Add(ButtonRSmoothness);
-            comboBoxList.Add(ComboRSmoothness);
-            checkBoxList.Add(ButtonLTorqueEff);
-            comboBoxList.Add(ComboLTorque);
-            checkBoxList.Add(ButtonRTorqueEff);
-            comboBoxList.Add(ComboRTorque);
-            checkBoxList.Add(ButtonTemperature);
-            comboBoxList.Add(null);
+            List<ConnectedItems> items = new List<ConnectedItems>();
+            //items must be in the same sequence like RecordValues
+            items.Add(new ConnectedItems(ButtonAltitude, null, 0, Resources.RS_Altitude));
+            items.Add(new ConnectedItems(ButtonGrade, null, 0, Resources.RS_Grade));
+            items.Add(new ConnectedItems(ButtonHeartRate, null, 0, Resources.RS_HeartRate));
+            items.Add(new ConnectedItems(ButtonCadence, null, 0, Resources.RS_Cadence));
+            items.Add(new ConnectedItems(ButtonSpeed, null, 0, Resources.RS_Speed));
+            items.Add(new ConnectedItems(ButtonPower, ComboPower, settings.PowerSmooth, Resources.RS_Power));
+            items.Add(new ConnectedItems(ButtonLRBalance, ComboLRBalance, settings.LRBalanceSmooth, Resources.RS_LRBalance));
+            items.Add(new ConnectedItems(ButtonLSmoothness, ComboLSmoothness, settings.SmoothnessLeftSmooth, Resources.RS_LeftSmooth));
+            items.Add(new ConnectedItems(ButtonRSmoothness, ComboRSmoothness, settings.SmoothnessRightSmooth, Resources.RS_RightSmooth));
+            items.Add(new ConnectedItems(ButtonLTorqueEff, ComboLTorque, settings.TorqueLeftSmooth, Resources.RS_LeftTE));
+            items.Add(new ConnectedItems(ButtonRTorqueEff, ComboRTorque, settings.TorqueRightSmooth, Resources.RS_RightTE));
+            items.Add(new ConnectedItems(ButtonTemperature, null, 0, Resources.RS_Temperature));
+
             int i = 0;
             IList<string> list = GetRecordNames();
             foreach (string propertyName in list)
             {
-                if (i < checkBoxList.Count)
+                if (i < items.Count)
                 {
-                    //checkBoxList[i].Label = propertyName;
-                    CheckBoxTag tag = new CheckBoxTag(checkBoxList[i], i, propertyName, comboBoxList[i]);
+                    CheckBoxTag tag = new CheckBoxTag(items[i], i, propertyName, _form.Font);
                     DataManager.Instance.CheckBoxTags.Add(tag);
                     i++;
                 }
@@ -405,7 +391,7 @@ namespace RibbonLib.Controls
                     _loadedQatSettings = new byte[stream.Length];
                     stream.Read(_loadedQatSettings, 0, _loadedQatSettings.Length);
                     stream.Position = 0;
-                    if (!Settings.Instance.VersionChanged)
+                    if (!settings.VersionChanged)
                         Ribbon.LoadSettingsFromStream(stream);
                     stream.Close();
                 }
@@ -457,7 +443,7 @@ namespace RibbonLib.Controls
         {
             ToggleSettings.ExecuteEvent += ToggleSettings_ExecuteEvent;
             ButtonSaveSettings.ExecuteEvent += ButtonSaveSettings_ExecuteEvent;
-            CheckLocalize.BooleanValue = Settings.Instance.Localized;
+            CheckLocalize.BooleanValue = settings.Localized;
         }
 
         private void ToggleSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
@@ -477,7 +463,6 @@ namespace RibbonLib.Controls
 
         private void GetCheckedSettings()
         {
-            Settings settings = Settings.Instance;
             ButtonSpeed.BooleanValue = settings.SpeedChecked;
             ButtonCadence.BooleanValue = settings.CadenceChecked;
             ButtonPower.BooleanValue = settings.PowerChecked;
@@ -496,7 +481,6 @@ namespace RibbonLib.Controls
         {
             try
             {
-                Settings settings = Settings.Instance;
                 settings.SpeedChecked = ButtonSpeed.BooleanValue;
                 settings.CadenceChecked = ButtonCadence.BooleanValue;
                 settings.PowerChecked = ButtonPower.BooleanValue;
@@ -521,7 +505,7 @@ namespace RibbonLib.Controls
                 }
                 settings.Localized = CheckLocalize.BooleanValue;
 
-                Settings.Instance.Modified = true;
+                settings.Modified = true;
             }
             catch
             {
@@ -533,7 +517,6 @@ namespace RibbonLib.Controls
         {
             try
             {
-                Settings settings = Settings.Instance;
                 RibbonComboBox combo = sender as RibbonComboBox;
                 switch (combo.CommandID)
                 {
@@ -573,8 +556,8 @@ namespace RibbonLib.Controls
 
         private void GetMapSettings()
         {
-            SpinnerMapWidth.DecimalValue = Settings.Instance.MapWidth;
-            SpinnerMapHeight.DecimalValue = Settings.Instance.MapHeight;
+            SpinnerMapWidth.DecimalValue = settings.MapWidth;
+            SpinnerMapHeight.DecimalValue = settings.MapHeight;
         }
 
         #endregion
@@ -604,7 +587,7 @@ namespace RibbonLib.Controls
                 _form.Text = Path.GetFileName(dialog.FileName); // + " - " + MainForm.MainFormText;
                 try
                 {
-                    GpxParser parser = new GpxParser(Settings.Instance.MapWidth, Settings.Instance.MapHeight);
+                    GpxParser parser = new GpxParser(settings.MapWidth, settings.MapHeight);
                     parser.Parse(dialog.FileName);
                 }
                 catch (Exception ex)
@@ -621,7 +604,7 @@ namespace RibbonLib.Controls
         private void InitModes()
         {
             byte[] modes;
-            if (Settings.Instance.Intern)
+            if (settings.Intern)
                 modes = new byte[] { 0, 1, 3 };
             else
                 modes = new byte[] { 0, 1 };
@@ -653,7 +636,6 @@ namespace RibbonLib.Controls
             dialog.CheckPathExists = true;
             dialog.DefaultExt = "fit";
             dialog.Filter = Resources.RS_ELEMNT_FitFile + " (*.fit)|*.fit";
-            Settings settings = Settings.Instance;
             if (!string.IsNullOrEmpty(settings.FitPath))
                 dialog.InitialDirectory = settings.FitPath;
             if (dialog.ShowDialog(_form) == DialogResult.OK)

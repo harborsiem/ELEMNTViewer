@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\AntDevice.cs" />
+    <Compile Include="app\ConnectedItems.cs" />
     <Compile Include="app\controls\ChartHelp.cs" />
     <Compile Include="app\dialogs\StatisticsForm.cs">
       <SubType>Form</SubType>

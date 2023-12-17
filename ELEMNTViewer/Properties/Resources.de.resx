@@ -378,4 +378,40 @@
   <data name="RS_About" xml:space="preserve">
     <value>Über</value>
   </data>
+  <data name="RS_Altitude" xml:space="preserve">
+    <value>Höhe</value>
+  </data>
+  <data name="RS_Cadence" xml:space="preserve">
+    <value>Kadenz</value>
+  </data>
+  <data name="RS_Grade" xml:space="preserve">
+    <value>Steigung</value>
+  </data>
+  <data name="RS_HeartRate" xml:space="preserve">
+    <value>Puls</value>
+  </data>
+  <data name="RS_LeftSmooth" xml:space="preserve">
+    <value>Links GT</value>
+  </data>
+  <data name="RS_LeftTE" xml:space="preserve">
+    <value>Links DE</value>
+  </data>
+  <data name="RS_LRBalance" xml:space="preserve">
+    <value>LR Balance</value>
+  </data>
+  <data name="RS_Power" xml:space="preserve">
+    <value>Leistung</value>
+  </data>
+  <data name="RS_RightSmooth" xml:space="preserve">
+    <value>Rechts GT</value>
+  </data>
+  <data name="RS_RightTE" xml:space="preserve">
+    <value>Rechts DE</value>
+  </data>
+  <data name="RS_Speed" xml:space="preserve">
+    <value>Tempo</value>
+  </data>
+  <data name="RS_Temperature" xml:space="preserve">
+    <value>Temperatur</value>
+  </data>
 </root>

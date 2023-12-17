@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Reflection;
 using System.ComponentModel;
+using System.Drawing;
 using RibbonLib.Controls;
 using RibbonLib.Controls.Events;
 
@@ -23,36 +24,33 @@ namespace ELEMNTViewer
         private static int s_lapEndIndex;
 
         private Series _series;
-        public RibbonCheckBox ChartCheckBox { get; private set; }
-        private RibbonComboBox _smoothChartComboBox;
-        private readonly string _propertyName;
+        private ConnectedItems _item;
         private string _displayName;
         private Int32ArrayAttribute _smoothAvgAttribute;
-        private readonly int _index;
+        //private readonly int _index;
         private readonly Func<RecordValues, double> _propertyFunc;
         private Smoothing _smoothing;
 
-        public CheckBoxTag(RibbonCheckBox chartCheckBox, int index, string propertyName, RibbonComboBox smoothChartComboBox)
+        public CheckBoxTag(ConnectedItems item, int index, string propertyName, Font mainFont)
         {
-            _series = new Series(propertyName)
+            _item = item;
+            _series = new Series()
             {
                 ChartType = SeriesChartType.FastLine,
                 Color = ConfigDefaults.GetColor(index),
+                Font = mainFont
             };
-            ChartCheckBox = chartCheckBox;
-            _smoothChartComboBox = smoothChartComboBox;
-            chartCheckBox.ExecuteEvent += ChartCheckBoxCheckedChanged;
-            this._index = index;
-            this._propertyName = propertyName;
+            item.CheckBox.ExecuteEvent += ChartCheckBoxCheckedChanged;
+            //this._index = index;
             _propertyFunc = PropertyNameToDelegate(propertyName);
             if (_smoothAvgAttribute != null)
             {
-                if (_smoothChartComboBox != null)
+                if (item.ComboBox != null)
                 {
-                    _smoothChartComboBox.ExecuteEvent += SmoothChartComboBox_SelectedItemChanged;
+                    item.ComboBox.ExecuteEvent += SmoothChartComboBox_SelectedItemChanged;
                 }
 
-                _smoothing = new Smoothing(0);
+                _smoothing = new Smoothing(item.InitialSmooth);
             }
         }
 
@@ -106,7 +104,7 @@ namespace ELEMNTViewer
             string str = comboBox.StringValue;
             int avgTime = int.Parse(str); // = (int)comboBox.SelectedItem;
             _smoothing.AvgTime = avgTime;
-            if (ChartCheckBox.BooleanValue)
+            if (_item.CheckBox.BooleanValue)
             {
                 ClearAndRemoveSeries();
                 ChartCheckBoxCheckedChanged();
@@ -143,7 +141,7 @@ namespace ELEMNTViewer
         private void ChartCheckBoxCheckedChanged(object sender, EventArgs e)
         {
             RibbonCheckBox checkBox = sender as RibbonCheckBox;
-            if (checkBox != null && checkBox.Equals(ChartCheckBox))
+            if (checkBox != null && checkBox.Equals(_item.CheckBox))
             {
                 ChartCheckBoxCheckedChanged();
             }
@@ -151,7 +149,7 @@ namespace ELEMNTViewer
 
         public void ChartCheckBoxCheckedChanged()
         {
-            if (ChartCheckBox.BooleanValue)
+            if (_item.CheckBox.BooleanValue)
             {
                 if (s_lap > 0)
                 {
@@ -222,10 +220,10 @@ namespace ELEMNTViewer
                     points.AddXY(values.Timestamp, _smoothing.SmoothValue);
                 }
             }
-            if (_smoothing == null || _smoothing.AvgTime == 0)
-                _series.Name = _propertyName;
+            if (_smoothing == null)
+                SetSeriesName(null);
             else
-                _series.Name = _propertyName + " (" + _smoothing.AvgTime.ToString() + ")";
+                SetSeriesName(_smoothing.AvgTime);
 
             points.ResumeUpdates();
             if (!chartMain.Series.Contains(_series))
@@ -233,6 +231,14 @@ namespace ELEMNTViewer
                 chartMain.Series.Add(_series);
             }
             chartMain.EndInit();
+        }
+
+        private void SetSeriesName(int? smoothValue)
+        {
+            if (smoothValue.HasValue && smoothValue.Value > 0)
+                _series.Name = _item.SeriesName + " (" + smoothValue.Value.ToString() + ")";
+            else
+                _series.Name = _item.SeriesName;
         }
 
         private static int GetRecordListIndex(DateTime value)
@@ -249,6 +255,11 @@ namespace ELEMNTViewer
                 }
             }
             return DataManager.Instance.RecordList.Count - 1;
+        }
+
+        public bool GetCheckBoxValue()
+        {
+            return _item.CheckBox.BooleanValue;
         }
     }
 }

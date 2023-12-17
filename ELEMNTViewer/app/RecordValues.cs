@@ -117,7 +117,7 @@ namespace ELEMNTViewer
         [Browsable(false)]
         public double PositionLong { get { return positionLong; } }
         public double Altitude { get { return altitude; } }
-        [Int32ArrayAttribute(0, 3, 10, 15, 30)]
+        //[Int32ArrayAttribute(0, 3, 10, 15, 30)]
         public double Grade { get { return grade; } }
         [Browsable(false)]
         public double Distance { get { return distance; } }

@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### ELEMNTViewer V2.5.0
+
+#### Changed
+
+- Better readable font
+- German localized version
+- Bugfixes
+
 ### ELEMNTViewer V2.4.2
 
 #### Changed

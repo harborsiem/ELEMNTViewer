@@ -124,7 +124,7 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Average heartrate [bpm].
+        ///   Looks up a localized string similar to Average heart rate [bpm].
         /// </summary>
         internal static string AvgHeartRate {
             get {
@@ -233,7 +233,7 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HeartRate.
+        ///   Looks up a localized string similar to Heart Rate.
         /// </summary>
         internal static string HeartRate {
             get {
@@ -305,7 +305,7 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Maximum heartrate [bpm].
+        ///   Looks up a localized string similar to Maximum heart rate [bpm].
         /// </summary>
         internal static string MaxHeartRate {
             get {
@@ -368,7 +368,7 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Minimum heartrate [bpm].
+        ///   Looks up a localized string similar to Minimum heart rate [bpm].
         /// </summary>
         internal static string MinHeartRate {
             get {
@@ -458,11 +458,29 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Altitude.
+        /// </summary>
+        internal static string RS_Altitude {
+            get {
+                return ResourceManager.GetString("RS_Altitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Author.
         /// </summary>
         internal static string RS_Author {
             get {
                 return ResourceManager.GetString("RS_Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cadence.
+        /// </summary>
+        internal static string RS_Cadence {
+            get {
+                return ResourceManager.GetString("RS_Cadence", resourceCulture);
             }
         }
         
@@ -512,6 +530,24 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Grade.
+        /// </summary>
+        internal static string RS_Grade {
+            get {
+                return ResourceManager.GetString("RS_Grade", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Heart rate.
+        /// </summary>
+        internal static string RS_HeartRate {
+            get {
+                return ResourceManager.GetString("RS_HeartRate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Heartrate zones [bpm].
         /// </summary>
         internal static string RS_HeartRateZones {
@@ -548,11 +584,65 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Left Smooth.
+        /// </summary>
+        internal static string RS_LeftSmooth {
+            get {
+                return ResourceManager.GetString("RS_LeftSmooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left TE.
+        /// </summary>
+        internal static string RS_LeftTE {
+            get {
+                return ResourceManager.GetString("RS_LeftTE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LR Balance.
+        /// </summary>
+        internal static string RS_LRBalance {
+            get {
+                return ResourceManager.GetString("RS_LRBalance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Power.
+        /// </summary>
+        internal static string RS_Power {
+            get {
+                return ResourceManager.GetString("RS_Power", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Power zones [W].
         /// </summary>
         internal static string RS_PowerZones {
             get {
                 return ResourceManager.GetString("RS_PowerZones", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right Smooth.
+        /// </summary>
+        internal static string RS_RightSmooth {
+            get {
+                return ResourceManager.GetString("RS_RightSmooth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right TE.
+        /// </summary>
+        internal static string RS_RightTE {
+            get {
+                return ResourceManager.GetString("RS_RightTE", resourceCulture);
             }
         }
         
@@ -575,11 +665,29 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Speed.
+        /// </summary>
+        internal static string RS_Speed {
+            get {
+                return ResourceManager.GetString("RS_Speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Statistics.
         /// </summary>
         internal static string RS_Statistics {
             get {
                 return ResourceManager.GetString("RS_Statistics", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Temperature.
+        /// </summary>
+        internal static string RS_Temperature {
+            get {
+                return ResourceManager.GetString("RS_Temperature", resourceCulture);
             }
         }
         
@@ -602,7 +710,7 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Starttime.
+        ///   Looks up a localized string similar to Start time.
         /// </summary>
         internal static string StartTime {
             get {
@@ -764,7 +872,7 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total calories [Kj].
+        ///   Looks up a localized string similar to Total calories [kJ].
         /// </summary>
         internal static string TotalCalories {
             get {
@@ -818,7 +926,7 @@ namespace ELEMNTViewer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total work [Kj].
+        ///   Looks up a localized string similar to Total work [kJ].
         /// </summary>
         internal static string TotalWork {
             get {

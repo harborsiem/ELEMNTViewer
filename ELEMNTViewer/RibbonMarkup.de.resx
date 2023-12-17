@@ -253,7 +253,7 @@
     <value>Hilfe</value>
   </data>
   <data name="cmdButtonHelp_TooltipDescription" xml:space="preserve">
-    <value>Hilfe.</value>
+    <value>Hilfe erhalten.</value>
   </data>
   <data name="cmdButtonHeartRate_LabelTitle" xml:space="preserve">
     <value>Puls</value>

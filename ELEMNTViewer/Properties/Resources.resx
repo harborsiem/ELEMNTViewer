@@ -128,7 +128,7 @@
     <value>Distance etc</value>
   </data>
   <data name="HeartRate" xml:space="preserve">
-    <value>HeartRate</value>
+    <value>Heart Rate</value>
   </data>
   <data name="Misc" xml:space="preserve">
     <value>Misc</value>
@@ -146,7 +146,7 @@
     <value>Time</value>
   </data>
   <data name="StartTime" xml:space="preserve">
-    <value>Starttime</value>
+    <value>Start time</value>
   </data>
   <data name="Timestamp" xml:space="preserve">
     <value>Timestamp</value>
@@ -173,13 +173,13 @@
     <value>Maximum cadence [rpm]</value>
   </data>
   <data name="MinHeartRate" xml:space="preserve">
-    <value>Minimum heartrate [bpm]</value>
+    <value>Minimum heart rate [bpm]</value>
   </data>
   <data name="AvgHeartRate" xml:space="preserve">
-    <value>Average heartrate [bpm]</value>
+    <value>Average heart rate [bpm]</value>
   </data>
   <data name="MaxHeartRate" xml:space="preserve">
-    <value>Maximum heartrate [bpm]</value>
+    <value>Maximum heart rate [bpm]</value>
   </data>
   <data name="TimeInHrZone0" xml:space="preserve">
     <value>Time in Hr. zone 0</value>
@@ -221,7 +221,7 @@
     <value>Time in power zone 5</value>
   </data>
   <data name="TotalWork" xml:space="preserve">
-    <value>Total work [Kj]</value>
+    <value>Total work [kJ]</value>
   </data>
   <data name="MinAltitude" xml:space="preserve">
     <value>Minimum altitude [m]</value>
@@ -242,7 +242,7 @@
     <value>Maximum positive grade [%]</value>
   </data>
   <data name="TotalCalories" xml:space="preserve">
-    <value>Total calories [Kj]</value>
+    <value>Total calories [kJ]</value>
   </data>
   <data name="NormalizedPower" xml:space="preserve">
     <value>Normalized power [W]</value>
@@ -384,5 +384,41 @@
   </data>
   <data name="RS_About" xml:space="preserve">
     <value>About</value>
+  </data>
+  <data name="RS_Altitude" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="RS_Cadence" xml:space="preserve">
+    <value>Cadence</value>
+  </data>
+  <data name="RS_Grade" xml:space="preserve">
+    <value>Grade</value>
+  </data>
+  <data name="RS_HeartRate" xml:space="preserve">
+    <value>Heart rate</value>
+  </data>
+  <data name="RS_LeftSmooth" xml:space="preserve">
+    <value>Left Smooth</value>
+  </data>
+  <data name="RS_LeftTE" xml:space="preserve">
+    <value>Left TE</value>
+  </data>
+  <data name="RS_LRBalance" xml:space="preserve">
+    <value>LR Balance</value>
+  </data>
+  <data name="RS_Power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="RS_RightSmooth" xml:space="preserve">
+    <value>Right Smooth</value>
+  </data>
+  <data name="RS_RightTE" xml:space="preserve">
+    <value>Right TE</value>
+  </data>
+  <data name="RS_Speed" xml:space="preserve">
+    <value>Speed</value>
+  </data>
+  <data name="RS_Temperature" xml:space="preserve">
+    <value>Temperature</value>
   </data>
 </root>

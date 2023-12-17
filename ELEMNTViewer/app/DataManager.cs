@@ -71,7 +71,7 @@ namespace ELEMNTViewer
             for (int i = 0; i < _checkBoxTags.Count; i++)
             {
                 CheckBoxTag tag = _checkBoxTags[i];
-                if (tag.ChartCheckBox.BooleanValue)
+                if (tag.GetCheckBoxValue())
                 {
                     tag.ChartCheckBoxCheckedChanged();
                 }
@@ -83,7 +83,7 @@ namespace ELEMNTViewer
             for (int i = 0; i < _checkBoxTags.Count; i++)
             {
                 CheckBoxTag tag = _checkBoxTags[i];
-                if (tag.ChartCheckBox.BooleanValue)
+                if (tag.GetCheckBoxValue())
                 {
                     tag.ClearAndRemoveSeries();
                 }
