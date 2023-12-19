@@ -24,7 +24,6 @@ namespace RibbonLib.Controls
             public const uint cmdButtonOpenFit = 78;
             public const uint cmdButtonOpenGpx = 79;
             public const uint cmdButtonSaveGpx = 16;
-            public const uint cmdToggleSettings = 70;
             public const uint cmdButtonAbout = 48;
             public const uint cmdButtonExit = 17;
             public const uint cmdButtonHelp = 18;
@@ -108,7 +107,6 @@ namespace RibbonLib.Controls
         public RibbonButton ButtonOpenFit { get; private set; }
         public RibbonButton ButtonOpenGpx { get; private set; }
         public RibbonButton ButtonSaveGpx { get; private set; }
-        public RibbonToggleButton ToggleSettings { get; private set; }
         public RibbonButton ButtonAbout { get; private set; }
         public RibbonButton ButtonExit { get; private set; }
         public RibbonHelpButton ButtonHelp { get; private set; }
@@ -193,7 +191,6 @@ namespace RibbonLib.Controls
             ButtonOpenFit = new RibbonButton(ribbon, Cmd.cmdButtonOpenFit);
             ButtonOpenGpx = new RibbonButton(ribbon, Cmd.cmdButtonOpenGpx);
             ButtonSaveGpx = new RibbonButton(ribbon, Cmd.cmdButtonSaveGpx);
-            ToggleSettings = new RibbonToggleButton(ribbon, Cmd.cmdToggleSettings);
             ButtonAbout = new RibbonButton(ribbon, Cmd.cmdButtonAbout);
             ButtonExit = new RibbonButton(ribbon, Cmd.cmdButtonExit);
             ButtonHelp = new RibbonHelpButton(ribbon, Cmd.cmdButtonHelp);

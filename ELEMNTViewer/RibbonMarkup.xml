@@ -231,21 +231,7 @@
         <Image MinDPI="192">Resources/Settings_64.bmp</Image>
       </Command.LargeImages>
     </Command>
-    <Command Name="cmdTabGroupSettings" Id="69" LabelTitle="{Resource:cmdTabGroupSettings_LabelTitle}" />
-    <Command Name="cmdToggleSettings" Id="70" LabelTitle="{Resource:cmdToggleSettings_LabelTitle}" TooltipTitle="{Resource:cmdToggleSettings_TooltipTitle}">
-      <Command.SmallImages>
-        <Image>Resources/Settings_16.bmp</Image>
-        <Image MinDPI="120">Resources/Settings_20.bmp</Image>
-        <Image MinDPI="144">Resources/Settings_24.bmp</Image>
-        <Image MinDPI="192">Resources/Settings_32.bmp</Image>
-      </Command.SmallImages>
-      <Command.LargeImages>
-        <Image>Resources/Settings_32.bmp</Image>
-        <Image MinDPI="120">Resources/Settings_40.bmp</Image>
-        <Image MinDPI="144">Resources/Settings_48.bmp</Image>
-        <Image MinDPI="192">Resources/Settings_64.bmp</Image>
-      </Command.LargeImages>
-    </Command>
+    <Command Name="cmdTabGroupSettings" Id="69" />
     <Command Name="cmdSpinnerMapWidth" Id="71" LabelTitle="{Resource:cmdSpinnerMapWidth_LabelTitle}" TooltipTitle="{Resource:cmdSpinnerMapWidth_TooltipTitle}" TooltipDescription="{Resource:cmdSpinnerMapWidth_TooltipDescription}" />
     <Command Name="cmdSpinnerMapHeight" Id="72" LabelTitle="{Resource:cmdSpinnerMapHeight_LabelTitle}" TooltipTitle="{Resource:cmdSpinnerMapHeight_TooltipTitle}" TooltipDescription="{Resource:cmdSpinnerMapHeight_TooltipDescription}" />
     <Command Name="cmdGroupMapControl" Id="73" LabelTitle="{Resource:cmdGroupMapControl_LabelTitle}" />
@@ -409,13 +395,6 @@
             <Button CommandName="cmdButtonSaveGpx" />
           </MenuGroup>
           <MenuGroup>
-            <SplitButton>
-              <SplitButton.ButtonItem>
-                <ToggleButton CommandName="cmdToggleSettings" />
-              </SplitButton.ButtonItem>
-            </SplitButton>
-          </MenuGroup>
-          <MenuGroup>
             <Button CommandName="cmdButtonAbout" />
           </MenuGroup>
           <MenuGroup>
@@ -433,7 +412,6 @@
             <Button CommandName="cmdButtonSession" ApplicationDefaults.IsChecked="true" />
             <Button CommandName="cmdButtonLaps" ApplicationDefaults.IsChecked="false" />
             <Button CommandName="cmdButtonMap" ApplicationDefaults.IsChecked="true" />
-            <ToggleButton CommandName="cmdToggleSettings" ApplicationDefaults.IsChecked="true" />
           </QuickAccessToolbar.ApplicationDefaults>
         </QuickAccessToolbar>
       </Ribbon.QuickAccessToolbar>

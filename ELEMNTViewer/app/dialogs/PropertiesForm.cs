@@ -15,7 +15,7 @@ namespace ELEMNTViewer
     {
         private object[] _selectedObjects;
         private ToolTip _numericToolTip;
-        private VScrollBar _gridViewScrollBar;
+        //private VScrollBar _gridViewScrollBar;
 
         public PropertyGrid Grid { get { return propertyGrid; } }
 
@@ -86,49 +86,49 @@ namespace ELEMNTViewer
             if (_selectedObjects != null && _selectedObjects.Length > 0)
             {
                 propertyGrid.SelectedObject = _selectedObjects[(int)numberUpDown.Value - 1];
-                if (_gridViewScrollBar != null)
-                    _gridViewScrollBar.Value = 0;
+                //if (_gridViewScrollBar != null)
+                //    _gridViewScrollBar.Value = 0;
             }
         }
 
-        private void Dialog_Shown(object sender, EventArgs e) //Tricky event to set ScrollBar to Top
-        {
-            Control pgv = FindControl(propertyGrid.Controls, "PropertyGridView");
-            if (pgv != null)
-            {
-                _gridViewScrollBar = FindControl(pgv.Controls, typeof(VScrollBar)) as VScrollBar;
-                if (_gridViewScrollBar != null)
-                    _gridViewScrollBar.Value = 0;
-                //// Reflection trickery to get a private/internal field
-                //// and method, scrollBar in this case
-                //Type type = pgv.GetType();
-                //FieldInfo f = FindField(type, "scrollBar");
-                //((ScrollBar)f.GetValue(pgv)).Value = 0;
-            }
-        }
+        //private void Dialog_Shown(object sender, EventArgs e) //Tricky event to set ScrollBar to Top
+        //{
+        //    Control pgv = FindControl(propertyGrid.Controls, "PropertyGridView");
+        //    if (pgv != null)
+        //    {
+        //        _gridViewScrollBar = FindControl(pgv.Controls, typeof(VScrollBar)) as VScrollBar;
+        //        if (_gridViewScrollBar != null)
+        //            _gridViewScrollBar.Value = 0;
+        //        //// Reflection trickery to get a private/internal field
+        //        //// and method, scrollBar in this case
+        //        //Type type = pgv.GetType();
+        //        //FieldInfo f = FindField(type, "scrollBar");
+        //        //((ScrollBar)f.GetValue(pgv)).Value = 0;
+        //    }
+        //}
 
-        private static Control FindControl(
-            Control.ControlCollection controls, Type name)
-        {
-            foreach (Control control in controls)
-            {
-                Type t = control.GetType();
-                if (t == name)
-                    return control;
-            }
-            return null;
-        }
+        //private static Control FindControl(
+        //    Control.ControlCollection controls, Type name)
+        //{
+        //    foreach (Control control in controls)
+        //    {
+        //        Type t = control.GetType();
+        //        if (t == name)
+        //            return control;
+        //    }
+        //    return null;
+        //}
 
-        private static Control FindControl(
-            Control.ControlCollection controls, string name)
-        {
-            foreach (Control control in controls)
-            {
-                if (control.Text == name)
-                    return control;
-            }
-            return null;
-        }
+        //private static Control FindControl(
+        //    Control.ControlCollection controls, string name)
+        //{
+        //    foreach (Control control in controls)
+        //    {
+        //        if (control.Text == name)
+        //            return control;
+        //    }
+        //    return null;
+        //}
 
         //private static FieldInfo FindField(Type type, string field)
         //{

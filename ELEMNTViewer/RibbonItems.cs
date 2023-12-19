@@ -60,6 +60,7 @@ namespace RibbonLib.Controls
             SetQatEvents();
             MakeCheckControls();
             GetCheckedSettings();
+            TabGroupSettings.ContextAvailable = ContextAvailability.Available;
         }
 
         /// <summary>
@@ -441,24 +442,8 @@ namespace RibbonLib.Controls
 
         private void InitSettings()
         {
-            ToggleSettings.ExecuteEvent += ToggleSettings_ExecuteEvent;
             ButtonSaveSettings.ExecuteEvent += ButtonSaveSettings_ExecuteEvent;
             CheckLocalize.BooleanValue = settings.Localized;
-        }
-
-        private void ToggleSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
-        {
-            try
-            {
-                if (ToggleSettings.BooleanValue)
-                    TabGroupSettings.ContextAvailable = ContextAvailability.Available;
-                else
-                    TabGroupSettings.ContextAvailable = ContextAvailability.NotAvailable;
-            }
-            catch
-            {
-                throw;
-            }
         }
 
         private void GetCheckedSettings()
@@ -501,7 +486,6 @@ namespace RibbonLib.Controls
                 {
                     settings.AppWidth = _form.Width;
                     settings.AppHeight = _form.Height;
-                    settings.AppSizeWrite = true;
                 }
                 settings.Localized = CheckLocalize.BooleanValue;
 

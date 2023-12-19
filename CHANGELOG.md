@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Better readable font
 - German localized version
+- ToggleButton Settings removed, Settings Tab is always shown
 - Bugfixes
 
 ### ELEMNTViewer V2.4.2

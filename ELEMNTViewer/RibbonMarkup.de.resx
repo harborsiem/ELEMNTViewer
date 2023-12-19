@@ -555,15 +555,6 @@
   <data name="cmdGroupSettings_LabelTitle" xml:space="preserve">
     <value>Speichern</value>
   </data>
-  <data name="cmdTabGroupSettings_LabelTitle" xml:space="preserve">
-    <value>Einstellungen</value>
-  </data>
-  <data name="cmdToggleSettings_LabelTitle" xml:space="preserve">
-    <value>Einstellungen</value>
-  </data>
-  <data name="cmdToggleSettings_TooltipTitle" xml:space="preserve">
-    <value>Umschaltung Einstellungen</value>
-  </data>
   <data name="cmdSpinnerMapWidth_LabelTitle" xml:space="preserve">
     <value>Breite</value>
   </data>

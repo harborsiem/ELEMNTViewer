@@ -79,7 +79,7 @@ namespace ELEMNTViewer {
             this.ribbon.ResourceIdentifier = null;
             this.ribbon.ResourceName = "ELEMNTViewer.RibbonMarkup.ribbon";
             this.ribbon.ShortcutTableResourceName = null;
-            this.ribbon.Size = new System.Drawing.Size(1008, 23);
+            this.ribbon.Size = new System.Drawing.Size(1008, 116);
             this.ribbon.TabIndex = 2;
             // 
             // MainForm

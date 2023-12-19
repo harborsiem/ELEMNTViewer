@@ -63,7 +63,6 @@ namespace ELEMNTViewer
         public int MapWidth { get; set; } = 0;
         public int MapHeight { get; set; } = 0;
         public string FitPath { get; set; } = string.Empty;
-        public bool AppSizeWrite { get; set; } = false;
         public bool Localized { get; set; } = false;
 
         public bool Modified { get => _modified; set => _modified = value; }
@@ -273,17 +272,13 @@ namespace ELEMNTViewer
                     writer.WriteString(_appVersion);
                     writer.WriteEndElement();
 
-                    if (AppSizeWrite) {
-                        writer.WriteStartElement(Attributes.AppWidth);
-                        writer.WriteString(XmlConvert.ToString(AppWidth));
-                        writer.WriteEndElement();
+                    writer.WriteStartElement(Attributes.AppWidth);
+                    writer.WriteString(XmlConvert.ToString(AppWidth));
+                    writer.WriteEndElement();
 
-                        writer.WriteStartElement(Attributes.AppHeight);
-                        writer.WriteString(XmlConvert.ToString(AppHeight));
-                        writer.WriteEndElement();
-
-                        AppSizeWrite = false;
-                    }
+                    writer.WriteStartElement(Attributes.AppHeight);
+                    writer.WriteString(XmlConvert.ToString(AppHeight));
+                    writer.WriteEndElement();
 
                     writer.WriteStartElement(Attributes.MapWidth);
                     writer.WriteString(XmlConvert.ToString(MapWidth));
