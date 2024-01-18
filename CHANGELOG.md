@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### ELEMNTViewer V2.5.1
+
+#### Changed
+
+- Scrolling in zoomed chart improved
+- Bugfixes
+
 ### ELEMNTViewer V2.5.0
 
 #### Changed

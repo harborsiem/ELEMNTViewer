@@ -142,7 +142,7 @@
     <value>Tempo und Kadenz.</value>
   </data>
   <data name="cmdGroupChartClimbing_LabelTitle" xml:space="preserve">
-    <value>Klettern</value>
+    <value>Anstieg</value>
   </data>
   <data name="cmdGroupChartClimbing_TooltipDescription" xml:space="preserve">
     <value>Zeige Höhe und Steigung.</value>

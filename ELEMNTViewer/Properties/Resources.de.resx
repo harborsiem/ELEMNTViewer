@@ -391,10 +391,10 @@
     <value>Puls</value>
   </data>
   <data name="RS_LeftSmooth" xml:space="preserve">
-    <value>Links GT</value>
+    <value>Links G.T.</value>
   </data>
   <data name="RS_LeftTE" xml:space="preserve">
-    <value>Links DE</value>
+    <value>Links D.E.</value>
   </data>
   <data name="RS_LRBalance" xml:space="preserve">
     <value>LR Balance</value>
@@ -403,10 +403,10 @@
     <value>Leistung</value>
   </data>
   <data name="RS_RightSmooth" xml:space="preserve">
-    <value>Rechts GT</value>
+    <value>Rechts G.T.</value>
   </data>
   <data name="RS_RightTE" xml:space="preserve">
-    <value>Rechts DE</value>
+    <value>Rechts D.E.</value>
   </data>
   <data name="RS_Speed" xml:space="preserve">
     <value>Tempo</value>

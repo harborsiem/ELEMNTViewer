@@ -43,17 +43,25 @@ namespace ELEMNTViewer
             FormClosed += MainForm_FormClosed;
             ribbon.RibbonHeightChanged += Ribbon_RibbonHeightChanged;
 
+            chart.AxisViewChanging += Chart_AxisViewChanging;
             ChartArea area = chart.ChartAreas["ChartArea1"];
             area.AxisX.TitleFont = this.Font;
             area.AxisY.TitleFont = this.Font;
             chart.Legends[0].Font = this.Font;
-            //chart.Series[0].Font = this.Font;
-            //chart.Series[1].Font = Font;
-            //chart.Series[2].Font = Font;
             area.AxisX.LabelStyle.Font = this.Font;
             area.AxisY.LabelStyle.Font = this.Font;
 
             //new Test();
+        }
+
+        private void Chart_AxisViewChanging(object sender, ViewEventArgs e)
+        {
+            if (e.NewSizeType == DateTimeIntervalType.Number && e.NewSize != double.NaN)
+            {
+                AxisScaleView view = e.ChartArea.AxisX.ScaleView;
+                view.SmallScrollSizeType = DateTimeIntervalType.Number;
+                view.SmallScrollSize = e.NewSize;
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
