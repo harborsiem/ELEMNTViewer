@@ -265,13 +265,13 @@
     <value>Display heart rate [bpm].</value>
   </data>
   <data name="cmdButtonAltitude_LabelTitle" xml:space="preserve">
-    <value>Altitude</value>
+    <value>Elevation</value>
   </data>
   <data name="cmdButtonAltitude_TooltipTitle" xml:space="preserve">
-    <value>Altitude</value>
+    <value>Elevation</value>
   </data>
   <data name="cmdButtonAltitude_TooltipDescription" xml:space="preserve">
-    <value>Altitude [m].</value>
+    <value>Elevation [m].</value>
   </data>
   <data name="cmdButtonGrade_LabelTitle" xml:space="preserve">
     <value>Grade</value>

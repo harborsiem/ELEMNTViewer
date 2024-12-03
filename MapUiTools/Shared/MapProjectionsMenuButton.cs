@@ -1,38 +1,49 @@
 ﻿// XAML Map Control - https://github.com/ClemensFischer/XAML-Map-Control
-// Copyright © 2023 Clemens Fischer
+// Copyright © 2024 Clemens Fischer
 // Licensed under the Microsoft Public License (Ms-PL)
 
+using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Diagnostics;
 using System.Linq;
-#if WINUI
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Markup;
+#if WPF
+using System.Windows;
+using System.Windows.Markup;
 #elif UWP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Markup;
-#else
-using System.Windows;
-using System.Windows.Markup;
+#elif WINUI
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Markup;
+#elif AVALONIA
+using Avalonia.Interactivity;
+using Avalonia.Metadata;
+using DependencyProperty = Avalonia.AvaloniaProperty;
+using FrameworkElement = Avalonia.Controls.Control;
 #endif
 
 namespace MapControl.UiTools
 {
-#if WINUI || UWP
-    [ContentProperty(Name = nameof(Projection))]
-#else
+#if WPF
     [ContentProperty(nameof(Projection))]
+#elif UWP || WINUI
+    [ContentProperty(Name = nameof(Projection))]
 #endif
     public class MapProjectionItem
     {
-        public string Text { get; set; }
+#if AVALONIA
+        [Content]
+#endif
         public string Projection { get; set; }
+
+        public string Text { get; set; }
     }
 
-#if WINUI || UWP
-    [ContentProperty(Name = nameof(MapProjections))]
-#else
+#if WPF
     [ContentProperty(nameof(MapProjections))]
+#elif UWP || WINUI
+    [ContentProperty(Name = nameof(MapProjections))]
 #endif
     public class MapProjectionsMenuButton : MenuButton
     {
@@ -44,9 +55,9 @@ namespace MapControl.UiTools
             ((INotifyCollectionChanged)MapProjections).CollectionChanged += (s, e) => InitializeMenu();
         }
 
-        public static readonly DependencyProperty MapProperty = DependencyProperty.Register(
-            nameof(Map), typeof(MapBase), typeof(MapProjectionsMenuButton),
-            new PropertyMetadata(null, (o, e) => ((MapProjectionsMenuButton)o).InitializeMenu()));
+        public static readonly DependencyProperty MapProperty =
+            DependencyPropertyHelper.Register<MapProjectionsMenuButton, MapBase>(nameof(Map), null,
+                (button, oldValue, newValue) => button.InitializeMenu());
 
         public MapBase Map
         {
@@ -54,6 +65,9 @@ namespace MapControl.UiTools
             set => SetValue(MapProperty, value);
         }
 
+#if AVALONIA
+        [Content]
+#endif
         public Collection<MapProjectionItem> MapProjections { get; } = new ObservableCollection<MapProjectionItem>();
 
         private void InitializeMenu()
@@ -88,8 +102,15 @@ namespace MapControl.UiTools
         {
             if (selectedProjection != projection)
             {
-                selectedProjection = projection;
-                Map.MapProjection = MapProjection.Factory.GetProjection(selectedProjection);
+                try
+                {
+                    Map.MapProjection = MapProjectionFactory.Instance.GetProjection(projection);
+                    selectedProjection = projection;
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"{nameof(MapProjectionFactory)}: {ex.Message}");
+                }
             }
 
             UpdateCheckedStates();

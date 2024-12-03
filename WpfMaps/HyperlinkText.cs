@@ -1,5 +1,5 @@
-// XAML Map Control - https://github.com/ClemensFischer/XAML-Map-Control
-// Copyright © 2023 Clemens Fischer
+﻿// XAML Map Control - https://github.com/ClemensFischer/XAML-Map-Control
+// Copyright © 2024 Clemens Fischer
 // Licensed under the Microsoft Public License (Ms-PL)
 
 using System;

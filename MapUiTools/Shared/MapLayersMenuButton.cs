@@ -1,57 +1,68 @@
 ﻿// XAML Map Control - https://github.com/ClemensFischer/XAML-Map-Control
-// Copyright © 2023 Clemens Fischer
+// Copyright © 2024 Clemens Fischer
 // Licensed under the Microsoft Public License (Ms-PL)
 
 using System;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
-#if WINUI
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Markup;
+using System.Threading.Tasks;
+#if WPF
+using System.Windows;
+using System.Windows.Markup;
 #elif UWP
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Markup;
-#else
-using System.Windows;
-using System.Windows.Markup;
+#elif WINUI
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Markup;
+#elif AVALONIA
+using Avalonia.Interactivity;
+using Avalonia.Metadata;
+using DependencyProperty = Avalonia.AvaloniaProperty;
+using FrameworkElement = Avalonia.Controls.Control;
 #endif
 
 namespace MapControl.UiTools
 {
-#if WINUI || UWP
-    [ContentProperty(Name = nameof(Layer))]
-#else
+#if WPF
     [ContentProperty(nameof(Layer))]
+#elif UWP || WINUI
+    [ContentProperty(Name = nameof(Layer))]
 #endif
     public class MapLayerItem
     {
-        public string Text { get; set; }
-        public UIElement Layer { get; set; }
-        public Func<UIElement> LayerFactory { get; set; }
+#if AVALONIA
+        [Content]
+#endif
+        public FrameworkElement Layer { get; set; }
 
-        public UIElement GetLayer() => Layer ?? (Layer = LayerFactory?.Invoke());
+        public string Text { get; set; }
+
+        public Func<Task<FrameworkElement>> LayerFactory { get; set; }
+
+        public async Task<FrameworkElement> GetLayer() => Layer ?? (Layer = await LayerFactory?.Invoke());
     }
 
-#if WINUI || UWP
-    [ContentProperty(Name = nameof(MapLayers))]
-#else
+#if WPF
     [ContentProperty(nameof(MapLayers))]
+#elif UWP || WINUI
+    [ContentProperty(Name = nameof(MapLayers))]
 #endif
     public class MapLayersMenuButton : MenuButton
     {
-        private UIElement selectedLayer;
+        private FrameworkElement selectedLayer;
 
         public MapLayersMenuButton()
             : base("\uE81E")
         {
-            ((INotifyCollectionChanged)MapLayers).CollectionChanged += (s, e) => InitializeMenu();
-            ((INotifyCollectionChanged)MapOverlays).CollectionChanged += (s, e) => InitializeMenu();
+            ((INotifyCollectionChanged)MapLayers).CollectionChanged += async (s, e) => await InitializeMenu();
+            ((INotifyCollectionChanged)MapOverlays).CollectionChanged += async (s, e) => await InitializeMenu();
         }
 
-        public static readonly DependencyProperty MapProperty = DependencyProperty.Register(
-            nameof(Map), typeof(MapBase), typeof(MapLayersMenuButton),
-            new PropertyMetadata(null, (o, e) => ((MapLayersMenuButton)o).InitializeMenu()));
+        public static readonly DependencyProperty MapProperty =
+            DependencyPropertyHelper.Register<MapLayersMenuButton, MapBase>(nameof(Map), null,
+                async (button, oldValue, newValue) => await button.InitializeMenu());
 
         public MapBase Map
         {
@@ -59,11 +70,14 @@ namespace MapControl.UiTools
             set => SetValue(MapProperty, value);
         }
 
+#if AVALONIA
+        [Content]
+#endif
         public Collection<MapLayerItem> MapLayers { get; } = new ObservableCollection<MapLayerItem>();
 
         public Collection<MapLayerItem> MapOverlays { get; } = new ObservableCollection<MapLayerItem>();
 
-        private void InitializeMenu()
+        private async Task InitializeMenu()
         {
             if (Map != null)
             {
@@ -91,28 +105,28 @@ namespace MapControl.UiTools
 
                 if (initialLayer != null)
                 {
-                    SetMapLayer(initialLayer);
+                    SetMapLayer(await initialLayer);
                 }
             }
         }
 
-        private void MapLayerClicked(object sender, RoutedEventArgs e)
+        private async void MapLayerClicked(object sender, RoutedEventArgs e)
         {
             var item = (FrameworkElement)sender;
             var mapLayerItem = (MapLayerItem)item.Tag;
 
-            SetMapLayer(mapLayerItem.GetLayer());
+            SetMapLayer(await mapLayerItem.GetLayer());
         }
 
-        private void MapOverlayClicked(object sender, RoutedEventArgs e)
+        private async void MapOverlayClicked(object sender, RoutedEventArgs e)
         {
             var item = (FrameworkElement)sender;
             var mapLayerItem = (MapLayerItem)item.Tag;
 
-            ToggleMapOverlay(mapLayerItem.GetLayer());
+            ToggleMapOverlay(await mapLayerItem.GetLayer());
         }
 
-        private void SetMapLayer(UIElement layer)
+        private void SetMapLayer(FrameworkElement layer)
         {
             if (selectedLayer != layer)
             {
@@ -123,7 +137,7 @@ namespace MapControl.UiTools
             UpdateCheckedStates();
         }
 
-        private void ToggleMapOverlay(UIElement layer)
+        private void ToggleMapOverlay(FrameworkElement layer)
         {
             if (Map.Children.Contains(layer))
             {

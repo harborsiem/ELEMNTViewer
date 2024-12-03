@@ -2,6 +2,14 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### ELEMNTViewer V2.5.2
+
+#### Changed
+
+- WpfMaps updated to version 12.0.0
+- WindowsRibbon version V2.16.1
+- Bugfixes
+
 ### ELEMNTViewer V2.5.1
 
 #### Changed

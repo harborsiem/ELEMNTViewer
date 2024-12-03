@@ -1,16 +1,13 @@
 using System;
 using System.Diagnostics;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using MapControl;
-using MapControl.Caching;
-using MapControl.UiTools;
-using PropResources = WpfMaps.Properties.Resources;
-using System.Windows.Controls;
+using MapControl.UiTools; //harbor: using added
+using PropResources = WpfMaps.Properties.Resources; //harbor: using added
 
 namespace WpfMaps
 {
@@ -21,57 +18,27 @@ namespace WpfMaps
     {
         static WpfMap()
         {
-            TileImageLoader.Cache = new ImageFileCache(TileImageLoader.DefaultCacheFolder);
-            //TileImageLoader.Cache = new FileDbCache(TileImageLoader.DefaultCacheFolder);
-            //TileImageLoader.Cache = new SQLiteCache(TileImageLoader.DefaultCacheFolder);
-            //TileImageLoader.Cache = null;
+            //MapProjectionFactory.Instance = new MapControl.Projections.GeoApiProjectionFactory();
 
-            var bingMapsApiKeyPath = Path.Combine(
-                Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "MapControl", "BingMapsApiKey.txt");
-
-            if (File.Exists(bingMapsApiKeyPath))
-            {
-                BingMapsTileLayer.ApiKey = File.ReadAllText(bingMapsApiKeyPath)?.Trim();
-            }
+            //TileImageLoader.Cache = new MapControl.Caching.ImageFileCache(TileImageLoader.DefaultCacheFolder);
+            //TileImageLoader.Cache = new MapControl.Caching.FileDbCache(TileImageLoader.DefaultCacheFolder);
+            //TileImageLoader.Cache = new MapControl.Caching.SQLiteCache(TileImageLoader.DefaultCacheFolder);
+            //TileImageLoader.Cache = new RedisCache(Options.Create(new RedisCacheOptions
+            //{
+            //    Configuration = "yoga:6379",
+            //    InstanceName = "MapTileCache/"
+            //}));
         }
 
         public WpfMap()
         {
             InitializeComponent();
 
-            if (!string.IsNullOrEmpty(BingMapsTileLayer.ApiKey))
-            {
-                mapLayersMenuButton.MapLayers.Add(new MapLayerItem
-                {
-                    Text = "Bing Maps Road",
-                    Layer = (UIElement)Resources["BingMapsRoad"]
-                });
-
-                mapLayersMenuButton.MapLayers.Add(new MapLayerItem
-                {
-                    Text = "Bing Maps Aerial",
-                    Layer = (UIElement)Resources["BingMapsAerial"]
-                });
-
-                mapLayersMenuButton.MapLayers.Add(new MapLayerItem
-                {
-                    Text = "Bing Maps Aerial with Labels",
-                    Layer = (UIElement)Resources["BingMapsHybrid"]
-                });
-            }
-
+            AddBingMapsLayers();
             AddTestLayers();
-
-            if (TileImageLoader.Cache is ImageFileCache cache)
-            {
-                Loaded += async (s, e) =>
-                {
-                    await Task.Delay(2000);
-                    await cache.Clean();
-                };
-            }
         }
 
+        //harbor: method added
         protected override void OnSourceInitialized(EventArgs e)
         {
             base.OnSourceInitialized(e);
@@ -87,7 +54,13 @@ namespace WpfMaps
             }
         }
 
+        partial void AddBingMapsLayers();
         partial void AddTestLayers();
+
+        private void MapItemsControlSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Debug.WriteLine("SelectedItems: " + string.Join(", ", ((MapItemsControl)sender).SelectedItems.OfType<PointItem>().Select(item => item.Name)));
+        }
 
         private void ResetHeadingButtonClick(object sender, RoutedEventArgs e)
         {
@@ -96,7 +69,7 @@ namespace WpfMaps
 
         private async void MapMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ClickCount == 2)
+            if (e.ClickCount == 2 && e.Source == map)
             {
                 map.TargetCenter = map.ViewToLocation(e.GetPosition(map));
             }
@@ -111,8 +84,9 @@ namespace WpfMaps
         {
             var location = map.ViewToLocation(e.GetPosition(map));
 
-            if (location != null)
+            if (location != null && map.CaptureMouse())
             {
+                map.Cursor = Cursors.Cross;
                 measurementLine.Visibility = Visibility.Visible;
                 measurementLine.Locations = new LocationCollection(location);
             }
@@ -120,6 +94,8 @@ namespace WpfMaps
 
         private void MapMouseRightButtonUp(object sender, MouseButtonEventArgs e)
         {
+            map.ReleaseMouseCapture();
+            map.Cursor = null;
             measurementLine.Visibility = Visibility.Collapsed;
             measurementLine.Locations = null;
         }
@@ -191,7 +167,7 @@ namespace WpfMaps
                 lonHemisphere, longitude / 60000, (longitude % 60000) / 1000d);
         }
 
-        private string GetDistanceText(double distance)
+        private static string GetDistanceText(double distance)
         {
             var unit = PropResources.Meter;
 

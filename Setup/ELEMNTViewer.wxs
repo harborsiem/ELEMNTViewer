@@ -7,7 +7,7 @@
     lightArgs: "<projectname>.wixobj" -out "<projectname>.msi" -ext WixUtilExtension -ext WixUIExtension -ext WixNetFxExtension
 -->
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-  <Product Id="{C871853D-16FA-4618-84BB-BDDCD1CCC4DD}" Name="ElemntViewer" Language="1033" Version="2.5.1.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
+  <Product Id="{95151184-C8E5-45D3-BBFF-C548CFBDFCAE}" Name="ElemntViewer" Language="1033" Version="2.5.2.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688">
     <Package InstallerVersion="301" Compressed="yes" Platform="x86" InstallScope="perMachine" Description="ElemntViewer" Comments="ELEMNTViewer Install" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -17,6 +17,7 @@
       <ComponentGroupRef Id="ProductComponents1" />
       <ComponentGroupRef Id="ProductComponents2" />
 	  <ComponentGroupRef Id="ProductComponents3" />
+	  <ComponentGroupRef Id="ProductComponents4" />
 	</Feature>
     <UI />
     <UIRef Id="WixUI_Minimal" />
@@ -72,6 +73,27 @@
 				<File Id="Fi.DE_ELEMNTViewer_RES" Name="ELEMNTViewer.resources.dll" Source="..\ELEMNTViewer\bin\Release\de\ELEMNTViewer.resources.dll" KeyPath="yes" Checksum="yes" />
 				<File Id="Fi.DE_WpfMaps_RES" Name="WpfMaps.resources.dll" Source="..\WpfMaps\bin\Release\de\WpfMaps.resources.dll" Checksum="yes" />
 			</Component>
+		</ComponentGroup>
+	</Fragment>
+	
+	<Fragment>
+	    <ComponentGroup Id="ProductComponents4" Directory="Di.INSTALLDIR">
+			<Component Id="C.SystemFiles" Guid="2A89D4F6-A9A8-4242-A711-39A330A0F3D0">
+				<File Id="Fi.AsyncInterfaces" Name="Microsoft.Bcl.AsyncInterfaces.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll" Checksum="yes" />
+				<File Id="Fi.Caching.Abstractions" Name="Microsoft.Extensions.Caching.Abstractions.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Caching.Abstractions.dll" Checksum="yes" />
+				<File Id="Fi.Caching.Memory" Name="Microsoft.Extensions.Caching.Memory.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Caching.Memory.dll" Checksum="yes" />
+				<File Id="Fi.DependencyInjection.Abstractions" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll" Checksum="yes" />
+				<File Id="Fi.Logging.Abstractions" Name="Microsoft.Extensions.Logging.Abstractions.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll" Checksum="yes" />
+				<File Id="Fi.Options" Name="Microsoft.Extensions.Options.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Options.dll" Checksum="yes" />
+				<File Id="Fi.Primitives" Name="Microsoft.Extensions.Primitives.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Primitives.dll" Checksum="yes" />
+				<File Id="Fi.Buffers" Name="System.Buffers.dll" Source="..\ElemntViewer\bin\Release\System.Buffers.dll" Checksum="yes" />
+				<File Id="Fi.DiagnosticSource" Name="System.Diagnostics.DiagnosticSource.dll" Source="..\ElemntViewer\bin\Release\System.Diagnostics.DiagnosticSource.dll" Checksum="yes" />
+				<File Id="Fi.Memory" Name="System.Memory.dll" Source="..\ElemntViewer\bin\Release\System.Memory.dll" Checksum="yes" />
+				<File Id="Fi.Vectors" Name="System.Numerics.Vectors.dll" Source="..\ElemntViewer\bin\Release\System.Numerics.Vectors.dll" Checksum="yes" />
+				<File Id="Fi.Unsafe" Name="System.Runtime.CompilerServices.Unsafe.dll" Source="..\ElemntViewer\bin\Release\System.Runtime.CompilerServices.Unsafe.dll" Checksum="yes" />
+				<File Id="Fi.Tasks.Extensions" Name="System.Threading.Tasks.Extensions.dll" Source="..\ElemntViewer\bin\Release\System.Threading.Tasks.Extensions.dll" Checksum="yes" />
+				<File Id="Fi.ValueTuple" Name="System.ValueTuple.dll" Source="..\ElemntViewer\bin\Release\System.ValueTuple.dll" Checksum="yes" />
+			</Component>	
 		</ComponentGroup>
 	</Fragment>
 </Wix>
