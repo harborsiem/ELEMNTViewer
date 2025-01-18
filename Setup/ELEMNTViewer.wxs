@@ -21,8 +21,8 @@
 	</Feature>
     <UI />
     <UIRef Id="WixUI_Minimal" />
-    <PropertyRef Id="WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED" />
-    <Condition Message="This application requires .NET Framework 4.6.2. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR WIX_IS_NETFRAMEWORK_462_OR_LATER_INSTALLED]]></Condition>
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED" />
+    <Condition Message="This application requires .NET Framework 4.8. Please install the .NET Framework then run this installer again."><![CDATA[Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED]]></Condition>
     <Icon Id="MainIcon.ico" SourceFile="..\ELEMNTViewer\Resources\AppIcon.ico" />
     <Property Id="ARPPRODUCTICON" Value="MainIcon.ico" />
     <Property Id="ARPHELPLINK" Value="https://github.com/harborsiem/ELEMNTViewer" />

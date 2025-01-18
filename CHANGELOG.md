@@ -6,7 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Changed
 
-- WpfMaps updated to version 12.0.0
+- .NET Framework updated to 4.8
+- WpfMaps updated to version 12.1.0
 - WindowsRibbon version V2.16.1
 - Bugfixes
 

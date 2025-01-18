@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
 using MapControl;
 using MapControl.UiTools; //harbor: using added
 using PropResources = WpfMaps.Properties.Resources; //harbor: using added
@@ -34,7 +35,7 @@ namespace WpfMaps
         {
             InitializeComponent();
 
-            AddBingMapsLayers();
+            AddMapTilerLayers();
             AddTestLayers();
         }
 
@@ -54,7 +55,7 @@ namespace WpfMaps
             }
         }
 
-        partial void AddBingMapsLayers();
+        partial void AddMapTilerLayers();
         partial void AddTestLayers();
 
         private void MapItemsControlSelectionChanged(object sender, SelectionChangedEventArgs e)

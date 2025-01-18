@@ -5,7 +5,7 @@
 
 **Welcome Road bike rider and other cyclist with a Wahoo ELEMNT (or Bolt, Roam) Bike Computer**
 
-You can analyze your workout and you can see detailed information about your workout with this App on a Windows Computer (Windows 7 and newer versions).
+You can analyze your workout and you can see detailed information about your workout with this App on a Windows Computer (Windows 7 and later versions).
 
 This App can read the *.fit files of the Bike-Computer Wahoo ELEMNT, ELEMNT Bolt and ELEMNT Roam. In the *.fit file are all informations about your workout. It shows the contents in a graphical chart view. The Session-, Laps-values and some other values are shown in tabular manner. In an OpenStreetMap window you can see the route of your workout. See an example fit file in the Example folder.
 
@@ -19,7 +19,7 @@ ELEMNTViewer uses the Fit Dll from "ThisIsAnt FitSDK" for decoding of *.fit file
 
 Minimum Display resolution is 1024 x 768.
 
-ELEMNTViewer is developed using Visual Studio Community and uses .NET-Framework 4.6.2
+ELEMNTViewer is developed using Visual Studio Community and uses .NET-Framework 4.8
 
 
 
@@ -46,7 +46,7 @@ ELEMNTViewer is developed using Visual Studio Community and uses .NET-Framework 
 - Statistic values for summaries of distance and ascent per year or month.
 
 ## Installation
-Requirement for installation is the Microsoft .NET Framework 4.6.2 or any higher version. If it is not installed on your computer then you can download it from a Microsoft page. Install this first.
+Requirement for installation is the Microsoft .NET Framework 4.8 or any higher version. If it is not installed on your computer then you can download it from a Microsoft page. Install this first.
 
 You also need Microsoft .NET Framework 3.5. In Windows 10 you have to go to the Control Panel > Programs > Programs and Features. On the left side click to "Turn Windows features on or off". You get a new dialog. Here you have to select ".NET Framework 3.5 (includes ...)".
 

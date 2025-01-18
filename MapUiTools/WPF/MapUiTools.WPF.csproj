@@ -4,14 +4,14 @@
         <UseWPF>true</UseWPF>
         <RootNamespace>MapControl.UiTools</RootNamespace>
         <AssemblyTitle>XAML Map Control UI Tools Library for WPF</AssemblyTitle>
+        <DefineConstants>WPF</DefineConstants>
         <Product>XAML Map Control</Product>
-        <Version>12.0.0</Version>
+        <Version>12.1.0</Version>
         <Authors>Clemens Fischer</Authors>
-        <Copyright>Copyright © 2024 Clemens Fischer</Copyright>
+        <Copyright>Copyright © Clemens Fischer</Copyright>
         <SignAssembly>true</SignAssembly>
         <AssemblyOriginatorKeyFile>..\MapControl.snk</AssemblyOriginatorKeyFile>
         <DelaySign>false</DelaySign>
-        <DefineConstants>WPF</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="XAML.MapControl.WPF" Version="12.0.0" />
+      <PackageReference Include="XAML.MapControl.WPF" Version="12.1.0" />
     </ItemGroup>
 
 </Project>
