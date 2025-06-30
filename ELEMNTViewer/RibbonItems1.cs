@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 using ELEMNTViewer;
-using RibbonLib.Interop;
 
-namespace RibbonLib.Controls
+namespace WinForms.Ribbon
 {
     partial class RibbonItems1
     {
@@ -30,16 +29,16 @@ namespace RibbonLib.Controls
             ComboAntName.Enabled = false;
             ComboYear.ItemsSourceReady += ComboYear_ItemsSourceReady;
             ComboMonth.ItemsSourceReady += ComboMonth_ItemsSourceReady;
-            CheckMonthly.ExecuteEvent += CheckMonthly_ExecuteEvent;
-            CheckAntDevice.ExecuteEvent += CheckAntDevice_ExecuteEvent;
-            ComboYear.ExecuteEvent += ComboYear_ExecuteEvent;
-            ComboMonth.ExecuteEvent += ComboMonth_ExecuteEvent;
-            ComboAnt.ExecuteEvent += ComboAnt_ExecuteEvent;
+            CheckMonthly.CheckedChanged += CheckMonthly_ExecuteEvent;
+            CheckAntDevice.CheckedChanged += CheckAntDevice_ExecuteEvent;
+            ComboYear.SelectedIndexChanged += ComboYear_ExecuteEvent;
+            ComboMonth.SelectedIndexChanged += ComboMonth_ExecuteEvent;
+            ComboAnt.SelectedIndexChanged += ComboAnt_ExecuteEvent;
         }
 
-        private void ComboAnt_ExecuteEvent(object sender, Events.ExecuteEventArgs e)
+        private void ComboAnt_ExecuteEvent(object sender, EventArgs e)
         {
-            if (ComboAnt.SelectedItem != Constants.UI_Collection_InvalidIndex)
+            if (ComboAnt.SelectedItem != -1)
             {
                 ComboAntName.SelectedItem = ComboAnt.SelectedItem;
                 if (CheckAntDevice.BooleanValue)
@@ -48,12 +47,12 @@ namespace RibbonLib.Controls
                     _form.ShowStatisticValues(SelectedYear, SelectedMonth, SelectedAntId);
             }
             else
-                ComboAntName.SelectedItem = Constants.UI_Collection_InvalidIndex;
+                ComboAntName.SelectedItem = -1;
         }
 
-        private void ComboYear_ExecuteEvent(object sender, Events.ExecuteEventArgs e)
+        private void ComboYear_ExecuteEvent(object sender, GalleryItemEventArgs e)
         {
-            if (ComboYear.SelectedItem != Constants.UI_Collection_InvalidIndex)
+            if (ComboYear.SelectedItem != -1)
             {
                 SelectedYear = int.Parse(ComboYear.StringValue);
                 InitComboAntDevices(SelectedYear);
@@ -61,16 +60,16 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ComboMonth_ExecuteEvent(object sender, Events.ExecuteEventArgs e)
+        private void ComboMonth_ExecuteEvent(object sender, GalleryItemEventArgs e)
         {
             SelectedMonth = (int)ComboMonth.SelectedItem + 1;
             if (SelectedYear != 0)
                 _form.ShowStatisticValues(SelectedYear, SelectedMonth, SelectedAntId);
         }
 
-        private void CheckAntDevice_ExecuteEvent(object sender, Events.ExecuteEventArgs e)
+        private void CheckAntDevice_ExecuteEvent(object sender, EventArgs e)
         {
-            if (CheckAntDevice.BooleanValue && ComboAnt.SelectedItem != Constants.UI_Collection_InvalidIndex)
+            if (CheckAntDevice.BooleanValue && ComboAnt.SelectedItem != -1)
                 SelectedAntId = ushort.Parse(ComboAnt.StringValue);
             else
                 SelectedAntId = 0;
@@ -78,7 +77,7 @@ namespace RibbonLib.Controls
                 _form.ShowStatisticValues(SelectedYear, SelectedMonth, SelectedAntId);
         }
 
-        private void CheckMonthly_ExecuteEvent(object sender, Events.ExecuteEventArgs e)
+        private void CheckMonthly_ExecuteEvent(object sender, EventArgs e)
         {
             byte[] modes;
             if (CheckMonthly.BooleanValue)
@@ -98,18 +97,18 @@ namespace RibbonLib.Controls
 
         private void ComboMonth_ItemsSourceReady(object sender, EventArgs e)
         {
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "1", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "2", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "3", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "4", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "5", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "6", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "7", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "8", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "9", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "10", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "11", CategoryID = Constants.UI_Collection_InvalidIndex });
-            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "12", CategoryID = Constants.UI_Collection_InvalidIndex });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "1", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "2", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "3", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "4", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "5", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "6", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "7", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "8", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "9", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "10", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "11", CategoryId = -1 });
+            ComboMonth.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = "12", CategoryId = -1 });
         }
 
         private void ComboYear_ItemsSourceReady(object sender, EventArgs e)
@@ -117,7 +116,7 @@ namespace RibbonLib.Controls
             Summaries summaries = DataManager.Instance.Summaries;
             foreach (int year in summaries.SummaryYears)
             {
-                ComboYear.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = year.ToString(), CategoryID = Constants.UI_Collection_InvalidIndex });
+                ComboYear.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = year.ToString(), CategoryId = -1 });
             }
             if (summaries.SummaryYears.Count > 0)
             {
@@ -137,8 +136,8 @@ namespace RibbonLib.Controls
             List<AntDevice> antdevices = summaries.GetAntDevices(year);
             foreach (AntDevice device in antdevices)
             {
-                ComboAnt.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = device.Id.ToString(), CategoryID = Constants.UI_Collection_InvalidIndex });
-                ComboAntName.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = device.ProductName, CategoryID = Constants.UI_Collection_InvalidIndex });
+                ComboAnt.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = device.Id.ToString(), CategoryId = -1 });
+                ComboAntName.GalleryItemItemsSource.Add(new GalleryItemPropertySet() { Label = device.ProductName, CategoryId = -1 });
             }
         }
 

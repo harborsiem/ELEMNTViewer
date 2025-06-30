@@ -1,5 +1,6 @@
 ﻿using MapControl;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 
 namespace WpfMaps
@@ -15,11 +16,13 @@ namespace WpfMaps
         public LocationCollection Locations { get; set; }
     }
 
-    public class MapViewModel
+    public class MapViewModel : INotifyPropertyChanged
     {
         public List<PointItem> Points { get; } = new List<PointItem>();
         public List<PointItem> Pushpins { get; } = new List<PointItem>();
         public List<PolylineItem> Polylines { get; } = new List<PolylineItem>();
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         private PointItem selectedPushpin;
 
@@ -29,6 +32,7 @@ namespace WpfMaps
             set
             {
                 selectedPushpin = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SelectedPushpin)));
                 Debug.WriteLine("SelectedPushpin: " + (selectedPushpin?.Name ?? "None"));
             }
         }

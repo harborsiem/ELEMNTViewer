@@ -9,10 +9,8 @@
 //------------------------------------------------------------------------------
 
 using System;
-using RibbonLib;
-using RibbonLib.Controls;
 
-namespace RibbonLib.Controls
+namespace WinForms.Ribbon
 {
     partial class RibbonItems1
     {
@@ -34,7 +32,7 @@ namespace RibbonLib.Controls
 
         // ContextPopup CommandName
 
-        public Ribbon Ribbon { get; private set; }
+        public RibbonStrip Ribbon { get; private set; }
         public RibbonApplicationMenu DialogApplication { get; private set; }
         public RibbonTab TabStart { get; private set; }
         public RibbonGroup GroupSelectFunction { get; private set; }
@@ -48,7 +46,7 @@ namespace RibbonLib.Controls
         public RibbonComboBox ComboAnt { get; private set; }
         public RibbonComboBox ComboAntName { get; private set; }
 
-        public RibbonItems1(Ribbon ribbon)
+        public RibbonItems1(RibbonStrip ribbon)
         {
             if (ribbon == null)
                 throw new ArgumentNullException(nameof(ribbon), "Parameter is null");

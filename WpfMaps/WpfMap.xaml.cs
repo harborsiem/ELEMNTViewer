@@ -5,8 +5,8 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
 using MapControl;
+using Microsoft.Extensions.Logging;
 using MapControl.UiTools; //harbor: using added
 using PropResources = WpfMaps.Properties.Resources; //harbor: using added
 
@@ -17,25 +17,19 @@ namespace WpfMaps
     /// </summary>
     public partial class WpfMap : Window
     {
-        static WpfMap()
-        {
-            //MapProjectionFactory.Instance = new MapControl.Projections.GeoApiProjectionFactory();
-
-            //TileImageLoader.Cache = new MapControl.Caching.ImageFileCache(TileImageLoader.DefaultCacheFolder);
-            //TileImageLoader.Cache = new MapControl.Caching.FileDbCache(TileImageLoader.DefaultCacheFolder);
-            //TileImageLoader.Cache = new MapControl.Caching.SQLiteCache(TileImageLoader.DefaultCacheFolder);
-            //TileImageLoader.Cache = new RedisCache(Options.Create(new RedisCacheOptions
-            //{
-            //    Configuration = "yoga:6379",
-            //    InstanceName = "MapTileCache/"
-            //}));
-        }
-
         public WpfMap()
         {
+            //var loggerFactory = LoggerFactory.Create(builder => builder.AddDebug());
+            //ImageLoader.LoggerFactory = loggerFactory;
+
+            //var tileCache = new MapControl.Caching.ImageFileCache(TileImageLoader.DefaultCacheFolder, loggerFactory);
+            //TileImageLoader.Cache = tileCache;
+            //Closed += (s, e) => tileCache.Dispose();
+
             InitializeComponent();
 
-            AddMapTilerLayers();
+            //sampleOverlayMenuItem.MapLayerFactory = async () => await GroundOverlay.CreateAsync("etna.kml");
+
             AddTestLayers();
         }
 
@@ -49,13 +43,11 @@ namespace WpfMaps
             {
                 if (((string)item.Header == PropResources.Graticule) || ((string)item.Header == PropResources.Scale))
                 {
-                    item.IsChecked = true;
-                    map.Children.Add(((MapLayerItem)item.Tag).Layer);
+                    ((MapOverlayMenuItem)item).Execute(map);
                 }
             }
         }
 
-        partial void AddMapTilerLayers();
         partial void AddTestLayers();
 
         private void MapItemsControlSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -136,12 +128,12 @@ namespace WpfMaps
             e.TranslationBehavior.DesiredDeceleration = 0.001;
         }
 
-        private void MapItemTouchDown(object sender, TouchEventArgs e)
-        {
-            var mapItem = (MapItem)sender;
-            mapItem.IsSelected = !mapItem.IsSelected;
-            e.Handled = true;
-        }
+        //private void MapItemTouchDown(object sender, TouchEventArgs e)
+        //{
+        //    var mapItem = (MapItem)sender;
+        //    mapItem.IsSelected = !mapItem.IsSelected;
+        //    e.Handled = true;
+        //}
 
         private static string GetLatLonText(Location location)
         {

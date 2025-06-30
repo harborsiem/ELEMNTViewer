@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.statisticRibbon = new RibbonLib.Ribbon();
+            this.statisticRibbon = new WinForms.Ribbon.RibbonStrip();
             this.propertyGrid = new System.Windows.Forms.PropertyGrid();
             this.SuspendLayout();
             // 
@@ -36,8 +36,7 @@
             // 
             this.statisticRibbon.Location = new System.Drawing.Point(0, 0);
             this.statisticRibbon.Name = "statisticRibbon";
-            this.statisticRibbon.ResourceIdentifier = null;
-            this.statisticRibbon.ResourceName = "ELEMNTViewer.RibbonMarkup1.ribbon";
+            this.statisticRibbon.MarkupResource = "ELEMNTViewer.RibbonMarkup1.ribbon";
             this.statisticRibbon.ShortcutTableResourceName = null;
             this.statisticRibbon.Size = new System.Drawing.Size(378, 116);
             this.statisticRibbon.TabIndex = 0;
@@ -72,7 +71,7 @@
 
         #endregion
 
-        private RibbonLib.Ribbon statisticRibbon;
+        private WinForms.Ribbon.RibbonStrip statisticRibbon;
         internal System.Windows.Forms.PropertyGrid propertyGrid;
     }
 }

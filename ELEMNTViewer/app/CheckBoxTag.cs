@@ -7,8 +7,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Reflection;
 using System.ComponentModel;
 using System.Drawing;
-using RibbonLib.Controls;
-using RibbonLib.Controls.Events;
+using WinForms.Ribbon;
 
 namespace ELEMNTViewer
 {
@@ -40,14 +39,14 @@ namespace ELEMNTViewer
                 Color = ConfigDefaults.GetColor(index),
                 Font = mainFont
             };
-            item.CheckBox.ExecuteEvent += ChartCheckBoxCheckedChanged;
+            item.CheckBox.CheckedChanged += ChartCheckBoxCheckedChanged;
             //this._index = index;
             _propertyFunc = PropertyNameToDelegate(propertyName);
             if (_smoothAvgAttribute != null)
             {
                 if (item.ComboBox != null)
                 {
-                    item.ComboBox.ExecuteEvent += SmoothChartComboBox_SelectedItemChanged;
+                    item.ComboBox.SelectedIndexChanged += SmoothChartComboBox_SelectedItemChanged;
                 }
 
                 _smoothing = new Smoothing(item.InitialSmooth);
@@ -59,7 +58,7 @@ namespace ELEMNTViewer
             s_lap = 0;
         }
 
-        public static void LapChanged(object sender, ExecuteEventArgs e)
+        public static void LapChanged(object sender, GalleryItemEventArgs e)
         {
             RibbonComboBox selectChartViewComboBox = sender as RibbonComboBox;
             if (selectChartViewComboBox == null)
@@ -98,7 +97,7 @@ namespace ELEMNTViewer
             ChartHelp.SetIntervals(span);
         }
 
-        private void SmoothChartComboBox_SelectedItemChanged(object sender, ExecuteEventArgs e)
+        private void SmoothChartComboBox_SelectedItemChanged(object sender, GalleryItemEventArgs e)
         {
             RibbonComboBox comboBox = sender as RibbonComboBox;
             string str = comboBox.StringValue;

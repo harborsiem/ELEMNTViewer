@@ -15,7 +15,7 @@ Auch *.gpx Dateien mit Routen (Tracks) und Wegpunkten können im ElemntViewer ab
 
 ELEMNTViewer ist Open Source Software, veröffentlicht unter der MIT License.
 
-ELEMNTViewer benutzt die Fit Dll von ThisIsAnt FitSDK zum Dekodieren der *.fit Files
+ELEMNTViewer benutzt die Fit Dll von ThisIsAnt (Garmin) FitSDK zum Dekodieren der *.fit Files
 
 Eine Bildschirmauflösung von mindestens 1024 x 768 muss vorhanden sein.
 
@@ -28,9 +28,10 @@ Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studi
 
 | Name                                                         | Author(s)                                            | Lizenz      |
 | ------------------------------------------------------------ | ---------------------------------------------------- | ----------- |
-| [FitSDK](https://www.thisisant.com/developer/resources/downloads/) | [ThisIsAnt](https://www.thisisant.com/)              | MIT License |
-| [Windows Ribbon](https://github.com/harborsiem/WindowsRibbon) | [harborsiem](https://github.com/harborsiem) & andere | MIT License |
+| [FitSDK](https://developer.garmin.com/fit/download/) | [ThisIsAnt](https://www.thisisant.com/)              | MIT License |
+| [WinForms Ribbon](https://github.com/harborsiem/WinForms-Ribbon) | [harborsiem](https://github.com/harborsiem) & andere | MIT License |
 | [XAML Map Control](https://github.com/ClemensFischer/XAML-Map-Control) | [ClemensFischer](https://github.com/ClemensFischer) | MS-PL License |
+
 ## Themen des ELEMNTViewer Programms
 
 - Session Anzeige 
@@ -46,11 +47,9 @@ Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studi
 ## Installation
 Voraussetzung für die Installation des Programms auf einem Windows-System ist das .NET Framework 4.8 oder eine höhere Version. Falls es noch nicht auf dem Rechner installiert ist, kann das .NET Framework 4.8 oder eine höhere Version von der Microsoft-Seite kostenfrei heruntergeladen und installiert werden.
 
-Man benötigt auch das Microsoft .NET Framework 3.5. In Windows 10 muss man die Systemsteuerung  > Programme  > Programme und Features aufrufen. Auf der linken Seite "Windows-Features aktivieren oder deaktivieren". Es erscheint ein neuer Dialog. Hier ist  ".NET Framework 3.5 (enthält ...)" auszuwählen.
-
 [Microsoft .NET Framework](http://www.microsoft.com/netframework)
 
-Entzippe das Setup von der Releases Seite. Danach erfolgt die Installation des Programms mit der Datei ELEMNTSetup.exe (in früheren Versionen ELEMNTViewer.msi) (Doppelklick im Datei-Explorer). Das Programm ist jetzt im Programmverzeichnis ELEMNTViewer installiert. Über den Eintrag ELEMNTViewer im Startmenu kann das Programm aufgerufen werden.
+Entzippe das Setup von der Releases Seite. Danach erfolgt die Installation des Programms mit der Datei ELEMNTSetup.msi (Doppelklick im Datei-Explorer). Das Programm ist jetzt im Programmverzeichnis ELEMNTViewer installiert. Über den Eintrag ELEMNTViewer im Startmenu kann das Programm aufgerufen werden.
 
 ## aktuelles Setup
 #### (in Zipdatei gepacktes Setup)

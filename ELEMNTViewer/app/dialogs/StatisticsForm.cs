@@ -8,8 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Resources = ELEMNTViewer.Properties.Resources;
-using RibbonLib;
-using RibbonLib.Controls;
+using WinForms.Ribbon;
 
 namespace ELEMNTViewer
 {

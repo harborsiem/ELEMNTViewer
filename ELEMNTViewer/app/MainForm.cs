@@ -10,8 +10,7 @@ using System.IO;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Reflection;
-using RibbonLib;
-using RibbonLib.Controls;
+using WinForms.Ribbon;
 
 namespace ELEMNTViewer
 {

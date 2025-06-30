@@ -26,7 +26,7 @@ namespace ELEMNTViewer {
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             this.chart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.ribbon = new RibbonLib.Ribbon();
+            this.ribbon = new WinForms.Ribbon.RibbonStrip();
             ((System.ComponentModel.ISupportInitialize)(this.chart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,8 +76,7 @@ namespace ELEMNTViewer {
             // 
             this.ribbon.Location = new System.Drawing.Point(0, 0);
             this.ribbon.Name = "ribbon";
-            this.ribbon.ResourceIdentifier = null;
-            this.ribbon.ResourceName = "ELEMNTViewer.RibbonMarkup.ribbon";
+            this.ribbon.MarkupResource = "ELEMNTViewer.RibbonMarkup.ribbon";
             this.ribbon.ShortcutTableResourceName = null;
             this.ribbon.Size = new System.Drawing.Size(1008, 116);
             this.ribbon.TabIndex = 2;
@@ -100,7 +99,7 @@ namespace ELEMNTViewer {
         #endregion
 
         private System.Windows.Forms.DataVisualization.Charting.Chart chart;
-        private RibbonLib.Ribbon ribbon;
+        private WinForms.Ribbon.RibbonStrip ribbon;
     }
 }
 

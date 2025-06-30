@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using RibbonLib.Controls;
+using WinForms.Ribbon;
 
 namespace ELEMNTViewer
 {

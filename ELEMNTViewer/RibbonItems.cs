@@ -9,14 +9,11 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-using RibbonLib;
-using RibbonLib.Controls.Events;
-using RibbonLib.Interop;
 using ELEMNTViewer;
 using Resources = ELEMNTViewer.Properties.Resources;
 using WpfMaps;
 
-namespace RibbonLib.Controls
+namespace WinForms.Ribbon
 {
     partial class RibbonItems
     {
@@ -101,22 +98,22 @@ namespace RibbonLib.Controls
             ComboLTorque.RepresentativeString = ComboSize;
             ComboRTorque.RepresentativeString = ComboSize;
 
-            ToggleSmooth.ExecuteEvent += ToggleSmooth_ExecuteEvent;
+            ToggleSmooth.ToggleChanged += ToggleSmooth_ExecuteEvent;
             ComboPower.ItemsSourceReady += Combo_ItemsSourceReady;
             ComboLRBalance.ItemsSourceReady += Combo_ItemsSourceReady;
             ComboLSmoothness.ItemsSourceReady += Combo_ItemsSourceReady;
             ComboRSmoothness.ItemsSourceReady += Combo_ItemsSourceReady;
             ComboLTorque.ItemsSourceReady += Combo_ItemsSourceReady;
             ComboRTorque.ItemsSourceReady += Combo_ItemsSourceReady;
-            ComboPower.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboLRBalance.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboLSmoothness.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboRSmoothness.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboLTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
-            ComboRTorque.ExecuteEvent += ComboSettings_ExecuteEvent;
+            ComboPower.SelectedIndexChanged += ComboSettings_ExecuteEvent;
+            ComboLRBalance.SelectedIndexChanged += ComboSettings_ExecuteEvent;
+            ComboLSmoothness.SelectedIndexChanged += ComboSettings_ExecuteEvent;
+            ComboRSmoothness.SelectedIndexChanged += ComboSettings_ExecuteEvent;
+            ComboLTorque.SelectedIndexChanged += ComboSettings_ExecuteEvent;
+            ComboRTorque.SelectedIndexChanged += ComboSettings_ExecuteEvent;
         }
 
-        private void ToggleSmooth_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ToggleSmooth_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -155,18 +152,18 @@ namespace RibbonLib.Controls
 
         private void SetComboValues(RibbonComboBox comboBox)
         {
-            IUICollection itemsSource = comboBox.ItemsSource;
-            itemsSource.Add(new GalleryItemPropertySet() { Label = "0", CategoryID = Constants.UI_Collection_InvalidIndex });
-            itemsSource.Add(new GalleryItemPropertySet() { Label = "3", CategoryID = Constants.UI_Collection_InvalidIndex });
-            itemsSource.Add(new GalleryItemPropertySet() { Label = "10", CategoryID = Constants.UI_Collection_InvalidIndex });
-            itemsSource.Add(new GalleryItemPropertySet() { Label = "15", CategoryID = Constants.UI_Collection_InvalidIndex });
-            itemsSource.Add(new GalleryItemPropertySet() { Label = "30", CategoryID = Constants.UI_Collection_InvalidIndex });
+            UICollection<GalleryItemPropertySet> itemsSource = comboBox.GalleryItemItemsSource;
+            itemsSource.Add(new GalleryItemPropertySet() { Label = "0", CategoryId = -1 });
+            itemsSource.Add(new GalleryItemPropertySet() { Label = "3", CategoryId = -1 });
+            itemsSource.Add(new GalleryItemPropertySet() { Label = "10", CategoryId = -1 });
+            itemsSource.Add(new GalleryItemPropertySet() { Label = "15", CategoryId = -1 });
+            itemsSource.Add(new GalleryItemPropertySet() { Label = "30", CategoryId = -1 });
             comboBox.SelectedItem = GetSelectedItem(comboBox);
         }
 
-        private uint GetSelectedItem(RibbonComboBox combo)
+        private int GetSelectedItem(RibbonComboBox combo)
         {
-            switch (combo.CommandID)
+            switch (combo.CommandId)
             {
                 case Cmd.cmdComboPower:
                     return GetSelectedItem(settings.PowerSmooth);
@@ -185,7 +182,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private uint GetSelectedItem(int value)
+        private int GetSelectedItem(int value)
         {
             switch (value)
             {
@@ -215,30 +212,30 @@ namespace RibbonLib.Controls
             ToolStripMenuItems(false);
             ComboSelect.RepresentativeString = "Select" + ComboSize;
             //ComboSelect.ItemsSourceReady += ComboSelect_ItemsSourceReady;
-            ComboSelect.ExecuteEvent += CheckBoxTag.LapChanged;
+            ComboSelect.SelectedIndexChanged += CheckBoxTag.LapChanged;
         }
 
         private void ComboSelect_ItemsSourceReady(object sender, EventArgs e)
         {
-            IUICollection itemsSource1 = ComboSelect.ItemsSource;
+            UICollection<GalleryItemPropertySet> itemsSource1 = ComboSelect.GalleryItemItemsSource;
             itemsSource1.Clear();
         }
 
         private void MakeComboItems()
         {
-            IUICollection itemsSource = ComboSelect.ItemsSource;
+            UICollection<GalleryItemPropertySet> itemsSource = ComboSelect.GalleryItemItemsSource;
             if (DataManager.Instance.Session == null)
             {
-                ComboSelect.SelectedItem = Constants.UI_Collection_InvalidIndex;
+                ComboSelect.SelectedItem = -1;
                 itemsSource.Clear();
                 return;
             }
-            itemsSource.Add(new GalleryItemPropertySet() { Label = Resources.RS_Session, CategoryID = Constants.UI_Collection_InvalidIndex });
+            itemsSource.Add(new GalleryItemPropertySet() { Label = Resources.RS_Session, CategoryId = -1 });
             if (DataManager.Instance.LapManager.Count > 1)
             {
                 for (int i = 0; i < DataManager.Instance.LapManager.Count; i++)
                 {
-                    itemsSource.Add(new GalleryItemPropertySet() { Label = Resources.RS_Lap + " " + (i + 1).ToString(), CategoryID = Constants.UI_Collection_InvalidIndex });
+                    itemsSource.Add(new GalleryItemPropertySet() { Label = Resources.RS_Lap + " " + (i + 1).ToString(), CategoryId = -1 });
                 }
             }
             ComboSelect.SelectedItem = 0;
@@ -318,11 +315,11 @@ namespace RibbonLib.Controls
             {
                 SpinnerMapWidth.RepresentativeString = "xxxxxxx";
                 SpinnerMapHeight.RepresentativeString = "xxxxxxx";
-                ButtonMap.ExecuteEvent += ButtonMap_ExecuteEvent;
+                ButtonMap.Click += ButtonMap_ExecuteEvent;
             }
         }
 
-        private void ButtonMap_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonMap_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -442,7 +439,7 @@ namespace RibbonLib.Controls
 
         private void InitSettings()
         {
-            ButtonSaveSettings.ExecuteEvent += ButtonSaveSettings_ExecuteEvent;
+            ButtonSaveSettings.Click += ButtonSaveSettings_ExecuteEvent;
             CheckLocalize.BooleanValue = settings.Localized;
         }
 
@@ -462,7 +459,7 @@ namespace RibbonLib.Controls
             ButtonTemperature.BooleanValue = settings.TemperatureChecked;
         }
 
-        private void ButtonSaveSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonSaveSettings_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -497,12 +494,12 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ComboSettings_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ComboSettings_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
                 RibbonComboBox combo = sender as RibbonComboBox;
-                switch (combo.CommandID)
+                switch (combo.CommandId)
                 {
                     case Cmd.cmdComboPower:
                         settings.PowerSmooth = int.Parse(combo.StringValue);
@@ -551,15 +548,15 @@ namespace RibbonLib.Controls
         private void InitApplication()
         {
             ButtonStatistics.Enabled = false; //Button turn to true when background task for statistic value is executed
-            ButtonOpenFit.ExecuteEvent += ButtonOpenFit_ExecuteEvent;
-            ButtonOpenGpx.ExecuteEvent += ButtonOpenGpx_ExecuteEvent;
-            ButtonSaveGpx.ExecuteEvent += ButtonSaveGpx_ExecuteEvent;
-            ButtonHelp.ExecuteEvent += ButtonAbout_ExecuteEvent;
-            ButtonAbout.ExecuteEvent += ButtonAbout_ExecuteEvent;
-            ButtonExit.ExecuteEvent += ButtonExit_ExecuteEvent;
+            ButtonOpenFit.Click += ButtonOpenFit_ExecuteEvent;
+            ButtonOpenGpx.Click += ButtonOpenGpx_ExecuteEvent;
+            ButtonSaveGpx.Click += ButtonSaveGpx_ExecuteEvent;
+            ButtonHelp.Click += ButtonAbout_ExecuteEvent;
+            ButtonAbout.Click += ButtonAbout_ExecuteEvent;
+            ButtonExit.Click += ButtonExit_ExecuteEvent;
         }
 
-        private void ButtonOpenGpx_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonOpenGpx_ExecuteEvent(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.CheckFileExists = true;
@@ -595,7 +592,7 @@ namespace RibbonLib.Controls
             Ribbon.SetModes(modes);
         }
 
-        private void ButtonOpenFit_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonOpenFit_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -685,7 +682,7 @@ namespace RibbonLib.Controls
             ButtonMap.Enabled = enabled;
         }
 
-        private void ButtonSaveGpx_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonSaveGpx_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -704,7 +701,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonAbout_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonAbout_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -717,11 +714,12 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonExit_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonExit_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
-                System.Windows.Forms.Application.Exit();
+                _form.BeginInvoke(new MethodInvoker(System.Windows.Forms.Application.Exit));
+                //System.Windows.Forms.Application.Exit();
             }
             catch
             {
@@ -735,16 +733,16 @@ namespace RibbonLib.Controls
 
         private void InitViewEvents()
         {
-            ButtonSession.ExecuteEvent += ButtonSession_ExecuteEvent;
-            ButtonLaps.ExecuteEvent += ButtonLaps_ExecuteEvent;
-            ButtonMyExtras.ExecuteEvent += ButtonMyExtras_ExecuteEvent;
-            ButtonGears.ExecuteEvent += ButtonGears_ExecuteEvent;
-            ButtonHeartRateZones.ExecuteEvent += ButtonHeartRateZones_ExecuteEvent;
-            ButtonPowerZones.ExecuteEvent += ButtonPowerZones_ExecuteEvent;
-            ButtonStatistics.ExecuteEvent += ButtonStatistics_ExecuteEvent;
+            ButtonSession.Click += ButtonSession_ExecuteEvent;
+            ButtonLaps.Click += ButtonLaps_ExecuteEvent;
+            ButtonMyExtras.Click += ButtonMyExtras_ExecuteEvent;
+            ButtonGears.Click += ButtonGears_ExecuteEvent;
+            ButtonHeartRateZones.Click += ButtonHeartRateZones_ExecuteEvent;
+            ButtonPowerZones.Click += ButtonPowerZones_ExecuteEvent;
+            ButtonStatistics.Click += ButtonStatistics_ExecuteEvent;
         }
 
-        private void ButtonGears_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonGears_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -763,7 +761,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonSession_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonSession_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -782,7 +780,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonLaps_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonLaps_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -801,13 +799,13 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonStatistics_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonStatistics_ExecuteEvent(object sender, EventArgs e)
         {
             StatisticsForm dialog = new StatisticsForm();
             dialog.ShowDialog(_form);
         }
 
-        private void ButtonHeartRateZones_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonHeartRateZones_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -825,7 +823,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonPowerZones_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonPowerZones_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -843,7 +841,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonMyExtras_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonMyExtras_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -869,20 +867,20 @@ namespace RibbonLib.Controls
 
         private void InitInternalsEvents()
         {
-            ButtonActivity.ExecuteEvent += ButtonActivity_ExecuteEvent;
-            ButtonDeveloperDataId.ExecuteEvent += ButtonDeveloperDataId_ExecuteEvent;
-            ButtonDeviceInfo.ExecuteEvent += ButtonDeviceInfo_ExecuteEvent;
-            ButtonEvent.ExecuteEvent += ButtonEvent_ExecuteEvent;
-            ButtonFieldDescription.ExecuteEvent += ButtonFieldDescription_ExecuteEvent;
-            ButtonFileId.ExecuteEvent += ButtonFileId_ExecuteEvent;
-            ButtonSport.ExecuteEvent += ButtonSport_ExecuteEvent;
-            ButtonWahooFF00.ExecuteEvent += ButtonWahooFF00_ExecuteEvent;
-            ButtonWahooFF01.ExecuteEvent += ButtonWahooFF01_ExecuteEvent;
-            ButtonWahooFF04.ExecuteEvent += ButtonWahooFF04_ExecuteEvent;
-            ButtonWorkout.ExecuteEvent += ButtonWorkout_ExecuteEvent;
+            ButtonActivity.Click += ButtonActivity_ExecuteEvent;
+            ButtonDeveloperDataId.Click += ButtonDeveloperDataId_ExecuteEvent;
+            ButtonDeviceInfo.Click += ButtonDeviceInfo_ExecuteEvent;
+            ButtonEvent.Click += ButtonEvent_ExecuteEvent;
+            ButtonFieldDescription.Click += ButtonFieldDescription_ExecuteEvent;
+            ButtonFileId.Click += ButtonFileId_ExecuteEvent;
+            ButtonSport.Click += ButtonSport_ExecuteEvent;
+            ButtonWahooFF00.Click += ButtonWahooFF00_ExecuteEvent;
+            ButtonWahooFF01.Click += ButtonWahooFF01_ExecuteEvent;
+            ButtonWahooFF04.Click += ButtonWahooFF04_ExecuteEvent;
+            ButtonWorkout.Click += ButtonWorkout_ExecuteEvent;
         }
 
-        private void ButtonActivity_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonActivity_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -900,7 +898,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonDeveloperDataId_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonDeveloperDataId_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -918,7 +916,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonDeviceInfo_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonDeviceInfo_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -936,7 +934,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonEvent_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonEvent_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -954,7 +952,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonFieldDescription_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonFieldDescription_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -972,7 +970,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonFileId_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonFileId_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -990,7 +988,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonSport_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonSport_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -1008,7 +1006,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonWahooFF00_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonWahooFF00_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -1026,7 +1024,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonWahooFF01_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonWahooFF01_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -1044,7 +1042,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonWahooFF04_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonWahooFF04_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {
@@ -1062,7 +1060,7 @@ namespace RibbonLib.Controls
             }
         }
 
-        private void ButtonWorkout_ExecuteEvent(object sender, ExecuteEventArgs e)
+        private void ButtonWorkout_ExecuteEvent(object sender, EventArgs e)
         {
             try
             {

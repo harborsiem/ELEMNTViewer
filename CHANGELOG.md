@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### ELEMNTViewer V2.6.0
+
+#### Changed
+
+- WpfMaps updated to version 13.4.0
+- WindowsRibbon changed to RibbonFramework.RCW version 1.1.1
+- [RibbonFramework.RCW](https://github.com/harborsiem/WinForms-Ribbon) is a more user friendly redesigned WindowsRibbon
+- Setup updated to WixTools 6.0.1
+
 ### ELEMNTViewer V2.5.2
 
 #### Changed
