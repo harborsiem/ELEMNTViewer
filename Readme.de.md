@@ -29,7 +29,7 @@ Das Programm ist mit der kostenlosen Entwicklungsumgebung Microsoft Visual Studi
 | Name                                                         | Author(s)                                            | Lizenz      |
 | ------------------------------------------------------------ | ---------------------------------------------------- | ----------- |
 | [FitSDK](https://developer.garmin.com/fit/download/) | [ThisIsAnt](https://www.thisisant.com/)              | MIT License |
-| [WinForms Ribbon](https://github.com/harborsiem/WinForms-Ribbon) | [harborsiem](https://github.com/harborsiem) & andere | MIT License |
+| [WinForms-Ribbon](https://github.com/harborsiem/WinForms-Ribbon) | [harborsiem](https://github.com/harborsiem) & andere | MIT License |
 | [XAML Map Control](https://github.com/ClemensFischer/XAML-Map-Control) | [ClemensFischer](https://github.com/ClemensFischer) | MS-PL License |
 
 ## Themen des ELEMNTViewer Programms
@@ -49,7 +49,7 @@ Voraussetzung für die Installation des Programms auf einem Windows-System ist d
 
 [Microsoft .NET Framework](http://www.microsoft.com/netframework)
 
-Entzippe das Setup von der Releases Seite. Danach erfolgt die Installation des Programms mit der Datei ELEMNTSetup.msi (Doppelklick im Datei-Explorer). Das Programm ist jetzt im Programmverzeichnis ELEMNTViewer installiert. Über den Eintrag ELEMNTViewer im Startmenu kann das Programm aufgerufen werden.
+Entzippe das Setup von der Releases Seite. Danach erfolgt die Installation des Programms mit der Datei ELEMNTViewer.msi (Doppelklick im Datei-Explorer). Das Programm ist jetzt im Programmverzeichnis ELEMNTViewer installiert. Über den Eintrag ELEMNTViewer im Startmenu kann das Programm aufgerufen werden.
 
 ## aktuelles Setup
 #### (in Zipdatei gepacktes Setup)

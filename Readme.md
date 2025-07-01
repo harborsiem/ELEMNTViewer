@@ -31,7 +31,7 @@ ELEMNTViewer is developed using Visual Studio Community and uses .NET-Framework 
 | Name                                                         | Author(s)                                                    | License     |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ----------- |
 | [FitSDK](https://developer.garmin.com/fit/download/)                   | [ThisIsAnt](https://www.thisisant.com/)                      | MIT License |
-| [WinForms Ribbon](https://github.com/harborsiem/WinForms-Ribbon) | [harborsiem](https://github.com/harborsiem) & others | MIT License |
+| [WinForms-Ribbon](https://github.com/harborsiem/WinForms-Ribbon) | [harborsiem](https://github.com/harborsiem) & others | MIT License |
 | [XAML Map Control](https://github.com/ClemensFischer/XAML-Map-Control) | [ClemensFischer](https://github.com/ClemensFischer) | MS-PL License |
 
 ## Topics of the ELEMNTViewer App
@@ -50,7 +50,7 @@ Requirement for installation is the Microsoft .NET Framework 4.8 or any higher v
 
 [Microsoft .NET Framework](http://www.microsoft.com/netframework)
 
-Unzip the setup from the Releases page. You get a ELEMNTSetup.msi file. With a double click to this file you can install the program.
+Unzip the setup from the Releases page. You get a ELEMNTViewer.msi file. With a double click to this file you can install the program.
 Via Startmenu you can select and call ELEMNTViewer.
 
 ## Latest Setup
