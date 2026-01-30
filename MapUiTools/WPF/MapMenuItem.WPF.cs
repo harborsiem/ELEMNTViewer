@@ -1,34 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace MapControl.UiTools
 {
-    public abstract class MapMenuItem : MenuItem
+    public partial class MapMenuItem : MenuItem
     {
         protected MapMenuItem()
         {
-            Loaded += (s, e) =>
-            {
-                if (DataContext is MapBase map)
-                {
-                    IsChecked = GetIsChecked(map);
-                }
-            };
-
-            Click += async (s, e) =>
-            {
-                if (DataContext is MapBase map)
-                {
-                    await Execute(map);
-
-                    foreach (var item in ParentMenuItems)
-                    {
-                        item.IsChecked = item.GetIsChecked(map);
-                    }
-                }
-            };
+            Loaded += (_, _) => Initialize();
+            Click += (_, _) => Execute();
         }
 
         public string Text
@@ -38,9 +19,5 @@ namespace MapControl.UiTools
         }
 
         protected IEnumerable<MapMenuItem> ParentMenuItems => ((ItemsControl)Parent).Items.OfType<MapMenuItem>();
-
-        protected abstract bool GetIsChecked(MapBase map);
-
-        public abstract Task Execute(MapBase map);
     }
 }

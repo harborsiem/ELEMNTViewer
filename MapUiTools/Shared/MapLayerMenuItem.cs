@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 #if WPF
@@ -22,68 +22,81 @@ namespace MapControl.UiTools
 #elif UWP || WINUI
     [ContentProperty(Name = nameof(MapLayer))]
 #endif
-    public class MapLayerMenuItem : MapMenuItem
+    public partial class MapLayerMenuItem : MapMenuItem
     {
 #if AVALONIA
         [Content]
 #endif
-        public virtual FrameworkElement MapLayer { get; set; }
-
-        public Func<Task<FrameworkElement>> MapLayerFactory { get; set; }
+        public FrameworkElement MapLayer { get; set; }
 
         protected override bool GetIsChecked(MapBase map)
         {
-            return map.Children.Contains(MapLayer);
+            return MapLayer != null && map.Children.Contains(MapLayer);
         }
 
-        public override async Task Execute(MapBase map)
+        public override Task ExecuteAsync(MapBase map)
         {
-            var layer = MapLayer ?? (MapLayer = await MapLayerFactory.Invoke());
-
-            if (layer != null)
+            if (MapLayer != null)
             {
-                map.MapLayer = layer;
-                IsChecked = true;
+                map.MapLayer = MapLayer;
             }
+
+            return Task.CompletedTask;
         }
     }
 
-    public class MapOverlayMenuItem : MapLayerMenuItem
+    public partial class MapOverlayMenuItem : MapLayerMenuItem
     {
-        public override async Task Execute(MapBase map)
-        {
-            var layer = MapLayer ?? (MapLayer = await MapLayerFactory.Invoke());
+        public string SourcePath { get; set; }
 
-            if (layer != null)
+        public int InsertOrder { get; set; }
+
+        public double OverlayOpacity { get; set; } = 1d;
+
+        public override async Task ExecuteAsync(MapBase map)
+        {
+            if (MapLayer == null)
             {
-                if (map.Children.Contains(layer))
+                await CreateMapLayer();
+            }
+
+            if (MapLayer != null)
+            {
+                if (map.Children.Contains(MapLayer))
                 {
-                    map.Children.Remove(layer);
+                    map.Children.Remove(MapLayer);
                 }
                 else
                 {
-                    var index = 1;
-
-                    foreach (var itemLayer in ParentMenuItems
+                    var insertIndex = ParentMenuItems
                         .OfType<MapOverlayMenuItem>()
-                        .Select(item => item.MapLayer)
-                        .Where(itemLayer => itemLayer != null))
+                        .Where(item => item.InsertOrder <= InsertOrder && item.GetIsChecked(map))
+                        .Count();
+
+                    if (map.MapLayer != null)
                     {
-                        if (itemLayer == layer)
-                        {
-                            map.Children.Insert(index, itemLayer);
-                            break;
-                        }
-
-                        if (map.Children.Contains(itemLayer))
-                        {
-                            index++;
-                        }
+                        insertIndex++;
                     }
-                }
 
-                IsChecked = true;
+                    map.Children.Insert(insertIndex, MapLayer);
+                }
             }
+        }
+
+        protected virtual async Task CreateMapLayer()
+        {
+            var ext = Path.GetExtension(SourcePath).ToLower();
+
+            if (ext == ".kmz" || ext == ".kml")
+            {
+                MapLayer = await GroundOverlay.CreateAsync(SourcePath);
+            }
+            else
+            {
+                MapLayer = await GeoImage.CreateAsync(SourcePath);
+            }
+
+            MapLayer.Opacity = OverlayOpacity;
         }
     }
 }

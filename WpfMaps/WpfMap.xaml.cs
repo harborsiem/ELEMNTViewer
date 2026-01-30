@@ -12,6 +12,28 @@ using PropResources = WpfMaps.Properties.Resources; //harbor: using added
 
 namespace WpfMaps
 {
+    using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    class HttpHandler : DelegatingHandler
+    {
+        public HttpHandler()
+#if NET
+            : base(new SocketsHttpHandler())
+#else
+            : base(new HttpClientHandler())
+#endif
+        {
+        }
+
+        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        {
+            //Debug.WriteLine(request.RequestUri);
+            return base.SendAsync(request, cancellationToken);
+        }
+    }
+
     /// <summary>
     /// Interaction logic for WpfMap.xaml
     /// </summary>
@@ -19,12 +41,16 @@ namespace WpfMaps
     {
         public WpfMap()
         {
-            //var loggerFactory = LoggerFactory.Create(builder => builder.AddDebug());
-            //ImageLoader.LoggerFactory = loggerFactory;
+            var httpClient = new HttpClient(new HttpHandler()) { Timeout = TimeSpan.FromSeconds(10) };
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "XAML Map Control WPF Sample Application");
+            ImageLoader.HttpClient = httpClient;
 
-            //var tileCache = new MapControl.Caching.ImageFileCache(TileImageLoader.DefaultCacheFolder, loggerFactory);
-            //TileImageLoader.Cache = tileCache;
-            //Closed += (s, e) => tileCache.Dispose();
+            var loggerFactory = LoggerFactory.Create(builder => builder.AddDebug().SetMinimumLevel(LogLevel.Information));
+            ImageLoader.LoggerFactory = loggerFactory;
+
+            var tileCache = new MapControl.Caching.ImageFileCache(TileImageLoader.DefaultCacheFolder, loggerFactory);
+            TileImageLoader.Cache = tileCache;
+            Closed += (s, e) => tileCache.Dispose();
 
             InitializeComponent();
 
@@ -43,7 +69,7 @@ namespace WpfMaps
             {
                 if (((string)item.Header == PropResources.Graticule) || ((string)item.Header == PropResources.Scale))
                 {
-                    ((MapOverlayMenuItem)item).Execute(map);
+                    ((MapOverlayMenuItem)item).ExecuteAsync(map);
                 }
             }
         }
@@ -106,7 +132,7 @@ namespace WpfMaps
 
                 if (start != null)
                 {
-                    measurementLine.Locations = LocationCollection.OrthodromeLocations(start, location);
+                    measurementLine.Locations = LocationCollection.GeodesicLocations(start, location);
                     mouseLocation.Text += GetDistanceText(location.GetDistance(start));
                 }
             }

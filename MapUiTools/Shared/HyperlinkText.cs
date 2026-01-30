@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-#if WINUI
+#if WPF
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Documents;
+#elif WINUI
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Documents;
@@ -9,14 +14,9 @@ using Microsoft.UI.Xaml.Documents;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Documents;
-#else
-using System.Diagnostics;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Documents;
 #endif
 
-namespace WpfMaps
+namespace MapControl.UiTools
 {
     public static class HyperlinkText
     {
@@ -43,10 +43,10 @@ namespace WpfMaps
 
                     var link = new Hyperlink { NavigateUri = uri };
                     link.Inlines.Add(new Run { Text = match.Groups[1].Value });
-#if !WINUI && !UWP
+#if WPF
                     link.ToolTip = uri.ToString();
 
-                    link.RequestNavigate += (s, e) =>
+                    link.RequestNavigate += (_, e) =>
                     {
                         try
                         {

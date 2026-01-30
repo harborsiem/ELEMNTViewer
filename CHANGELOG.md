@@ -2,6 +2,15 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### ELEMNTViewer V2.6.1
+
+#### Changed
+
+- WpfMaps updated to version 15.0.0
+- RibbonFramework.RCW updated to version 1.2.1
+- Fit Sdk updated to version 21.188.0
+- Setup updated to WixTools 6.0.2
+
 ### ELEMNTViewer V2.6.0
 
 #### Changed

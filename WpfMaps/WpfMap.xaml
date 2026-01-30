@@ -167,23 +167,7 @@
             </TextBlock.Background>
         </TextBlock>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Background="#AFFFFFFF"
-                    DataContext="{Binding MapLayer, ElementName=map}">
-            <ProgressBar Width="100" Height="8" Margin="4,2" VerticalAlignment="Center"
-                         Maximum="1" Value="{Binding LoadingProgress}">
-                <ProgressBar.Style>
-                    <Style TargetType="ProgressBar">
-                        <Style.Triggers>
-                            <Trigger Property="Value" Value="1">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ProgressBar.Style>
-            </ProgressBar>
-
-            <TextBlock Margin="4,2" FontSize="10" local:HyperlinkText.InlinesSource="{Binding Description}"/>
-        </StackPanel>
+        <tools:MapLayerInfo MapLayer="{Binding MapLayer, ElementName=map}" Background="#AFFFFFFF"/>
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top" Margin="6">
             <tools:MenuButton x:Name="mapLayersMenuButton"
@@ -192,25 +176,25 @@
                     <map:MapTileLayer
                         TileSource="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
                         SourceName="OpenStreetMap"
-                        Description="© [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"/>
+                        Description="© [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)"/>
                 </tools:MapLayerMenuItem>
                 <tools:MapLayerMenuItem Text="OpenStreetMap German">
                     <map:MapTileLayer
                         TileSource="https://tile.openstreetmap.de/{z}/{x}/{y}.png"
-                        SourceName="OpenStreetMap German"
-                        Description="© [OpenStreetMap Deutschland](https://www.openstreetmap.de) © [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"/>
+                        SourceName="OpenStreetMap.de"
+                        Description="© [OpenStreetMap Deutschland](https://www.openstreetmap.de) © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)"/>
                 </tools:MapLayerMenuItem>
                 <tools:MapLayerMenuItem Text="OpenStreetMap French">
                     <map:MapTileLayer
-                        TileSource="http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
+                        TileSource="https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png"
                         SourceName="OpenStreetMap French"
-                        Description="© [OpenStreetMap France](https://www.openstreetmap.fr/mentions-legales/) © [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"/>
+                        Description="© [OpenStreetMap France](https://www.openstreetmap.fr/mentions-legales/) © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)"/>
                 </tools:MapLayerMenuItem>
                 <tools:MapLayerMenuItem Text="OpenTopoMap">
                     <map:MapTileLayer
                         TileSource="https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
                         SourceName="OpenTopoMap"
-                        Description="© [OpenTopoMap](https://opentopomap.org/) © [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"/>
+                        Description="© [OpenTopoMap](https://opentopomap.org/) © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)"/>
                 </tools:MapLayerMenuItem>
                 <tools:MapLayerMenuItem Text="TopPlusOpen WMTS">
                     <map:WmtsTileLayer
@@ -225,16 +209,16 @@
                 </tools:MapLayerMenuItem>
                 <tools:MapLayerMenuItem Text="OpenStreetMap WMS">
                     <map:WmsImageLayer
-                        ServiceUri="http://ows.terrestris.de/osm/service"
-                        Description="© [terrestris GmbH &amp; Co. KG](http://ows.terrestris.de/) © [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"/>
+                        ServiceUri="https://ows.terrestris.de/osm/service"
+                        Description="© [terrestris GmbH &amp; Co. KG](https://ows.terrestris.de/) © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)"/>
                 </tools:MapLayerMenuItem>
 
                 <Separator/>
 
-                <tools:MapOverlayMenuItem Text="{x:Static localization:Resources.Graticule}">
+                <tools:MapOverlayMenuItem Text="{x:Static localization:Resources.Graticule}" InsertOrder="2">
                     <map:MapGraticule Opacity="0.7"/>
                 </tools:MapOverlayMenuItem>
-                <tools:MapOverlayMenuItem Text="{x:Static localization:Resources.Scale}">
+                <tools:MapOverlayMenuItem Text="{x:Static localization:Resources.Scale}" InsertOrder="2">
                     <map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                 </tools:MapOverlayMenuItem>
             </tools:MenuButton>
@@ -261,15 +245,13 @@
 
             <Button Margin="2" Padding="8" ToolTip="Reset Heading" Click="ResetHeadingButtonClick"
                     FontSize="20" FontFamily="Segoe MDL2 Assets" Content="&#xEBE6;">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Style.Triggers>
-                            <DataTrigger Binding="{Binding Heading, ElementName=map}" Value="0">
-                                <Setter Property="Visibility" Value="Collapsed"/>
-                            </DataTrigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+                <Button.Visibility>
+                    <Binding Path="Heading" ElementName="map">
+                        <Binding.Converter>
+                            <local:MapHeadingToVisibilityConverter/>
+                        </Binding.Converter>
+                    </Binding>
+                </Button.Visibility>
             </Button>
         </StackPanel>
     </Grid>

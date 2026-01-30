@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 #if WPF
 using System.Windows.Markup;
@@ -14,40 +15,42 @@ using Avalonia.Metadata;
 namespace MapControl.UiTools
 {
 #if WPF
-    [ContentProperty(nameof(MapProjection))]
+    [ContentProperty(nameof(CrsId))]
 #elif UWP || WINUI
-    [ContentProperty(Name = nameof(MapProjection))]
+    [ContentProperty(Name = nameof(CrsId))]
 #endif
-    public class MapProjectionMenuItem : MapMenuItem
+    public partial class MapProjectionMenuItem : MapMenuItem
     {
 #if AVALONIA
         [Content]
 #endif
-        public string MapProjection { get; set; }
+        public string CrsId { get; set; }
+
+        protected override bool GetIsEnabled(MapBase map)
+        {
+            return map.MapLayer is not IMapLayer mapLayer
+                || mapLayer.SupportedCrsIds == null
+                || mapLayer.SupportedCrsIds.Contains(CrsId);
+        }
 
         protected override bool GetIsChecked(MapBase map)
         {
-            return map.MapProjection.CrsId == MapProjection;
+            return map.MapProjection.CrsId == CrsId;
         }
 
-        public override Task Execute(MapBase map)
+        public override Task ExecuteAsync(MapBase map)
         {
-            bool success = true;
-
-            if (map.MapProjection.CrsId != MapProjection)
+            if (!GetIsChecked(map))
             {
                 try
                 {
-                    map.MapProjection = MapProjectionFactory.Instance.GetProjection(MapProjection);
+                    map.MapProjection = MapProjection.Parse(CrsId);
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"{nameof(MapProjectionFactory)}: {ex.Message}");
-                    success = false;
+                    Debug.WriteLine($"MapProjection.Parse: {ex.Message}");
                 }
             }
-
-            IsChecked = success;
 
             return Task.CompletedTask;
         }

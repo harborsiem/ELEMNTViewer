@@ -6,7 +6,7 @@
     lightArgs: "<projectname>.wixobj" -out "<projectname>.msi" -ext WixUtilExtension -ext WixUIExtension -ext WixNetFxExtension
 -->
 <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-  <Package Name="ElemntViewer" Language="1033" Version="2.6.0.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688" InstallerVersion="301" ProductCode="{5F794909-CF06-4832-B494-31E89C9BE667}">
+  <Package Name="ElemntViewer" Language="1033" Version="2.6.1.0" Manufacturer="Harbor" UpgradeCode="E41DD83A-EF9F-48B3-B987-927C001F6688" InstallerVersion="301" ProductCode="{9FBEC1E1-2D4D-4740-9048-9932C771F908}">
     <SummaryInformation Description="ElemntViewer" />
 
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -47,7 +47,7 @@
         <File Id="Fi.ELEMNTViewerExe" Name="ELEMNTViewer.exe" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe" KeyPath="yes" Checksum="yes" />
         <File Id="Fi.ELEMNTViewerConfig" Name="ELEMNTViewer.exe.config" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe.config" Checksum="yes" />
         <File Id="Fi.RibbonFrameworkDll" Name="RibbonFramework.dll" Source="..\ELEMNTViewer\bin\Release\RibbonFramework.dll" Checksum="yes" />
-		<File Id="Fi.FitDll" Name="Fit.dll" Source="..\ELEMNTViewer\Resources\Fit.dll" Checksum="yes" />
+		<File Id="Fi.FitDll" Name="Fitsdk.dll" Source="..\ELEMNTViewer\bin\Release\Fitsdk.dll" Checksum="yes" />
         <File Id="Fi.MapControlDll" Name="MapControl.WPF.dll" Source="..\WpfMaps\bin\Release\MapControl.WPF.dll" Checksum="yes" />
         <File Id="Fi.WpfMapsDll" Name="WpfMaps.dll" Source="..\WpfMaps\bin\Release\WpfMaps.dll" Checksum="yes" />
         <File Id="Fi.MapUiToolsDll" Name="MapUiTools.WPF.dll" Source="..\WpfMaps\bin\Release\MapUiTools.WPF.dll" Checksum="yes" />
@@ -92,7 +92,6 @@
 				<File Id="Fi.Vectors" Name="System.Numerics.Vectors.dll" Source="..\ElemntViewer\bin\Release\System.Numerics.Vectors.dll" Checksum="yes" />
 				<File Id="Fi.Unsafe" Name="System.Runtime.CompilerServices.Unsafe.dll" Source="..\ElemntViewer\bin\Release\System.Runtime.CompilerServices.Unsafe.dll" Checksum="yes" />
 				<File Id="Fi.Tasks.Extensions" Name="System.Threading.Tasks.Extensions.dll" Source="..\ElemntViewer\bin\Release\System.Threading.Tasks.Extensions.dll" Checksum="yes" />
-				<File Id="Fi.ValueTuple" Name="System.ValueTuple.dll" Source="..\ElemntViewer\bin\Release\System.ValueTuple.dll" Checksum="yes" />
 			</Component>	
 		</ComponentGroup>
 	</Fragment>
