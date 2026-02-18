@@ -7,7 +7,7 @@
         <AssemblyTitle>XAML Map Control UI Tools Library for WPF</AssemblyTitle>
         <DefineConstants>WPF</DefineConstants>
         <Product>XAML Map Control</Product>
-        <Version>15.0.0</Version>
+        <Version>16.0.0</Version>
         <Authors>Clemens Fischer</Authors>
         <Copyright>Copyright © Clemens Fischer</Copyright>
         <SignAssembly>true</SignAssembly>
@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="XAML.MapControl.WPF" Version="15.0.0" />
+      <PackageReference Include="XAML.MapControl.WPF" Version="16.0.0" />
     </ItemGroup>
 
 </Project>

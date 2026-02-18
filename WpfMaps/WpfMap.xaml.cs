@@ -42,7 +42,7 @@ namespace WpfMaps
         public WpfMap()
         {
             var httpClient = new HttpClient(new HttpHandler()) { Timeout = TimeSpan.FromSeconds(10) };
-            httpClient.DefaultRequestHeaders.Add("User-Agent", "XAML Map Control WPF Sample Application");
+            httpClient.DefaultRequestHeaders.Add("User-Agent", "XAML Map Control ElemntViewer"); //harbor: ElemntViewer instead 
             ImageLoader.HttpClient = httpClient;
 
             var loggerFactory = LoggerFactory.Create(builder => builder.AddDebug().SetMinimumLevel(LogLevel.Information));
@@ -103,7 +103,7 @@ namespace WpfMaps
         {
             var location = map.ViewToLocation(e.GetPosition(map));
 
-            if (location != null && map.CaptureMouse())
+            if (map.CaptureMouse())
             {
                 map.Cursor = Cursors.Cross;
                 measurementLine.Visibility = Visibility.Visible;
@@ -123,23 +123,14 @@ namespace WpfMaps
         {
             var location = map.ViewToLocation(e.GetPosition(map));
 
-            if (location != null)
-            {
-                mouseLocation.Visibility = Visibility.Visible;
-                mouseLocation.Text = GetLatLonText(location);
+            mouseLocation.Visibility = Visibility.Visible;
+            mouseLocation.Text = GetLatLonText(location);
 
-                var start = measurementLine.Locations?.FirstOrDefault();
-
-                if (start != null)
-                {
-                    measurementLine.Locations = LocationCollection.GeodesicLocations(start, location);
-                    mouseLocation.Text += GetDistanceText(location.GetDistance(start));
-                }
-            }
-            else
+            if (measurementLine.Locations != null)
             {
-                mouseLocation.Visibility = Visibility.Collapsed;
-                mouseLocation.Text = string.Empty;
+                var start = measurementLine.Locations.First();
+                measurementLine.Locations = LocationCollection.GeodesicLocations(start, location);
+                mouseLocation.Text += GetDistanceText(location.GetDistance(start));
             }
         }
 

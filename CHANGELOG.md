@@ -6,7 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### Changed
 
-- WpfMaps updated to version 15.0.0
+- WpfMaps updated to version 16.0.0
 - RibbonFramework.RCW updated to version 1.2.1
 - Fit Sdk updated to version 21.188.0
 - Setup updated to WixTools 6.0.2

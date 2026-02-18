@@ -30,8 +30,8 @@
                                         <VisualState x:Name="MouseOver">
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetName="hoverPath"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.7" Duration="0:0:0.1"/>
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0.7" Duration="0:0:0.1"/>
                                             </Storyboard>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -40,8 +40,8 @@
                                         <VisualState x:Name="Selected">
                                             <Storyboard>
                                                 <DoubleAnimation Storyboard.TargetName="selectedPath"
-                                                             Storyboard.TargetProperty="Opacity"
-                                                             To="0.7" Duration="0:0:0.1"/>
+                                                                 Storyboard.TargetProperty="Opacity"
+                                                                 To="0.7" Duration="0:0:0.1"/>
                                             </Storyboard>
                                         </VisualState>
                                     </VisualStateGroup>
@@ -50,12 +50,12 @@
                                 <Path Fill="Red" Opacity="0.4" IsHitTestVisible="False">
                                     <Path.Data>
                                         <EllipseGeometry RadiusX="20" RadiusY="20"
-                                                     Transform="{Binding MapTransform, RelativeSource={RelativeSource TemplatedParent}}"/>
+                                                         Transform="{Binding MapTransform, RelativeSource={RelativeSource TemplatedParent}}"/>
                                     </Path.Data>
                                 </Path>
                                 <!-- MapPath with Location -->
                                 <map:MapPath Stroke="Green" StrokeThickness="2" IsHitTestVisible="False"
-                                         Location="{TemplateBinding Location}">
+                                             Location="{TemplateBinding Location}">
                                     <map:MapPath.Data>
                                         <EllipseGeometry RadiusX="20" RadiusY="20"/>
                                     </map:MapPath.Data>
@@ -96,7 +96,7 @@
                     <Setter.Value>
                         <ControlTemplate TargetType="map:MapItem">
                             <map:Pushpin Content="{Binding Name}"
-                        HorizontalAlignment="{TemplateBinding HorizontalAlignment}"/>
+                                         HorizontalAlignment="{TemplateBinding HorizontalAlignment}"/>
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
@@ -118,7 +118,7 @@
         <map:Map x:Name="map"
                  MinZoomLevel="2" MaxZoomLevel="21" ZoomLevel="11"
                  Center="49.5667, 10.9"
-				 ManipulationMode="All"
+                 ManipulationMode="All"
                  MouseLeftButtonDown="MapMouseLeftButtonDown"
                  MouseRightButtonDown="MapMouseRightButtonDown"
                  MouseRightButtonUp="MapMouseRightButtonUp"
@@ -133,14 +133,14 @@
             <map:MapItemsControl ItemsSource="{Binding Polylines}"/>
 
             <map:MapItemsControl ItemContainerStyle="{StaticResource PointItemStyle}"
-			                     ItemsSource="{Binding Points}"
+                                 ItemsSource="{Binding Points}"
                                  SelectionMode="Multiple"/>
 
             <map:MapItemsControl ItemContainerStyle="{StaticResource PushpinItemStyle}"
-			                     ItemsSource="{Binding Pushpins}"
+                                 ItemsSource="{Binding Pushpins}"
                                  SelectedItem="{Binding SelectedPushpin}"
-								 SelectionMode="Extended"
-								 SelectionChanged="MapItemsControlSelectionChanged"/>
+                                 SelectionMode="Extended"
+                                 SelectionChanged="MapItemsControlSelectionChanged"/>
 
             <!--
             <map:Pushpin AutoCollapse="True" Location="65,-18" Content="Iceland"/>
@@ -154,7 +154,7 @@
                 </map:MapPath.Data>
             </map:MapPath>
 
-            <map:Pushpin AutoCollapse="True" Location="49.34,10.54" Background="Yellow" Foreground="Blue" Content="N 49°44' E 10°54'"/
+            <map:Pushpin AutoCollapse="True" Location="53.5,8.2" Content="N 53 30' E 8 12'"/>
             -->
         </map:Map>
 
@@ -210,7 +210,7 @@
                 <tools:MapLayerMenuItem Text="OpenStreetMap WMS">
                     <map:WmsImageLayer
                         ServiceUri="https://ows.terrestris.de/osm/service"
-                        Description="© [terrestris GmbH &amp; Co. KG](https://ows.terrestris.de/) © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)"/>
+                        Description="© [terrestris](https://terrestris.de/) © [OpenStreetMap contributors](https://www.openstreetmap.org/copyright)"/>
                 </tools:MapLayerMenuItem>
 
                 <Separator/>
@@ -218,6 +218,11 @@
                 <tools:MapOverlayMenuItem Text="{x:Static localization:Resources.Graticule}" InsertOrder="2">
                     <map:MapGraticule Opacity="0.7"/>
                 </tools:MapOverlayMenuItem>
+                <!--
+                <tools:MapOverlayMenuItem Text="Metric Grid" InsertOrder="2">
+                    <map:MetricGrid Opacity="0.7" Foreground="Orange"/>
+                </tools:MapOverlayMenuItem>
+                -->
                 <tools:MapOverlayMenuItem Text="{x:Static localization:Resources.Scale}" InsertOrder="2">
                     <map:MapScale HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
                 </tools:MapOverlayMenuItem>
