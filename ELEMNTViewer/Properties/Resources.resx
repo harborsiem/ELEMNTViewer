@@ -242,7 +242,7 @@
     <value>Maximum positive grade [%]</value>
   </data>
   <data name="TotalCalories" xml:space="preserve">
-    <value>Total calories [kJ]</value>
+    <value>Total calories [kcal]</value>
   </data>
   <data name="NormalizedPower" xml:space="preserve">
     <value>Normalized power [W]</value>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:netfx="http://schemas.microsoft.com/wix/NetFxExtension"
+	xmlns:WixUI="http://schemas.microsoft.com/wix/UIExtension">
+	<Product Id="{71CE5641-626A-4E89-81F2-9664DFB9450C}" Name="ElemntViewer" Language="1033" Version="2.6.2.0" Manufacturer="Harbor" UpgradeCode="{E41DD83A-EF9F-48B3-B987-927C001F6688}">
+		<Package InstallerVersion="301" Compressed="yes" InstallScope="perMachine" Platform="x86" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<Media Id="1" Cabinet="Data.cab" EmbedCab="yes" />
+
+		<Feature Id="ProductFeature" Title="ElemntViewer" Level="1">
+			<ComponentGroupRef Id="ProductComponents1" />
+			<ComponentGroupRef Id="ProductComponents2" />
+			<ComponentGroupRef Id="ProductComponents3" />
+			<ComponentGroupRef Id="ProductComponents4" />
+		</Feature>
+
+		<UI />
+    <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED" />
+    <Condition Message="This application requires .NET Framework 4.8. Please install the .NET Framework then run this installer again.">Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED</Condition>
+		<UIRef Id="WixUI_Minimal" />
+		<Icon Id="MainIcon.ico" SourceFile="..\ELEMNTViewer\Resources\AppIcon.ico" />
+		<Property Id="ARPPRODUCTICON" Value="MainIcon.ico" />
+		<Property Id="ARPHELPLINK" Value="https://github.com/harborsiem/ELEMNTViewer" />
+		<Property Id="ARPCOMMENTS" Value="Analyze Wahoo ELEMNT workout" />
+		<Property Id="ARPURLUPDATEINFO" Value="https://github.com/harborsiem/ELEMNTViewer/releases" />
+		<Property Id="ARPNOREPAIR" Value="yes" />
+		<WixVariable Id="WixUILicenseRtf" Value="MIT_License.rtf" />
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="Di.INSTALLFOLDER" Name="ELEMNTViewer" >
+			        <Directory Id="Di.LANG_de" Name="de" />
+				</Directory>
+			</Directory>
+			<Directory Id="ProgramMenuFolder">
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents1" Directory="Di.INSTALLFOLDER">
+			<Component Id="C.ELEMNTViewerExe" Guid="DA142E1C-78BE-4FE9-82D1-91978CDF8CDB">
+				<File Id="Fi.ELEMNTViewerExe" Name="ELEMNTViewer.exe" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe" KeyPath="yes" Checksum="yes" />
+				<File Id="Fi.ELEMNTViewerConfig" Name="ELEMNTViewer.exe.config" Source="..\ELEMNTViewer\bin\Release\ELEMNTViewer.exe.config" Checksum="yes" />
+				<File Id="Fi.RibbonFrameworkDll" Name="RibbonFramework.dll" Source="..\ELEMNTViewer\bin\Release\RibbonFramework.dll" Checksum="yes" />
+				<File Id="Fi.FitDll" Name="Fitsdk.dll" Source="..\ELEMNTViewer\bin\Release\Fitsdk.dll" Checksum="yes" />
+				<File Id="Fi.MapControlDll" Name="MapControl.WPF.dll" Source="..\WpfMaps\bin\Release\MapControl.WPF.dll" Checksum="yes" />
+				<File Id="Fi.WpfMapsDll" Name="WpfMaps.dll" Source="..\WpfMaps\bin\Release\WpfMaps.dll" Checksum="yes" />
+				<File Id="Fi.MapUiToolsDll" Name="MapUiTools.WPF.dll" Source="..\WpfMaps\bin\Release\MapUiTools.WPF.dll" Checksum="yes" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents2" Directory="ProgramMenuFolder">
+			<Component Id="C.AppMenu" Guid="31676EDB-CA37-42F6-B415-179E5D7EC393">
+				<Shortcut Id="ApplicationStartMenuShortcut" Name="ELEMNTViewer" Target="[!Fi.ELEMNTViewerExe]" WorkingDirectory="Di.INSTALLFOLDER" Icon="MainIcon.ico" IconIndex="0" />
+				<RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Value="" Type="string" KeyPath="yes" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents3" Directory="Di.LANG_de">
+			<Component Id="C.ELEMNTViewer_de" Guid="6D0E6832-5B8E-4D48-9A4A-9EEC08277A02">
+				<File Id="Fi.DE_ELEMNTViewer_RES" Name="ELEMNTViewer.resources.dll" Source="..\ELEMNTViewer\bin\Release\de\ELEMNTViewer.resources.dll" KeyPath="yes" Checksum="yes" />
+				<File Id="Fi.DE_WpfMaps_RES" Name="WpfMaps.resources.dll" Source="..\WpfMaps\bin\Release\de\WpfMaps.resources.dll" Checksum="yes" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents4" Directory="Di.INSTALLFOLDER">
+			<Component Id="C.SystemFiles" Guid="2A89D4F6-A9A8-4242-A711-39A330A0F3D0">
+				<File Id="Fi.AsyncInterfaces" Name="Microsoft.Bcl.AsyncInterfaces.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll" Checksum="yes" />
+				<File Id="Fi.Caching.Abstractions" Name="Microsoft.Extensions.Caching.Abstractions.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Caching.Abstractions.dll" Checksum="yes" />
+				<File Id="Fi.Caching.Memory" Name="Microsoft.Extensions.Caching.Memory.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Caching.Memory.dll" Checksum="yes" />
+				<File Id="Fi.DependencyInjection.Abstractions" Name="Microsoft.Extensions.DependencyInjection.Abstractions.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.DependencyInjection.Abstractions.dll" Checksum="yes" />
+				<File Id="Fi.DependencyInjection" Name="Microsoft.Extensions.DependencyInjection.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.DependencyInjection.dll" Checksum="yes" />
+				<File Id="Fi.Logging.Abstractions" Name="Microsoft.Extensions.Logging.Abstractions.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Logging.Abstractions.dll" Checksum="yes" />
+				<File Id="Fi.Logging.Debug" Name="Microsoft.Extensions.Logging.Debug.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Logging.Debug.dll" Checksum="yes" />
+				<File Id="Fi.Logging" Name="Microsoft.Extensions.Logging.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Logging.dll" Checksum="yes" />
+				<File Id="Fi.Options" Name="Microsoft.Extensions.Options.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Options.dll" Checksum="yes" />
+				<File Id="Fi.Primitives" Name="Microsoft.Extensions.Primitives.dll" Source="..\ElemntViewer\bin\Release\Microsoft.Extensions.Primitives.dll" Checksum="yes" />
+				<File Id="Fi.Buffers" Name="System.Buffers.dll" Source="..\ElemntViewer\bin\Release\System.Buffers.dll" Checksum="yes" />
+				<File Id="Fi.DiagnosticSource" Name="System.Diagnostics.DiagnosticSource.dll" Source="..\ElemntViewer\bin\Release\System.Diagnostics.DiagnosticSource.dll" Checksum="yes" />
+				<File Id="Fi.Memory" Name="System.Memory.dll" Source="..\ElemntViewer\bin\Release\System.Memory.dll" Checksum="yes" />
+				<File Id="Fi.Vectors" Name="System.Numerics.Vectors.dll" Source="..\ElemntViewer\bin\Release\System.Numerics.Vectors.dll" Checksum="yes" />
+				<File Id="Fi.Unsafe" Name="System.Runtime.CompilerServices.Unsafe.dll" Source="..\ElemntViewer\bin\Release\System.Runtime.CompilerServices.Unsafe.dll" Checksum="yes" />
+				<File Id="Fi.Tasks.Extensions" Name="System.Threading.Tasks.Extensions.dll" Source="..\ElemntViewer\bin\Release\System.Threading.Tasks.Extensions.dll" Checksum="yes" />
+			</Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>

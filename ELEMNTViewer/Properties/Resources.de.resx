@@ -235,7 +235,7 @@
     <value>Max. pos. Steigung [%]</value>
   </data>
   <data name="TotalCalories" xml:space="preserve">
-    <value>Kalorien [kJ]</value>
+    <value>Kalorien [kcal]</value>
   </data>
   <data name="NormalizedPower" xml:space="preserve">
     <value>Normalisierte Leistung [W]</value>

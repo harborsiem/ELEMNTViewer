@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>net462</TargetFramework>
-        <LangVersion Condition="'$(TargetFramework)'=='net462'">14.0</LangVersion>
+        <LangVersion Condition="'$(TargetFramework)'=='net462'">latest</LangVersion>
         <UseWPF>true</UseWPF>
         <RootNamespace>MapControl.UiTools</RootNamespace>
         <AssemblyTitle>XAML Map Control UI Tools Library for WPF</AssemblyTitle>
         <DefineConstants>WPF</DefineConstants>
         <Product>XAML Map Control</Product>
-        <Version>16.0.0</Version>
+        <Version>17.1.0</Version>
         <Authors>Clemens Fischer</Authors>
         <Copyright>Copyright © Clemens Fischer</Copyright>
         <SignAssembly>true</SignAssembly>
@@ -24,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="XAML.MapControl.WPF" Version="16.0.0" />
+      <PackageReference Include="XAML.MapControl.WPF" Version="17.1.0" />
     </ItemGroup>
 
 </Project>
